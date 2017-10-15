@@ -1,59 +1,61 @@
-#ifndef KERNEL_H
-#define KERNEL_H
-#include <bits/stdc++.h>
-#include <boost/thread.hpp>
+#ifndef CPPL_RANDOM_H
+#define CPPL_RANDOM_H
 
-namespace rng
+#include <type_traits>
+#include <random>
+
+
+
+namespace cppl
 {
-
-
-
-
-
-template <class Distribution, class Generator = std::mt19937>
-class Random
-{
-public:
-
-
-    using DistributionType = Distribution;
-    using GeneratorType    = Generator;
-
-
-    using ValueType = std::decay_t<decltype(std::declval<Generator>().operator()(std::declval<Distribution>()))>;
-
-
-    Random (int maxSize = 1000, float loadFactor = 0.7, int numThreads = 1) :
-            distribution(DistributionType()), generator(GeneratorType()), elements(std::vector<ValueType>(maxSize)),
-            threads(std::vector<boost::thread>(numThreads)), position(0), maxSize(maxSize), loadFactor(loadFactor), numThreads(numThreads)
+    struct RandBase
     {
+        Rand () : generator(std::random_device{}()) {}
+    
+        Rand (int seed) : generator(seed) {}
+    
+        std::mt19937 generator;
+    };
+    
+    
+    template <typename T>
+    struct RandInt_ : public RandBase
+    {
+        using RandBase::RandBase;
+    
+        inline T operator () (T min, T max)
+        {
+            return std::uniform_int_distribution<T>(min, max - 1)(generator);
+        }
+    };
 
-    }
+    using RandInt = RandInt_<int>;
+    
+
+    template <typename T>
+    struct RandDouble_ : public RandBase
+    {
+        using RandBase::RandBase;
+        
+        inline T operator () (Te min, T max)
+        {
+            return std::uniform_real_distribution<T>(min, max)(generator);
+        } 
+    };
+
+    using RandDouble = RandDouble_<double>;
+
+
+    struct WrongType;
+
+    template <typename T>
+    using Rand = std::conditional_t<std::is_integral<T>::value, RandInt_<T>,
+                 std::conditional_t<std::is_floating_point<T>::value, RandInt_<T>,
+                 WrongType>;
+
+    
+}   // namespace cppl
 
 
 
-
-
-
-//private:
-
-
-    DistributionType distribution;
-    GeneratorType generator;
-
-
-    std::vector<ValueType> elements;
-    std::vector<boost::thread> threads;
-
-    int position;
-    int maxSize;
-    float loadFactor;
-    int numThreads;
-
-};
-
-}   // namespace rng
-
-
-
-#endif
+#endif // CPPL_RANDOM_H

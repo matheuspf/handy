@@ -1,5 +1,5 @@
-#ifndef MODELO_H
-#define MODELO_H
+#ifndef CPPL_HELPERS_H
+#define CPPL_HELPERS_H
 
 #include <bits/stdc++.h>
 #include <assert.h>
@@ -307,4 +307,4 @@ Vec solveMat (const Mat& X, const Vec& y)
 
 
 
-#endif // MODELO_H
+#endif // CPPL_HELPERS_H

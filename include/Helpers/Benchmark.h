@@ -1,60 +1,93 @@
-#ifndef BENCHMARK_H_INCLUDED
-#define BENCHMARK_H_INCLUDED
-#include <ratio>
-#include <iostream>
-#include <ctime>
+#ifndef CPPL_BENCHMARK_H_INCLUDED
+#define CPPL_BENCHMARK_H_INCLUDED
+
+#include <type_traits>
 
 #ifdef _WIN32
+
 #include <windows.h>
 
 #elif defined __unix__
+
 #include <sys/time.h>
 
 #endif
 
 
-template <class F, class... Args>
-inline auto benchmark (F&& f, Args&&... args)
+
+namespace cppl
 {
 
+struct Benchmark
+{
+    template <class F, typename... Args>
+    double operator () (F&& f, Args&&... args)
+    {
+        start();
+
+        f(std::forward<Args>(args)...);
+
+        return end();
+    }
+
+
+
+    void start ()
+    {
+    #ifdef _WIN32
+    
+        QueryPerformanceFrequency(&freq_);
+        QueryPerformanceCounter(&start_);
+    
+    #elif defined __unix__
+    
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_);
+        
+    #endif
+    }
+
+
+    double end()
+    {
+    #ifdef _WIN32
+    
+        QueryPerformanceCounter(&end_);
+    
+        double secondsElapsed = (end_.QuadPart - start_.QuadPart) / freq.QuadPart;
+    
+    #elif defined __unix__
+    
+        clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_);
+    
+        double secondsElapsed = (end_.tv_sec - start_.tv_sec) + (end_.tv_nsec - start_.tv_nsec) / 1e9;
+    
+    #endif 
+
+        return secondsElapsed;
+    }
+
+
 #ifdef _WIN32
 
-    LARGE_INTEGER freq, start, end;
-
-    QueryPerformanceFrequency(&freq);
-    QueryPerformanceCounter(&start);
-
+    LARGE_INTEGER freq, start_, end_;
 
 #elif defined __unix__
-
-    timespec start, end;
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start);
+    
+    timespec start_, end_;
 
 #endif
 
-
-    std::forward<F>(f)(std::forward<Args>(args)...);
-
-
-#ifdef _WIN32
-
-    QueryPerformanceCounter(&end);
-
-    return (end.QuadPart - start.QuadPart) / freq.QuadPart;
+};
 
 
-#elif defined __unix__
 
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
-
-    return (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
-
-    //return Timer::den * static_cast<long double>(end.tv_nsec- start.tv_nsec);
-
-#endif
-
+template <class F, class... Args>
+double benchmark (F&& f, Args&&... args)
+{
+    return Benchmark{}(std::forward<F>(f), std::forward<Args>(args)...);
 }
 
+} // namespace cppl
 
-#endif // BENCHMARK_H
+
+#endif // CPPL_BENCHMARK_H
