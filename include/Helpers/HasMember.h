@@ -35,11 +35,20 @@ namespace std
 /// Helper for functions
 #define FUNC_HELPER(T, func) &T::func
 
+
+/// Extern function helper
+#define EXTERN_FUNC_HELPER(T, ext) ext(std::declval<T>()) 
+
+
 /// If the class has a variable
 #define HAS_VAR(...) EXPAND(HAS_MEMBER(VAR_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
 
 /// If the class has a function
 #define HAS_FUNC(...) EXPAND(HAS_MEMBER(FUNC_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
+
+/// Extern function
+#define HAS_EXTERN_FUNC(...) EXPAND(HAS_MEMBER(EXTERN_FUNC_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
+
 
 /** Here we create functions returning compile time values that tells us
   * if a class has or not a member of the given name. See the examples below.

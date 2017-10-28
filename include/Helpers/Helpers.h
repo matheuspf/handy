@@ -3,11 +3,11 @@
 
 #include <bits/stdc++.h>
 #include <assert.h>
-#include <Eigen/Dense>
 
 #include "Benchmark.h"
-#include "Range.h"
-#include "ZipIter/ZipIter.h"
+#include "../Range/Range.h"
+#include "../ZipIter/ZipIter.h"
+#include "../Helpers/HasMember.h"
 
 #define FORR(i, I, F) for(auto i = (I); i < (F); ++i)
 #define RFORR(i, I, F) for(int i = (I); i >= (F); --i)
@@ -30,36 +30,8 @@
 
 
 using namespace std;
-using namespace Eigen;
 
 
-using uchar = unsigned char;
-using ll = long long;
-using ull = unsigned long long;
-using ld = long double;
-
-using vi = vector<int>;
-using vd = vector<double>;
-using pd = pair<double, double>;
-
-
-template <class T>
-using VecX = Eigen::Matrix<T, Eigen::Dynamic, 1>;
-
-template <class T>
-using MatX = Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>;
-
-using Vec = VectorXd;
-using Mat = MatrixXd;
-
-using Veci = VectorXi;
-using Mati = MatrixXi;
-
-using Vecll = Matrix<long long, Dynamic, 1>;
-using Matll = Matrix<long long, Dynamic, Dynamic>;
-
-
-ctx double goldenRatio = 1.61803398875;
 
 
 ctx double pi () { return 4 * atan(1); }
@@ -67,14 +39,14 @@ ctx double pi () { return 4 * atan(1); }
 
 ctx double EPS = 1e-8;
 
-ctx int cmpD (ld x, ld y, double e = EPS) { return (x <= y + e) ? (x + e < y) ? -1 : 0 : 1; }
+ctx int cmpD (long double x, long double y, double e = EPS) { return (x <= y + e) ? (x + e < y) ? -1 : 0 : 1; }
 
 
-ll mod (ll a, ll b) { return (a%b+b)%b; }
+long long mod (long long a, long long b) { return (a%b+b)%b; }
 
-ll power (ll x, ll b)
+long long power (long long x, long long b)
 {
-	ll r = 1;
+	long long r = 1;
 
 	for(; b; b >>= 1, x *= x)
 		if(b & 1) r*= x;
@@ -203,6 +175,15 @@ struct IsSpecialization<Template<Args...>, Template> : std::true_type {};
 
 
 
+
+HAS_EXTERN_FUNC(std::begin, hasBegin)
+
+template <class T>
+constexpr bool isContainer_v = hasBegin<T>();
+
+
+
+
 template <class Apply, typename... Args, std::size_t... Is, typename... FuncArgs>
 void applyTuple (Apply apply, std::tuple<Args...>& tup, std::index_sequence<Is...>, FuncArgs&&... funcArgs)
 {
@@ -213,95 +194,6 @@ template <class Apply, typename... Args, typename... FuncArgs>
 void applyTuple (Apply apply, std::tuple<Args...>& tup, FuncArgs&&... funcArgs)
 {
     return applyTuple(apply, tup, std::make_index_sequence<sizeof...(Args)>(), std::forward<FuncArgs>(funcArgs)...);
-}
-
-
-
-namespace std
-{
-	template <class V, enable_if_t<is_same_v<decay_t<V>, Vec>, int> = 0>
-	auto begin (V&& v)
-	{
-		return forward<V>(v).data();
-	}
-
-	template <class V, enable_if_t<is_same_v<decay_t<V>, Vec>, int> = 0>
-	auto end (V&& v)
-	{
-		return forward<V>(v).data() + forward<V>(v).rows();
-	}
-}
-
-
-double norm (double x) { return std::abs(x); }
-
-double norm (const VectorXd& x) { return x.norm(); }
-
-
-
-
-template <typename T>
-ctx decltype(auto) shift (T&& x)
-{
-	return forward<T>(x);
-}
-
-template <typename T, typename U, typename... Args>
-ctx decltype(auto) shift (T&& x, U&& y, Args&&... args)
-{
-	x = forward<U>(y);
-
-	return shift(forward<U>(y), forward<Args>(args)...);
-}
-
-
-
-template <class T>
-auto index (const MatX<T>& X, const vector<int>& ids)
-{
-	MatX<T> Y(ids.size(), X.cols());
-
-	for(int i = 0; i < ids.size(); ++i)
-		Y.row(i) = X.row(ids[i]);
-	
-	return Y;
-}
-
-template <class T>
-auto index (const VecX<T>& x, const vector<int>& ids)
-{
-	VecX<T> y(ids.size());
-
-	for(int i = 0; i < ids.size(); ++i)
-		y(i) = x(ids[i]);
-	
-	return y;
-}
-
-
-
-Mat inverseMat (const Mat& X)
-{
-	Eigen::LLT<Mat> llt(X);
-
-	if(llt.info() == Eigen::Success)
-		return llt.solve(Mat::Identity(X.rows(), X.rows()));
-	
-	Eigen::ColPivHouseholderQR<Mat> qr(X);
-
-	return qr.inverse();
-}
-
-Vec solveMat (const Mat& X, const Vec& y)
-{
-	Eigen::LLT<Mat> llt(X);
-	
-	if(llt.info() == Eigen::Success)
-		return llt.solve(y);
-	
-	Eigen::ColPivHouseholderQR<Mat> qr(X);
-
-	return qr.solve(y);
 }
 
 
