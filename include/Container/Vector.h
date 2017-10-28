@@ -10,11 +10,11 @@
 #include "Helpers.h"
 
 
-namespace cppl
+namespace cnt
 {
 
-/** 'cppl::Vector' inherits from 'std::vector<T>' if it is not supplied with compile time size
-  * or if the given compile time size is greater than the value defined at 'cppl::help::maxSize',
+/** 'cnt::Vector' inherits from 'std::vector<T>' if it is not supplied with compile time size
+  * or if the given compile time size is greater than the value defined at 'cnt::help::maxSize',
   * for maximum stack size allocation. Otherwise it inherits from 'std::array<T, N>'.
 */
 template <typename T, std::size_t N = 0>
@@ -52,7 +52,7 @@ struct Vector : public help::SelectType<T, N>
 };
 
 
-} // namespace cppl
+} // namespace cnt
 
 
 #endif  // CNT_VECTOR_H

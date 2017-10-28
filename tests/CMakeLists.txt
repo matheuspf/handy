@@ -18,10 +18,19 @@ set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE 1)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 
-add_subdirectory(Container)
-add_subdirectory(ZipIter)
+FILE(GLOB children RELATIVE ${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/*)
 
-set(TEST_SRC_FILES ${CONTAINER_SRC_FILES} ${ZIP_ITER_SRC_FILES})
+FOREACH(child ${children})
+  IF(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${child} AND
+     EXISTS ${PROJECT_SOURCE_DIR}/${child}/CMakeLists.txt AND
+     NOT ${child} STREQUAL "build" AND 
+     NOT ${child} STREQUAL "gtest")
+
+     include(${child}/CMakeLists.txt)
+
+  ENDIF()
+ENDFOREACH()
+
 
 add_executable(${TEST_NAME} ${TEST_SRC_FILES})
 
