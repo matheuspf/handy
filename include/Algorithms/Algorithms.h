@@ -57,11 +57,11 @@ CONTAINER_APPLY(NAME, SINGLE_CONTAINER_ITERATORS)
 
 
 #define DOUBLE_CONTAINER_APPLY_1(NAME)            \
-CONTAINER_APPLY(NAME, SINGLE_CONTAINER_ITERATORS, ::std::begin(std::forward<Container2>(container2)))
+CONTAINER_APPLY(NAME, SINGLE_CONTAINER_APPLY(NAME), ::std::begin(std::forward<Container2>(container2)))
 
 
 #define DOUBLE_CONTAINER_APPLY_2(NAME)     \
-CONTAINER_APPLY(NAME, DOUBLE_CONTAINER_ITERATORS, ::std::end(std::forward<Container2>(container2)))
+CONTAINER_APPLY(NAME, DOUBLE_CONTAINER_APPLY_1(NAME), ::std::end(std::forward<Container2>(container2)))
 
 
 
@@ -205,8 +205,6 @@ WITH_RETURN_SINGLE_CONTAINER(minmax_element)
 WITH_RETURN_DOUBLE_CONTAINER_2(lexicographical_compare)
 
 NO_RETURN_SINGLE_CONTAINER(iota)
-
-
 
 WITH_RETURN_SINGLE_CONTAINER(accumulate)
 
