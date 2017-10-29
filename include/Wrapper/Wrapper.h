@@ -11,51 +11,31 @@
 \
                             using Base::t;  \
 \
-                            using Type     = typename Base::Type;  \
-                            using BaseType = typename Base::BaseType;    \
+                            using Type     = typename Base::Type;   \
+                            using BaseType = typename Base::BaseType;
 
 
 
-namespace wrp
-{
+// namespace wrp
+// {
 
-// Base class for inheritance
+template <class>
+struct IsWrapper;
 
 
 template <typename T>
 struct Wrapper
 {
-    using Type = T;     // Type may have any qualifier
+    using Type = T;     /// Type may have any qualifier
 
-    using BaseType = std::decay_t<T>;
-    //using BaseType = std::remove_reference_t<T>;    // Here 'BaseType' can have const qualifier
-
+    using BaseType = typename std::remove_cv<typename std::remove_reference<T>::type>::type;     /// Striped type
 
 
-	Type t;        // The only storage of the class
+    virtual ~Wrapper () {}   /// Virtual destructor for safe inheritance
 
 
 
-    // Default constructor only allowed if Type is not a reference
-
-    template <typename U = T, typename = std::enable_if_t<!std::is_reference<U>::value>>
-    constexpr Wrapper () : t{} {}
-
-
-    // Delegating constructor only if Type is not a reference
-
-	//template <typename... Args, typename U = T, typename = std::enable_if_t<!std::is_reference<U>::value>>
-	//constexpr Wrapper (Args&&... args) : t{std::forward<Args>(args)...} {}
-
-
-    constexpr Wrapper (BaseType& b) : t{b} {}
-
-    constexpr Wrapper (BaseType&& b) : t{std::move(b)} {}
-
-    constexpr Wrapper (const BaseType& b) : t{b} {}
-
-
-
+    /// Constructor for different Wrapper types
     template <typename U>
     constexpr Wrapper (Wrapper<U>& w) : Wrapper(w.t) {}
 
@@ -67,58 +47,95 @@ struct Wrapper
 
 
 
-    /*constexpr operator BaseType& () { return t; }
+    /// Assignment operators for different Wrapper types
+    template <typename U>
+    Wrapper& operator = (Wrapper<U>& w) { t = w.t; return *this; }
 
-    constexpr operator BaseType&& () { return t; }
+    template <typename U>
+    Wrapper& operator = (Wrapper<U>&& w) { t = std::move(w.t); return *this; }
 
-    constexpr operator const BaseType& () { return t; }*/
+    template <typename U>
+    Wrapper& operator = (const Wrapper<U>& w) { t = w.t; return *this; }
 
-    constexpr operator Type () { return t; }
+
+
+    /// Universal constructor for 't'
+    template <typename... Args>
+    constexpr Wrapper (Args&&... args) : t(std::forward<Args>(args)...) {}
+
+
+    /// Universal assignment operator for 't'
+    // template <typename U, std::enable_if_t<!IsWrapper<std::decay_t<U>>::value, int> = 0>
+    // Wrapper& operator = (U&& u) { t = std::forward<U>(u); return *this; }
+
+
+    Wrapper& operator = (const BaseType& b) { t = b; }
+
+    Wrapper& operator = (BaseType&& b) { t = std::move(b); }
+
 
 
 
     template <typename U>
-    explicit constexpr operator U () { return t; }
+    Wrapper& operator += (const Wrapper<U>& w)
+    {
+        this->t += w.t;
+        return *this;
+    }
+
+
+    template <typename U, typename V>
+    friend auto operator+ (const Wrapper<U>&, const Wrapper<V>&);
 
 
 
-
-    decltype(auto) operator = (BaseType& b) { t = b; return *this; }
-
-    decltype(auto) operator = (BaseType&& b) { t = std::move(b); return *this; }
-
-    decltype(auto) operator = (const BaseType& b) { t = b; return *this; }
-
-
-    template <typename U>
-    decltype(auto) operator = (Wrapper<U>& w) { t = w.t; return *this; }
-
-    template <typename U>
-    decltype(auto) operator = (Wrapper<U>&& w) { t = std::move(w.t); return *this; }
-
-    template <typename U>
-    decltype(auto) operator = (const Wrapper<U>& w) { t = w.t; return *this; }
-
-
-    //template <typename U>
-    //decltype(auto) operator == (const U& u) { return t == u; }
-
-    //template <typename U>
-    //decltype(auto) operator == (const Wrapper<U>& w) { return t == w.t; }
-
-
-    friend decltype(auto) operator << (std::ostream& out, const Wrapper& w) { return out << w.t; }
 
 
     template <typename U>
-    decltype(auto) operator [] (U&& u) { return t[std::forward<U>(u)]; }
+    friend std::ostream& operator << (std::ostream&, const Wrapper<U>&);
+    
 
-    template <typename U>
-    decltype(auto) operator [] (U&& u) const { return t[std::forward<U>(u)]; }
+
+//protected:
+
+    Type t;        /// The only storage of the class
+
+    template <class> friend class Wrapper;     /// All wrappers are friends of each other (independently of the type)
 
 };
 
-}
+
+
+template <class T>
+struct IsWrapper : std::false_type {};
+
+template <class T>
+struct IsWrapper<Wrapper<T>> : std::true_type {};
+
+
+
+/// If 'T' is a 'Wrapper', take its type. Otherwise, simply take 'T'.
+// template <class T>
+// struct StripWrapper
+// {
+//     using type = T;
+// };
+
+// template <class T>
+// struct StripWrapper<Wrapper<T>>
+// {
+//     using type = T;
+// };
+
+
+/// This is necessary so we nave have a 'Wrapper<Wrapper<T>>'
+// template <typename T>
+// using Wrapper = impl::Wrapper<typename impl::StripWrapper<T>::type>;
+
+ 
+
+
+//} // namespace wrp
 
 
 #endif // WRAPPER_H

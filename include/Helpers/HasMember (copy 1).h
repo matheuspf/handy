@@ -22,27 +22,6 @@
 // }
 
 
-template <std::size_t, typename...>
-struct GetArg;
-
-
-template <std::size_t I, typename T, typename... Args>
-struct GetArg<I, T, Args...>
-{
-	using type = typename GetArg<I-1, Args...>::type;
-};
-
-template <typename T, typename... Args>
-struct GetArg<0, T, Args...>
-{
-	using type = T;
-};
-
-template <std::size_t I, typename... Args>
-using GetArg_t = typename GetArg<I, Args...>::type;
-
-
-
 /// Expands variadic arguments
 #define EXPAND(...) __VA_ARGS__
 
@@ -51,17 +30,19 @@ using GetArg_t = typename GetArg<I, Args...>::type;
 #define CONCAT_(x, y) EXPAND(x ## y)
 
 /// Helper for variables
-#define VAR_HELPER(T, var, ...) std::declval<T>().var
+#define VAR_HELPER(T, var) std::declval<T>().var
 
 /// Helper for functions
-#define FUNC_HELPER(T, func, ...) &T::func
+#define FUNC_HELPER(T, func) &T::func
 
 
-/// Helper for overloaded functions
-#define OVERLOADED_FUNC_HELPER(T, func, Args, ...) std::declval<T>().func(Args{}...)
+#define OVERLOADED_FUNC_HELPER(...) static_cast<__VA_ARGS__> FUNC_HELPER
+
+//ReturnT(ClassT::*)(ArgTs);
+
 
 /// Extern function helper
-#define EXTERN_FUNC_HELPER(T, ext, ...) ext(std::declval<T>()) 
+#define EXTERN_FUNC_HELPER(T, ext) ext(std::declval<T>()) 
 
 
 /// If the class has a variable
@@ -76,23 +57,20 @@ using GetArg_t = typename GetArg<I, Args...>::type;
 /// Overloaded function
 #define HAS_OVERLOADED_FUNC(...) EXPAND(HAS_MEMBER(OVERLOADED_FUNC_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
 
-// /// Overloaded function
-// #define HAS_STRICTLY_OVERLOADED_FUNC(...) EXPAND(HAS_MEMBER(STRICTLY_OVERLOADED_FUNC_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
-
 
 /** Here we create functions returning compile time values that tells us
   * if a class has or not a member of the given name. See the examples below.
 */
 #define HAS_MEMBER(HELPER, member, Name, ...) \
 \
-template <typename...> \
+template <class> \
 constexpr bool CONCAT(Name, Impl) (...) { return false; } \
 \
-template <typename T, typename... Args> \
-constexpr bool CONCAT(Name, Impl) (std::decay_t<decltype(EXPAND(HELPER(T, member, Args)), void())>*) { return true; } \
+template <class T> \
+constexpr bool CONCAT(Name, Impl) (std::decay_t<decltype(EXPAND(HELPER(T, member)), void())>*) { return true; } \
 \
-template <typename T, typename... Args>  \
-struct Name : public std::integral_constant<bool, CONCAT(Name, Impl) <std::decay_t<T>, Args...>(nullptr)> {};
+template <class T>  \
+struct Name : public std::integral_constant<bool, CONCAT(Name, Impl) <std::decay_t<T>>(nullptr)> {};
 
 // template <class T> \
 // constexpr bool Name () { return CONCAT(Name, Impl) <std::decay_t<T>>(nullptr); }
