@@ -58,10 +58,10 @@ using GetArg_t = typename GetArg<I, Args...>::type;
 
 
 /// Helper for overloaded functions
-#define OVERLOADED_FUNC_HELPER(T, func, Args, ...) std::declval<T>().func(Args{}...)
+#define OVERLOADED_FUNC_HELPER(T, func, Args, ...) std::declval<T>().func(std::declval<Args>()...)
 
 /// Extern function helper
-#define EXTERN_FUNC_HELPER(T, ext, ...) ext(std::declval<T>()) 
+#define EXTERN_FUNC_HELPER(T, ext, Args, ...) ext(std::declval<T>(), std::declval<Args>()...)
 
 
 /// If the class has a variable
