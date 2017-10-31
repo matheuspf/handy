@@ -274,6 +274,10 @@ public:
 
     using iterator_category = typename iterator::iterator_category;
 
+    /** It does not make sense to create a const Zip, so I define this guy like this.
+     *  The containers, on the other hand, can be const, so the const_iterator are
+     *  call instead by 'help::Iterable'.
+    **/
     using const_iterator = iterator;
 
     static constexpr std::size_t containersSize = sizeof... (Containers);

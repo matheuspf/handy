@@ -143,5 +143,21 @@ namespace
     	EXPECT_EQ(res, sequence);
 	}
 
+
+	TEST_F(LoopingTest, ConstTest)
+	{
+		const auto& rv = v;
+		const auto& rl = l;
+		const auto& rs = s;
+		const int* ra = a;
+
+	    it::forEach(rv, rl, rs, ra, [&](auto x, auto y, auto w, auto z)
+	    {
+	        insertBack(res, x, y, w, z);
+	    });
+
+    	EXPECT_EQ(res, sequence);
+	}
+
 } // namespace
 

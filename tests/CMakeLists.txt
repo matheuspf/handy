@@ -24,7 +24,8 @@ FOREACH(child ${children})
   IF(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${child} AND
      EXISTS ${PROJECT_SOURCE_DIR}/${child}/CMakeLists.txt AND
      NOT ${child} STREQUAL "build" AND 
-     NOT ${child} STREQUAL "gtest")
+     NOT ${child} STREQUAL "gtest" AND
+     NOT ${child} STREQUAL "Algorithms")
 
      include(${child}/CMakeLists.txt)
 

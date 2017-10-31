@@ -132,5 +132,16 @@ namespace
 	}
 
 
+	TEST_F(STLTest, ConstIterator)
+	{
+		const std::vector<int>& crefV = v;
+		const std::array<int, n>& crefU = u;
+
+		int res = std::accumulate(ZIP_ALL(crefV, crefU), 0, it::unZip([](int sum, int x, int y){ return sum + x + y; }));
+
+		EXPECT_EQ(res, 90);
+	}
+
+
 } // namespace
 

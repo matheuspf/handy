@@ -10,14 +10,7 @@ namespace
 {
     struct RangeTest : public ::testing::Test
     {
-        virtual void SetUp ()
-        {
-            gen = std::mt19937(std::random_device{});
-
-            v = std::vector<int>(n);
-
-            std::generate(v.begin(), v.end(), [&]{ return std::uniform_int_distribution<>(0, 100)(gen);  });
-        }
+        virtual void SetUp () {}
 
         virtual void TearDown () {}
 
@@ -25,40 +18,74 @@ namespace
 
 
 
-        int n = 10;
+        template <typename T, class Range>
+        void loopCheck (T first, T last, T step, Range range, bool closed = false)
+        {
+            //SCOPED_TRACE(loopCheck)
 
-        std::vector<int> v;
+            std::vector<T> regularLoop, rangeLoop;
 
-		std::mt19937 gen;
+            T finish = (last - first) * step;
+
+            for(auto x = first; closed ? finish >= 0 : finish > 0; x += step, finish = (last - x) * step)
+                regularLoop.push_back(x);
+
+            for(auto x : range)
+                rangeLoop.push_back(x);
+
+            expectVector(regularLoop, rangeLoop);
+        }
+
+
+        template <typename T, std::enable_if_t<std::is_integral<std::decay_t<T>>::value, int> = 0>
+        void expectVector (const std::vector<T>& v, const std::vector<T>& u)
+        {
+            EXPECT_EQ(v, u);
+        }
+
+        template <typename T, std::enable_if_t<std::is_floating_point<std::decay_t<T>>::value, int> = 0>
+        void expectVector (const std::vector<T>& v, const std::vector<T>& u)
+        {
+            for(int i = 0; i < v.size(); ++i)
+                EXPECT_NEAR(v[i], u[i], 1e-8);
+        }
+
+
+        template <class Range>
+        void rangeLoopInt (bool closed)
+        {
+            //SCOPED_TRACE(RangeTestInt);
+
+            loopCheck(0, 10, 1, Range(10), closed);
+            loopCheck(0, 10, 1, Range(0, 10), closed);
+            loopCheck(0, 10, 1, Range(0, 10, 1), closed);
+    
+            loopCheck(0, -10, -1, Range(-10), closed);
+            loopCheck(0, -10, -1, Range(0, -10), closed);
+            loopCheck(0, -10, -1, Range(0, -10, -1), closed);
+    
+            loopCheck(-10, -20, -1, Range(-10, -20), closed);
+            loopCheck(-10, -20, -1, Range(-10, -20, -1), closed);
+    
+            loopCheck(0, 10, 3, Range(0, 10, 3), closed);
+            loopCheck(10, -5, -2, Range(10, -5, -2), closed);
+            loopCheck(-10, 3, 7, Range(-10, 3, 7), closed);
+            loopCheck(-1, -5, -100, Range(-1, -5, -100), closed);
+        }
     };
 
 
-    TEST_F(RangeTest, ForRange)
+    TEST_F(RangeTest, HalfClosedRangeLoopInt)
     {
-        for(int i = 0; i < n; ++i)
-            v.push_back(i);
+        //SCOPED_TRACE(HalfClosedRangeLoopInt);
 
-        for(auto i : rg::range(n))
-            u.push_back(i);
+        rangeLoopInt<rg::Range<int, rg::impl::HalfClosedInterval>>(false);
+    }
 
-        EXPECT_EQ(v, u);
+    TEST_F(RangeTest, ClosedRangeLoopInt)
+    {
+        //SCOPED_TRACE(ClosedRangeLoopInt);
 
-        u.clear();
-
-
-        for(auto i : rg::range(0, n))
-            u.push_back(i);
-
-        EXPECT_EQ(v, u);
-        
-        u.clear();
-
-
-        for(auto i : rg::range(0, n, 1))
-            u.push_back(i);
-
-        EXPECT_EQ(v, u);
-
-        u.clear();
+        rangeLoopInt<rg::Range<int, rg::impl::ClosedInterval>>(true);
     }
 }
