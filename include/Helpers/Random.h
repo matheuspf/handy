@@ -5,13 +5,11 @@
 #include <random>
 
 
-namespace cppl
+namespace handy
 {
     struct RandBase
     {
-        Rand () : generator(std::random_device{}()) {}
-    
-        Rand (int seed) : generator(seed) {}
+        RandBase (unsigned int seed = -1) : generator(seed == (unsigned int)-1 ? std::random_device{}() : seed) {}
     
         std::mt19937 generator;
     };
@@ -36,7 +34,7 @@ namespace cppl
     {
         using RandBase::RandBase;
         
-        inline T operator () (Te min, T max)
+        inline T operator () (T min, T max)
         {
             return std::uniform_real_distribution<T>(min, max)(generator);
         } 
@@ -45,15 +43,22 @@ namespace cppl
     using RandDouble = RandDouble_<double>;
 
 
-    struct WrongType;
+    struct RandWrongType;
 
     template <typename T>
     using Rand = std::conditional_t<std::is_integral<T>::value, RandInt_<T>,
-                 std::conditional_t<std::is_floating_point<T>::value, RandInt_<T>,
-                 WrongType>;
+                 std::conditional_t<std::is_floating_point<T>::value, RandDouble_<T>,
+                 RandWrongType>;
 
     
-}   // namespace cppl
+
+    template <typename T>
+    T rand (T min, T max, unsigned int seed = -1)
+    {
+        return Rand<T>(seed)(min, max);
+    }
+    
+}   // namespace handy
 
 
 

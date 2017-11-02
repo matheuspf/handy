@@ -1,0 +1,8 @@
+/home/matheus/Algoritmos/CPP/Cppl/tests/build/CMakeFiles/edit_cache.dir
+/home/matheus/Algoritmos/CPP/Cppl/tests/build/CMakeFiles/test.dir
+/home/matheus/Algoritmos/CPP/Cppl/tests/build/CMakeFiles/CPPL_Tests.dir
+/home/matheus/Algoritmos/CPP/Cppl/tests/build/CMakeFiles/rebuild_cache.dir
+/home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/CMakeFiles/edit_cache.dir
+/home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/CMakeFiles/test.dir
+/home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/CMakeFiles/googletest.dir
+/home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/CMakeFiles/rebuild_cache.dir

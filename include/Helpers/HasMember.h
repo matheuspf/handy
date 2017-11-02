@@ -8,47 +8,11 @@
 #ifndef HAS_MEMBER_H
 #define HAS_MEMBER_H
 
-#include <type_traits>
+#include "Helpers.h"
 
 
-/// C++11 does not have these definitions
-// namespace std
-// {
-// 	template <typename T>
-// 	using decay_t = typename std::decay<T>::type;
-
-// 	template <bool B, typename T, typename U>
-// 	using conditional_t = typename std::conditional<B, T, U>::type;
-// }
-
-
-template <std::size_t, typename...>
-struct GetArg;
-
-
-template <std::size_t I, typename T, typename... Args>
-struct GetArg<I, T, Args...>
+namespace handy
 {
-	using type = typename GetArg<I-1, Args...>::type;
-};
-
-template <typename T, typename... Args>
-struct GetArg<0, T, Args...>
-{
-	using type = T;
-};
-
-template <std::size_t I, typename... Args>
-using GetArg_t = typename GetArg<I, Args...>::type;
-
-
-
-/// Expands variadic arguments
-#define EXPAND(...) __VA_ARGS__
-
-/// Concatenate two tokens
-#define CONCAT(x, y) CONCAT_(x, y)
-#define CONCAT_(x, y) EXPAND(x ## y)
 
 /// Helper for variables
 #define VAR_HELPER(T, var, ...) std::declval<T>().var
@@ -94,8 +58,7 @@ constexpr bool CONCAT(Name, Impl) (std::decay_t<decltype(EXPAND(HELPER(T, member
 template <typename T, typename... Args>  \
 struct Name : public std::integral_constant<bool, CONCAT(Name, Impl) <std::decay_t<T>, Args...>(nullptr)> {};
 
-// template <class T> \
-// constexpr bool Name () { return CONCAT(Name, Impl) <std::decay_t<T>>(nullptr); }
+} // namespace handy
 
 
 #endif //HAS_MEMBER_H

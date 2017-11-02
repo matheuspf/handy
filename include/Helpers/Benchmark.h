@@ -1,3 +1,9 @@
+/** \file Benchmark.h
+ * 
+ *  Precise time measurement for both Windows and Linux systems.
+**/
+
+
 #ifndef CPPL_BENCHMARK_H_INCLUDED
 #define CPPL_BENCHMARK_H_INCLUDED
 
@@ -15,11 +21,33 @@
 
 
 
-namespace cppl
+namespace handy
 {
 
+namespace impl  /// The main class goes here
+{
+
+/** If 'StartOnCreation' is true,  this class initializes the clock on creation. You can also reset it 
+ *  by calling the 'start' function. The 'finish' function returns the time elapsed (in seconds, 
+ *  up to nanoseconds of precision) elapsed since the call to the 'start' function.
+**/
+template <bool StartOnCreation = true>
 struct Benchmark
 {
+    /// Call the start function on creation if 'StartOnCreation' is true
+    template <bool B = StartOnCreation, typename = typename std::enable_if<B, void>::type>
+    Benchmark ()
+    {
+        start();
+    }
+
+    /// Do nothing if 'StartOnCreation' is false
+    template <bool B = !StartOnCreation, typename = typename std::enable_if<B, void>::type>
+    Benchmark () {}
+
+    
+
+    /// You can also use 'operator()' and pass a function along with its arguments. 
     template <class F, typename... Args>
     double operator () (F&& f, Args&&... args)
     {
@@ -31,7 +59,7 @@ struct Benchmark
     }
 
 
-
+    
     void start ()
     {
     #ifdef _WIN32
@@ -47,7 +75,7 @@ struct Benchmark
     }
 
 
-    double end()
+    double finish()
     {
     #ifdef _WIN32
     
@@ -79,15 +107,23 @@ struct Benchmark
 
 };
 
+} // namespace impl
 
 
+
+/// By default, we start on creation
+using Benchmark = impl::Benchmark<true>;
+
+
+/// This is the function you will actually call if you only want to call 'operator()'. No need to start on creation here.
 template <class F, class... Args>
 double benchmark (F&& f, Args&&... args)
 {
-    return Benchmark{}(std::forward<F>(f), std::forward<Args>(args)...);
+    return impl::Benchmark<false>{}(std::forward<F>(f), std::forward<Args>(args)...);
 }
 
-} // namespace cppl
+
+} // namespace handy
 
 
 #endif // CPPL_BENCHMARK_H

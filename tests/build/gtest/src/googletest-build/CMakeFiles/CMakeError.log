@@ -1,0 +1,37 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/src/googletest-build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_62410/fast"
+make[3]: Entering directory '/home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_62410.dir/build.make CMakeFiles/cmTC_62410.dir/build
+make[4]: Entering directory '/home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_62410.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_62410.dir/CheckSymbolExists.c.o   -c /home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/src/googletest-build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_62410
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_62410.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_62410.dir/CheckSymbolExists.c.o  -o cmTC_62410 -rdynamic 
+CMakeFiles/cmTC_62410.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_62410.dir/build.make:97: recipe for target 'cmTC_62410' failed
+make[4]: *** [cmTC_62410] Error 1
+make[4]: Leaving directory '/home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_62410/fast' failed
+make[3]: *** [cmTC_62410/fast] Error 2
+make[3]: Leaving directory '/home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+
+File /home/matheus/Algoritmos/CPP/Cppl/tests/build/gtest/src/googletest-build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
