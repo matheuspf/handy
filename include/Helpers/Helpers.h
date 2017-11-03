@@ -27,6 +27,14 @@
 #define CONCAT_(x, y) EXPAND(x ## y)
 
 
+/// Count number of variadic arguments
+#define NUM_ARGS_(_1, _2 ,_3, _4, _5, _6, _7, _8, _9, N, ...) N
+#define NUM_ARGS(...) NUM_ARGS_(__VA_ARGS__, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+
+/// This guy will call 'MACRON', where 'N' is the number of variadic arguments
+#define APPLY_N(MACRO, ...) EXPAND(CONCAT(MACRO, NUM_ARGS(__VA_ARGS__)))(__VA_ARGS__)
+
+
 
 namespace handy
 {
@@ -139,25 +147,12 @@ constexpr bool And_v = And< Bs... >::value;
 
 
 
-
 /// Taken from https://bitbucket.org/martinhofernandes/wheels/src/default/include/wheels/meta/type_traits.h%2B%2B?fileviewer=file-view-default#cl-161
 template <typename T, template <typename...> class Template>
 struct IsSpecialization : std::false_type {};
 
 template <template <typename...> class Template, typename... Args>
 struct IsSpecialization<Template<Args...>, Template> : std::true_type {};
-
-
-
-// /// Simple way to test if a class is a container -> check if 'std::begin' and 'std::end' are defined
-// HAS_EXTERN_FUNC(std::begin, HasBegin)
-// HAS_EXTERN_FUNC(std::end, HasEnd)
-
-// template <class T>
-// struct IsContainer : std::numerical_constant<bool, HasBegin<T>::value && HasEnd<T>::value> {};
-
-// template <class T>
-// constexpr bool isContainer_v = IsContainer<T>::value;
 
 
 
