@@ -29,15 +29,15 @@ namespace handy
 
 
 /// If the class has a variable
-#define HAS_VAR(...) EXPAND(HAS_MEMBER(VAR_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
+#define HAS_VAR(...) EXPAND(HAS_MEMBER(VAR_HELPER, __VA_ARGS__, CONCAT(Has, __VA_ARGS__)))
 
 /// If the class has a function
-#define HAS_FUNC(...) EXPAND(HAS_MEMBER(FUNC_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
+#define HAS_FUNC(...) EXPAND(HAS_MEMBER(FUNC_HELPER, __VA_ARGS__, CONCAT(Has, __VA_ARGS__)))
 
 /// Extern function
-#define HAS_EXTERN_FUNC(...) EXPAND(HAS_MEMBER(EXTERN_FUNC_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
+#define HAS_EXTERN_FUNC(...) EXPAND(HAS_MEMBER(EXTERN_FUNC_HELPER, __VA_ARGS__, CONCAT(Has, __VA_ARGS__)))
 
-/// Overloaded function
+/// Overloaded function. WARNING: it does not verify explicit overloads
 #define HAS_OVERLOADED_FUNC(...) EXPAND(HAS_MEMBER(OVERLOADED_FUNC_HELPER, __VA_ARGS__, CONCAT(has_, __VA_ARGS__)))
 
 // /// Overloaded function
