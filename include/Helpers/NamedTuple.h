@@ -9,7 +9,7 @@
 #define CONCAT_(x, y) x ## y
 #define CONCAT(x, y) CONCAT_(x, y)
 
-// http://efesx.com/2010/07/17/variadic-macro-to-count-number-of-arguments/
+/// Taken from http://efesx.com/2010/07/17/variadic-macro-to-count-number-of-arguments/
 #define NUM_ARGS_(_1, _2 ,_3, _4, _5, _6, _7, _8, _9, N, ...) N
 #define NUM_ARGS(...) NUM_ARGS_(__VA_ARGS__, 9, 8, 7, 6, 5, 4, 3, 2, 1)
 

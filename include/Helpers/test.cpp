@@ -1,4 +1,4 @@
-#include "Benchmark.h"
+#include "Random.h"
 #include <iostream>
 
 
@@ -8,17 +8,17 @@ using namespace std;
 
 int main ()
 {
-    handy::Benchmark bench1;
-    handy::impl::Benchmark<false> bench2;
+    unsigned int seed = handy::rand(0, 1000);
 
-    bench2.start();
+    handy::RandDouble randDouble(seed), rd(seed);
 
-    double bench3 = handy::benchmark([]
-    {
-        for(int i = 0; i < 1e6; ++i);
-    });
+    seed = handy::rand(0, 1000);
 
-    std::cout << bench1.finish() << "    " << bench2.finish() << "    " << bench3 << "\n\n";
+    randDouble.seed(seed), rd.seed(seed);
+
+    for(int i = 0; i < 100; ++i)
+        std::cout << randDouble() << "    " << rd(1.0) << "\n";
+
 
 
     return 0;
