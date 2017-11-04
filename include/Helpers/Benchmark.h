@@ -8,6 +8,8 @@
 #define CPPL_BENCHMARK_H_INCLUDED
 
 #include <type_traits>
+#include <utility>
+#include <time.h>
 
 #ifdef _WIN32
 
@@ -32,17 +34,19 @@ namespace impl  /// The main class goes here
  *  up to nanoseconds of precision) elapsed since the call to the 'start' function.
 **/
 template <bool StartOnCreation = true>
-struct Benchmark
+class Benchmark
 {
+public:
+
     /// Call the start function on creation if 'StartOnCreation' is true
-    template <bool B = StartOnCreation, typename = typename std::enable_if<B, void>::type>
+    template <bool B = StartOnCreation, typename std::enable_if<B>::type* = nullptr>
     Benchmark ()
     {
         start();
     }
 
     /// Do nothing if 'StartOnCreation' is false
-    template <bool B = !StartOnCreation, typename = typename std::enable_if<B, void>::type>
+    template <bool B = StartOnCreation, typename std::enable_if<!B>::type* = nullptr>
     Benchmark () {}
 
     
@@ -55,7 +59,7 @@ struct Benchmark
 
         f(std::forward<Args>(args)...);
 
-        return end();
+        return finish();
     }
 
 
@@ -73,6 +77,7 @@ struct Benchmark
         
     #endif
     }
+
 
 
     double finish()
@@ -93,6 +98,10 @@ struct Benchmark
 
         return secondsElapsed;
     }
+
+
+
+private:
 
 
 #ifdef _WIN32

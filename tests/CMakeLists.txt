@@ -38,14 +38,17 @@ FOREACH(child ${children})
 ENDFOREACH()
 
 
+
 add_executable(${TEST_NAME} ${TEST_SRC_FILES})
 
 
 if(NOT ${GTEST_FOUND})
-  add_dependencies(${TEST_NAME} googletest)
 
+  add_dependencies(${TEST_NAME} googletest)
+  
   set(GTEST_LIBRARIES ${GTEST_LIBS_DIR}/libgtest.a)
   set(GTEST_MAIN_LIBRARIES ${GTEST_LIBS_DIR}/libgtest_main.a)
+
 endif()
 
 

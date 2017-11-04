@@ -56,34 +56,25 @@ public:
 
 
 
+
 /// Easy printing
-std::ostream& print (std::ostream& out)
-{
-	out << '\n' << std::flush;
-
-	return out;
-}
-
 template <typename T, typename... Args>
-std::ostream& print (std::ostream& out, const T& t, const Args& ...args)
+inline std::ostream& print (std::ostream& out, const T& t, const Args& ...args)
 {
 	out << t;
 
-	if(sizeof...(Args))
-		out << ' ';
+	auto dummie = { ((out << ' ' << args), 0)... };
 
-	return print(out, args...);
+	return out << '\n' << std::flush;
 }
 
 template <typename T, typename... Args,
-		  std::enable_if_t<(!IsInherited<T, std::stringstream>::value &&
-							!IsInherited<T, std::ostream>::value), int> = 0>
-std::ostream& print (const T& t, const Args& ...args)
+		  typename std::enable_if<(!IsInherited<T, std::stringstream>::value &&
+								   !IsInherited<T, std::ostream>::value)>::type* = nullptr>
+inline std::ostream& print (const T& t, const Args& ...args)
 {
 	return print(std::cout, t, args...);
 }
-
-
 
 
 
