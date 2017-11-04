@@ -28,8 +28,8 @@
 
 
 /// Count number of variadic arguments
-#define NUM_ARGS_(_1, _2 ,_3, _4, _5, _6, _7, _8, _9, N, ...) N
-#define NUM_ARGS(...) NUM_ARGS_(__VA_ARGS__, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+#define NUM_ARGS_(_1, _2 ,_3, _4, _5, _6, _7, _8, _9, _10, N, ...) N
+#define NUM_ARGS(...) NUM_ARGS_(__VA_ARGS__, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
 
 /// This guy will call 'MACRON', where 'N' is the number of variadic arguments
 #define APPLY_N(MACRO, ...) EXPAND(CONCAT(MACRO, NUM_ARGS(__VA_ARGS__)))(__VA_ARGS__)
@@ -144,6 +144,11 @@ struct IsSpecialization : std::false_type {};
 
 template <template <typename...> class Template, typename... Args>
 struct IsSpecialization<Template<Args...>, Template> : std::true_type {};
+
+
+/// Verify if 'T' is a tuple
+template <class T>
+using IsTuple = IsSpecialization<std::decay_t<T>, std::tuple>;
 
 
 

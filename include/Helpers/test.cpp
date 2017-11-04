@@ -1,24 +1,34 @@
-#include "Random.h"
+#include "NamedTuple.h"
 #include <iostream>
-
+#include <string>
 
 using namespace std;
 
 
+NAMED_TUPLE(Triad, first, second, third)
+NAMED_GETTERS(first, second, third)
+
+
+NAMED_TUPLE(Duple, first, second)
+
 
 int main ()
 {
-    unsigned int seed = handy::rand(0, 1000);
+    // Triad<int, char, std::string> t;
 
-    handy::RandDouble randDouble(seed), rd(seed);
+    // std::tuple<int, char, std::string>& tp = t;
 
-    seed = handy::rand(0, 1000);
+    // first(t) = 10;
 
-    randDouble.seed(seed), rd.seed(seed);
+    // std::cout << t.first() << "\n";
+    
+    
+    // Triad<int, double, std::string> triple(10, 20.0, "triple");
+    
 
-    for(int i = 0; i < 100; ++i)
-        std::cout << randDouble() << "    " << rd(1.0) << "\n";
+    std::tuple<int, std::string> tp;
 
+    Duple<int, std::string> dp(tp);
 
 
     return 0;
