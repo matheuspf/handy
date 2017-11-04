@@ -25,8 +25,6 @@ template <class Container, class F>
 decltype(auto) operator & (Container&& container, F f)
 {
     return f(std::forward<Container>(container));
-
-    //return container;
 }
 
 

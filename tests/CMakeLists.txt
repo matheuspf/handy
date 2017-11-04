@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(TEST_NAME CPPL_Tests)
+set(TEST_NAME HandyTest)
 
 project (${TEST_NAME})
 
@@ -29,8 +29,7 @@ FOREACH(child ${children})
   IF(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${child} AND
      EXISTS ${PROJECT_SOURCE_DIR}/${child}/CMakeLists.txt AND
      NOT ${child} STREQUAL "build" AND 
-     NOT ${child} STREQUAL "gtest" AND
-     NOT ${child} STREQUAL "Algorithms")
+     NOT ${child} STREQUAL "gtest")
 
      include(${child}/CMakeLists.txt)
 
