@@ -2,7 +2,9 @@
 #define CPPL_ALGORITHMS_H
 
 #include <algorithm>
+#include <numeric>
 #include "../Helpers/Helpers.h"
+#include "../Helpers/HasMember.h"
 
 
 
@@ -31,13 +33,13 @@ decltype(auto) operator & (Container&& container, F f)
 
 
 #define SINGLE_CONTAINER_DECLARATION(NAME)                       \
-template <class Container1, typename... Args, std::enable_if_t<isContainer_v<Container1>, int> = 0>     \
+template <class Container1, typename... Args, std::enable_if_t<IsContainer<Container1>::value, int> = 0>     \
 decltype(auto) NAME (Container1&& container1, Args&&... args)   \
 
 
 
 #define DOUBLE_CONTAINER_DECLARATION(NAME)                                              \
-template <class Container1, class Container2, typename... Args, std::enable_if_t<isContainer_v<Container2>, int> = 0>                         \
+template <class Container1, class Container2, typename... Args, std::enable_if_t<IsContainer<Container2>::value, int> = 0>                         \
 decltype(auto) NAME (Container1&& container1, Container2&& container2, Args&&... args)  \
 
 
@@ -117,8 +119,16 @@ NO_RETURN(NAME, DOUBLE_CONTAINER_DECLARATION(NAME), DOUBLE_CONTAINER_APPLY_1(NAM
 
 
 
-namespace alg
+namespace handy
 {
+
+HAS_EXTERN_FUNC(::std::begin, HasBegin)
+HAS_EXTERN_FUNC(::std::end, HasEnd)
+
+template <typename T>
+struct IsContainer : std::integral_constant<bool, HasBegin<T>::value && HasEnd<T>::value> {};
+    
+
 
 WITH_RETURN_SINGLE_CONTAINER(all_of)
 WITH_RETURN_SINGLE_CONTAINER(any_of)

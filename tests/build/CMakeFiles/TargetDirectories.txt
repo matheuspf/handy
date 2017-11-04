@@ -1,0 +1,4 @@
+/home/matheus/Algoritmos/CPP/Handy/tests/build/CMakeFiles/edit_cache.dir
+/home/matheus/Algoritmos/CPP/Handy/tests/build/CMakeFiles/test.dir
+/home/matheus/Algoritmos/CPP/Handy/tests/build/CMakeFiles/CPPL_Tests.dir
+/home/matheus/Algoritmos/CPP/Handy/tests/build/CMakeFiles/rebuild_cache.dir
