@@ -63,7 +63,7 @@ inline std::ostream& print (std::ostream& out, const T& t, const Args& ...args)
 {
 	out << t;
 
-	auto dummie = { ((out << ' ' << args), 0)... };
+	auto dummie = { ((out << ' ' << args), 0)..., 0 };
 
 	return out << '\n' << std::flush;
 }
