@@ -289,6 +289,44 @@ WITH_RETURN(partial_sum, DOUBLE_CONTAINER_DECLARATION, DOUBLE_CONTAINER_APPLY_SI
 
 
 
+#undef ALGORITHM_OP_SYMBOL
+
+#undef MAKE_FUNCTION
+
+#undef SINGLE_CONTAINER_DECLARATION
+
+#undef DOUBLE_CONTAINER_DECLARATION
+
+#undef SINGLE_CONTAINER_DECLARATION_N
+
+#undef DOUBLE_CONTAINER_DECLARATION_N
+
+#undef CONTAINER_1
+
+#undef CONTAINER_2
+
+#undef FUNC_VAR_ARGS
+
+#undef CONTAINER_APPLY
+
+#undef SINGLE_CONTAINER_APPLY
+
+#undef DOUBLE_CONTAINER_APPLY_SINGLE
+
+#undef DOUBLE_CONTAINER_APPLY_DOUBLE
+
+#undef APPLY_CONTAINER_FUNCTION
+
+#undef WITH_RETURN
+
+#undef NO_RETURN
+
+
+
+
+
+
+
 // SPECIAL_CASES: transform* -> 3 containers specific overload
 //                sample -> C++17
 //                parition_copy, merge, set_difference, set_intersection, set_symmetric_difference, set_union -> 3 containers 

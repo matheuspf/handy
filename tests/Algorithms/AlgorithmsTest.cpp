@@ -26,8 +26,8 @@ struct AlgorithmsTest : public ::testing::Test
 
 		std::generate(stdVec.begin(), stdVec.end(), [&]{ return rng(0, 100); });
 		
-		algVecFunc = stdVec;
-		algVecOp = stdVec;
+		funcVec = stdVec;
+		opVec = stdVec;
 	}
 
 
@@ -46,9 +46,9 @@ struct AlgorithmsTest : public ::testing::Test
 
 	std::vector<int> stdVec;
 
-	std::vector<int> algVecFunc;
+	std::vector<int> funcVec;
 
-	std::vector<int> algVecOp;
+	std::vector<int> opVec;
 
 
 	std::mt19937 gen;
@@ -58,17 +58,44 @@ struct AlgorithmsTest : public ::testing::Test
 
 
 
+TEST_F(AlgorithmsTest, PipeTest)
+{
+	auto trnsFunc = [](auto x){ return 2 * x; };
+
+	auto forFunc = [](auto& x){ x += 10; };
+
+	std::sort(stdVec.begin(), stdVec.end());
+	std::shuffle(stdVec.begin(), stdVec.end(), std::mt19937{0});
+	std::reverse(stdVec.begin(), stdVec.end());
+	std::transform(stdVec.begin(), stdVec.end(), stdVec.begin(), trnsFunc);
+	std::for_each(stdVec.begin(), stdVec.end(), forFunc);
+
+	funcVec = handy::reverse(handy::shuffle(handy::sort(funcVec), std::mt19937{0}));
+	funcVec = handy::for_each(handy::transform(funcVec, funcVec, trnsFunc), forFunc);
+
+	opVec = opVec & handy::sort() & handy::shuffle(std::mt19937{0}) & handy::reverse();				
+	opVec = opVec & handy::transform(opVec, trnsFunc) & handy::for_each(forFunc);
+
+
+	EXPECT_EQ(stdVec, funcVec);
+	EXPECT_EQ(stdVec, opVec);
+}
+
+
+
+
+
 #define NO_RETURN_SINGLE_CONTAINER_TEST(ALGORITHM, ...)  \
 TEST_F(AlgorithmsTest, ALGORITHM)    \
 {   \
 	::std::ALGORITHM(stdVec.begin(), stdVec.end(), ## __VA_ARGS__);  \
 \
-	::handy::ALGORITHM(algVecFunc, ## __VA_ARGS__);    \
+	::handy::ALGORITHM(funcVec, ## __VA_ARGS__);    \
 \
-    algVecOp & ::handy::ALGORITHM(__VA_ARGS__);   \
+    opVec & ::handy::ALGORITHM(__VA_ARGS__);   \
 \
-    EXPECT_EQ(stdVec, algVecFunc);  \
-    EXPECT_EQ(stdVec, algVecOp);    \
+    EXPECT_EQ(stdVec, funcVec);  \
+    EXPECT_EQ(stdVec, opVec);    \
 }
 
 #define WITH_RETURN_SINGLE_CONTAINER_TEST(ALGORITHM, ...)  \
@@ -76,9 +103,9 @@ TEST_F(AlgorithmsTest, ALGORITHM)    \
 {   \
 	auto stdRet = ::std::ALGORITHM(stdVec.begin(), stdVec.end(), ## __VA_ARGS__);  \
 \
-	auto funcRet = ::handy::ALGORITHM(algVecFunc, ## __VA_ARGS__);    \
+	auto funcRet = ::handy::ALGORITHM(funcVec, ## __VA_ARGS__);    \
 \
-    auto opRet = algVecOp & ::handy::ALGORITHM(__VA_ARGS__);   \
+    auto opRet = opVec & ::handy::ALGORITHM(__VA_ARGS__);   \
 \
     EXPECT_EQ(stdRet, funcRet);  \
     EXPECT_EQ(stdRet, opRet);    \
