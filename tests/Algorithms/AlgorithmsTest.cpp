@@ -71,12 +71,32 @@ TEST_F(AlgorithmsTest, ALGORITHM)    \
     EXPECT_EQ(stdVec, algVecOp);    \
 }
 
+#define WITH_RETURN_SINGLE_CONTAINER_TEST(ALGORITHM, ...)  \
+TEST_F(AlgorithmsTest, ALGORITHM)    \
+{   \
+	auto stdRet = ::std::ALGORITHM(stdVec.begin(), stdVec.end(), ## __VA_ARGS__);  \
+\
+	auto funcRet = ::handy::ALGORITHM(algVecFunc, ## __VA_ARGS__);    \
+\
+    auto opRet = algVecOp & ::handy::ALGORITHM(__VA_ARGS__);   \
+\
+    EXPECT_EQ(stdRet, funcRet);  \
+    EXPECT_EQ(stdRet, opRet);    \
+}
 
+
+WITH_RETURN_SINGLE_CONTAINER_TEST(all_of, [](int x){ return x < 10; })
+WITH_RETURN_SINGLE_CONTAINER_TEST(any_of, [](int x){ return x > 10; })
+WITH_RETURN_SINGLE_CONTAINER_TEST(none_of, [](int x){ return x == 10; })
+
+NO_RETURN_SINGLE_CONTAINER_TEST(for_each, [](int& x){ x = 0; })
+
+WITH_RETURN_SINGLE_CONTAINER_TEST(count, 10)
+WITH_RETURN_SINGLE_CONTAINER_TEST(count_if, [](int x){ return x == 10; })
 
 
 NO_RETURN_SINGLE_CONTAINER_TEST(sort)
 NO_RETURN_SINGLE_CONTAINER_TEST(reverse)
-//NO_RETURN_SINGLE_CONTAINER_TEST(random_shuffle)
 NO_RETURN_SINGLE_CONTAINER_TEST(shuffle, std::mt19937(0))
 
 
