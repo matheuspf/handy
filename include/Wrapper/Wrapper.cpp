@@ -132,10 +132,12 @@ int main ()
     int x = 10, y = 20;
     double z = 30.5;
 
-    Wrapper<int&> a(x), b(y);
-    Wrapper<double&> c(z);
+    Wrapper<int&> a(x);
+    Wrapper<const int&> b(y);
+    Wrapper<const double&> c(z);
     
-    auto r = 2 + a + c;
+    auto r = (a + c - b + 5) < 10;
+
 
     cout << r << "\n";
 

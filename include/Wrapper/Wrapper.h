@@ -4,6 +4,8 @@
 #include <type_traits>
 #include "../Helpers/HasMember.h"
 
+#include "WrapperMacros.h"
+
 
 #define USING_WRAPPER(...)  using Base = __VA_ARGS__;  \
 \
@@ -27,8 +29,10 @@ namespace impl
 
 
 
-    template <template <typename...> class Has, typename... Args>
-    using EnableIfHas = typename std::enable_if<Has<Args...>::value, void>::type;
+    template <template <typename...> class Has, typename T, typename... Args>
+    using EnableIfHas = typename std::enable_if<std::is_fundamental<std::decay_t<T>>::value ||
+                                                Has<T, Args...>::value, void>::type*;
+
 }
 
 
@@ -62,7 +66,7 @@ struct Wrapper
     Wrapper () {}   /// Empty constructor
 
 
-    virtual ~Wrapper () {}   /// Virtual destructor for safe inheritance
+    virtual ~Wrapper () {}   /// You will inherit from this cass
 
 
 
@@ -105,9 +109,16 @@ struct Wrapper
     }
 
 
-
+    template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value>* = nullptr>
     Wrapper (const BaseType& b) : t(b) {}
+
+    template <typename U = T, std::enable_if_t<std::is_lvalue_reference<U>::value>* = nullptr>
+    Wrapper (const BaseType& b) : t(const_cast<BaseType&>(b)) {}
+
+
     Wrapper (BaseType& b) : t(b) {}
+
+    template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value>* = nullptr>
     Wrapper (BaseType&& b) : t(std::move(b)) {}
 
 
@@ -136,22 +147,21 @@ struct Wrapper
 
 
 
-    template <typename U, typename V = std::decay_t<T>,
-              std::enable_if_t<std::is_fundamental<V>::value || impl::HasPlusEqual<BaseType, U>::value, int> = 0>
-    Wrapper& operator += (const Wrapper<U>& w)
-    {
-        this->t += w.t;
-        return *this;
-    }
-
-
-    template <typename U, typename V = std::decay_t<T>,
-              std::enable_if_t<std::is_fundamental<V>::value || impl::HasPlus<BaseType, U>::value, int> = 0>
-    friend auto operator+ (const Wrapper& w1, const Wrapper<U>& w2)
-    {
-        return makeWrapper(w1.t + w2.t);
-    }
-
+    WRAPPER_ARITHMETIC_OPERATOR_IN(+=, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(-=, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(*=, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(/=, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(%=, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(|=, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(&=, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(^=, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(<, )
+    WRAPPER_ARITHMETIC_OPERATOR_IN(==, )
+    
+    
+    
+    
+    
 
     
 
@@ -178,6 +188,16 @@ struct Wrapper
 
 };
 
+
+
+WRAPPER_ARITHMETIC_OPERATOR_OUT(+)
+WRAPPER_ARITHMETIC_OPERATOR_OUT(-)
+WRAPPER_ARITHMETIC_OPERATOR_OUT(*)
+WRAPPER_ARITHMETIC_OPERATOR_OUT(/)
+WRAPPER_ARITHMETIC_OPERATOR_OUT(%)
+WRAPPER_ARITHMETIC_OPERATOR_OUT(|)
+WRAPPER_ARITHMETIC_OPERATOR_OUT(&)
+WRAPPER_ARITHMETIC_OPERATOR_OUT(^)
 
 
 
