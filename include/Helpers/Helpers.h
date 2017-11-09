@@ -39,10 +39,10 @@
 namespace handy
 {
 
-template <class T, class U>
+template <class T, class U = nullptr_t>
 class IsInherited
 {
-private:
+protected:
 
 	static constexpr std::true_type isInherited (const std::decay_t<U>&);
 	

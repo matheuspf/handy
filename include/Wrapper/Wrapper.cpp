@@ -5,7 +5,7 @@
 
 
 using namespace std;
-using namespace wrp;
+using namespace handy;
 
 
 template <class> class Prt;
@@ -123,6 +123,14 @@ template <class> class Prt;
 
 
 
+template <typename T>
+struct SafeFloat : public Wrapper<T>
+{
+    USING_WRAPPER(Wrapper<T>);
+};
+
+
+
 
 
 
@@ -135,8 +143,12 @@ int main ()
     Wrapper<int&> a(x);
     Wrapper<const int&> b(y);
     Wrapper<const double&> c(z);
-    
-    auto r = (a + c - b + 5) < 10;
+
+    SafeFloat<int> k(x);
+
+    auto r = k + a;
+
+    //auto r = (a + c - b + 5 + k) < 10;
 
 
     cout << r << "\n";
