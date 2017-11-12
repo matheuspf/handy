@@ -22,21 +22,21 @@
 
 
 
-#define WRAPPER_ARITHMETIC_OPERATOR_IN(OP, CONST)    \
+#define WRAPPER_ARITHMETIC_OPERATOR_IN(OP)    \
 \
 template <typename U, typename V = std::decay_t<T>, impl::EnableIfHas<impl::HasPlusEqual, T, V> = nullptr>  \
-Wrapper& operator OP (const Wrapper<U>& w) CONST  \
+Wrapper& operator OP (const Wrapper<U>& w)  \
 {   \
-    this->t += w.t; \
+    this->t OP w.t; \
 \
     return *this;   \
 }   \
 \
 template <typename U, typename V = std::decay_t<T>, impl::EnableIfHas<impl::HasPlusEqual, T, V> = nullptr,  \
           std::enable_if_t<::handy::IsWrapperBase<U>::value>* = nullptr>  \
-Wrapper& operator OP (const U& u) CONST  \
+Wrapper& operator OP (const U& u)  \
 {   \
-    this->t += u; \
+    this->t OP u; \
 \
     return *this;   \
 }
@@ -50,7 +50,7 @@ auto operator OP (const Wrapper<T>& w1, const Wrapper<U>& w2)   \
 {   \
     Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w1);    \
 \
-    ret += w2;  \
+    ret CONCAT(OP, =) w2;  \
 \
     return ret;    \
 }   \
@@ -60,7 +60,7 @@ auto operator OP (const Wrapper<T>& w1, const U& u)   \
 {   \
     Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w1);    \
 \
-    ret.t += u; \
+    ret.t CONCAT(OP, =) u; \
 \
     return ret;    \
 }   \
@@ -70,7 +70,7 @@ auto operator OP (const T& t, const Wrapper<U>& w2)   \
 {   \
     Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w2);    \
 \
-    ret.t += t;   \
+    ret.t CONCAT(OP, =) t;   \
 \
     return ret;    \
 \
@@ -108,7 +108,6 @@ namespace impl
 {
     HAS_OVERLOADED_FUNC(operator+=, HasPlusEqual)
     HAS_EXTERN_FUNC(operator+, HasPlus)
-
 
 
     template <template <typename...> class Has, typename T, typename... Args>
