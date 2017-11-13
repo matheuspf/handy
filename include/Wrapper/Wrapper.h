@@ -17,6 +17,7 @@ struct Wrapper
     using BaseType = typename std::remove_cv<typename std::remove_reference<T>::type>::type;     /// Striped type
 
 
+    template <typename U = T, std::enable_if_t<!std::is_reference<T>::value>* = nullptr>
     Wrapper () {}   /// Empty constructor
 
 
@@ -132,6 +133,14 @@ WRAPPER_ARITHMETIC_OPERATOR_OUT(%)
 WRAPPER_ARITHMETIC_OPERATOR_OUT(|)
 WRAPPER_ARITHMETIC_OPERATOR_OUT(&)
 WRAPPER_ARITHMETIC_OPERATOR_OUT(^)
+
+
+
+template <typename T>
+struct Wrapper<Wrapper<T>> : public Wrapper<T>
+{
+    USING_WRAPPER(Wrapper<T>);
+};
 
 
 

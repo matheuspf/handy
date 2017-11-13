@@ -19,6 +19,12 @@ struct SafeFloat : public Wrapper<T>
 };
 
 
+template <>
+struct SafeFloat<double> : public Wrapper<double>
+{
+    USING_WRAPPER(Wrapper<double>);
+};
+
 
 
 int main ()
@@ -32,11 +38,9 @@ int main ()
 
     SafeFloat<int> k(x);
 
-    auto r = a + k;
+    k = a + b + x - c * x / a;
 
-
-    cout << r << "\n";
-
+    cout << k << "\n";
 
 
     return 0;

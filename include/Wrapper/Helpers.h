@@ -33,7 +33,7 @@ Wrapper& operator OP (const Wrapper<U>& w)  \
 }   \
 \
 template <typename U, typename V = std::decay_t<T>, impl::EnableIfHas<impl::HasPlusEqual, T, V> = nullptr,  \
-          std::enable_if_t<::handy::IsWrapperBase<U>::value>* = nullptr>  \
+          std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
 Wrapper& operator OP (const U& u)  \
 {   \
     this->t OP u; \
@@ -103,18 +103,24 @@ struct IsWrapperBase : public IsInherited<T>
 
 
 
-
 namespace impl
 {
-    HAS_OVERLOADED_FUNC(operator+=, HasPlusEqual)
-    HAS_EXTERN_FUNC(operator+, HasPlus)
+
+HAS_OVERLOADED_FUNC(operator+=, HasPlusEqual)
+HAS_EXTERN_FUNC(operator+, HasPlus)
 
 
-    template <template <typename...> class Has, typename T, typename... Args>
-    using EnableIfHas = typename std::enable_if<std::is_fundamental<std::decay_t<T>>::value ||
-                                                Has<T, Args...>::value, void>::type*;
+template <template <typename...> class Has, typename T, typename... Args>
+using EnableIfHas = typename std::enable_if<std::is_fundamental<std::decay_t<T>>::value ||
+                                            Has<T, Args...>::value, void>::type*;
 
 }
+
+template <typename T>
+constexpr bool isWrapperBase (Wrapper<T>){ return true; }
+
+constexpr bool isWrapperBase (...){ return false; }
+
 
 
 template <class U>
