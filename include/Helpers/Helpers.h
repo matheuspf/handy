@@ -107,6 +107,17 @@ using GetArg_t = typename GetArg<I, Args...>::type;
 
 
 
+template <typename T>
+struct ToLvalue
+{
+	ToLvalue () {}
+	ToLvalue (T t) : t(t) {}
+
+	T t;
+};
+
+
+
 
 
 /// Because 'operator <<' supports only two arguments, we have to pass a pair of iterators
