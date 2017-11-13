@@ -35,14 +35,6 @@ struct Wrapper
 
 
 
-    /// Assignment operators for different Wrapper types
-    template <typename U>
-    Wrapper& operator = (Wrapper<U>& w)
-    {
-        t = w.t;
-
-        return *this;
-    }
 
     /// Assignment operators for different Wrapper types
     template <typename U>
@@ -62,16 +54,11 @@ struct Wrapper
     }
 
 
-    //template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value || std::is_const<U>::value>* = nullptr>
+    /// Constructors for type 'T'
     Wrapper (const BaseType& b) : t(b) {}
-
-    // template <typename U = T, std::enable_if_t<std::is_lvalue_reference<U>::value && !std::is_const<U>::value>* = nullptr>
-    // Wrapper (const BaseType& b) : t(const_cast<BaseType&>(b)) {}
-
 
     Wrapper (BaseType& b) : t(b) {}
 
-    //template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value>* = nullptr>
     Wrapper (BaseType&& b) : t(std::move(b)) {}
 
 
@@ -101,36 +88,66 @@ struct Wrapper
     WRAPPER_ARITHMETIC_OPERATOR(|)
     WRAPPER_ARITHMETIC_OPERATOR(&)
     WRAPPER_ARITHMETIC_OPERATOR(^)
-    // WRAPPER_ARITHMETIC_OPERATOR(<)
-    // WRAPPER_ARITHMETIC_OPERATOR(==)
+
+    WRAPPER_COMPARISON_OPERATOR(==)
+    WRAPPER_COMPARISON_OPERATOR(!=)
+    WRAPPER_COMPARISON_OPERATOR(<)
+    WRAPPER_COMPARISON_OPERATOR(>)
+    WRAPPER_COMPARISON_OPERATOR(<=)
+    WRAPPER_COMPARISON_OPERATOR(>=)
+    WRAPPER_COMPARISON_OPERATOR(&&)
+    WRAPPER_COMPARISON_OPERATOR(||)
+    
+
+    
+
+
+    T& operator * ()
+    {
+        return t;
+    }
+
+    const T& operator * () const
+    {
+        return t;
+    }
+    
+
+    decltype(auto) operator [] (int x)
+    {
+        return t[x];
+    }
+    
+    decltype(auto) operator [] (int x) const 
+    {
+        return t[x];
+    }
+    
 
 
 
-    template <typename U>
-    friend std::ostream& operator << (std::ostream&, const Wrapper<U>&);
+    friend std::ostream& operator << (std::ostream& out, const Wrapper& w)
+    {
+        out << w.t;
+
+        return out;
+    }
 
 
 
+protected:
 
-//protected:
 
     Type t;        /// The only storage of the class
 
-
-    template <class> friend class Wrapper;     /// All wrappers are friends of each other (independently of the type)
+    template <typename> friend class Wrapper;     /// All wrappers are friends of each other (independently of the type)
 
 };
 
 
 
-// WRAPPER_ARITHMETIC_OPERATOR_OUT(+)
-// WRAPPER_ARITHMETIC_OPERATOR_OUT(-)
-// WRAPPER_ARITHMETIC_OPERATOR_OUT(*)
-// WRAPPER_ARITHMETIC_OPERATOR_OUT(/)
-// WRAPPER_ARITHMETIC_OPERATOR_OUT(%)
-// WRAPPER_ARITHMETIC_OPERATOR_OUT(|)
-// WRAPPER_ARITHMETIC_OPERATOR_OUT(&)
-// WRAPPER_ARITHMETIC_OPERATOR_OUT(^)
+
+
 
 
 
@@ -143,9 +160,17 @@ struct Wrapper<Wrapper<T>> : public Wrapper<T>
 
 
 
-
-
 } // namespace handy
+
+
+
+
+#undef WRAPPER_DECLARATION_BOTH
+#undef WRAPPER_DECLARATION_LEFT
+#undef WRAPPER_DECLARATION_RIGHT
+#undef WRAPPER_ARITHMETIC_OPERATOR_HELPER
+#undef WRAPPER_ARITHMETIC_OPERATOR
+#undef WRAPPER_COMPARISON_OPERATOR
 
 
 #endif // HANDY_WRAPPER_H

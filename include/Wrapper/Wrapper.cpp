@@ -26,8 +26,8 @@ int main ()
     double z = 30.5;
 
     Wrapper<int&> a(x);
-    Wrapper<int> b(y);
-    Wrapper<double> c(z);
+    Wrapper<int&&> b(move(y));
+    Wrapper<const double&> c(z);
 
     SafeFloat<int> k(x);
 
@@ -36,13 +36,15 @@ int main ()
 
     k = 10 + k;
 
-    k = a + b + x - c * x / a;
+    k = a + *b / k + x - c * x / a;
     k += x;
     k += c;
 
     k |= a;
 
     cout << k << "\n";
+
+    cout << (k >= b) << "\n";
 
 
 

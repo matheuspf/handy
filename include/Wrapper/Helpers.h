@@ -32,7 +32,7 @@ friend auto operator OP (const Wrapper<T>& w1, const U& u)
 
 #define WRAPPER_DECLARATION_RIGHT(OP)   \
 template <typename U, std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
-friend auto operator OP (const T& t, const Wrapper<U>& w1)
+friend auto operator OP (const U& u, const Wrapper<T>& w1)
 
 
 
@@ -73,18 +73,34 @@ WRAPPER_DECLARATION_BOTH(OP)    \
 \
 WRAPPER_DECLARATION_LEFT(OP)    \
 {   \
-    WRAPPER_ARITHMETIC_OPERATOR_HELPER(OP, ret.t CONCAT(OP, =) u )  \
+    WRAPPER_ARITHMETIC_OPERATOR_HELPER(OP, ret CONCAT(OP, =) u )  \
 }   \
 \
 WRAPPER_DECLARATION_RIGHT(OP)   \
 {   \
-    WRAPPER_ARITHMETIC_OPERATOR_HELPER(OP, ret.t CONCAT(OP, =) t )  \
+    WRAPPER_ARITHMETIC_OPERATOR_HELPER(OP, ret CONCAT(OP, =) u )  \
 }
 
 
 
-// #define WRAPPER_COMPARISON_OPERATOR(OP) \
-// bool operator OP (const )
+
+#define WRAPPER_COMPARISON_OPERATOR(OP) \
+WRAPPER_DECLARATION_BOTH(OP)    \
+{   \
+    return *w1 OP *w2;    \
+}   \
+\
+WRAPPER_DECLARATION_LEFT(OP)    \
+{   \
+    return *w1 OP u;   \
+}   \
+\
+WRAPPER_DECLARATION_RIGHT(OP)   \
+{   \
+    return u OP *w1; \
+}
+
+
 
 
 
