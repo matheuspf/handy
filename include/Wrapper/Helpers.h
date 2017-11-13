@@ -22,9 +22,9 @@
 
 
 
-#define WRAPPER_ARITHMETIC_OPERATOR_IMPL(OP, OP_NAME, OP_NAME_EQ)    \
+#define WRAPPER_ARITHMETIC_OPERATOR(OP)    \
 \
-template <typename U, typename V = std::decay_t<T>, impl::EnableIfHas<OP_NAME_EQ, T, V> = nullptr>  \
+template <typename U>  \
 Wrapper& operator CONCAT(OP, =) (const Wrapper<U>& w)  \
 {   \
     this->t CONCAT(OP, =) w.t; \
@@ -32,8 +32,7 @@ Wrapper& operator CONCAT(OP, =) (const Wrapper<U>& w)  \
     return *this;   \
 }   \
 \
-template <typename U, typename V = std::decay_t<T>, impl::EnableIfHas<OP_NAME_EQ, T, V> = nullptr,  \
-          std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
+template <typename U, std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
 Wrapper& operator CONCAT(OP, =) (const U& u)  \
 {   \
     this->t CONCAT(OP, =) u; \
@@ -43,7 +42,7 @@ Wrapper& operator CONCAT(OP, =) (const U& u)  \
 \
 \
 \
-template <typename U, impl::EnableIfHas<OP_NAME, T, U> = nullptr>   \
+template <typename U>   \
 friend auto operator OP (const Wrapper<T>& w1, const Wrapper<U>& w2)   \
 {   \
     Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w1);    \
@@ -53,7 +52,7 @@ friend auto operator OP (const Wrapper<T>& w1, const Wrapper<U>& w2)   \
     return ret;    \
 }   \
 \
-template <typename U, impl::EnableIfHas<OP_NAME, T, U> = nullptr>   \
+template <typename U, std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
 friend auto operator OP (const Wrapper<T>& w1, const U& u)   \
 {   \
     Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w1);    \
@@ -63,7 +62,7 @@ friend auto operator OP (const Wrapper<T>& w1, const U& u)   \
     return ret;    \
 }   \
 \
-template <typename U, impl::EnableIfHas<OP_NAME, T, U> = nullptr>   \
+template <typename U, std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
 friend auto operator OP (const T& t, const Wrapper<U>& w2)   \
 {   \
     Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w2);    \
@@ -73,16 +72,6 @@ friend auto operator OP (const T& t, const Wrapper<U>& w2)   \
     return ret;    \
 \
 }
-
-
-#define WRAPPER_ARITHMETIC_OPERATOR(OP, NAME)    \
-\
-HAS_OVERLOADED_FUNC_STATIC(operator CONCAT(OP, =), CONCAT(EXPAND(CONCAT(Has, NAME)), _eq))   \
-HAS_EXTERN_FUNC_STATIC(operator OP, CONCAT(Has, NAME)) \
-\
-WRAPPER_ARITHMETIC_OPERATOR_IMPL(OP, CONCAT(Has, NAME), CONCAT(EXPAND(CONCAT(Has, NAME)), _eq))
-
-
 
 
 
@@ -113,19 +102,6 @@ struct IsWrapperBase : public IsInherited<T>
 };
 
 
-
-namespace impl
-{
-
-HAS_OVERLOADED_FUNC(operator+=, HasPlusEqual)
-HAS_EXTERN_FUNC(operator+, HasPlus)
-
-
-template <template <typename...> class Has, typename T, typename... Args>
-using EnableIfHas = typename std::enable_if<std::is_fundamental<std::decay_t<T>>::value ||
-                                            Has<T, Args...>::value, void>::type*;
-
-}
 
 template <typename T>
 constexpr bool isWrapperBase (Wrapper<T>){ return true; }

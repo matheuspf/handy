@@ -64,14 +64,14 @@ struct Wrapper
     }
 
 
-    template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value>* = nullptr>
+    template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value || std::is_const<U>::value>* = nullptr>
     Wrapper (const BaseType& b) : t(b) {}
 
-    template <typename U = T, std::enable_if_t<std::is_lvalue_reference<U>::value>* = nullptr>
+    template <typename U = T, std::enable_if_t<std::is_lvalue_reference<U>::value && !std::is_const<U>::value>* = nullptr>
     Wrapper (const BaseType& b) : t(const_cast<BaseType&>(b)) {}
 
 
-    Wrapper (BaseType& b) : t(b) {}
+    //Wrapper (BaseType& b) : t(b) {}
 
     template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value>* = nullptr>
     Wrapper (BaseType&& b) : t(std::move(b)) {}
@@ -95,14 +95,14 @@ struct Wrapper
 
 
 
-    WRAPPER_ARITHMETIC_OPERATOR(+, plus)
-    WRAPPER_ARITHMETIC_OPERATOR(-, less)
-    WRAPPER_ARITHMETIC_OPERATOR(*, times)
-    WRAPPER_ARITHMETIC_OPERATOR(/, div)
-    WRAPPER_ARITHMETIC_OPERATOR(%, mod)
-    WRAPPER_ARITHMETIC_OPERATOR(|, bitor)
-    WRAPPER_ARITHMETIC_OPERATOR(&, bitand)
-    WRAPPER_ARITHMETIC_OPERATOR(^, bitxor)
+    WRAPPER_ARITHMETIC_OPERATOR(+)
+    WRAPPER_ARITHMETIC_OPERATOR(-)
+    WRAPPER_ARITHMETIC_OPERATOR(*)
+    WRAPPER_ARITHMETIC_OPERATOR(/)
+    WRAPPER_ARITHMETIC_OPERATOR(%)
+    WRAPPER_ARITHMETIC_OPERATOR(|)
+    WRAPPER_ARITHMETIC_OPERATOR(&)
+    WRAPPER_ARITHMETIC_OPERATOR(^)
     // WRAPPER_ARITHMETIC_OPERATOR(<)
     // WRAPPER_ARITHMETIC_OPERATOR(==)
 
