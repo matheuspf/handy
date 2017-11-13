@@ -22,6 +22,31 @@
 
 
 
+#define WRAPPER_DECLARATION_BOTH(OP)    \
+template <typename U>   \
+friend auto operator OP (const Wrapper<T>& w1, const Wrapper<U>& w2)
+
+#define WRAPPER_DECLARATION_LEFT(OP)    \
+template <typename U, std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
+friend auto operator OP (const Wrapper<T>& w1, const U& u)
+
+#define WRAPPER_DECLARATION_RIGHT(OP)   \
+template <typename U, std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
+friend auto operator OP (const T& t, const Wrapper<U>& w1)
+
+
+
+#define WRAPPER_ARITHMETIC_OPERATOR_HELPER(OP, ...)    \
+Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w1);    \
+\
+__VA_ARGS__;    \
+\
+return ret;
+
+
+
+
+
 #define WRAPPER_ARITHMETIC_OPERATOR(OP)    \
 \
 template <typename U>  \
@@ -41,37 +66,26 @@ Wrapper& operator CONCAT(OP, =) (const U& u)  \
 }\
 \
 \
-\
-template <typename U>   \
-friend auto operator OP (const Wrapper<T>& w1, const Wrapper<U>& w2)   \
+WRAPPER_DECLARATION_BOTH(OP)    \
 {   \
-    Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w1);    \
-\
-    ret CONCAT(OP, =) w2;  \
-\
-    return ret;    \
+    WRAPPER_ARITHMETIC_OPERATOR_HELPER(OP, ret CONCAT(OP, =) w2 )  \
 }   \
 \
-template <typename U, std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
-friend auto operator OP (const Wrapper<T>& w1, const U& u)   \
+WRAPPER_DECLARATION_LEFT(OP)    \
 {   \
-    Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w1);    \
-\
-    ret.t CONCAT(OP, =) u; \
-\
-    return ret;    \
+    WRAPPER_ARITHMETIC_OPERATOR_HELPER(OP, ret.t CONCAT(OP, =) u )  \
 }   \
 \
-template <typename U, std::enable_if_t<!::handy::isWrapperBase(std::decay_t<U>())>* = nullptr>  \
-friend auto operator OP (const T& t, const Wrapper<U>& w2)   \
+WRAPPER_DECLARATION_RIGHT(OP)   \
 {   \
-    Wrapper<std::decay_t<decltype(std::declval<std::decay_t<T>>() OP std::declval<std::decay_t<U>>())>> ret(w2);    \
-\
-    ret.t CONCAT(OP, =) t;   \
-\
-    return ret;    \
-\
+    WRAPPER_ARITHMETIC_OPERATOR_HELPER(OP, ret.t CONCAT(OP, =) t )  \
 }
+
+
+
+// #define WRAPPER_COMPARISON_OPERATOR(OP) \
+// bool operator OP (const )
+
 
 
 

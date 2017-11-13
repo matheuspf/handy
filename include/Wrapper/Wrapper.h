@@ -17,9 +17,7 @@ struct Wrapper
     using BaseType = typename std::remove_cv<typename std::remove_reference<T>::type>::type;     /// Striped type
 
 
-    template <typename U = T, std::enable_if_t<!std::is_reference<T>::value>* = nullptr>
-    Wrapper () {}   /// Empty constructor
-
+    Wrapper() = default;    /// Empty constructor
 
     virtual ~Wrapper () {}   /// You will inherit from this cass
 
@@ -64,16 +62,16 @@ struct Wrapper
     }
 
 
-    template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value || std::is_const<U>::value>* = nullptr>
+    //template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value || std::is_const<U>::value>* = nullptr>
     Wrapper (const BaseType& b) : t(b) {}
 
-    template <typename U = T, std::enable_if_t<std::is_lvalue_reference<U>::value && !std::is_const<U>::value>* = nullptr>
-    Wrapper (const BaseType& b) : t(const_cast<BaseType&>(b)) {}
+    // template <typename U = T, std::enable_if_t<std::is_lvalue_reference<U>::value && !std::is_const<U>::value>* = nullptr>
+    // Wrapper (const BaseType& b) : t(const_cast<BaseType&>(b)) {}
 
 
-    //Wrapper (BaseType& b) : t(b) {}
+    Wrapper (BaseType& b) : t(b) {}
 
-    template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value>* = nullptr>
+    //template <typename U = T, std::enable_if_t<!std::is_lvalue_reference<U>::value>* = nullptr>
     Wrapper (BaseType&& b) : t(std::move(b)) {}
 
 
