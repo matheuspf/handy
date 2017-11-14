@@ -27,11 +27,11 @@ template <typename U>   \
 friend auto operator OP (const Wrapper<T>& w1, const Wrapper<U>& w2)
 
 #define WRAPPER_DECLARATION_LEFT(OP)    \
-template <typename U, std::enable_if_t<!::handy::IsWrapperBase<U>::value>* = nullptr>  \
+template <typename U, std::enable_if_t<!impl::IsWrapperBase<U>::value>* = nullptr>  \
 friend auto operator OP (const Wrapper<T>& w1, const U& u)
 
 #define WRAPPER_DECLARATION_RIGHT(OP)   \
-template <typename U, std::enable_if_t<!::handy::IsWrapperBase<U>::value>* = nullptr>  \
+template <typename U, std::enable_if_t<!impl::IsWrapperBase<U>::value>* = nullptr>  \
 friend auto operator OP (const U& u, const Wrapper<T>& w1)
 
 
@@ -57,7 +57,7 @@ Wrapper& operator CONCAT(OP, =) (const Wrapper<U>& w)  \
     return *this;   \
 }   \
 \
-template <typename U, std::enable_if_t<!::handy::IsWrapperBase<U>::value>* = nullptr>  \
+template <typename U, std::enable_if_t<!impl::IsWrapperBase<U>::value>* = nullptr>  \
 Wrapper& operator CONCAT(OP, =) (const U& u)  \
 {   \
     this->t CONCAT(OP, =) u; \
@@ -115,6 +115,8 @@ template <typename>
 struct Wrapper;
 
 
+namespace impl
+{
 
 template <typename T>
 struct IsWrapper : std::false_type {};
@@ -127,12 +129,13 @@ struct IsWrapper<Wrapper<T>> : std::true_type {};
 template <typename T>
 struct IsWrapperBase : public IsInheritedTemplate<T, Wrapper> {};
 
+} // namespace impl
 
 
-template <class U>
-auto makeWrapper (U&& u)
+template <class T>
+auto makeWrapper (T&& t)
 {
-    return Wrapper<std::decay_t<U>>(std::forward<U>(u));
+    return Wrapper<std::decay_t<T>>(std::forward<T>(t));
 }
 
 

@@ -97,32 +97,28 @@ struct Wrapper
     WRAPPER_COMPARISON_OPERATOR(>=)
     WRAPPER_COMPARISON_OPERATOR(&&)
     WRAPPER_COMPARISON_OPERATOR(||)
+
+
+    operator T& () { return t; }
     
 
     
 
 
-    T& operator * ()
-    {
-        return t;
-    }
+    T& operator * ()             { return t; }
+    const T& operator * () const { return t; }
 
-    const T& operator * () const
-    {
-        return t;
-    }
+    decltype(auto) operator [] (int x)       { return t[x]; }
+    decltype(auto) operator [] (int x) const { return t[x]; }
+
+    decltype(auto) begin ()       { return t.begin(); }
+    decltype(auto) begin () const { return t.begin(); }
+
+    decltype(auto) end ()       { return t.begin(); }
+    decltype(auto) end () const { return t.begin(); }
     
 
-    decltype(auto) operator [] (int x)
-    {
-        return t[x];
-    }
-    
-    decltype(auto) operator [] (int x) const 
-    {
-        return t[x];
-    }
-    
+
 
 
 
@@ -145,17 +141,12 @@ protected:
 };
 
 
-
-
-
-
-
-
 template <typename T>
 struct Wrapper<Wrapper<T>> : public Wrapper<T>
 {
-    USING_WRAPPER(Wrapper<T>);
+    USING_WRAPPER(Wrapper<T>)
 };
+
 
 
 

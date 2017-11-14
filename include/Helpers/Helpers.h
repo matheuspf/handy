@@ -53,7 +53,7 @@ protected:
 	template <typename W>
 	static constexpr std::true_type isInherited (Template<W>);
 
-	static constexpr std::true_type isInherited (std::decay_t<U>);
+	static constexpr std::true_type isInherited (const std::decay_t<U>&);
 	
 	static constexpr std::false_type isInherited (...);
 
