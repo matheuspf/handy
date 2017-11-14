@@ -39,10 +39,19 @@
 namespace handy
 {
 
-template <class T, class U = std::nullptr_t>
+template <typename> struct Empty {};
+
+
+namespace impl
+{
+
+template <class T, class U = std::nullptr_t, template <typename> class Template = Empty>
 class IsInherited
 {
 protected:
+
+	template <typename W>
+	static constexpr std::true_type isInherited (Template<W>);
 
 	static constexpr std::true_type isInherited (std::decay_t<U>);
 	
@@ -53,6 +62,16 @@ public:
 	enum{ value = decltype(isInherited(std::declval<std::decay_t<T>>()))::value };
 
 };
+
+}
+
+template<class T, class U = std::nullptr_t>
+using IsInherited = impl::IsInherited<T, U>;
+
+template<class T, template <typename> class Template>
+using IsInheritedTemplate = impl::IsInherited<T, std::nullptr_t, Template>;
+
+
 
 
 
