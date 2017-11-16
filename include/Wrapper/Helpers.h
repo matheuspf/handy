@@ -17,7 +17,9 @@
                             using Base::t;  \
 \
                             using Type     = typename Base::Type;   \
-                            using BaseType = typename Base::BaseType;
+                            using BaseType = typename Base::BaseType;   \
+\
+                            using Base::operator Type&;
 
 
 

@@ -100,6 +100,8 @@ struct Wrapper
 
 
     operator T& () { return t; }
+
+    //operator const T& () const { return t; }
     
 
     

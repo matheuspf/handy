@@ -12,40 +12,27 @@ struct SafeFloat : public ::handy::Wrapper<T>
 {
     USING_WRAPPER(::handy::Wrapper<T>);
 
-    template <typename U>
-    friend bool operator == (const SafeFloat<T>& s1, const SafeFloat<U>& s2)
-    {
-        return std::abs(*s1 - *s2) < 1e-8;
-    }
+    // operator T& () { return t; }
+
+    // operator T& () { return t; }
 };
+
+
+template <typename T>
+bool operator == (const SafeFloat<T>& s1, const T& t)
+{
+    return std::abs(*s1 - t) < 1e-8;
+}
 
 
 TEST(InheritanceTest, SafeFloatTest)
 {
-    ::handy::Wrapper<double> w1(1.0), w2(1.0);
+    ::handy::Wrapper<double> wr = 10.0 / 3;
 
-    SafeFloat<double> s1(1.0), s2(1.0);
+    SafeFloat<double> sf = 10.0 / 3;
 
-    std::mt19937 gen(std::random_device{}());
-
-
-    for(int i = 0; i < 1000; ++i)
-    {
-        double x = std::uniform_real_distribution<>(-100.0, 100.0)(gen);
-        w1 *= x, w2 *= x;
-        s1 *= x, s2 *= x;
-    }
-
-    for(int i = 0; i < 1000; ++i)
-    {
-        double x = std::uniform_real_distribution<>(-100.0, 100.0)(gen);
-        w1 /= x, w2 /= x;
-        s1 /= x, s2 /= x;
-    }
-
-
-    EXPECT_TRUE(w1 == w2);
-    EXPECT_TRUE(s1 == s2);
+    EXPECT_NE(wr, (1.0 / 3) * 10);
+    EXPECT_EQ(sf, (1.0 / 3) * 10);
 }
 
 
