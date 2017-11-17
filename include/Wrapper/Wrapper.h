@@ -23,6 +23,13 @@ struct Wrapper
 
 
 
+
+    template <typename... Args, std::enable_if_t<(sizeof...(Args) >= 2)>* = nullptr>
+    Wrapper (Args&&... args) : t(std::forward<Args>(args)...) {}
+    
+
+
+
     /// Constructor for different Wrapper types
     template <typename U>
     Wrapper (Wrapper<U>& w) : Wrapper(w.t) {}

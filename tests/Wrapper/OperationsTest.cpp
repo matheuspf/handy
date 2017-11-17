@@ -10,11 +10,11 @@
 namespace
 {
 
-struct WrapperTest : public ::testing::Test
+struct OperationsTest : public ::testing::Test
 {
-    WrapperTest () : a(x), b(y), c(w), d(std::move(z)) {}
+    OperationsTest () : a(x), b(y), c(w), d(std::move(z)) {}
 
-    virtual ~WrapperTest () {}
+    virtual ~OperationsTest () {}
 
 
     virtual void SetUp () {}
@@ -32,7 +32,7 @@ struct WrapperTest : public ::testing::Test
 };
 
 
-TEST_F(WrapperTest, ArithmeticTest1)
+TEST_F(OperationsTest, ArithmeticTest1)
 {
     handy::Wrapper<double> op1 = a + b + c + d;
 
@@ -44,7 +44,7 @@ TEST_F(WrapperTest, ArithmeticTest1)
 }
 
 
-TEST_F(WrapperTest, ArithmeticTest2)
+TEST_F(OperationsTest, ArithmeticTest2)
 {
     handy::Wrapper<int> op1 = std::llround(10 * c + a / 2);
 
@@ -57,7 +57,7 @@ TEST_F(WrapperTest, ArithmeticTest2)
 
 
 
-TEST_F(WrapperTest, ComparisonTest1)
+TEST_F(OperationsTest, ComparisonTest1)
 {
     EXPECT_TRUE((a < b));
     EXPECT_TRUE((b >= a));
@@ -68,7 +68,7 @@ TEST_F(WrapperTest, ComparisonTest1)
 }
 
 
-TEST_F(WrapperTest, ComparisonTest2)
+TEST_F(OperationsTest, ComparisonTest2)
 {
     std::vector<handy::Wrapper<double>> v(100);
 
