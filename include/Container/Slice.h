@@ -1,4 +1,4 @@
-/** \file Slice.h
+/** \file
   *
   * A class to take a 'slice' of a 'Container' class.
 */

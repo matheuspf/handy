@@ -1,12 +1,12 @@
-/** \file Helpers.h
+/** \file
  * 	
  *  Almost every other file includes this one. It has many definitions that
  *  are used by other algorithms.
  * 
 **/
 
-#ifndef CPPL_HELPERS_H
-#define CPPL_HELPERS_H
+#ifndef HANDY_HELPERS_HELPERS_H
+#define HANDY_HELPERS_HELPERS_H
 
 #include <type_traits>
 #include <utility>
@@ -16,22 +16,26 @@
 #include <ostream>
 #include <iostream>
 
+
 #include <iterator>
 
 
 /// Expands variadic arguments
 #define EXPAND(...) __VA_ARGS__
 
+//@{
 /// Concatenate two tokens
 #define CONCAT(x, y) CONCAT_(x, y)
 #define CONCAT_(x, y) EXPAND(x ## y)
+//@}
 
-
+//@{
 /// Count number of variadic arguments
 #define NUM_ARGS_(_1, _2 ,_3, _4, _5, _6, _7, _8, _9, _10, N, ...) N
 #define NUM_ARGS(...) NUM_ARGS_(__VA_ARGS__, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+//@}
 
-/// This guy will call 'MACRON', where 'N' is the number of variadic arguments
+/// This guy will call MACRON, where @c N is the number of variadic arguments
 #define APPLY_N(MACRO, ...) EXPAND(CONCAT(MACRO, NUM_ARGS(__VA_ARGS__)))(__VA_ARGS__)
 
 
@@ -39,44 +43,63 @@
 namespace handy
 {
 
+/// Empty template base
 template <typename> struct Empty {};
 
 
 namespace impl
 {
 
-template <class T, class U = std::nullptr_t, template <typename> class Template = Empty>
-class IsInherited
-{
-protected:
+/** @class IsInherited
 
+	@brief Tells if @c T inherits from @c U, or from a template @c Template<W>.
+		   In the case where @c T is the same as @c U, @link IsInherited::value value @endlink is @c true
+
+	@tparam T Derived class to check
+	@tparam U Possible base class
+	@tparam Template Possible Template base class
+*/
+template <class T, class U = std::nullptr_t, template <typename> class Template = Empty>
+struct IsInherited
+{
+	/// Returns @c true if @c T inherits from the template @c Template<W>
 	template <typename W>
 	static constexpr std::true_type isInherited (Template<W>);
 
+	/// Returns @c true if @c T inherits from @c U
 	static constexpr std::true_type isInherited (const std::decay_t<U>&);
 	
+	/// Returns @c false otherwise
 	static constexpr std::false_type isInherited (...);
 
-public:
-	
-	enum{ value = decltype(isInherited(std::declval<std::decay_t<T>>()))::value };
-
+	enum
+	{
+		/// Saves the value returned by isInherited()
+		value = decltype(isInherited(std::declval<std::decay_t<T>>()))::value
+	};
 };
 
 }
 
+  
+/// Delegate the call to impl::IsInherited with the class argument
 template<class T, class U = std::nullptr_t>
 using IsInherited = impl::IsInherited<T, U>;
 
+/// Delegate the call to impl::IsInherited with the template argument
 template<class T, template <typename> class Template>
 using IsInheritedTemplate = impl::IsInherited<T, std::nullptr_t, Template>;
 
 
 
+/** @brief Easy printing
 
+	@param out A reference to a std::ostream object
+	@param t The first template argument
+	@param args Variadic number of arguments
 
-
-/// Easy printing
+	@return The reference @c out
+*/
 template <typename T, typename... Args>
 inline std::ostream& print (std::ostream& out, const T& t, const Args& ...args)
 {
@@ -181,7 +204,7 @@ template <class T>
 using IsTuple = IsSpecialization<std::decay_t<T>, std::tuple>;
 
 
-
+//@{
 /// Apply a function to every element of a tuple, passing "funcArgs" as argument. In C++17 it is a lot easier.
 template <class Apply, typename... Args, std::size_t... Is, typename... FuncArgs>
 void applyTuple (Apply apply, std::tuple<Args...>& tup, std::index_sequence<Is...>, FuncArgs&&... funcArgs)
@@ -194,9 +217,9 @@ void applyTuple (Apply apply, std::tuple<Args...>& tup, FuncArgs&&... funcArgs)
 {
     return applyTuple(apply, tup, std::make_index_sequence<sizeof...(Args)>(), std::forward<FuncArgs>(funcArgs)...);
 }
-
+//@}
 
 } // namespace handy
 
 
-#endif // CPPL_HELPERS_H
+#endif // HANDY_HELPERS_HELPERS_H

@@ -1,4 +1,4 @@
-/** \file Container.h
+/** \file
   *
   * An interface to easily access multidimensional data, having total 
   * compatibility with STL algorithms and containers.

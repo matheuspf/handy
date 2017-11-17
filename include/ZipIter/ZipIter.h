@@ -29,7 +29,6 @@ namespace it
   * For example, the '+' and '-' operators are defined only for random
   * access operators.
 */
-
 template <typename T, typename... Iters>
 class ZipIter : public help::IteratorBase<T, std::remove_reference_t< Iters >...>
 {

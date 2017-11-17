@@ -1,4 +1,4 @@
-/** \file Helpers.h
+/** \file
   *
   * Some metaprogramming helpers
 */

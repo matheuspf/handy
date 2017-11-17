@@ -1,4 +1,4 @@
-/** \file Vector
+/** \file
   *
   * Defines the base class for 'Container'
 */
