@@ -6,7 +6,7 @@ using namespace std;
 
 int main ()
 {
-    for(auto x : rg::range(-5))
+    for(auto x : handy::range(-5))
     {
         cout << x << " ";
     }

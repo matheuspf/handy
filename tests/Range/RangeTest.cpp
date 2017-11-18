@@ -79,13 +79,13 @@ namespace
     {
         //SCOPED_TRACE(HalfClosedRangeLoopInt);
 
-        rangeLoopInt<rg::Range<int, rg::impl::HalfClosedInterval>>(false);
+        rangeLoopInt<handy::Range<int, handy::impl::HalfClosedInterval>>(false);
     }
 
     TEST_F(RangeTest, ClosedRangeLoopInt)
     {
         //SCOPED_TRACE(ClosedRangeLoopInt);
 
-        rangeLoopInt<rg::Range<int, rg::impl::ClosedInterval>>(true);
+        rangeLoopInt<handy::Range<int, handy::impl::ClosedInterval>>(true);
     }
 }

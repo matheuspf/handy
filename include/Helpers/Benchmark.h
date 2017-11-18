@@ -1,6 +1,6 @@
 /** @file
  * 
- *  Precise time measurement for both Windows and Linux systems.
+ *  @brief Precise time measurement for both Windows and Linux systems.
 **/
 
 
@@ -31,11 +31,10 @@ namespace impl
 
 /** @defgroup BenchmarkGroup Benchmarking
     @brief Precise benchmarking utilities
+    @{
 */
 
-/** @ingroup BenchmarkGroup
-
-    @brief A class to do precise benchmarking on both Windows and Linux
+/** @brief A class to do precise benchmarking on both Windows and Linux
 
     @tparam StartOnCreation @c bool template constant telling if the clock initialization must be done at creation
 
@@ -130,14 +129,11 @@ private:
 
 
 
-/** @ingroup BenchmarkGroup
-    @brief A alias calling handy::impl::Benchmark with @p StartOnCreation set to @c true
-*/
+/// A alias calling handy::impl::Benchmark with @p StartOnCreation set to @c true
 using Benchmark = impl::Benchmark<true>;
 
 
-/** @ingroup BenchmarkGroup
-    @brief This is the function you will actually call if you only want to call the handy::impl::Benchmark::operator()()
+/** @brief This is the function you will actually call if you only want to call the handy::impl::Benchmark::operator()()
     @note No need to start on creation here
 */
 template <class F, class... Args>

@@ -1,6 +1,6 @@
-/** \file Random.h
+/** @file
  * 
- *  Utilities for sampling random numbers.
+ *  @brief Utilities for sampling random numbers.
  * 
  **/
 
@@ -15,11 +15,18 @@
 namespace handy
 {
 
+/** @defgroup RandomGroup Random number generator
+    @brief Definitions for easily generating random numbers
+    @{
+*/
+
 namespace impl
 {
-/** The base class. It only has a generator and functions for setting the seed value.
- *  If you pass a '-1' (basically the same thing as 'std::string::max_size()'), it 
- *  will call 'std::random_device{}()', which will create the seed (pseudo-) randomly.
+/** @brief The base class for generating random numbers.
+ * 
+    @details The class has only a generator variable (#generator) and a function for setting the 
+             seed value (#seed) If you pass a @c -1 (basically the same thing as std::string::max_size()), 
+             it will call std::random_device{}(), which will create the seed (pseudo-) randomly.
  **/
 struct RandBase
 {
@@ -33,17 +40,15 @@ struct RandBase
         generator.seed(pickSeed(seedVal));
     }
 
-    
-protected:
-
-    /// If seedVal is '-1', choose the value given by 'std::random_device{}()'
+    /// If @p seedVal is @c -1, pick the value given by std::random_device{}(). Otherwise, pick @p seedVal.
     unsigned int pickSeed (unsigned int seedVal)
     {
         seedVal == (unsigned int)-1 ? std::random_device{}() : seedVal;
     }
 
 
-    std::mt19937 generator;     /// The generator
+    /// @link  Mersene Twister generator
+    std::mt19937 generator;
 };
 
 
@@ -68,10 +73,11 @@ struct RandInt_ : public RandBase
     }
     
 
-    /**  The generating function, which takes a 'min' and 'max' values, and uses 'RandBase::generator'.
-     *   Note that the interval is half closed [min, max). That is, the 'max' value will never be sampled,
-     *   so never use 'min == max'. It will throw an error if you do this, so I don't need to check here anyway.
-     **/
+    /** @brief The generating function, which takes a @p min and @p max values, and uses handy::impl::RandBase::generator()
+        @note Note that the interval is half closed [@p min, @p max). That is, the @p max value will never 
+              be sampled, so never use 'min == max'. It will throw an error if you do this, so there is no
+              need to check here anyway.
+    */
     inline T operator () (T min, T max)
     {
         return std::uniform_int_distribution<T>(min, max - 1)(generator);

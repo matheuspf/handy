@@ -1,31 +1,18 @@
-#ifndef RANGE_H
-#define RANGE_H
+#ifndef HANDY_RANGE_H
+#define HANDY_RANGE_H
 
-#include <type_traits>
-#include <assert.h>
+#include "../Helpers/Helpers.h"
+
 #include <iterator>
 #include <vector>
 #include <cmath>
-#include <iostream>
 
 
-namespace rg
+namespace handy
 {
 
 namespace impl
 {
-
-template <typename T, typename U>
-struct TypePrec
-{
-    using Type = decltype(std::declval<std::decay_t<T>>() + std::declval<std::decay_t<U>>());
-};
-
-template <typename T, typename U>
-using TypePrec_t = typename TypePrec<T, U>::Type;
-
-
-
 
 struct HalfClosedInterval
 {
@@ -36,8 +23,6 @@ struct HalfClosedInterval
     }
 };
 
-
-
 struct ClosedInterval
 {
     template <typename T>
@@ -46,8 +31,6 @@ struct ClosedInterval
         return step * (last - first) >= 0;
     }
 };
-
-
 
 struct InfiniteInterval
 {
@@ -58,8 +41,7 @@ struct InfiniteInterval
     }
 };
 
-
-}
+} // namespace impl
 
 
 template <typename T, typename ValidRange = impl::HalfClosedInterval>
@@ -284,7 +266,7 @@ decltype(auto) irange ()
 }
 
 
-}	// namespace rg
+}	// namespace handy
 
 
-#endif // RANGE_H
+#endif // HANDY_RANGE_H

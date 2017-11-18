@@ -1,22 +1,30 @@
-/** \file HandyParams.h
- * 
- *  This is a very simple header that allows the creation of classes with (almost) python-like initialization.
- *  It is only supported in C++17, with the aid of the 'std::any' class. Also, it incurs a small runtime overhead, 
- *  and may be prone to type conversion errors, but the result is simply beautiful =)
+/** @file
+
+    @brief This is a very simple header that allows the creation of classes with (almost) python-like initialization.
+    @details It is only supported in C++17, with the aid of the std::any class. Also, it incurs a small runtime overhead, 
+             and may be prone to type conversion errors, but the result is simply beautiful =)
 **/
 
 
-#ifndef HANDY_HANDY_PARAMS_H
-#define HANDY_HANDY_PARAMS_H
+#ifndef HANDY_HELPERS_PARAMS_H
+#define HANDY_HELPERS_PARAMS_H
 
-#include "Helpers.h"    /// Some macro definitions from here
+#include "Helpers.h"
 
 #include <map>
 #include <string>
 #include <any>
 
+/** @defgroup HandyParamsGroup Class initialization
+    @brief Beautiful and easy class initialization
+    @{
+**/
 
-/// It supports up to 9 parameters, but you can simply copy-paste and create more
+/** @name
+    @brief The code generators for each parameter
+    @note It supports up to 9 parameters, but you can easily copy-paste and create more
+**/
+//@{
 #define HANDY_ATT_PARAMS1(p1, ...) auto it1 = mp.find(#p1);  if(it1 != mp.end()) p1 = std::any_cast<decltype(p1)>(it1->second);
 #define HANDY_ATT_PARAMS2(p2, ...) auto it2 = mp.find(#p2);  if(it2 != mp.end()) p2 = std::any_cast<decltype(p2)>(it2->second); HANDY_ATT_PARAMS1(__VA_ARGS__)
 #define HANDY_ATT_PARAMS3(p3, ...) auto it3 = mp.find(#p3);  if(it3 != mp.end()) p3 = std::any_cast<decltype(p3)>(it3->second); HANDY_ATT_PARAMS2(__VA_ARGS__)
@@ -26,20 +34,21 @@
 #define HANDY_ATT_PARAMS7(p7, ...) auto it7 = mp.find(#p7);  if(it7 != mp.end()) p7 = std::any_cast<decltype(p7)>(it7->second); HANDY_ATT_PARAMS6(__VA_ARGS__)
 #define HANDY_ATT_PARAMS8(p8, ...) auto it8 = mp.find(#p8);  if(it8 != mp.end()) p8 = std::any_cast<decltype(p8)>(it8->second); HANDY_ATT_PARAMS7(__VA_ARGS__)
 #define HANDY_ATT_PARAMS9(p9, ...) auto it9 = mp.find(#p9);  if(it9 != mp.end()) p9 = std::any_cast<decltype(p9)>(it9->second); HANDY_ATT_PARAMS8(__VA_ARGS__)
+//@}
 
 
-
-/** Simply call this guy at the public section of your class, passing the class name as first argument
- *  and a sequence of the arguments you want to be capable of initialization. For examples of usage,
- *  see the 'examples' folder.
- * 
- *  WARNING: The types passed by parameter must be exactly equal to the ones in the class. That is,
- *  if theres a float in your class, and you pass a double, std::any will throw a exception.
-**/
+/** @brief Simply call this guy at the public section of your class, passing the class name as first argument
+           and a sequence of the arguments you want to be capable of initialization. For examples of usage,
+           see the 'examples' folder.
+  
+    @warning The types passed by parameter must be exactly equal to the ones in the class. That is,
+             if theres a @c float in your class, and you pass a @c double, std::any will throw an exception.
+*/
 #define HANDY_PARAMS(CLASS, ...)	\
 CLASS(std::map<std::string, std::any> mp) { APPLY_N(HANDY_ATT_PARAMS, __VA_ARGS__) }
 
+//@}
 
 
 
-#endif // HANDY_HANDY_PARAMS_H
+#endif // HANDY_HELPERS_PARAMS_H
