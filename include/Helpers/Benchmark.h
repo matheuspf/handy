@@ -1,11 +1,11 @@
-/** \file Benchmark.h
+/** @file
  * 
  *  Precise time measurement for both Windows and Linux systems.
 **/
 
 
-#ifndef CPPL_BENCHMARK_H_INCLUDED
-#define CPPL_BENCHMARK_H_INCLUDED
+#ifndef HANDY_HELPERS_BENCHMARK_H
+#define HANDY_HELPERS_BENCHMARK_H
 
 #include <type_traits>
 #include <utility>
@@ -26,32 +26,42 @@
 namespace handy
 {
 
-namespace impl  /// The main class goes here
+namespace impl
 {
 
-/** If 'StartOnCreation' is true,  this class initializes the clock on creation. You can also reset it 
- *  by calling the 'start' function. The 'finish' function returns the time elapsed (in seconds, 
- *  up to nanoseconds of precision) elapsed since the call to the 'start' function.
+/** @defgroup BenchmarkGroup Benchmarking
+    @brief Precise benchmarking utilities
+*/
+
+/** @ingroup BenchmarkGroup
+
+    @brief A class to do precise benchmarking on both Windows and Linux
+
+    @tparam StartOnCreation @c bool template constant telling if the clock initialization must be done at creation
+
+    @details If @p StartOnCreation is @c true, this class initializes the clock on creation. You can also reset it 
+             by calling the start() function. The finish() function returns the time (in seconds, up to nanoseconds 
+             of precision) elapsed since the call to the start() function.
 **/
 template <bool StartOnCreation = true>
 class Benchmark
 {
 public:
 
-    /// Call the start function on creation if 'StartOnCreation' is true
+    /// Call the start function on creation if @p StartOnCreation is @c true
     template <bool B = StartOnCreation, typename std::enable_if<B>::type* = nullptr>
     Benchmark ()
     {
         start();
     }
 
-    /// Do nothing if 'StartOnCreation' is false
+    /// Do nothing if @p StartOnCreation is @c false
     template <bool B = StartOnCreation, typename std::enable_if<!B>::type* = nullptr>
     Benchmark () {}
 
     
 
-    /// You can also use 'operator()' and pass a function along with its arguments. 
+    /// You can also use this operator and pass a function along with its arguments. 
     template <class F, typename... Args>
     double operator () (F&& f, Args&&... args)
     {
@@ -63,7 +73,7 @@ public:
     }
 
 
-    
+    /// Start clock
     void start ()
     {
     #ifdef _WIN32
@@ -79,7 +89,7 @@ public:
     }
 
 
-
+    /// Stop clock and return time elapsed
     double finish()
     {
     #ifdef _WIN32
@@ -106,11 +116,11 @@ private:
 
 #ifdef _WIN32
 
-    LARGE_INTEGER freq, start_, end_;
+    LARGE_INTEGER freq, start_, end_;   ///< Variables for windows
 
 #elif defined __unix__
     
-    timespec start_, end_;
+    timespec start_, end_;  ///< Variables for Linux
 
 #endif
 
@@ -120,11 +130,16 @@ private:
 
 
 
-/// By default, we start on creation
+/** @ingroup BenchmarkGroup
+    @brief A alias calling handy::impl::Benchmark with @p StartOnCreation set to @c true
+*/
 using Benchmark = impl::Benchmark<true>;
 
 
-/// This is the function you will actually call if you only want to call 'operator()'. No need to start on creation here.
+/** @ingroup BenchmarkGroup
+    @brief This is the function you will actually call if you only want to call the handy::impl::Benchmark::operator()()
+    @note No need to start on creation here
+*/
 template <class F, class... Args>
 double benchmark (F&& f, Args&&... args)
 {
@@ -135,4 +150,4 @@ double benchmark (F&& f, Args&&... args)
 } // namespace handy
 
 
-#endif // CPPL_BENCHMARK_H
+#endif // HANDY_HELPERS_BENCHMARK_H
