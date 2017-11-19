@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structhandy_1_1impl_1_1RandBase.html" title="The base class for generating random numbers. " alt="" coords="5,46,164,73"/>
-<area shape="rect" id="node2" href="$structhandy_1_1impl_1_1RandFloat__.html" title="For floating points. " alt="" coords="212,5,369,47"/>
-<area shape="rect" id="node3" href="$structhandy_1_1impl_1_1RandInt__.html" title="For integer types only. " alt="" coords="219,71,362,112"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structhandy_1_1impl_1_1IsInherited.html" title="Tells if T inherits from U, or from a template Template&lt;W&gt;. In the case where T is the same as U..." alt="" coords="5,5,164,47"/>
-<area shape="rect" id="node2" href="$structhandy_1_1impl_1_1IsWrapperBase.html" title="handy::impl::IsWrapperBase\&lt; T \&gt;" alt="" coords="212,13,431,39"/>
-</map>

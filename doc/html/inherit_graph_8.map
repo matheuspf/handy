@@ -1,6 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$structcnt_1_1Vector.html" title="cnt::Vector\&lt; T, N \&gt;" alt="" coords="163,5,299,32"/>
-<area shape="rect" id="node3" href="$structcnt_1_1Vector.html" title="cnt::Vector\&lt; std::size\l_t, bool(Size)*sizeof...(Is)\&gt;" alt="" coords="141,57,320,98"/>
-<area shape="rect" id="node4" href="$structcnt_1_1Vector.html" title="cnt::Vector\&lt; T, help\l::multiply_v\&lt; Is... \&gt; \&gt;" alt="" coords="157,122,305,163"/>
-<area shape="rect" id="node5" href="$classcnt_1_1help_1_1Container.html" title="cnt::help::Container\l\&lt; T, Is \&gt;" alt="" coords="368,122,504,163"/>
-</map>
