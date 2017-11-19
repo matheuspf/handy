@@ -1,8 +1,15 @@
 /** @file
 
     @brief Very simple C++11 helpers to verify at compile time if a class has a variable or a function. 
-    @details Very useful for creating @link http://en.cppreference.com/w/cpp/language/sfinae SFINAE @endlink
-             friendly classes or functions
+
+    @details Given a call to HAS_VAR(), HAS_FUNC(), HAS_EXTERN_FUNC() or HAS_OVERLOADED_FUNC(), two functions 
+             and one class are generated. By using SFINAE, we can determine if a given class has or has not a 
+             member variable or function at compile time. Ex:
+
+    @snippet Helpers/HasMemberExample.cpp HasMember snippet
+
+    @note Very useful for creating <a href="http://en.cppreference.com/w/cpp/language/sfinae">SFINAE</a>
+          friendly classes or functions
 */
 
 #ifndef HAS_MEMBER_H
@@ -16,10 +23,10 @@ namespace handy
 {
 
 /** @defgroup HasMemberGroup Member checking
-    @brief Check the existence of a variable or function for a given class
-    @{
+    @copydoc HasMember.h
 */
 
+//@{
 /** @name
     @brief Macro helpers for checking the existence of variables inside a class
 */
@@ -96,10 +103,6 @@ namespace handy
 
 
 /** @brief Uses SFINAE to determine the existence of a certain member given a class
- * 
-    @details Given a call to HAS_VAR(), HAS_FUNC(), HAS_EXTERN_FUNC() or HAS_OVERLOADED_FUNC(),
-             this macro will generate two functions and one class. By using SFINAE, we can determine
-             if a given class has or has not a member variable or function at compile time.
 
     @note I am using @p HM_T and @p HM_Args  to avoid any naming conflict if you 
           call this guy inside a class template, for example.

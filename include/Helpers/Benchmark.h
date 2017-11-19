@@ -1,6 +1,26 @@
 /** @file
- * 
- *  @brief Precise time measurement for both Windows and Linux systems.
+    
+    @brief Precise time measurement for both Windows and Linux systems
+
+    @details By creating a handy::Benchmark (which is an alias to @link handy::impl::Benchmark 
+             handy::impl::Benchmark<true> @endlink) object, you start the clock, whichs is precise 
+             up to nanoseconds. The clock can also be created by calling handy::impl::Benchmark::start().
+
+             The handy::impl::Benchmark::finish() returns the time elapsed in seconds since the
+             last call to handy::impl::Benchmark::start().
+
+             By default, the constructor will start the call, but you can also create a @link 
+             handy::impl::Benchmark handy::impl::Benchmark<false> @endlink object, which will not start 
+             the clock at creation. Ex:
+
+    @snippet Helpers/BenchmarkExample.cpp Benchmark class snippet
+
+    @details You can also use handy::impl::Benchmark::operator()(), which takes a function its 
+             arguments, returning the time it takes to execute. The handy::benchmark() function
+             does the exact same thing, but without the need to explicitly create an object. Ex:
+
+    @snippet Helpers/BenchmarkExample.cpp Benchmark function snippet    
+
 **/
 
 
@@ -30,10 +50,10 @@ namespace impl
 {
 
 /** @defgroup BenchmarkGroup Benchmarking
-    @brief Precise benchmarking utilities
-    @{
+    @copydoc Benchmark.h
 */
 
+//@{
 /** @brief A class to do precise benchmarking on both Windows and Linux
 
     @tparam StartOnCreation @c bool template constant telling if the clock initialization must be done at creation

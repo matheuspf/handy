@@ -1,16 +1,67 @@
+/** @file
+
+    @brief Define STL container algorithms and pipeline operators
+
+    @details By including this class, for almost any stl algorithm, a function taking a container
+             instead of iterators is defined.
+             
+             This function simply delegate the call to the actual stl function by calling std::begin 
+             and std::end on the container passed as parameter.
+            
+             The exact form of the function, as well as the number of arguments depends on the stl 
+             algorithm. For each begin/end pair there is one container. For single iterators, such as
+             the third argument to std::copy, there is also one container. Any other paramater of the
+             stl algorithm can also be passed as parameter to the @ref handy version. Example:
+
+    @snippet Algorithms/AlgorithmsExample.cpp Algorithms Snipet functions
+
+    @details Notice that the return is also modified for some functions. For stl functions that do not
+             return, a reference to the container that is being modified is returned. For functions that
+             return an iterator that does not imply position (std::transform, for example), the return is
+             also the container that is being modified. Any other case has the same return as the stl algorithm.
+
+             Another feature is the function pipeline, which can be controled by changing the ALGORITHM_OP_SYMBOL().
+             
+             By passing only the arguments to the @ref handy algorithm function, a lambda is returned,
+             taking the missing container argument.
+
+             It is easy then to construct a pipeline of operations (starting at the left). Also, the order
+             of the parameters is irrelevant, as long as a single container is given. Example:
+
+    @snippet Algorithms/AlgorithmsExample.cpp Algorithms Snipet pipeline
+
+    
+    @note For many functions the overloads are not ambiguous to the original stl functions, so there
+          is no need to use the @ref handy namespace to disambiguate the call.
+*/
+
 #ifndef CPPL_ALGORITHMS_H
 #define CPPL_ALGORITHMS_H
 
-#include <algorithm>
-#include <numeric>
 #include "../Helpers/Helpers.h"
 #include "../Helpers/HasMember.h"
 
+#include <algorithm>
+#include <numeric>
 
 
+/** @defgroup AlgorithmsGroup STL container algorithms
+    @copydoc Algorithms.h
+*/
+
+//@{
+/** @brief Symbol that defines the operation pipeline
+    @note You can change it to any binary operator you want.
+*/
 #define ALGORITHM_OP_SYMBOL &
 
 
+/** @brief Generates functions that operate on the function pipeline
+    @details Takes a stl algorithm (@c FUNCTION) and generates a function returning a lambda.
+             This lambda takes as parameter a container and apply @c FUNCTION along with
+             @c args...
+             
+*/
 #define MAKE_FUNCTION(FUNCTION)                                                 \
 template <typename... Args>                                                      \
 decltype(auto) FUNCTION (Args&&... args)                                         \
@@ -23,9 +74,10 @@ decltype(auto) FUNCTION (Args&&... args)                                        
 }
 
 
-
-
-
+/** @name
+    @brief Macros used for generating code. Internal usage.
+*/
+//@{
 #define SINGLE_CONTAINER_DECLARATION(NAME)                       \
 template <class Container1, typename... Args, std::enable_if_t<IsContainer<Container1>::value>* = nullptr>     \
 decltype(auto) NAME (Container1&& container1, Args&&... args)   \
@@ -74,7 +126,6 @@ CONTAINER_APPLY(NAME, ::std::begin(CONTAINER_1), ::std::end(CONTAINER_1), ::std:
 
 
 
-
 #define APPLY_CONTAINER_FUNCTION(NAME, DECLARATION, ...)  \
 DECLARATION(NAME) { __VA_ARGS__ } MAKE_FUNCTION(NAME)
 
@@ -84,6 +135,7 @@ APPLY_CONTAINER_FUNCTION(NAME, DECLARATION, return APPLY(NAME);)
 
 #define NO_RETURN(NAME, DECLARATION, APPLY, CONTAINER)   \
 APPLY_CONTAINER_FUNCTION(NAME, DECLARATION, APPLY(NAME); return CONTAINER;)
+//@}
 
 
 
@@ -93,21 +145,34 @@ namespace handy
 HAS_EXTERN_FUNC(::std::begin, HasBegin)
 HAS_EXTERN_FUNC(::std::end, HasEnd)
 
+/// Tells if a type @p T is a container - that is, has a specialization for both std::begin and std::end
 template <typename T>
 struct IsContainer : std::integral_constant<bool, HasBegin<T>::value && HasEnd<T>::value> {};
 
 
+
+/** @class AlgOPDoc
+    @brief Applies a function @p f to the @c container class
+ 
+    @param container A universal reference to a container that will be operand of @p f
+    @param f A function that takes a container as its first argument
+    @return The result of @p f(Container)
+*/
+
+/// @copydoc AlgOPDoc
 template <class Container, class F, std::enable_if_t<IsContainer<Container>::value>* = nullptr>
 decltype(auto) operator ALGORITHM_OP_SYMBOL (Container&& container, F f)
 {
     return f(std::forward<Container>(container));
 }
 
+/// @copydoc AlgOPDoc
 template <class Container, class F, std::enable_if_t<IsContainer<Container>::value>* = nullptr>
 decltype(auto) operator ALGORITHM_OP_SYMBOL (F f, Container&& container)
 {
     return f(std::forward<Container>(container));
 }
+//@}
     
 
 

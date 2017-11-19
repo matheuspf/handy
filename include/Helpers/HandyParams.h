@@ -1,8 +1,12 @@
 /** @file
 
     @brief This is a very simple header that allows the creation of classes with (almost) python-like initialization.
-    @details It is only supported in C++17, with the aid of the std::any class. Also, it incurs a small runtime overhead, 
-             and may be prone to type conversion errors, but the result is simply beautiful =)
+
+    @details It is only supported in C++17, with the aid of the @link http://en.cppreference.com/w/cpp/utility/any 
+             std::any @endlink class. Also, it incurs a small runtime overhead, and may be prone to type casting 
+             errors, but the result is simply beautiful. Ex:
+
+    @snippet Helpers/HandyParamsExample.cpp Handy Params snippet
 **/
 
 
@@ -16,10 +20,10 @@
 #include <any>
 
 /** @defgroup HandyParamsGroup Class initialization
-    @brief Beautiful and easy class initialization
-    @{
+    @copydoc HandyParams.h
 **/
 
+//@{
 /** @name
     @brief The code generators for each parameter
     @note It supports up to 9 parameters, but you can easily copy-paste and create more
