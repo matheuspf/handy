@@ -1,0 +1,77 @@
+\hypertarget{structit_1_1UnZip}{}\section{it\+:\+:Un\+Zip$<$ Apply $>$ Class Template Reference}
+\label{structit_1_1UnZip}\index{it\+::\+Un\+Zip$<$ Apply $>$@{it\+::\+Un\+Zip$<$ Apply $>$}}
+
+
+{\ttfamily \#include $<$Zip\+Iter.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structit_1_1UnZip_a2ff5a7ee51d35930693d37f1c850ae11}{Un\+Zip} (const Apply \&\hyperlink{structit_1_1UnZip_aac432c3c64ff81db0f39c7cc86a6b496}{apply}=Apply())
+\begin{DoxyCompactList}\small\item\em A single constructor takin a function as argument. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\decltype(auto) \hyperlink{structit_1_1UnZip_a2231e68495ac48e8d72962c403bac9f3}{operator()} (Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em These functions expand the arguments and aplly the function, using some helpers. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t... Is, typename... Args$>$ }\\decltype(auto) \hyperlink{structit_1_1UnZip_a6ede925170e870205d6f0d560cfa2fae}{operator()} (std\+::index\+\_\+sequence$<$ Is... $>$, Args \&\&...args)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Apply \hyperlink{structit_1_1UnZip_aac432c3c64ff81db0f39c7cc86a6b496}{apply}
+\begin{DoxyCompactList}\small\item\em The function to apply. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Apply$>$\\*
+class it\+::\+Un\+Zip$<$ Apply $>$}
+
+This class has a single method that takes variadic arguments including tuples and expand all of them, passing to a function. This way you can handle the elements of a tuple separatelly. It is very useful while iterating in the for range loops and in stl functions. Please, see the folder examples for more. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{it\+::\+Un\+Zip@{it\+::\+Un\+Zip}!Un\+Zip@{Un\+Zip}}
+\index{Un\+Zip@{Un\+Zip}!it\+::\+Un\+Zip@{it\+::\+Un\+Zip}}
+\subsubsection[{\texorpdfstring{Un\+Zip(const Apply \&apply=\+Apply())}{UnZip(const Apply &apply=Apply())}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Apply$>$ {\bf it\+::\+Un\+Zip}$<$ Apply $>$\+::{\bf Un\+Zip} (
+\begin{DoxyParamCaption}
+\item[{const Apply \&}]{apply = {\ttfamily Apply()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structit_1_1UnZip_a2ff5a7ee51d35930693d37f1c850ae11}{}\label{structit_1_1UnZip_a2ff5a7ee51d35930693d37f1c850ae11}
+
+
+A single constructor takin a function as argument. 
+
+
+
+\subsection{Member Function Documentation}
+\index{it\+::\+Un\+Zip@{it\+::\+Un\+Zip}!operator()@{operator()}}
+\index{operator()@{operator()}!it\+::\+Un\+Zip@{it\+::\+Un\+Zip}}
+\subsubsection[{\texorpdfstring{operator()(\+Args \&\&...\+args)}{operator()(Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Apply$>$ template$<$typename... Args$>$ decltype(auto) {\bf it\+::\+Un\+Zip}$<$ Apply $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structit_1_1UnZip_a2231e68495ac48e8d72962c403bac9f3}{}\label{structit_1_1UnZip_a2231e68495ac48e8d72962c403bac9f3}
+
+
+These functions expand the arguments and aplly the function, using some helpers. 
+
+\index{it\+::\+Un\+Zip@{it\+::\+Un\+Zip}!operator()@{operator()}}
+\index{operator()@{operator()}!it\+::\+Un\+Zip@{it\+::\+Un\+Zip}}
+\subsubsection[{\texorpdfstring{operator()(std\+::index\+\_\+sequence$<$ Is... $>$, Args \&\&...\+args)}{operator()(std::index_sequence< Is... >, Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Apply$>$ template$<$std\+::size\+\_\+t... Is, typename... Args$>$ decltype(auto) {\bf it\+::\+Un\+Zip}$<$ Apply $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{std\+::index\+\_\+sequence$<$ Is... $>$}]{, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structit_1_1UnZip_a6ede925170e870205d6f0d560cfa2fae}{}\label{structit_1_1UnZip_a6ede925170e870205d6f0d560cfa2fae}
+
+
+\subsection{Member Data Documentation}
+\index{it\+::\+Un\+Zip@{it\+::\+Un\+Zip}!apply@{apply}}
+\index{apply@{apply}!it\+::\+Un\+Zip@{it\+::\+Un\+Zip}}
+\subsubsection[{\texorpdfstring{apply}{apply}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Apply$>$ Apply {\bf it\+::\+Un\+Zip}$<$ Apply $>$\+::apply}\hypertarget{structit_1_1UnZip_aac432c3c64ff81db0f39c7cc86a6b496}{}\label{structit_1_1UnZip_aac432c3c64ff81db0f39c7cc86a6b496}
+
+
+The function to apply. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Zip\+Iter/\hyperlink{ZipIter_8h}{Zip\+Iter.\+h}\end{DoxyCompactItemize}

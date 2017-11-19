@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="/home/matheus/Algoritmos/CPP/Handy/doc/cppreference-doxygen-web.tag.xml$cpp/types/integral_constant.html" title="std::false_type" alt="" coords="5,107,113,134"/>
+<area shape="rect" id="node2" href="$structcnt_1_1help_1_1And_3_01false_00_01Bs_8_8_8_01_4.html" title="cnt::help::And\&lt; false,\l Bs... \&gt;" alt="" coords="183,5,329,47"/>
+<area shape="rect" id="node3" href="$structhandy_1_1And_3_01false_00_01Bs_8_8_8_01_4.html" title="If the current argument (B1) is false, so the return can only be false. " alt="" coords="190,71,322,112"/>
+<area shape="rect" id="node4" href="$structhandy_1_1impl_1_1IsWrapper.html" title="handy::impl::IsWrapper\&lt; T \&gt;" alt="" coords="161,137,351,163"/>
+<area shape="rect" id="node5" href="$structhandy_1_1IsSpecialization.html" title="Check for template specialization. " alt="" coords="177,188,335,229"/>
+</map>

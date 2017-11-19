@@ -1,0 +1,41 @@
+\hypertarget{group__InheritanceGroup}{}\section{Inheritance check}
+\label{group__InheritanceGroup}\index{Inheritance check@{Inheritance check}}
+
+
+Utilities to check for inheritance.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhandy_1_1impl_1_1IsInherited}{handy\+::impl\+::\+Is\+Inherited$<$ T, U, Template $>$}
+\begin{DoxyCompactList}\small\item\em Tells if {\ttfamily T} inherits from {\ttfamily U}, or from a template {\ttfamily Template$<$\+W$>$}. In the case where {\ttfamily T} is the same as {\ttfamily U}, \hyperlink{structhandy_1_1impl_1_1IsInherited_ade331c690ccfcc4c9fbe160b83f9491ba3347f5ab27dd0282a949005f868dcde7}{value } is {\ttfamily true}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T , class U  = std\+::nullptr\+\_\+t$>$ }\\using \hyperlink{group__InheritanceGroup_ga534fbf017347da385a1fea5a1a9d6714}{handy\+::\+Is\+Inherited} = impl\+::\+Is\+Inherited$<$ T, U $>$
+\begin{DoxyCompactList}\small\item\em Delegate the call to \hyperlink{structhandy_1_1impl_1_1IsInherited}{handy\+::impl\+::\+Is\+Inherited} with the class argument. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T , template$<$ typename $>$ class Template$>$ }\\using \hyperlink{group__InheritanceGroup_gaea8281081535355f96f3b6ae97f79691}{handy\+::\+Is\+Inherited\+Template} = impl\+::\+Is\+Inherited$<$ T, {\bf std\+::nullptr\+\_\+t}, Template $>$
+\begin{DoxyCompactList}\small\item\em Delegate the call to \hyperlink{structhandy_1_1impl_1_1IsInherited}{handy\+::impl\+::\+Is\+Inherited} with the template argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utilities to check for inheritance. 
+
+
+
+\subsection{Typedef Documentation}
+\index{Inheritance check@{Inheritance check}!Is\+Inherited@{Is\+Inherited}}
+\index{Is\+Inherited@{Is\+Inherited}!Inheritance check@{Inheritance check}}
+\subsubsection[{\texorpdfstring{Is\+Inherited}{IsInherited}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class U  = std\+::nullptr\+\_\+t$>$ using {\bf handy\+::\+Is\+Inherited} = typedef impl\+::\+Is\+Inherited$<$T, U$>$}\hypertarget{group__InheritanceGroup_ga534fbf017347da385a1fea5a1a9d6714}{}\label{group__InheritanceGroup_ga534fbf017347da385a1fea5a1a9d6714}
+
+
+Delegate the call to \hyperlink{structhandy_1_1impl_1_1IsInherited}{handy\+::impl\+::\+Is\+Inherited} with the class argument. 
+
+\index{Inheritance check@{Inheritance check}!Is\+Inherited\+Template@{Is\+Inherited\+Template}}
+\index{Is\+Inherited\+Template@{Is\+Inherited\+Template}!Inheritance check@{Inheritance check}}
+\subsubsection[{\texorpdfstring{Is\+Inherited\+Template}{IsInheritedTemplate}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , template$<$ typename $>$ class Template$>$ using {\bf handy\+::\+Is\+Inherited\+Template} = typedef impl\+::\+Is\+Inherited$<$T, {\bf std\+::nullptr\+\_\+t}, Template$>$}\hypertarget{group__InheritanceGroup_gaea8281081535355f96f3b6ae97f79691}{}\label{group__InheritanceGroup_gaea8281081535355f96f3b6ae97f79691}
+
+
+Delegate the call to \hyperlink{structhandy_1_1impl_1_1IsInherited}{handy\+::impl\+::\+Is\+Inherited} with the template argument. 
+

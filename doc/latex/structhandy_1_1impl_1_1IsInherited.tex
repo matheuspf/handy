@@ -1,0 +1,104 @@
+\hypertarget{structhandy_1_1impl_1_1IsInherited}{}\section{handy\+:\+:impl\+:\+:Is\+Inherited$<$ T, U, Template $>$ Struct Template Reference}
+\label{structhandy_1_1impl_1_1IsInherited}\index{handy\+::impl\+::\+Is\+Inherited$<$ T, U, Template $>$@{handy\+::impl\+::\+Is\+Inherited$<$ T, U, Template $>$}}
+
+
+Tells if {\ttfamily T} inherits from {\ttfamily U}, or from a template {\ttfamily Template$<$\+W$>$}. In the case where {\ttfamily T} is the same as {\ttfamily U}, \hyperlink{structhandy_1_1impl_1_1IsInherited_ade331c690ccfcc4c9fbe160b83f9491ba3347f5ab27dd0282a949005f868dcde7}{value } is {\ttfamily true}.  
+
+
+
+
+{\ttfamily \#include $<$Helpers.\+h$>$}
+
+
+
+Inheritance diagram for handy\+:\+:impl\+:\+:Is\+Inherited$<$ T, U, Template $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{structhandy_1_1impl_1_1IsInherited__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{structhandy_1_1impl_1_1IsInherited_ade331c690ccfcc4c9fbe160b83f9491ba3347f5ab27dd0282a949005f868dcde7}{value} = decltype(is\+Inherited(std\+:\+:declval$<$std\+:\+:decay\+\_\+t$<$T$>$$>$()))\+:\+:value
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename W $>$ }\\static constexpr {\bf std\+::true\+\_\+type} \hyperlink{structhandy_1_1impl_1_1IsInherited_ab35b0bbac7a0a30321f1e9f97f66c9c4}{is\+Inherited} (Template$<$ W $>$)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if {\ttfamily T} inherits from the template {\ttfamily Template$<$\+W$>$} \end{DoxyCompactList}\item 
+static constexpr {\bf std\+::true\+\_\+type} \hyperlink{structhandy_1_1impl_1_1IsInherited_ad6960a3bde384c00493a40cf4f6cbd23}{is\+Inherited} (const std\+::decay\+\_\+t$<$ U $>$ \&)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily true} if {\ttfamily T} inherits from {\ttfamily U}. \end{DoxyCompactList}\item 
+static constexpr {\bf std\+::false\+\_\+type} \hyperlink{structhandy_1_1impl_1_1IsInherited_acc033894644bd14ea55b4963e1f4f040}{is\+Inherited} (...)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily false} otherwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class U = std\+::nullptr\+\_\+t, template$<$ typename $>$ class Template = Empty$>$\\*
+struct handy\+::impl\+::\+Is\+Inherited$<$ T, U, Template $>$}
+
+Tells if {\ttfamily T} inherits from {\ttfamily U}, or from a template {\ttfamily Template$<$\+W$>$}. In the case where {\ttfamily T} is the same as {\ttfamily U}, \hyperlink{structhandy_1_1impl_1_1IsInherited_ade331c690ccfcc4c9fbe160b83f9491ba3347f5ab27dd0282a949005f868dcde7}{value } is {\ttfamily true}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Derived class to check \\
+\hline
+{\em U} & Possible base class \\
+\hline
+{\em Template} & Possible Template base class \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Enumeration Documentation}
+\subsubsection[{\texorpdfstring{anonymous enum}{anonymous enum}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class U  = std\+::nullptr\+\_\+t, template$<$ typename $>$ class Template = Empty$>$ anonymous enum}\hypertarget{structhandy_1_1impl_1_1IsInherited_ade331c690ccfcc4c9fbe160b83f9491b}{}\label{structhandy_1_1impl_1_1IsInherited_ade331c690ccfcc4c9fbe160b83f9491b}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{value@{value}!handy\+::impl\+::\+Is\+Inherited@{handy\+::impl\+::\+Is\+Inherited}}\index{handy\+::impl\+::\+Is\+Inherited@{handy\+::impl\+::\+Is\+Inherited}!value@{value}}\item[{\em 
+value\hypertarget{structhandy_1_1impl_1_1IsInherited_ade331c690ccfcc4c9fbe160b83f9491ba3347f5ab27dd0282a949005f868dcde7}{}\label{structhandy_1_1impl_1_1IsInherited_ade331c690ccfcc4c9fbe160b83f9491ba3347f5ab27dd0282a949005f868dcde7}
+}]Saves the value returned by \hyperlink{structhandy_1_1impl_1_1IsInherited_ab35b0bbac7a0a30321f1e9f97f66c9c4}{is\+Inherited()} \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\index{handy\+::impl\+::\+Is\+Inherited@{handy\+::impl\+::\+Is\+Inherited}!is\+Inherited@{is\+Inherited}}
+\index{is\+Inherited@{is\+Inherited}!handy\+::impl\+::\+Is\+Inherited@{handy\+::impl\+::\+Is\+Inherited}}
+\subsubsection[{\texorpdfstring{is\+Inherited(\+Template$<$ W $>$)}{isInherited(Template< W >)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class U  = std\+::nullptr\+\_\+t, template$<$ typename $>$ class Template = Empty$>$ template$<$typename W $>$ static constexpr {\bf std\+::true\+\_\+type} {\bf handy\+::impl\+::\+Is\+Inherited}$<$ T, U, Template $>$\+::is\+Inherited (
+\begin{DoxyParamCaption}
+\item[{Template$<$ W $>$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{structhandy_1_1impl_1_1IsInherited_ab35b0bbac7a0a30321f1e9f97f66c9c4}{}\label{structhandy_1_1impl_1_1IsInherited_ab35b0bbac7a0a30321f1e9f97f66c9c4}
+
+
+Returns {\ttfamily true} if {\ttfamily T} inherits from the template {\ttfamily Template$<$\+W$>$} 
+
+\index{handy\+::impl\+::\+Is\+Inherited@{handy\+::impl\+::\+Is\+Inherited}!is\+Inherited@{is\+Inherited}}
+\index{is\+Inherited@{is\+Inherited}!handy\+::impl\+::\+Is\+Inherited@{handy\+::impl\+::\+Is\+Inherited}}
+\subsubsection[{\texorpdfstring{is\+Inherited(const std\+::decay\+\_\+t$<$ U $>$ \&)}{isInherited(const std::decay_t< U > &)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class U  = std\+::nullptr\+\_\+t, template$<$ typename $>$ class Template = Empty$>$ static constexpr {\bf std\+::true\+\_\+type} {\bf handy\+::impl\+::\+Is\+Inherited}$<$ T, U, Template $>$\+::is\+Inherited (
+\begin{DoxyParamCaption}
+\item[{const std\+::decay\+\_\+t$<$ U $>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{structhandy_1_1impl_1_1IsInherited_ad6960a3bde384c00493a40cf4f6cbd23}{}\label{structhandy_1_1impl_1_1IsInherited_ad6960a3bde384c00493a40cf4f6cbd23}
+
+
+Returns {\ttfamily true} if {\ttfamily T} inherits from {\ttfamily U}. 
+
+\index{handy\+::impl\+::\+Is\+Inherited@{handy\+::impl\+::\+Is\+Inherited}!is\+Inherited@{is\+Inherited}}
+\index{is\+Inherited@{is\+Inherited}!handy\+::impl\+::\+Is\+Inherited@{handy\+::impl\+::\+Is\+Inherited}}
+\subsubsection[{\texorpdfstring{is\+Inherited(...)}{isInherited(...)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class U  = std\+::nullptr\+\_\+t, template$<$ typename $>$ class Template = Empty$>$ static constexpr {\bf std\+::false\+\_\+type} {\bf handy\+::impl\+::\+Is\+Inherited}$<$ T, U, Template $>$\+::is\+Inherited (
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{structhandy_1_1impl_1_1IsInherited_acc033894644bd14ea55b4963e1f4f040}{}\label{structhandy_1_1impl_1_1IsInherited_acc033894644bd14ea55b4963e1f4f040}
+
+
+Returns {\ttfamily false} otherwise. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Helpers/\hyperlink{Helpers_2Helpers_8h}{Helpers.\+h}\end{DoxyCompactItemize}

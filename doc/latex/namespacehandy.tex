@@ -1,0 +1,383 @@
+\hypertarget{namespacehandy}{}\section{handy Namespace Reference}
+\label{namespacehandy}\index{handy@{handy}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacehandy_1_1impl}{impl}
+\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhandy_1_1And}{And}
+\begin{DoxyCompactList}\small\item\em Base definition. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1And_3_01B1_00_01Bs_8_8_8_01_4}{And$<$ B1, Bs... $>$}
+\begin{DoxyCompactList}\small\item\em If {\ttfamily B1} is true, check for the rest. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1And_3_01false_00_01Bs_8_8_8_01_4}{And$<$ false, Bs... $>$}
+\begin{DoxyCompactList}\small\item\em If the current argument ({\ttfamily B1}) is {\ttfamily false}, so the return can only be {\ttfamily false}. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1And_3_4}{And$<$$>$}
+\begin{DoxyCompactList}\small\item\em If none of the arguments are {\ttfamily false}, so the result is {\ttfamily true}. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1Empty}{Empty}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structhandy_1_1Empty}{Empty} template base. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1GetArg}{Get\+Arg}
+\begin{DoxyCompactList}\small\item\em Base definition. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1GetArg_3_010_00_01T_00_01Args_8_8_8_01_4}{Get\+Arg$<$ 0, T, Args... $>$}
+\begin{DoxyCompactList}\small\item\em If {\ttfamily I} is 0, take type {\ttfamily T}. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1GetArg_3_01I_01_4}{Get\+Arg$<$ I $>$}
+\begin{DoxyCompactList}\small\item\em If the initial {\ttfamily I} is greater than the number of arguments or is negative, throw an error. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1GetArg_3_01I_00_01T_00_01Args_8_8_8_01_4}{Get\+Arg$<$ I, T, Args... $>$}
+\begin{DoxyCompactList}\small\item\em If {\ttfamily I} is not 0, take the type of \hyperlink{structhandy_1_1GetArg}{handy\+::\+Get\+Arg}$<$I-\/1, Args...$>$ \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1IsContainer}{Is\+Container}
+\item 
+struct \hyperlink{structhandy_1_1IsSpecialization}{Is\+Specialization}
+\begin{DoxyCompactList}\small\item\em Check for template specialization. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1IsSpecialization_3_01Template_3_01Args_8_8_8_01_4_00_01Template_01_4}{Is\+Specialization$<$ Template$<$ Args... $>$, Template $>$}
+\begin{DoxyCompactList}\small\item\em Check for template specialization. \end{DoxyCompactList}\item 
+class \hyperlink{classhandy_1_1Range}{Range}
+\item 
+struct \hyperlink{structhandy_1_1Wrapper}{Wrapper}
+\item 
+struct \hyperlink{structhandy_1_1Wrapper_3_01Wrapper_3_01T_01_4_01_4}{Wrapper$<$ Wrapper$<$ T $>$ $>$}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{namespacehandy_a921823a1a59f12ce0c0ded12503b0544}{Benchmark} = \hyperlink{classhandy_1_1impl_1_1Benchmark}{impl\+::\+Benchmark}$<$ true $>$
+\begin{DoxyCompactList}\small\item\em A alias calling \hyperlink{classhandy_1_1impl_1_1Benchmark}{handy\+::impl\+::\+Benchmark} with {\ttfamily Start\+On\+Creation} set to {\ttfamily true}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T , class U  = std\+::nullptr\+\_\+t$>$ }\\using \hyperlink{group__InheritanceGroup_ga534fbf017347da385a1fea5a1a9d6714}{Is\+Inherited} = \hyperlink{structhandy_1_1impl_1_1IsInherited}{impl\+::\+Is\+Inherited}$<$ T, U $>$
+\begin{DoxyCompactList}\small\item\em Delegate the call to \hyperlink{structhandy_1_1impl_1_1IsInherited}{handy\+::impl\+::\+Is\+Inherited} with the class argument. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T , template$<$ typename $>$ class Template$>$ }\\using \hyperlink{group__InheritanceGroup_gaea8281081535355f96f3b6ae97f79691}{Is\+Inherited\+Template} = \hyperlink{structhandy_1_1impl_1_1IsInherited}{impl\+::\+Is\+Inherited}$<$ T, {\bf std\+::nullptr\+\_\+t}, Template $>$
+\begin{DoxyCompactList}\small\item\em Delegate the call to \hyperlink{structhandy_1_1impl_1_1IsInherited}{handy\+::impl\+::\+Is\+Inherited} with the template argument. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t I, typename... Args$>$ }\\using \hyperlink{group__GetArgGroup_gaed885c745628529b328db1c511d841fc}{Get\+Arg\+\_\+t} = typename \hyperlink{structhandy_1_1GetArg}{Get\+Arg}$<$ I, Args... $>$\+::type
+\begin{DoxyCompactList}\small\item\em Helper alias. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\using \hyperlink{namespacehandy_ac98a0603f9c31f7601694077feba70ec}{Is\+Tuple} = \hyperlink{structhandy_1_1IsSpecialization}{Is\+Specialization}$<$ std\+::decay\+\_\+t$<$ T $>$, {\bf std\+::tuple} $>$
+\begin{DoxyCompactList}\small\item\em Verify if type {\ttfamily T} is a tuple using \hyperlink{structhandy_1_1IsSpecialization}{handy\+::\+Is\+Specialization}. \end{DoxyCompactList}\item 
+using \hyperlink{group__RandomGroup_gafccf8f163a45086036ca7b3bec3413f5}{Rand\+Int} = \hyperlink{structhandy_1_1impl_1_1RandInt__}{impl\+::\+Rand\+Int\+\_\+}$<$ int $>$
+\begin{DoxyCompactList}\small\item\em Aliases. \end{DoxyCompactList}\item 
+using \hyperlink{group__RandomGroup_gace607d3788e863aab630c29521cdcf3d}{Rand\+Double} = \hyperlink{structhandy_1_1impl_1_1RandFloat__}{impl\+::\+Rand\+Float\+\_\+}$<$ double $>$
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \hyperlink{group__RandomGroup_gaa56330e62ab8c2abe507a74d49b70969}{Rand} = std\+::conditional\+\_\+t$<$ {\bf std\+::is\+\_\+integral}$<$ T $>$\+::value, \hyperlink{structhandy_1_1impl_1_1RandInt__}{impl\+::\+Rand\+Int\+\_\+}$<$ T $>$, std\+::conditional\+\_\+t$<$ {\bf std\+::is\+\_\+floating\+\_\+point}$<$ T $>$\+::value, \hyperlink{structhandy_1_1impl_1_1RandFloat__}{impl\+::\+Rand\+Float\+\_\+}$<$ T $>$, void $>$$>$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Container , class F , std\+::enable\+\_\+if\+\_\+t$<$ Is\+Container$<$ Container $>$\+::value $>$ $\ast$  = nullptr$>$ }\\decltype(auto) \hyperlink{namespacehandy_af239d82057c5a6124b597ddcbb5141af}{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL} (Container \&\&container, F f)
+\item 
+{\footnotesize template$<$class Container , class F , std\+::enable\+\_\+if\+\_\+t$<$ Is\+Container$<$ Container $>$\+::value $>$ $\ast$  = nullptr$>$ }\\decltype(auto) \hyperlink{namespacehandy_a604ac43ad3b993dcd0a4d8f548c017c7}{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL} (F f, Container \&\&container)
+\item 
+\hyperlink{namespacehandy_ad41cc2aee368e2b1b1021498160f511d}{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON} (copy\+\_\+n, \hyperlink{Algorithms_8h_a1710716f622efa68abc209e9c6d213e8}{D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N},\+::{\bf std\+::copy\+\_\+n}(\+::{\bf std\+::begin}(\hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}), n,\+::{\bf std\+::begin}(\hyperlink{Algorithms_8h_acfc307df20cf90e1c270a9c1614d5e9e}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2}));return \hyperlink{Algorithms_8h_acfc307df20cf90e1c270a9c1614d5e9e}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2};) A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON(fill\+\_\+n
+\item 
+\hyperlink{namespacehandy_aa87afa981327c829540a4da26dcc33ad}{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON} (generate\+\_\+n, \hyperlink{namespacehandy_a0bbcc72407282157424193da360bfa2b}{S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N},\+::{\bf std\+::generate\+\_\+n}({\bf std\+::begin}(\hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}), n, \hyperlink{Algorithms_8h_ab87d0dee85e25fa6699760357a3a6aed}{F\+U\+N\+C\+\_\+\+V\+A\+R\+\_\+\+A\+R\+GS});return \hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1};) A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON(rotate
+\item 
+\hyperlink{namespacehandy_a33b83bf7d83a06837c61a8baf24ccce5}{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON} (rotate\+\_\+copy, \hyperlink{Algorithms_8h_a1710716f622efa68abc209e9c6d213e8}{D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N},\+::{\bf std\+::rotate}(\+::{\bf std\+::begin}(\hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}),\+::{\bf std\+::begin}(\hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1})+n,\+::{\bf std\+::end}(\hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}),\+::{\bf std\+::begin}(\hyperlink{Algorithms_8h_acfc307df20cf90e1c270a9c1614d5e9e}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2}));return \hyperlink{Algorithms_8h_acfc307df20cf90e1c270a9c1614d5e9e}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2};) A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON(partial\+\_\+sort
+\item 
+\hyperlink{namespacehandy_affff91e8cf4e43cd3809846366a5af36}{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON} (partial\+\_\+sort\+\_\+copy, \hyperlink{Algorithms_8h_a1710716f622efa68abc209e9c6d213e8}{D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N},\+::{\bf std\+::partial\+\_\+sort\+\_\+copy}(\+::{\bf std\+::begin}(\hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}),\+::{\bf std\+::begin}(\hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}),\+::{\bf std\+::begin}(\hyperlink{Algorithms_8h_acfc307df20cf90e1c270a9c1614d5e9e}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2}),\+::{\bf std\+::end}(\hyperlink{Algorithms_8h_acfc307df20cf90e1c270a9c1614d5e9e}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2}), \hyperlink{Algorithms_8h_ab87d0dee85e25fa6699760357a3a6aed}{F\+U\+N\+C\+\_\+\+V\+A\+R\+\_\+\+A\+R\+GS});return \hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1};) A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON(nth\+\_\+element
+\item 
+{\footnotesize template$<$class F , class... Args$>$ }\\double \hyperlink{namespacehandy_afe013a9ae07e9f0edaf27bf68666fae5}{benchmark} (F \&\&f, Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em This is the function you will actually call if you only want to call the \hyperlink{group__BenchmarkGroup_ga5eee042d87e75a24021ad6851a2c10ec}{handy\+::impl\+::\+Benchmark\+::operator()()} \end{DoxyCompactList}\item 
+int \hyperlink{group__RandomGroup_gafd96a435a958e1e7f9a7354d77fda735}{rand} (int min=0, int max={\bf std\+::numeric\+\_\+limits}$<$ int $>$\+::max(), unsigned int seed=-\/1)
+\item 
+double \hyperlink{group__RandomGroup_ga8d9c1e9192ab9c278e91c3afaf28d069}{rand} (double min=0.\+0, double max=1.\+0, unsigned int seed=-\/1)
+\item 
+{\footnotesize template$<$typename First , typename Last , typename Step $>$ }\\decltype(auto) \hyperlink{namespacehandy_aefc805a0d2f653bd767202a6e2eb189d}{range} (const First \&first, const Last \&last, const Step \&step)
+\item 
+{\footnotesize template$<$typename First , typename Last $>$ }\\decltype(auto) \hyperlink{namespacehandy_af378d0c8411cee1d5045ccde47393db7}{range} (const First \&first, const Last \&last)
+\item 
+{\footnotesize template$<$typename Last $>$ }\\decltype(auto) \hyperlink{namespacehandy_ad3ed0e5c4cfa2cfbb84b079af021842d}{range} (const Last \&last)
+\item 
+{\footnotesize template$<$typename First , typename Last , typename Step $>$ }\\decltype(auto) \hyperlink{namespacehandy_aa0041d089e4da567b9de69529ef86f00}{crange} (const First \&first, const Last \&last, const Step \&step)
+\item 
+{\footnotesize template$<$typename First , typename Last $>$ }\\decltype(auto) \hyperlink{namespacehandy_a875b248b245a28a928c832cac6bcf1ce}{crange} (const First \&first, const Last \&last)
+\item 
+{\footnotesize template$<$typename Last $>$ }\\decltype(auto) \hyperlink{namespacehandy_a1dcfdd94bbbc4afac6c4ee7f34345043}{crange} (const Last \&last)
+\item 
+{\footnotesize template$<$typename First , typename Step $>$ }\\decltype(auto) \hyperlink{namespacehandy_adb17848d08336798ddc61fdbd13ffcf4}{irange} (const First \&first, const Step \&step)
+\item 
+{\footnotesize template$<$typename First $>$ }\\decltype(auto) \hyperlink{namespacehandy_ad795cd86d0fbd7afd19816a02cbb6a4a}{irange} (const First \&first)
+\item 
+decltype(auto) \hyperlink{namespacehandy_a200e7146e18ba3ea618aa1da0b26a700}{irange} ()
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \hyperlink{namespacehandy_a0238cc3395a74ef060d33e7208a5c025}{make\+Wrapper} (T \&\&t)
+\end{DoxyCompactItemize}
+{\bf }\par
+{\em Easy printing }\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename... Args$>$ }\\{\bf std\+::ostream} \& \hyperlink{namespacehandy_a553ff960ee6b2b0142aecc9ed04ac6bc}{print} ({\bf std\+::ostream} \&out, const T \&t, const Args \&...args)
+\begin{DoxyCompactList}\small\item\em Prints a sequence of arguments separated by comma to the {\bf std\+::ostream} reference {\ttfamily out}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename... Args, typename std\+::enable\+\_\+if$<$(!\+Is\+Inherited$<$ T, std\+::stringstream $>$\+::value \&\&!\+Is\+Inherited$<$ T, std\+::ostream $>$\+::value)$>$\+::type $\ast$  = nullptr$>$ }\\{\bf std\+::ostream} \& \hyperlink{namespacehandy_acdd8e02922c3b608fd59283bb1d272eb}{print} (const T \&t, const Args \&...args)
+\begin{DoxyCompactList}\small\item\em Delegate the call to \hyperlink{namespacehandy_a553ff960ee6b2b0142aecc9ed04ac6bc}{handy\+::print()} with {\bf std\+::cout} as the {\bf std\+::ostream} argument. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+{\bf }\par
+{\em Apply a function to every element of a tuple }\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Apply , typename... Args, std\+::size\+\_\+t... Is, typename... Func\+Args$>$ }\\void \hyperlink{namespacehandy_a80453515558758a8b0b4038b792051b2}{apply\+Tuple} (Apply apply, {\bf std\+::tuple}$<$ Args... $>$ \&tup, std\+::index\+\_\+sequence$<$ Is... $>$, Func\+Args \&\&...func\+Args)
+\begin{DoxyCompactList}\small\item\em Apply a function to every element of a tuple, passing \char`\"{}func\+Args\char`\"{} as argument. In C++17 it is a lot easier. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Apply , typename... Args, typename... Func\+Args$>$ }\\void \hyperlink{namespacehandy_a46ed92be2279077a1619d78652a915ce}{apply\+Tuple} (Apply apply, {\bf std\+::tuple}$<$ Args... $>$ \&tup, Func\+Args \&\&...func\+Args)
+\begin{DoxyCompactList}\small\item\em Delegate the call to \hyperlink{namespacehandy_a80453515558758a8b0b4038b792051b2}{apply\+Tuple()} generating a {\bf std\+::index\+\_\+sequence } to expand the {\bf std\+::tuple}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacehandy_a0bbcc72407282157424193da360bfa2b}{S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}
+\item 
+return \hyperlink{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}
+\item 
+{\footnotesize template$<$bool... Bs$>$ }\\constexpr bool \hyperlink{group__AndGroup_ga0b8333d82725fa020f74b5eee7016dbc}{And\+\_\+v} = \hyperlink{structhandy_1_1And}{And}$<$ Bs... $>$\+::value
+\begin{DoxyCompactList}\small\item\em Helper alias. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{handy@{handy}!Benchmark@{Benchmark}}
+\index{Benchmark@{Benchmark}!handy@{handy}}
+\subsubsection[{\texorpdfstring{Benchmark}{Benchmark}}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf handy\+::\+Benchmark} = typedef {\bf impl\+::\+Benchmark}$<$true$>$}\hypertarget{namespacehandy_a921823a1a59f12ce0c0ded12503b0544}{}\label{namespacehandy_a921823a1a59f12ce0c0ded12503b0544}
+
+
+A alias calling \hyperlink{classhandy_1_1impl_1_1Benchmark}{handy\+::impl\+::\+Benchmark} with {\ttfamily Start\+On\+Creation} set to {\ttfamily true}. 
+
+\index{handy@{handy}!Is\+Tuple@{Is\+Tuple}}
+\index{Is\+Tuple@{Is\+Tuple}!handy@{handy}}
+\subsubsection[{\texorpdfstring{Is\+Tuple}{IsTuple}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ using {\bf handy\+::\+Is\+Tuple} = typedef {\bf Is\+Specialization}$<$std\+::decay\+\_\+t$<$T$>$, {\bf std\+::tuple}$>$}\hypertarget{namespacehandy_ac98a0603f9c31f7601694077feba70ec}{}\label{namespacehandy_ac98a0603f9c31f7601694077feba70ec}
+
+
+Verify if type {\ttfamily T} is a tuple using \hyperlink{structhandy_1_1IsSpecialization}{handy\+::\+Is\+Specialization}. 
+
+
+
+\subsection{Function Documentation}
+\index{handy@{handy}!A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
+\index{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}!handy@{handy}}
+\subsubsection[{\texorpdfstring{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N(copy\+\_\+n, D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+\+N,\+::std\+::copy\+\_\+n(\+::std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1), n,\+::std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2));return C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2;) A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N(fill\+\_\+n}{APPLY_CONTAINER_FUNCTION(copy_n, DOUBLE_CONTAINER_DECLARATION_N,::std::copy_n(::std::begin(CONTAINER_1), n,::std::begin(CONTAINER_2));return CONTAINER_2;) APPLY_CONTAINER_FUNCTION(fill_n}}]{\setlength{\rightskip}{0pt plus 5cm}handy\+::\+A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON (
+\begin{DoxyParamCaption}
+\item[{copy\+\_\+n}]{, }
+\item[{{\bf D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}}]{, }
+\item[{\+::{\bf std\+::copy\+\_\+n}(\+::{\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}), n,\+::{\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2}));return {\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2};}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_ad41cc2aee368e2b1b1021498160f511d}{}\label{namespacehandy_ad41cc2aee368e2b1b1021498160f511d}
+\index{handy@{handy}!A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
+\index{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}!handy@{handy}}
+\subsubsection[{\texorpdfstring{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N(generate\+\_\+n, S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+\+N,\+::std\+::generate\+\_\+n(std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1), n, F\+U\+N\+C\+\_\+\+V\+A\+R\+\_\+\+A\+R\+G\+S);return C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1;) A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N(rotate}{APPLY_CONTAINER_FUNCTION(generate_n, SINGLE_CONTAINER_DECLARATION_N,::std::generate_n(std::begin(CONTAINER_1), n, FUNC_VAR_ARGS);return CONTAINER_1;) APPLY_CONTAINER_FUNCTION(rotate}}]{\setlength{\rightskip}{0pt plus 5cm}handy\+::\+A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON (
+\begin{DoxyParamCaption}
+\item[{generate\+\_\+n}]{, }
+\item[{{\bf S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}}]{, }
+\item[{\+::{\bf std\+::generate\+\_\+n}({\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}), n, {\bf F\+U\+N\+C\+\_\+\+V\+A\+R\+\_\+\+A\+R\+GS});return {\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1};}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_aa87afa981327c829540a4da26dcc33ad}{}\label{namespacehandy_aa87afa981327c829540a4da26dcc33ad}
+\index{handy@{handy}!A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
+\index{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}!handy@{handy}}
+\subsubsection[{\texorpdfstring{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N(rotate\+\_\+copy, D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+\+N,\+::std\+::rotate(\+::std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1),\+::std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1)+n,\+::std\+::end(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1),\+::std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2));return C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2;) A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N(partial\+\_\+sort}{APPLY_CONTAINER_FUNCTION(rotate_copy, DOUBLE_CONTAINER_DECLARATION_N,::std::rotate(::std::begin(CONTAINER_1),::std::begin(CONTAINER_1)+n,::std::end(CONTAINER_1),::std::begin(CONTAINER_2));return CONTAINER_2;) APPLY_CONTAINER_FUNCTION(partial_sort}}]{\setlength{\rightskip}{0pt plus 5cm}handy\+::\+A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON (
+\begin{DoxyParamCaption}
+\item[{rotate\+\_\+copy}]{, }
+\item[{{\bf D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}}]{, }
+\item[{\+::{\bf std\+::rotate}(\+::{\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}),\+::{\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1})+n,\+::{\bf std\+::end}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}),\+::{\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2}));return {\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2};}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_a33b83bf7d83a06837c61a8baf24ccce5}{}\label{namespacehandy_a33b83bf7d83a06837c61a8baf24ccce5}
+\index{handy@{handy}!A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}}
+\index{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON@{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON}!handy@{handy}}
+\subsubsection[{\texorpdfstring{A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N(partial\+\_\+sort\+\_\+copy, D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+\+N,\+::std\+::partial\+\_\+sort\+\_\+copy(\+::std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1),\+::std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1),\+::std\+::begin(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2),\+::std\+::end(\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2), F\+U\+N\+C\+\_\+\+V\+A\+R\+\_\+\+A\+R\+G\+S);return C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1;) A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N(nth\+\_\+element}{APPLY_CONTAINER_FUNCTION(partial_sort_copy, DOUBLE_CONTAINER_DECLARATION_N,::std::partial_sort_copy(::std::begin(CONTAINER_1),::std::begin(CONTAINER_1),::std::begin(CONTAINER_2),::std::end(CONTAINER_2), FUNC_VAR_ARGS);return CONTAINER_1;) APPLY_CONTAINER_FUNCTION(nth_element}}]{\setlength{\rightskip}{0pt plus 5cm}handy\+::\+A\+P\+P\+L\+Y\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+F\+U\+N\+C\+T\+I\+ON (
+\begin{DoxyParamCaption}
+\item[{partial\+\_\+sort\+\_\+copy}]{, }
+\item[{{\bf D\+O\+U\+B\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}}]{, }
+\item[{\+::{\bf std\+::partial\+\_\+sort\+\_\+copy}(\+::{\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}),\+::{\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}),\+::{\bf std\+::begin}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2}),\+::{\bf std\+::end}({\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+2}), {\bf F\+U\+N\+C\+\_\+\+V\+A\+R\+\_\+\+A\+R\+GS});return {\bf C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1};}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_affff91e8cf4e43cd3809846366a5af36}{}\label{namespacehandy_affff91e8cf4e43cd3809846366a5af36}
+\index{handy@{handy}!apply\+Tuple@{apply\+Tuple}}
+\index{apply\+Tuple@{apply\+Tuple}!handy@{handy}}
+\subsubsection[{\texorpdfstring{apply\+Tuple(\+Apply apply, std\+::tuple$<$ Args... $>$ \&tup, std\+::index\+\_\+sequence$<$ Is... $>$, Func\+Args \&\&...\+func\+Args)}{applyTuple(Apply apply, std::tuple< Args... > &tup, std::index_sequence< Is... >, FuncArgs &&...funcArgs)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Apply , typename... Args, std\+::size\+\_\+t... Is, typename... Func\+Args$>$ void handy\+::apply\+Tuple (
+\begin{DoxyParamCaption}
+\item[{Apply}]{apply, }
+\item[{{\bf std\+::tuple}$<$ Args... $>$ \&}]{tup, }
+\item[{std\+::index\+\_\+sequence$<$ Is... $>$}]{, }
+\item[{Func\+Args \&\&...}]{func\+Args}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_a80453515558758a8b0b4038b792051b2}{}\label{namespacehandy_a80453515558758a8b0b4038b792051b2}
+
+
+Apply a function to every element of a tuple, passing \char`\"{}func\+Args\char`\"{} as argument. In C++17 it is a lot easier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em apply} & The function to be applied to tuple {\ttfamily tup} \\
+\hline
+{\em tup} & A reference to a {\bf std\+::tuple} \\
+\hline
+{\em func\+Args} & Arguments to the {\ttfamily apply} function \\
+\hline
+\end{DoxyParams}
+\index{handy@{handy}!apply\+Tuple@{apply\+Tuple}}
+\index{apply\+Tuple@{apply\+Tuple}!handy@{handy}}
+\subsubsection[{\texorpdfstring{apply\+Tuple(\+Apply apply, std\+::tuple$<$ Args... $>$ \&tup, Func\+Args \&\&...\+func\+Args)}{applyTuple(Apply apply, std::tuple< Args... > &tup, FuncArgs &&...funcArgs)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Apply , typename... Args, typename... Func\+Args$>$ void handy\+::apply\+Tuple (
+\begin{DoxyParamCaption}
+\item[{Apply}]{apply, }
+\item[{{\bf std\+::tuple}$<$ Args... $>$ \&}]{tup, }
+\item[{Func\+Args \&\&...}]{func\+Args}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_a46ed92be2279077a1619d78652a915ce}{}\label{namespacehandy_a46ed92be2279077a1619d78652a915ce}
+
+
+Delegate the call to \hyperlink{namespacehandy_a80453515558758a8b0b4038b792051b2}{apply\+Tuple()} generating a {\bf std\+::index\+\_\+sequence } to expand the {\bf std\+::tuple}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em apply} & The function to be applied to tuple {\ttfamily tup} \\
+\hline
+{\em tup} & A reference to a {\bf std\+::tuple} \\
+\hline
+{\em func\+Args} & Arguments to the {\ttfamily apply} function \\
+\hline
+\end{DoxyParams}
+\index{handy@{handy}!benchmark@{benchmark}}
+\index{benchmark@{benchmark}!handy@{handy}}
+\subsubsection[{\texorpdfstring{benchmark(\+F \&\&f, Args \&\&...\+args)}{benchmark(F &&f, Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class... Args$>$ double handy\+::benchmark (
+\begin{DoxyParamCaption}
+\item[{F \&\&}]{f, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_afe013a9ae07e9f0edaf27bf68666fae5}{}\label{namespacehandy_afe013a9ae07e9f0edaf27bf68666fae5}
+
+
+This is the function you will actually call if you only want to call the \hyperlink{group__BenchmarkGroup_ga5eee042d87e75a24021ad6851a2c10ec}{handy\+::impl\+::\+Benchmark\+::operator()()} 
+
+\begin{DoxyNote}{Note}
+No need to start on creation here 
+\end{DoxyNote}
+\index{handy@{handy}!crange@{crange}}
+\index{crange@{crange}!handy@{handy}}
+\subsubsection[{\texorpdfstring{crange(const First \&first, const Last \&last, const Step \&step)}{crange(const First &first, const Last &last, const Step &step)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename First , typename Last , typename Step $>$ decltype(auto) handy\+::crange (
+\begin{DoxyParamCaption}
+\item[{const First \&}]{first, }
+\item[{const Last \&}]{last, }
+\item[{const Step \&}]{step}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_aa0041d089e4da567b9de69529ef86f00}{}\label{namespacehandy_aa0041d089e4da567b9de69529ef86f00}
+\index{handy@{handy}!crange@{crange}}
+\index{crange@{crange}!handy@{handy}}
+\subsubsection[{\texorpdfstring{crange(const First \&first, const Last \&last)}{crange(const First &first, const Last &last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename First , typename Last $>$ decltype(auto) handy\+::crange (
+\begin{DoxyParamCaption}
+\item[{const First \&}]{first, }
+\item[{const Last \&}]{last}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_a875b248b245a28a928c832cac6bcf1ce}{}\label{namespacehandy_a875b248b245a28a928c832cac6bcf1ce}
+\index{handy@{handy}!crange@{crange}}
+\index{crange@{crange}!handy@{handy}}
+\subsubsection[{\texorpdfstring{crange(const Last \&last)}{crange(const Last &last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Last $>$ decltype(auto) handy\+::crange (
+\begin{DoxyParamCaption}
+\item[{const Last \&}]{last}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_a1dcfdd94bbbc4afac6c4ee7f34345043}{}\label{namespacehandy_a1dcfdd94bbbc4afac6c4ee7f34345043}
+\index{handy@{handy}!irange@{irange}}
+\index{irange@{irange}!handy@{handy}}
+\subsubsection[{\texorpdfstring{irange(const First \&first, const Step \&step)}{irange(const First &first, const Step &step)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename First , typename Step $>$ decltype(auto) handy\+::irange (
+\begin{DoxyParamCaption}
+\item[{const First \&}]{first, }
+\item[{const Step \&}]{step}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_adb17848d08336798ddc61fdbd13ffcf4}{}\label{namespacehandy_adb17848d08336798ddc61fdbd13ffcf4}
+\index{handy@{handy}!irange@{irange}}
+\index{irange@{irange}!handy@{handy}}
+\subsubsection[{\texorpdfstring{irange(const First \&first)}{irange(const First &first)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename First $>$ decltype(auto) handy\+::irange (
+\begin{DoxyParamCaption}
+\item[{const First \&}]{first}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_ad795cd86d0fbd7afd19816a02cbb6a4a}{}\label{namespacehandy_ad795cd86d0fbd7afd19816a02cbb6a4a}
+\index{handy@{handy}!irange@{irange}}
+\index{irange@{irange}!handy@{handy}}
+\subsubsection[{\texorpdfstring{irange()}{irange()}}]{\setlength{\rightskip}{0pt plus 5cm}decltype(auto) handy\+::irange (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_a200e7146e18ba3ea618aa1da0b26a700}{}\label{namespacehandy_a200e7146e18ba3ea618aa1da0b26a700}
+\index{handy@{handy}!make\+Wrapper@{make\+Wrapper}}
+\index{make\+Wrapper@{make\+Wrapper}!handy@{handy}}
+\subsubsection[{\texorpdfstring{make\+Wrapper(\+T \&\&t)}{makeWrapper(T &&t)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ auto handy\+::make\+Wrapper (
+\begin{DoxyParamCaption}
+\item[{T \&\&}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_a0238cc3395a74ef060d33e7208a5c025}{}\label{namespacehandy_a0238cc3395a74ef060d33e7208a5c025}
+\index{handy@{handy}!operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL@{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL}}
+\index{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL@{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL}!handy@{handy}}
+\subsubsection[{\texorpdfstring{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+O\+L(\+Container \&\&container, F f)}{operator ALGORITHM_OP_SYMBOL(Container &&container, F f)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container , class F , std\+::enable\+\_\+if\+\_\+t$<$ Is\+Container$<$ Container $>$\+::value $>$ $\ast$  = nullptr$>$ decltype(auto) handy\+::operator {\bf A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL} (
+\begin{DoxyParamCaption}
+\item[{Container \&\&}]{container, }
+\item[{F}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_af239d82057c5a6124b597ddcbb5141af}{}\label{namespacehandy_af239d82057c5a6124b597ddcbb5141af}
+\index{handy@{handy}!operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL@{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL}}
+\index{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL@{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL}!handy@{handy}}
+\subsubsection[{\texorpdfstring{operator A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+O\+L(\+F f, Container \&\&container)}{operator ALGORITHM_OP_SYMBOL(F f, Container &&container)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Container , class F , std\+::enable\+\_\+if\+\_\+t$<$ Is\+Container$<$ Container $>$\+::value $>$ $\ast$  = nullptr$>$ decltype(auto) handy\+::operator {\bf A\+L\+G\+O\+R\+I\+T\+H\+M\+\_\+\+O\+P\+\_\+\+S\+Y\+M\+B\+OL} (
+\begin{DoxyParamCaption}
+\item[{F}]{f, }
+\item[{Container \&\&}]{container}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_a604ac43ad3b993dcd0a4d8f548c017c7}{}\label{namespacehandy_a604ac43ad3b993dcd0a4d8f548c017c7}
+\index{handy@{handy}!print@{print}}
+\index{print@{print}!handy@{handy}}
+\subsubsection[{\texorpdfstring{print(std\+::ostream \&out, const T \&t, const Args \&...\+args)}{print(std::ostream &out, const T &t, const Args &...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename... Args$>$ {\bf std\+::ostream}\& handy\+::print (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::ostream} \&}]{out, }
+\item[{const T \&}]{t, }
+\item[{const Args \&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{namespacehandy_a553ff960ee6b2b0142aecc9ed04ac6bc}{}\label{namespacehandy_a553ff960ee6b2b0142aecc9ed04ac6bc}
+
+
+Prints a sequence of arguments separated by comma to the {\bf std\+::ostream} reference {\ttfamily out}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & A reference to a {\bf std\+::ostream} object \\
+\hline
+{\em t} & The first template argument \\
+\hline
+{\em args} & Variadic number of arguments\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The reference {\ttfamily out} 
+\end{DoxyReturn}
+\index{handy@{handy}!print@{print}}
+\index{print@{print}!handy@{handy}}
+\subsubsection[{\texorpdfstring{print(const T \&t, const Args \&...\+args)}{print(const T &t, const Args &...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename... Args, typename std\+::enable\+\_\+if$<$(!\+Is\+Inherited$<$ T, std\+::stringstream $>$\+::value \&\&!\+Is\+Inherited$<$ T, std\+::ostream $>$\+::value)$>$\+::type $\ast$  = nullptr$>$ {\bf std\+::ostream}\& handy\+::print (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{t, }
+\item[{const Args \&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{namespacehandy_acdd8e02922c3b608fd59283bb1d272eb}{}\label{namespacehandy_acdd8e02922c3b608fd59283bb1d272eb}
+
+
+Delegate the call to \hyperlink{namespacehandy_a553ff960ee6b2b0142aecc9ed04ac6bc}{handy\+::print()} with {\bf std\+::cout} as the {\bf std\+::ostream} argument. 
+
+\begin{DoxyNote}{Note}
+Only allowed if the first type {\ttfamily T} does not inherits (or is) from a {\bf std\+::stringstream} or from a {\bf std\+::ostream} classes 
+\end{DoxyNote}
+\index{handy@{handy}!range@{range}}
+\index{range@{range}!handy@{handy}}
+\subsubsection[{\texorpdfstring{range(const First \&first, const Last \&last, const Step \&step)}{range(const First &first, const Last &last, const Step &step)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename First , typename Last , typename Step $>$ decltype(auto) handy\+::range (
+\begin{DoxyParamCaption}
+\item[{const First \&}]{first, }
+\item[{const Last \&}]{last, }
+\item[{const Step \&}]{step}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_aefc805a0d2f653bd767202a6e2eb189d}{}\label{namespacehandy_aefc805a0d2f653bd767202a6e2eb189d}
+\index{handy@{handy}!range@{range}}
+\index{range@{range}!handy@{handy}}
+\subsubsection[{\texorpdfstring{range(const First \&first, const Last \&last)}{range(const First &first, const Last &last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename First , typename Last $>$ decltype(auto) handy\+::range (
+\begin{DoxyParamCaption}
+\item[{const First \&}]{first, }
+\item[{const Last \&}]{last}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_af378d0c8411cee1d5045ccde47393db7}{}\label{namespacehandy_af378d0c8411cee1d5045ccde47393db7}
+\index{handy@{handy}!range@{range}}
+\index{range@{range}!handy@{handy}}
+\subsubsection[{\texorpdfstring{range(const Last \&last)}{range(const Last &last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Last $>$ decltype(auto) handy\+::range (
+\begin{DoxyParamCaption}
+\item[{const Last \&}]{last}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacehandy_ad3ed0e5c4cfa2cfbb84b079af021842d}{}\label{namespacehandy_ad3ed0e5c4cfa2cfbb84b079af021842d}
+
+
+\subsection{Variable Documentation}
+\index{handy@{handy}!C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1@{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}}
+\index{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1@{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}!handy@{handy}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}{CONTAINER_1}}]{\setlength{\rightskip}{0pt plus 5cm}return handy\+::\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+1}\hypertarget{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}{}\label{namespacehandy_a233c0491c05c437359a4404cd9b94fcc}
+\index{handy@{handy}!S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N@{S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}}
+\index{S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N@{S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}!handy@{handy}}
+\subsubsection[{\texorpdfstring{S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}{SINGLE_CONTAINER_DECLARATION_N}}]{\setlength{\rightskip}{0pt plus 5cm}handy\+::\+S\+I\+N\+G\+L\+E\+\_\+\+C\+O\+N\+T\+A\+I\+N\+E\+R\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+O\+N\+\_\+N}\hypertarget{namespacehandy_a0bbcc72407282157424193da360bfa2b}{}\label{namespacehandy_a0bbcc72407282157424193da360bfa2b}

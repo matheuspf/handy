@@ -1,0 +1,364 @@
+\hypertarget{ZipIter_2Helpers_8h}{}\section{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Zip\+Iter/\+Helpers.h File Reference}
+\label{ZipIter_2Helpers_8h}\index{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Zip\+Iter/\+Helpers.\+h@{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Zip\+Iter/\+Helpers.\+h}}
+{\ttfamily \#include $<$type\+\_\+traits$>$}\\*
+{\ttfamily \#include $<$tuple$>$}\\*
+{\ttfamily \#include $<$iterator$>$}\\*
+Include dependency graph for Helpers.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{ZipIter_2Helpers_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{ZipIter_2Helpers_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable}{it\+::help\+::\+Iterable$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Simple trait for defining iterable types. \end{DoxyCompactList}\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01const_01T_01_4}{it\+::help\+::\+Iterable$<$ const T $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01T[N]_4}{it\+::help\+::\+Iterable$<$ T\mbox{[}\+N\mbox{]}$>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01const_01T[N]_4}{it\+::help\+::\+Iterable$<$ const T\mbox{[}\+N\mbox{]}$>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01T_01_5_01_4}{it\+::help\+::\+Iterable$<$ T $\ast$ $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01const_01T_01_5_01_4}{it\+::help\+::\+Iterable$<$ const T $\ast$ $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1SelectIterTag}{it\+::help\+::\+Select\+Iter\+Tag$<$... $>$}
+\begin{DoxyCompactList}\small\item\em Selects the smallest (the more generic) iterator type from an variadic argument list. \end{DoxyCompactList}\item 
+struct \hyperlink{structit_1_1help_1_1SelectIterTag_3_01Iter_01_4}{it\+::help\+::\+Select\+Iter\+Tag$<$ Iter $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1SelectIterTag_3_01Iter1_00_01Iter2_01_4}{it\+::help\+::\+Select\+Iter\+Tag$<$ Iter1, Iter2 $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1SelectIterTag_3_01Iter_00_01Iters_8_8_8_01_4}{it\+::help\+::\+Select\+Iter\+Tag$<$ Iter, Iters... $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1st__constant}{it\+::help\+::st\+\_\+constant$<$ V $>$}
+\begin{DoxyCompactList}\small\item\em Counts the number of arguments. If an argument is a tuple, sums its total size. \end{DoxyCompactList}\item 
+struct \hyperlink{structit_1_1help_1_1CountElements}{it\+::help\+::\+Count\+Elements$<$... $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1CountElements_3_4}{it\+::help\+::\+Count\+Elements$<$$>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1CountElements_3_01T_00_01Args_8_8_8_01_4}{it\+::help\+::\+Count\+Elements$<$ T, Args... $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1CountElements_3_01std_1_1tuple_3_01TupArgs_8_8_8_01_4_00_01Args_8_8_8_01_4}{it\+::help\+::\+Count\+Elements$<$ std\+::tuple$<$ Tup\+Args... $>$, Args... $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacestd}{std}
+\item 
+ \hyperlink{namespaceit}{it}
+\begin{DoxyCompactList}\small\item\em Main namespace. \end{DoxyCompactList}\item 
+ \hyperlink{namespaceit_1_1help}{it\+::help}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a7ed44deb77a176a77daf4c110960ac94}{N\+A\+R\+G\+S\+\_\+}(\+\_\+1,  \+\_\+2,  \+\_\+3,  \+\_\+4,  \+\_\+5,  \+\_\+6,  \+\_\+7,  \+\_\+8,  N, ...)~N
+\begin{DoxyCompactList}\small\item\em Trick to get the number of arguments passed to a macro. \end{DoxyCompactList}\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a2926846e60d0e98cb1c50defbbd6b48c}{N\+A\+R\+GS}(...)~\hyperlink{ZipIter_2Helpers_8h_a7ed44deb77a176a77daf4c110960ac94}{N\+A\+R\+G\+S\+\_\+}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, 8, 7, 6, 5, 4, 3, 2, 1)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{E\+X\+P\+A\+ND}(...)~\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+
+\begin{DoxyCompactList}\small\item\em Makes easier to expand the expressions. \end{DoxyCompactList}\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{C\+O\+N\+C\+AT}(x,  y)~\hyperlink{ZipIter_2Helpers_8h_acad9130bd1bd236f5baf83c07d4f537b}{C\+O\+N\+C\+A\+T\+\_\+}(x, y)
+\begin{DoxyCompactList}\small\item\em Concatenate two tokens. \end{DoxyCompactList}\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_acad9130bd1bd236f5baf83c07d4f537b}{C\+O\+N\+C\+A\+T\+\_\+}(x,  y)~\hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{E\+X\+P\+A\+ND}(x \#\# y)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a2b4664b38a99162bd8bb98e809636a70}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin}(x)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a21ca166197d4cb170371859c0425629b}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin}(x), \hyperlink{ZipIter_2Helpers_8h_a2b4664b38a99162bd8bb98e809636a70}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a3ae856854f6524478540153aa19d1897}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin}(x), \hyperlink{ZipIter_2Helpers_8h_a21ca166197d4cb170371859c0425629b}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a9a14a19bf6456e84a6a1f66dee31d688}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin}(x), \hyperlink{ZipIter_2Helpers_8h_a3ae856854f6524478540153aa19d1897}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a17ac2fb22c6ce65fd4e333820f41a600}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin}(x), \hyperlink{ZipIter_2Helpers_8h_a9a14a19bf6456e84a6a1f66dee31d688}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a61413011dbaa35974fe6825b3a72f013}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin}(x), \hyperlink{ZipIter_2Helpers_8h_a17ac2fb22c6ce65fd4e333820f41a600}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a6707db84d64f293a8bfabf959ae39012}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin}(x), \hyperlink{ZipIter_2Helpers_8h_a61413011dbaa35974fe6825b3a72f013}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_ad1f25c14cc84aa455ee1356afc34ce97}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N8}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin}(x), \hyperlink{ZipIter_2Helpers_8h_a6707db84d64f293a8bfabf959ae39012}{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_ab4c7d1f8bb8eef1ce756230705da0143}{Z\+I\+P\+\_\+\+E\+N\+D1}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end}(x)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a75636706c2a4eb83c81ec04d4bcc4c02}{Z\+I\+P\+\_\+\+E\+N\+D2}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end}(x), \hyperlink{ZipIter_2Helpers_8h_ab4c7d1f8bb8eef1ce756230705da0143}{Z\+I\+P\+\_\+\+E\+N\+D1}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_aa57bed0c229847826718942763c72f4c}{Z\+I\+P\+\_\+\+E\+N\+D3}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end}(x), \hyperlink{ZipIter_2Helpers_8h_a75636706c2a4eb83c81ec04d4bcc4c02}{Z\+I\+P\+\_\+\+E\+N\+D2}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_aeff0da1e5068fd7f455bc9a5eb126a24}{Z\+I\+P\+\_\+\+E\+N\+D4}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end}(x), \hyperlink{ZipIter_2Helpers_8h_aa57bed0c229847826718942763c72f4c}{Z\+I\+P\+\_\+\+E\+N\+D3}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a0598e7c1d1f7c93c1be88e77a6b11a55}{Z\+I\+P\+\_\+\+E\+N\+D5}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end}(x), \hyperlink{ZipIter_2Helpers_8h_aeff0da1e5068fd7f455bc9a5eb126a24}{Z\+I\+P\+\_\+\+E\+N\+D4}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_ac79a3a316f6320e8639a68acc619a346}{Z\+I\+P\+\_\+\+E\+N\+D6}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end}(x), \hyperlink{ZipIter_2Helpers_8h_a0598e7c1d1f7c93c1be88e77a6b11a55}{Z\+I\+P\+\_\+\+E\+N\+D5}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a59dcb071099e066397ab7b55412cb915}{Z\+I\+P\+\_\+\+E\+N\+D7}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end}(x), \hyperlink{ZipIter_2Helpers_8h_ac79a3a316f6320e8639a68acc619a346}{Z\+I\+P\+\_\+\+E\+N\+D6}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a4b8fe1756fdee9cb6c81581ec2c4da7d}{Z\+I\+P\+\_\+\+E\+N\+D8}(x, ...)~\+::\hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end}(x), \hyperlink{ZipIter_2Helpers_8h_a59dcb071099e066397ab7b55412cb915}{Z\+I\+P\+\_\+\+E\+N\+D7}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{ZipIter_2Helpers_8h_a1aba6111d331e66dcf70f5847b4f5221}{Z\+I\+P\+\_\+\+A\+LL}(...)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Iter$>$ }\\using \hyperlink{namespaceit_1_1help_a9dcda939d491265c5a917329449ff2af}{it\+::help\+::\+Select\+Iter\+Tag\+\_\+t} = typename Select\+Iter\+Tag$<$ Iter... $>$\+::type
+\item 
+{\footnotesize template$<$typename... Iters$>$ }\\using \hyperlink{namespaceit_1_1help_a3d72c14eeb8c9d60c70f79b551c578fe}{it\+::help\+::\+Iterator\+Base} = {\bf std\+::iterator}$<$ help\+::\+Select\+Iter\+Tag\+\_\+t$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ Iters $>$\+::iterator\+\_\+category... $>$, {\bf std\+::tuple}$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ Iters $>$\+::value\+\_\+type... $>$ $>$
+\item 
+{\footnotesize template$<$typename Tag , typename Minimum\+Tag $>$ }\\using \hyperlink{namespaceit_1_1help_a4f5a2a2ccba17fd27922b388ffaed363}{it\+::help\+::\+Enable\+If\+Minimum\+Tag} = std\+::enable\+\_\+if\+\_\+t$<$ iter\+Tag\+Order(Tag\{\}) $>$=iter\+Tag\+Order(Minimum\+Tag\{\}), int $>$
+\begin{DoxyCompactList}\small\item\em Only let functions to be called if the iterator tag satisfies a minimum tag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\void \hyperlink{namespacestd_a094a73442afde9746a90fd3ab1e4843a}{std\+::swap} ({\bf std\+::tuple}$<$ Args... $>$ \&\&a, {\bf std\+::tuple}$<$ Args... $>$ \&\&b) noexcept
+\item 
+{\footnotesize template$<$class Apply , typename... Args, std\+::size\+\_\+t... Is, typename... Func\+Args$>$ }\\void \hyperlink{namespaceit_1_1help_a5820d5d8b10a14b119b1a4402b0d0576}{it\+::help\+::exec\+Tuple} (Apply apply, {\bf std\+::tuple}$<$ Args... $>$ \&tup, std\+::index\+\_\+sequence$<$ Is... $>$, Func\+Args \&\&...func\+Args)
+\begin{DoxyCompactList}\small\item\em This function applies a function to every argument of the tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Apply , typename... Args, typename... Func\+Args$>$ }\\void \hyperlink{namespaceit_1_1help_a934f50a02efe9f4128920fec125e7e9f}{it\+::help\+::exec\+Tuple} (Apply apply, {\bf std\+::tuple}$<$ Args... $>$ \&tup, Func\+Args \&\&...func\+Args)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t P, class Apply , class... Args, std\+::size\+\_\+t... Is, std\+::size\+\_\+t... Js$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a99e8e2c8ea28d4c67e335d64a67434fd}{it\+::help\+::reverse} (Apply apply, {\bf std\+::tuple}$<$ Args... $>$ \&\&tup, std\+::index\+\_\+sequence$<$ Is... $>$, std\+::index\+\_\+sequence$<$ Js... $>$)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t P, class Apply , class... Args$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_aa4830ca624b45e8ebdfff900e3470946}{it\+::help\+::reverse} (Apply apply, Args \&\&...args)
+\item 
+constexpr int \hyperlink{namespaceit_1_1help_ad5efd6f9a3703da509d0853b95b515db}{it\+::help\+::iter\+Tag\+Order} ({\bf std\+::forward\+\_\+iterator\+\_\+tag})
+\begin{DoxyCompactList}\small\item\em This is the order of the iterator types. The smaller is the more generic. \end{DoxyCompactList}\item 
+constexpr int \hyperlink{namespaceit_1_1help_afa9d72e80bd7c53bb9026f0b5c1fd246}{it\+::help\+::iter\+Tag\+Order} ({\bf std\+::bidirectional\+\_\+iterator\+\_\+tag})
+\item 
+constexpr int \hyperlink{namespaceit_1_1help_ace8fe9c3bfab2e8d912b0b4ee5cd73cf}{it\+::help\+::iter\+Tag\+Order} ({\bf std\+::random\+\_\+access\+\_\+iterator\+\_\+tag})
+\item 
+{\footnotesize template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin} (T \&\&t) noexcept
+\item 
+{\footnotesize template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a0e251e42731da1b6effa4e0670de4aa3}{it\+::help\+::begin} (T t) noexcept
+\item 
+{\footnotesize template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end} (T \&\&t) noexcept
+\item 
+{\footnotesize template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_ad128b1f9a801d33454c092c5d64b48a6}{it\+::help\+::end} (T t) noexcept
+\item 
+{\footnotesize template$<$typename... Args\+Tup$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a8dad918e01e53be17799fb6e354405c5}{it\+::help\+::pack\+Args} ({\bf std\+::tuple}$<$ Args\+Tup... $>$ tup)
+\item 
+{\footnotesize template$<$typename T $>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_ac3e8099edb27b15fb5e922d8e84ce726}{it\+::help\+::pack\+Args} (T \&\&t)
+\item 
+{\footnotesize template$<$typename... Args\+Tup, typename... Args$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_ae80ffec31c98e283cd2c0f6d439e5848}{it\+::help\+::pack\+Args} ({\bf std\+::tuple}$<$ Args\+Tup... $>$ tup, Args \&\&...args)
+\item 
+{\footnotesize template$<$typename T , typename... Args$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a7acb1e6ed32d92b01ff1b52fbd1efe26}{it\+::help\+::pack\+Args} (T \&\&t, Args \&\&...args)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+auto \hyperlink{namespaceit_1_1help_a47a31a8a4344c62bfbc0f7686d6160e1}{it\+::help\+::increment} = \mbox{[}$\,$\mbox{]}(auto\&\& x) \{ return ++x; \}
+\begin{DoxyCompactList}\small\item\em Simple functions to be used in the \textquotesingle{}exec\+Tuple\textquotesingle{} function. Defined as lambdas for simplicity. \end{DoxyCompactList}\item 
+auto \hyperlink{namespaceit_1_1help_aede42ee87c964f50151e495144d1085b}{it\+::help\+::decrement} = \mbox{[}$\,$\mbox{]}(auto\&\& x) \{ return -\/-\/x; \}
+\item 
+auto \hyperlink{namespaceit_1_1help_af07b5865ce1568f58510ad90edb12466}{it\+::help\+::add} = \mbox{[}$\,$\mbox{]}(auto\&\& x, int inc) \{ return x = x + inc; \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!C\+O\+N\+C\+AT@{C\+O\+N\+C\+AT}}
+\index{C\+O\+N\+C\+AT@{C\+O\+N\+C\+AT}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+C\+AT}{CONCAT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+C\+AT(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~{\bf C\+O\+N\+C\+A\+T\+\_\+}(x, y)}\hypertarget{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{}\label{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}
+
+
+Concatenate two tokens. 
+
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!C\+O\+N\+C\+A\+T\+\_\+@{C\+O\+N\+C\+A\+T\+\_\+}}
+\index{C\+O\+N\+C\+A\+T\+\_\+@{C\+O\+N\+C\+A\+T\+\_\+}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+C\+A\+T\+\_\+}{CONCAT_}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+C\+A\+T\+\_\+(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~{\bf E\+X\+P\+A\+ND}(x \#\# y)}\hypertarget{ZipIter_2Helpers_8h_acad9130bd1bd236f5baf83c07d4f537b}{}\label{ZipIter_2Helpers_8h_acad9130bd1bd236f5baf83c07d4f537b}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!E\+X\+P\+A\+ND@{E\+X\+P\+A\+ND}}
+\index{E\+X\+P\+A\+ND@{E\+X\+P\+A\+ND}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{E\+X\+P\+A\+ND}{EXPAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+P\+A\+ND(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+}\hypertarget{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{}\label{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}
+
+
+Makes easier to expand the expressions. 
+
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!N\+A\+R\+GS@{N\+A\+R\+GS}}
+\index{N\+A\+R\+GS@{N\+A\+R\+GS}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{N\+A\+R\+GS}{NARGS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+A\+R\+GS(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf N\+A\+R\+G\+S\+\_\+}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, 8, 7, 6, 5, 4, 3, 2, 1)}\hypertarget{ZipIter_2Helpers_8h_a2926846e60d0e98cb1c50defbbd6b48c}{}\label{ZipIter_2Helpers_8h_a2926846e60d0e98cb1c50defbbd6b48c}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!N\+A\+R\+G\+S\+\_\+@{N\+A\+R\+G\+S\+\_\+}}
+\index{N\+A\+R\+G\+S\+\_\+@{N\+A\+R\+G\+S\+\_\+}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{N\+A\+R\+G\+S\+\_\+}{NARGS_}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+A\+R\+G\+S\+\_\+(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+1, }
+\item[{}]{\+\_\+2, }
+\item[{}]{\+\_\+3, }
+\item[{}]{\+\_\+4, }
+\item[{}]{\+\_\+5, }
+\item[{}]{\+\_\+6, }
+\item[{}]{\+\_\+7, }
+\item[{}]{\+\_\+8, }
+\item[{}]{N, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~N}\hypertarget{ZipIter_2Helpers_8h_a7ed44deb77a176a77daf4c110960ac94}{}\label{ZipIter_2Helpers_8h_a7ed44deb77a176a77daf4c110960ac94}
+
+
+Trick to get the number of arguments passed to a macro. 
+
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+A\+LL@{Z\+I\+P\+\_\+\+A\+LL}}
+\index{Z\+I\+P\+\_\+\+A\+LL@{Z\+I\+P\+\_\+\+A\+LL}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+A\+LL}{ZIP_ALL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+A\+LL(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{ZipIter_2Helpers_8h_a1aba6111d331e66dcf70f5847b4f5221}{}\label{ZipIter_2Helpers_8h_a1aba6111d331e66dcf70f5847b4f5221}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{EXPAND}(::\hyperlink{namespaceit_ac53929012901097d70c031455ed71c3b}{it::zipIter}(\hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{EXPAND}(\hyperlink{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{CONCAT}(ZIP\_BEGIN, \hyperlink{ZipIter_2Helpers_8h_a2926846e60d0e98cb1c50defbbd6b48c}{NARGS}(\_\_VA\_ARGS\_\_)))(
+      \_\_VA\_ARGS\_\_)),  \(\backslash\)
+                            ::\hyperlink{namespaceit_ac53929012901097d70c031455ed71c3b}{it::zipIter}(\hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{EXPAND}(\hyperlink{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{CONCAT}(ZIP\_END,   
+      \hyperlink{ZipIter_2Helpers_8h_a2926846e60d0e98cb1c50defbbd6b48c}{NARGS}(\_\_VA\_ARGS\_\_)))(\_\_VA\_ARGS\_\_)))
+\end{DoxyCode}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1}}
+\index{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1}{ZIP_BEGIN1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::begin}(x)}\hypertarget{ZipIter_2Helpers_8h_a2b4664b38a99162bd8bb98e809636a70}{}\label{ZipIter_2Helpers_8h_a2b4664b38a99162bd8bb98e809636a70}
+When using stl functions which takes iterator parameters of the form (first, last), these macros make it much easier. Simply use \hyperlink{ZipIter_2Helpers_8h_a1aba6111d331e66dcf70f5847b4f5221}{Z\+I\+P\+\_\+\+A\+L\+L(container)} for a container class that is iterable (that is, has {\bf std\+::begin} and {\bf std\+::end} definitions or is a pointer). These macros simply call \hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{it\+::help\+::begin} and \hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{it\+::help\+::end} for each argument, delegating the call to {\bf std\+::begin} and {\bf std\+::end} while also supporting pointer types to be called. \index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2}}
+\index{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2}{ZIP_BEGIN2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::begin}(x), {\bf Z\+I\+P\+\_\+\+B\+E\+G\+I\+N1}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a21ca166197d4cb170371859c0425629b}{}\label{ZipIter_2Helpers_8h_a21ca166197d4cb170371859c0425629b}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3}}
+\index{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3}{ZIP_BEGIN3}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::begin}(x), {\bf Z\+I\+P\+\_\+\+B\+E\+G\+I\+N2}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a3ae856854f6524478540153aa19d1897}{}\label{ZipIter_2Helpers_8h_a3ae856854f6524478540153aa19d1897}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4}}
+\index{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4}{ZIP_BEGIN4}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::begin}(x), {\bf Z\+I\+P\+\_\+\+B\+E\+G\+I\+N3}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a9a14a19bf6456e84a6a1f66dee31d688}{}\label{ZipIter_2Helpers_8h_a9a14a19bf6456e84a6a1f66dee31d688}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5}}
+\index{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5}{ZIP_BEGIN5}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::begin}(x), {\bf Z\+I\+P\+\_\+\+B\+E\+G\+I\+N4}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a17ac2fb22c6ce65fd4e333820f41a600}{}\label{ZipIter_2Helpers_8h_a17ac2fb22c6ce65fd4e333820f41a600}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6}}
+\index{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6}{ZIP_BEGIN6}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::begin}(x), {\bf Z\+I\+P\+\_\+\+B\+E\+G\+I\+N5}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a61413011dbaa35974fe6825b3a72f013}{}\label{ZipIter_2Helpers_8h_a61413011dbaa35974fe6825b3a72f013}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7}}
+\index{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7}{ZIP_BEGIN7}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::begin}(x), {\bf Z\+I\+P\+\_\+\+B\+E\+G\+I\+N6}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a6707db84d64f293a8bfabf959ae39012}{}\label{ZipIter_2Helpers_8h_a6707db84d64f293a8bfabf959ae39012}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+B\+E\+G\+I\+N8@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N8}}
+\index{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N8@{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N8}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+B\+E\+G\+I\+N8}{ZIP_BEGIN8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+B\+E\+G\+I\+N8(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::begin}(x), {\bf Z\+I\+P\+\_\+\+B\+E\+G\+I\+N7}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_ad1f25c14cc84aa455ee1356afc34ce97}{}\label{ZipIter_2Helpers_8h_ad1f25c14cc84aa455ee1356afc34ce97}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+E\+N\+D1@{Z\+I\+P\+\_\+\+E\+N\+D1}}
+\index{Z\+I\+P\+\_\+\+E\+N\+D1@{Z\+I\+P\+\_\+\+E\+N\+D1}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+E\+N\+D1}{ZIP_END1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+E\+N\+D1(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::end}(x)}\hypertarget{ZipIter_2Helpers_8h_ab4c7d1f8bb8eef1ce756230705da0143}{}\label{ZipIter_2Helpers_8h_ab4c7d1f8bb8eef1ce756230705da0143}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+E\+N\+D2@{Z\+I\+P\+\_\+\+E\+N\+D2}}
+\index{Z\+I\+P\+\_\+\+E\+N\+D2@{Z\+I\+P\+\_\+\+E\+N\+D2}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+E\+N\+D2}{ZIP_END2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+E\+N\+D2(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::end}(x), {\bf Z\+I\+P\+\_\+\+E\+N\+D1}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a75636706c2a4eb83c81ec04d4bcc4c02}{}\label{ZipIter_2Helpers_8h_a75636706c2a4eb83c81ec04d4bcc4c02}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+E\+N\+D3@{Z\+I\+P\+\_\+\+E\+N\+D3}}
+\index{Z\+I\+P\+\_\+\+E\+N\+D3@{Z\+I\+P\+\_\+\+E\+N\+D3}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+E\+N\+D3}{ZIP_END3}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+E\+N\+D3(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::end}(x), {\bf Z\+I\+P\+\_\+\+E\+N\+D2}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_aa57bed0c229847826718942763c72f4c}{}\label{ZipIter_2Helpers_8h_aa57bed0c229847826718942763c72f4c}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+E\+N\+D4@{Z\+I\+P\+\_\+\+E\+N\+D4}}
+\index{Z\+I\+P\+\_\+\+E\+N\+D4@{Z\+I\+P\+\_\+\+E\+N\+D4}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+E\+N\+D4}{ZIP_END4}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+E\+N\+D4(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::end}(x), {\bf Z\+I\+P\+\_\+\+E\+N\+D3}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_aeff0da1e5068fd7f455bc9a5eb126a24}{}\label{ZipIter_2Helpers_8h_aeff0da1e5068fd7f455bc9a5eb126a24}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+E\+N\+D5@{Z\+I\+P\+\_\+\+E\+N\+D5}}
+\index{Z\+I\+P\+\_\+\+E\+N\+D5@{Z\+I\+P\+\_\+\+E\+N\+D5}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+E\+N\+D5}{ZIP_END5}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+E\+N\+D5(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::end}(x), {\bf Z\+I\+P\+\_\+\+E\+N\+D4}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a0598e7c1d1f7c93c1be88e77a6b11a55}{}\label{ZipIter_2Helpers_8h_a0598e7c1d1f7c93c1be88e77a6b11a55}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+E\+N\+D6@{Z\+I\+P\+\_\+\+E\+N\+D6}}
+\index{Z\+I\+P\+\_\+\+E\+N\+D6@{Z\+I\+P\+\_\+\+E\+N\+D6}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+E\+N\+D6}{ZIP_END6}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+E\+N\+D6(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::end}(x), {\bf Z\+I\+P\+\_\+\+E\+N\+D5}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_ac79a3a316f6320e8639a68acc619a346}{}\label{ZipIter_2Helpers_8h_ac79a3a316f6320e8639a68acc619a346}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+E\+N\+D7@{Z\+I\+P\+\_\+\+E\+N\+D7}}
+\index{Z\+I\+P\+\_\+\+E\+N\+D7@{Z\+I\+P\+\_\+\+E\+N\+D7}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+E\+N\+D7}{ZIP_END7}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+E\+N\+D7(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::end}(x), {\bf Z\+I\+P\+\_\+\+E\+N\+D6}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a59dcb071099e066397ab7b55412cb915}{}\label{ZipIter_2Helpers_8h_a59dcb071099e066397ab7b55412cb915}
+\index{Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}!Z\+I\+P\+\_\+\+E\+N\+D8@{Z\+I\+P\+\_\+\+E\+N\+D8}}
+\index{Z\+I\+P\+\_\+\+E\+N\+D8@{Z\+I\+P\+\_\+\+E\+N\+D8}!Zip\+Iter/\+Helpers.\+h@{Zip\+Iter/\+Helpers.\+h}}
+\subsubsection[{\texorpdfstring{Z\+I\+P\+\_\+\+E\+N\+D8}{ZIP_END8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z\+I\+P\+\_\+\+E\+N\+D8(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\+::{\bf it\+::help\+::end}(x), {\bf Z\+I\+P\+\_\+\+E\+N\+D7}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{ZipIter_2Helpers_8h_a4b8fe1756fdee9cb6c81581ec2c4da7d}{}\label{ZipIter_2Helpers_8h_a4b8fe1756fdee9cb6c81581ec2c4da7d}

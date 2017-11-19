@@ -1,0 +1,135 @@
+\hypertarget{Container_2Helpers_8h}{}\section{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Container/\+Helpers.h File Reference}
+\label{Container_2Helpers_8h}\index{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Container/\+Helpers.\+h@{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Container/\+Helpers.\+h}}
+{\ttfamily \#include $<$type\+\_\+traits$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$array$>$}\\*
+{\ttfamily \#include $<$initializer\+\_\+list$>$}\\*
+Include dependency graph for Helpers.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Container_2Helpers_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{Container_2Helpers_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1multiply}{cnt\+::help\+::multiply$<$... $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1multiply_3_01I_00_01Is_8_8_8_01_4}{cnt\+::help\+::multiply$<$ I, Is... $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1multiply_3_4}{cnt\+::help\+::multiply$<$$>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And}{cnt\+::help\+::\+And$<$... $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And_3_01B1_00_01Bs_8_8_8_01_4}{cnt\+::help\+::\+And$<$ B1, Bs... $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And_3_01false_00_01Bs_8_8_8_01_4}{cnt\+::help\+::\+And$<$ false, Bs... $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And_3_01true_01_4}{cnt\+::help\+::\+And$<$ true $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And_3_4}{cnt\+::help\+::\+And$<$$>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1IntegralType}{cnt\+::help\+::\+Integral\+Type}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1IterableType}{cnt\+::help\+::\+Iterable\+Type}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1IteratorType}{cnt\+::help\+::\+Iterator\+Type}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacestd}{std}
+\item 
+ \hyperlink{namespacecnt}{cnt}
+\item 
+ \hyperlink{namespacecnt_1_1help}{cnt\+::help}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , std\+::size\+\_\+t N$>$ }\\using \hyperlink{namespacecnt_1_1help_aff828fb7490c72d9e29ff571ef973a5e}{cnt\+::help\+::\+Select\+Type} = std\+::conditional\+\_\+t$<$ help\+::is\+Array$<$ N $>$, {\bf std\+::array}$<$ T, N $>$, {\bf std\+::vector}$<$ T $>$$>$
+\begin{DoxyCompactList}\small\item\em Selects either a \textquotesingle{}std\+::array$<$\+T, N$>$\textquotesingle{} or a \textquotesingle{}std\+::vector$<$\+T$>$\textquotesingle{} depending on the size \textquotesingle{}N\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\using \hyperlink{namespacecnt_1_1help_adf9d100b298c3b1342f7571dfbe1e3ac}{cnt\+::help\+::\+Enable\+If\+Array} = std\+::enable\+\_\+if\+\_\+t$<$ is\+Array$<$ N $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if \textquotesingle{}N\textquotesingle{} satisfy \textquotesingle{}is\+Array\textquotesingle{} trait. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\using \hyperlink{namespacecnt_1_1help_ac3c31a0ef3a73ff16367e0c7ae9df545}{cnt\+::help\+::\+Enable\+If\+Vector} = std\+::enable\+\_\+if\+\_\+t$<$ is\+Vector$<$ N $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if \textquotesingle{}N\textquotesingle{} satisfy \textquotesingle{}is\+Vector\textquotesingle{} trait. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\using \hyperlink{namespacecnt_1_1help_a59b3cc028ea7b2a640eb6603befae7bf}{cnt\+::help\+::\+Enable\+If\+Zero} = std\+::enable\+\_\+if\+\_\+t$<$ (N==0), int $>$
+\begin{DoxyCompactList}\small\item\em Enable if \textquotesingle{}N\textquotesingle{} is not \textquotesingle{}0\textquotesingle{} trait. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\using \hyperlink{namespacecnt_1_1help_aa87745c6be80922ee43c76953bfc5a74}{cnt\+::help\+::\+Enable\+If\+Integral} = std\+::enable\+\_\+if\+\_\+t$<$ And\+\_\+v$<$ \hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v}$<$ Args $>$... $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if all \textquotesingle{}Args\textquotesingle{} are integrals. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\using \hyperlink{namespacecnt_1_1help_af28e6c14e973fb60e8a41270dbcb249c}{cnt\+::help\+::\+Enable\+If\+Iterable} = std\+::enable\+\_\+if\+\_\+t$<$ And\+\_\+v$<$ is\+Iterable$<$ Args $>$()... $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if all \textquotesingle{}Args\textquotesingle{} are iterables of integrals. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\using \hyperlink{namespacecnt_1_1help_a104cf8940601cb2ad309c0993667d91f}{cnt\+::help\+::\+Enable\+If\+Iterator} = std\+::enable\+\_\+if\+\_\+t$<$ And\+\_\+v$<$ is\+Iterator$<$ Args $>$()... $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if all \textquotesingle{}Args\textquotesingle{} are iterators to integrals. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\using \hyperlink{namespacecnt_1_1help_a6b660ad7dc1ea8aa67f0410733a0a3c9}{cnt\+::help\+::\+Enable\+If\+Integral\+Or\+Iterable} = std\+::enable\+\_\+if\+\_\+t$<$ And\+\_\+v$<$(\hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v}$<$ Args $>$$\vert$$\vert$is\+Iterable$<$ Args $>$())... $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if all \textquotesingle{}Args\textquotesingle{} are either integrals or iterable types of integrals. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+\subsection*{Functions}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_aff9b7e2919a865791024719cf1b1443f}{cnt\+::help\+::is\+Iterable\+Impl} (...)
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a318111e0d993a2828a6891bc2ec7ff63}{cnt\+::help\+::is\+Iterable\+Impl} (decltype(\hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v}$<$ decltype($\ast${\bf std\+::begin}({\bf std\+::declval}$<$ T $>$()))$>$, int\{\})$\ast$)
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_aeb5c3fce1a6876c4cefecde18ba7daf0}{cnt\+::help\+::is\+Iterable} ()
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a02c1f10402bc533c3130b68848768589}{cnt\+::help\+::is\+Iterator\+Impl} (...)
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a3832534d328c3ddd3b1510ef3fec7dc8}{cnt\+::help\+::is\+Iterator\+Impl} (decltype(\hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v}$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ T $>$\+::value\+\_\+type $>$, int\{\})$\ast$)
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a8461005914a45b87910a6f36746eb4f4}{cnt\+::help\+::is\+Iterator} ()
+\end{DoxyCompactItemize}
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr {\bf std\+::size\+\_\+t} \hyperlink{namespacecnt_1_1help_a0f05823dbd2465382e7961e1b69e5f51}{cnt\+::help\+::max\+Size} = 100000 $\ast$ sizeof(char)
+\begin{DoxyCompactList}\small\item\em A single stack allocation must not exceed this limit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename U $>$ }\\constexpr bool \hyperlink{namespacestd_a50247bc7f9f04615f77ddc81056bb0af}{std\+::is\+\_\+same\+\_\+v} = {\bf std\+::is\+\_\+same}$<$ T, U $>$\+::value
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr bool \hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v} = {\bf std\+::is\+\_\+integral}$<$T$>$\+::value
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t... Is$>$ }\\constexpr {\bf std\+::size\+\_\+t} \hyperlink{namespacecnt_1_1help_ab018f6aa5c1016ecf5d0d825cf8d362f}{cnt\+::help\+::multiply\+\_\+v} = multiply$<$Is...$>$\+::value
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool... Bs$>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a502eecdcb745c74d4f7457265b764ef2}{cnt\+::help\+::\+And\+\_\+v} = And$<$ Bs... $>$\+::value
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_aa31a937cfd47ea6364195d39394f8fde}{cnt\+::help\+::is\+Array} = ((N $>$ 0) \&\& (N $<$ max\+Size)) ? true \+: false
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a5d40a2583c5a58f9f4540ef0518296d5}{cnt\+::help\+::is\+Vector} = !is\+Array$<$ N $>$
+\end{DoxyCompactItemize}
+
+
+
+\subsection{Detailed Description}
+Some metaprogramming helpers 

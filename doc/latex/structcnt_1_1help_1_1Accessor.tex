@@ -1,0 +1,176 @@
+\hypertarget{structcnt_1_1help_1_1Accessor}{}\section{cnt\+:\+:help\+:\+:Accessor$<$ Base\+Type $>$ Struct Template Reference}
+\label{structcnt_1_1help_1_1Accessor}\index{cnt\+::help\+::\+Accessor$<$ Base\+Type $>$@{cnt\+::help\+::\+Accessor$<$ Base\+Type $>$}}
+
+
+We inherit from either \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Container}{Container}\textquotesingle{} or \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Slice}{Slice}\textquotesingle{}.  
+
+
+
+
+{\ttfamily \#include $<$Container.\+h$>$}
+
+
+
+Inheritance diagram for cnt\+:\+:help\+:\+:Accessor$<$ Base\+Type $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{structcnt_1_1help_1_1Accessor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for cnt\+:\+:help\+:\+:Accessor$<$ Base\+Type $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{structcnt_1_1help_1_1Accessor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{structcnt_1_1help_1_1Accessor_a6728450f8fdeca32e8ed372b41b3467b}{Base} = Base\+Type
+\item 
+using \hyperlink{structcnt_1_1help_1_1Accessor_ad8a10e7f904fd874307b32b298aa1d54}{value\+\_\+type} = typename Base\+::value\+\_\+type
+\item 
+using \hyperlink{structcnt_1_1help_1_1Accessor_a75659462be135d55bf8f4d6409b84a1f}{reference} = typename Base\+::reference
+\item 
+using \hyperlink{structcnt_1_1help_1_1Accessor_a8575d9de6bcb21a1bd6935d500cfcb89}{const\+\_\+reference} = typename Base\+::const\+\_\+reference
+\end{DoxyCompactItemize}
+
+\subsection*{Public Member Functions}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Args, Enable\+If\+Integral\+Or\+Iterable$<$ Args... $>$  = 0$>$ }\\\hyperlink{structcnt_1_1help_1_1Accessor_a8575d9de6bcb21a1bd6935d500cfcb89}{const\+\_\+reference} \hyperlink{structcnt_1_1help_1_1Accessor_afb70ea54cd8e9104c2767fd78984857d}{operator()} (const Args \&...args) const 
+\begin{DoxyCompactList}\small\item\em Integral or Iterable types. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args, Enable\+If\+Integral\+Or\+Iterable$<$ Args... $>$  = 0$>$ }\\\hyperlink{structcnt_1_1help_1_1Accessor_a75659462be135d55bf8f4d6409b84a1f}{reference} \hyperlink{structcnt_1_1help_1_1Accessor_a30413bd6e851ed42d3ac78d839d6d45b}{operator()} (const Args \&...args)
+\item 
+{\footnotesize template$<$typename U , help\+::\+Enable\+If\+Iterator$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ }\\\hyperlink{structcnt_1_1help_1_1Accessor_a8575d9de6bcb21a1bd6935d500cfcb89}{const\+\_\+reference} \hyperlink{structcnt_1_1help_1_1Accessor_a50f58d6227d262deddea121d510f393f}{operator()} (const U \&begin) const 
+\begin{DoxyCompactList}\small\item\em Iterators. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U , help\+::\+Enable\+If\+Iterator$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ }\\\hyperlink{structcnt_1_1help_1_1Accessor_a75659462be135d55bf8f4d6409b84a1f}{reference} \hyperlink{structcnt_1_1help_1_1Accessor_a4560af573dad5470885eac20b3fde6cb}{operator()} (const U \&begin)
+\item 
+{\footnotesize template$<$typename U , help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ }\\\hyperlink{structcnt_1_1help_1_1Accessor_a8575d9de6bcb21a1bd6935d500cfcb89}{const\+\_\+reference} \hyperlink{structcnt_1_1help_1_1Accessor_abb001ec4d22d578bd6d920bda29592b7}{operator()} ({\bf std\+::initializer\+\_\+list}$<$ U $>$ il) const 
+\begin{DoxyCompactList}\small\item\em Specific for \textquotesingle{}{\bf std\+::initializer\+\_\+list}\textquotesingle{}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U , help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ U $>$ $>$  = 0$>$ }\\\hyperlink{structcnt_1_1help_1_1Accessor_a75659462be135d55bf8f4d6409b84a1f}{reference} \hyperlink{structcnt_1_1help_1_1Accessor_ad9d67b1bb8ab0a019e71e1a4d10739c7}{operator()} ({\bf std\+::initializer\+\_\+list}$<$ U $>$ il)
+\item 
+{\footnotesize template$<$typename... Args, help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ Args $>$... $>$  = 0$>$ }\\constexpr \hyperlink{structcnt_1_1help_1_1Accessor_a8575d9de6bcb21a1bd6935d500cfcb89}{const\+\_\+reference} \hyperlink{structcnt_1_1help_1_1Accessor_adb43fbaf95d042436a2ec7c2b7d0d61e}{operator()} (const {\bf std\+::tuple}$<$ Args... $>$ \&tup) const 
+\begin{DoxyCompactList}\small\item\em For tuples containing integrals or iterables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args, help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ Args $>$... $>$  = 0$>$ }\\constexpr \hyperlink{structcnt_1_1help_1_1Accessor_a75659462be135d55bf8f4d6409b84a1f}{reference} \hyperlink{structcnt_1_1help_1_1Accessor_abdfcf9908cd4fc0baa2fe3e4693f69a6}{operator()} (const {\bf std\+::tuple}$<$ Args... $>$ \&tup)
+\item 
+{\footnotesize template$<$typename... Args, std\+::size\+\_\+t... Js$>$ }\\constexpr \hyperlink{structcnt_1_1help_1_1Accessor_a8575d9de6bcb21a1bd6935d500cfcb89}{const\+\_\+reference} \hyperlink{structcnt_1_1help_1_1Accessor_a2e3bc15b7287554c474554e8085643d6}{operator()} (const {\bf std\+::tuple}$<$ Args... $>$ \&tup, std\+::index\+\_\+sequence$<$ Js... $>$) const 
+\end{DoxyCompactItemize}
+
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Base\+Type$>$\\*
+struct cnt\+::help\+::\+Accessor$<$ Base\+Type $>$}
+
+We inherit from either \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Container}{Container}\textquotesingle{} or \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Slice}{Slice}\textquotesingle{}. 
+
+The only purpose of this class is to delegate calls to the accessors of \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Container}{Container}\textquotesingle{} or \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Slice}{Slice}\textquotesingle{}, so we dont have duplication of code and the classes can be written more clearly. 
+
+\subsection{Member Typedef Documentation}
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!Base@{Base}}
+\index{Base@{Base}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{Base}{Base}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ using {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::{\bf Base} =  Base\+Type}\hypertarget{structcnt_1_1help_1_1Accessor_a6728450f8fdeca32e8ed372b41b3467b}{}\label{structcnt_1_1help_1_1Accessor_a6728450f8fdeca32e8ed372b41b3467b}
+Some type definitions \index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!const\+\_\+reference@{const\+\_\+reference}}
+\index{const\+\_\+reference@{const\+\_\+reference}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{const\+\_\+reference}{const_reference}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ using {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::{\bf const\+\_\+reference} =  typename Base\+::const\+\_\+reference}\hypertarget{structcnt_1_1help_1_1Accessor_a8575d9de6bcb21a1bd6935d500cfcb89}{}\label{structcnt_1_1help_1_1Accessor_a8575d9de6bcb21a1bd6935d500cfcb89}
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!reference@{reference}}
+\index{reference@{reference}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{reference}{reference}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ using {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::{\bf reference} =  typename Base\+::reference}\hypertarget{structcnt_1_1help_1_1Accessor_a75659462be135d55bf8f4d6409b84a1f}{}\label{structcnt_1_1help_1_1Accessor_a75659462be135d55bf8f4d6409b84a1f}
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!value\+\_\+type@{value\+\_\+type}}
+\index{value\+\_\+type@{value\+\_\+type}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{value\+\_\+type}{value_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ using {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::{\bf value\+\_\+type} =  typename Base\+::value\+\_\+type}\hypertarget{structcnt_1_1help_1_1Accessor_ad8a10e7f904fd874307b32b298aa1d54}{}\label{structcnt_1_1help_1_1Accessor_ad8a10e7f904fd874307b32b298aa1d54}
+
+
+\subsection{Member Function Documentation}
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(const Args \&...\+args) const }{operator()(const Args &...args) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename... Args, Enable\+If\+Integral\+Or\+Iterable$<$ Args... $>$  = 0$>$ {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{const Args \&...}]{args}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_afb70ea54cd8e9104c2767fd78984857d}{}\label{structcnt_1_1help_1_1Accessor_afb70ea54cd8e9104c2767fd78984857d}
+
+
+Integral or Iterable types. 
+
+These functions simply delegate the access to either \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Container}{Container}\textquotesingle{} or \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Slice}{Slice}\textquotesingle{}, which have the same interface for access. They are also responsible to handle the S\+F\+I\+N\+AE to treat all different types of access. \index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(const Args \&...\+args)}{operator()(const Args &...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename... Args, Enable\+If\+Integral\+Or\+Iterable$<$ Args... $>$  = 0$>$ {\bf reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{const Args \&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_a30413bd6e851ed42d3ac78d839d6d45b}{}\label{structcnt_1_1help_1_1Accessor_a30413bd6e851ed42d3ac78d839d6d45b}
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(const U \&begin) const }{operator()(const U &begin) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename U , help\+::\+Enable\+If\+Iterator$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{const U \&}]{begin}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_a50f58d6227d262deddea121d510f393f}{}\label{structcnt_1_1help_1_1Accessor_a50f58d6227d262deddea121d510f393f}
+
+
+Iterators. 
+
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(const U \&begin)}{operator()(const U &begin)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename U , help\+::\+Enable\+If\+Iterator$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ {\bf reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{const U \&}]{begin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_a4560af573dad5470885eac20b3fde6cb}{}\label{structcnt_1_1help_1_1Accessor_a4560af573dad5470885eac20b3fde6cb}
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(std\+::initializer\+\_\+list$<$ U $>$ il) const }{operator()(std::initializer_list< U > il) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename U , help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::initializer\+\_\+list}$<$ U $>$}]{il}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_abb001ec4d22d578bd6d920bda29592b7}{}\label{structcnt_1_1help_1_1Accessor_abb001ec4d22d578bd6d920bda29592b7}
+
+
+Specific for \textquotesingle{}{\bf std\+::initializer\+\_\+list}\textquotesingle{}. 
+
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(std\+::initializer\+\_\+list$<$ U $>$ il)}{operator()(std::initializer_list< U > il)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename U , help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ U $>$ $>$  = 0$>$ {\bf reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::initializer\+\_\+list}$<$ U $>$}]{il}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_ad9d67b1bb8ab0a019e71e1a4d10739c7}{}\label{structcnt_1_1help_1_1Accessor_ad9d67b1bb8ab0a019e71e1a4d10739c7}
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(const std\+::tuple$<$ Args... $>$ \&tup) const }{operator()(const std::tuple< Args... > &tup) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename... Args, help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ Args $>$... $>$  = 0$>$ constexpr {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{const {\bf std\+::tuple}$<$ Args... $>$ \&}]{tup}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_adb43fbaf95d042436a2ec7c2b7d0d61e}{}\label{structcnt_1_1help_1_1Accessor_adb43fbaf95d042436a2ec7c2b7d0d61e}
+
+
+For tuples containing integrals or iterables. 
+
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(const std\+::tuple$<$ Args... $>$ \&tup)}{operator()(const std::tuple< Args... > &tup)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename... Args, help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ Args $>$... $>$  = 0$>$ constexpr {\bf reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{const {\bf std\+::tuple}$<$ Args... $>$ \&}]{tup}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_abdfcf9908cd4fc0baa2fe3e4693f69a6}{}\label{structcnt_1_1help_1_1Accessor_abdfcf9908cd4fc0baa2fe3e4693f69a6}
+\index{cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Accessor@{cnt\+::help\+::\+Accessor}}
+\subsubsection[{\texorpdfstring{operator()(const std\+::tuple$<$ Args... $>$ \&tup, std\+::index\+\_\+sequence$<$ Js... $>$) const }{operator()(const std::tuple< Args... > &tup, std::index_sequence< Js... >) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Base\+Type $>$ template$<$typename... Args, std\+::size\+\_\+t... Js$>$ constexpr {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Accessor}$<$ Base\+Type $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{const {\bf std\+::tuple}$<$ Args... $>$ \&}]{tup, }
+\item[{std\+::index\+\_\+sequence$<$ Js... $>$}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{structcnt_1_1help_1_1Accessor_a2e3bc15b7287554c474554e8085643d6}{}\label{structcnt_1_1help_1_1Accessor_a2e3bc15b7287554c474554e8085643d6}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Container/\hyperlink{Container_8h}{Container.\+h}\end{DoxyCompactItemize}

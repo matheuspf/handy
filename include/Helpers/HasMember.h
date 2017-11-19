@@ -117,6 +117,8 @@ struct Name : public std::integral_constant<bool, CONCAT(Name, Impl) <std::decay
 
 //@}
 
-} // namespace handy
+}
+
+
 
 #endif //HAS_MEMBER_H

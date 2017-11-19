@@ -1,0 +1,256 @@
+\hypertarget{namespaceit_1_1help}{}\section{it\+:\+:help Namespace Reference}
+\label{namespaceit_1_1help}\index{it\+::help@{it\+::help}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structit_1_1help_1_1CountElements}{Count\+Elements}
+\item 
+struct \hyperlink{structit_1_1help_1_1CountElements_3_01std_1_1tuple_3_01TupArgs_8_8_8_01_4_00_01Args_8_8_8_01_4}{Count\+Elements$<$ std\+::tuple$<$ Tup\+Args... $>$, Args... $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1CountElements_3_01T_00_01Args_8_8_8_01_4}{Count\+Elements$<$ T, Args... $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1CountElements_3_4}{Count\+Elements$<$$>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable}{Iterable}
+\begin{DoxyCompactList}\small\item\em Simple trait for defining iterable types. \end{DoxyCompactList}\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01const_01T_01_5_01_4}{Iterable$<$ const T $\ast$ $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01const_01T_01_4}{Iterable$<$ const T $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01const_01T[N]_4}{Iterable$<$ const T\mbox{[}\+N\mbox{]}$>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01T_01_5_01_4}{Iterable$<$ T $\ast$ $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1Iterable_3_01T[N]_4}{Iterable$<$ T\mbox{[}\+N\mbox{]}$>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1SelectIterTag}{Select\+Iter\+Tag}
+\begin{DoxyCompactList}\small\item\em Selects the smallest (the more generic) iterator type from an variadic argument list. \end{DoxyCompactList}\item 
+struct \hyperlink{structit_1_1help_1_1SelectIterTag_3_01Iter_01_4}{Select\+Iter\+Tag$<$ Iter $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1SelectIterTag_3_01Iter_00_01Iters_8_8_8_01_4}{Select\+Iter\+Tag$<$ Iter, Iters... $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1SelectIterTag_3_01Iter1_00_01Iter2_01_4}{Select\+Iter\+Tag$<$ Iter1, Iter2 $>$}
+\item 
+struct \hyperlink{structit_1_1help_1_1st__constant}{st\+\_\+constant}
+\begin{DoxyCompactList}\small\item\em Counts the number of arguments. If an argument is a tuple, sums its total size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Iter$>$ }\\using \hyperlink{namespaceit_1_1help_a9dcda939d491265c5a917329449ff2af}{Select\+Iter\+Tag\+\_\+t} = typename \hyperlink{structit_1_1help_1_1SelectIterTag}{Select\+Iter\+Tag}$<$ Iter... $>$\+::type
+\item 
+{\footnotesize template$<$typename... Iters$>$ }\\using \hyperlink{namespaceit_1_1help_a3d72c14eeb8c9d60c70f79b551c578fe}{Iterator\+Base} = {\bf std\+::iterator}$<$ \hyperlink{namespaceit_1_1help_a9dcda939d491265c5a917329449ff2af}{help\+::\+Select\+Iter\+Tag\+\_\+t}$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ Iters $>$\+::iterator\+\_\+category... $>$, {\bf std\+::tuple}$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ Iters $>$\+::value\+\_\+type... $>$ $>$
+\item 
+{\footnotesize template$<$typename Tag , typename Minimum\+Tag $>$ }\\using \hyperlink{namespaceit_1_1help_a4f5a2a2ccba17fd27922b388ffaed363}{Enable\+If\+Minimum\+Tag} = std\+::enable\+\_\+if\+\_\+t$<$ \hyperlink{namespaceit_1_1help_ad5efd6f9a3703da509d0853b95b515db}{iter\+Tag\+Order}(Tag\{\}) $>$=\hyperlink{namespaceit_1_1help_ad5efd6f9a3703da509d0853b95b515db}{iter\+Tag\+Order}(Minimum\+Tag\{\}), int $>$
+\begin{DoxyCompactList}\small\item\em Only let functions to be called if the iterator tag satisfies a minimum tag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Apply , typename... Args, std\+::size\+\_\+t... Is, typename... Func\+Args$>$ }\\void \hyperlink{namespaceit_1_1help_a5820d5d8b10a14b119b1a4402b0d0576}{exec\+Tuple} (Apply apply, {\bf std\+::tuple}$<$ Args... $>$ \&tup, std\+::index\+\_\+sequence$<$ Is... $>$, Func\+Args \&\&...func\+Args)
+\begin{DoxyCompactList}\small\item\em This function applies a function to every argument of the tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Apply , typename... Args, typename... Func\+Args$>$ }\\void \hyperlink{namespaceit_1_1help_a934f50a02efe9f4128920fec125e7e9f}{exec\+Tuple} (Apply apply, {\bf std\+::tuple}$<$ Args... $>$ \&tup, Func\+Args \&\&...func\+Args)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t P, class Apply , class... Args, std\+::size\+\_\+t... Is, std\+::size\+\_\+t... Js$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a99e8e2c8ea28d4c67e335d64a67434fd}{reverse} (Apply apply, {\bf std\+::tuple}$<$ Args... $>$ \&\&tup, std\+::index\+\_\+sequence$<$ Is... $>$, std\+::index\+\_\+sequence$<$ Js... $>$)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t P, class Apply , class... Args$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_aa4830ca624b45e8ebdfff900e3470946}{reverse} (Apply apply, Args \&\&...args)
+\item 
+constexpr int \hyperlink{namespaceit_1_1help_ad5efd6f9a3703da509d0853b95b515db}{iter\+Tag\+Order} ({\bf std\+::forward\+\_\+iterator\+\_\+tag})
+\begin{DoxyCompactList}\small\item\em This is the order of the iterator types. The smaller is the more generic. \end{DoxyCompactList}\item 
+constexpr int \hyperlink{namespaceit_1_1help_afa9d72e80bd7c53bb9026f0b5c1fd246}{iter\+Tag\+Order} ({\bf std\+::bidirectional\+\_\+iterator\+\_\+tag})
+\item 
+constexpr int \hyperlink{namespaceit_1_1help_ace8fe9c3bfab2e8d912b0b4ee5cd73cf}{iter\+Tag\+Order} ({\bf std\+::random\+\_\+access\+\_\+iterator\+\_\+tag})
+\item 
+{\footnotesize template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{begin} (T \&\&t) noexcept
+\item 
+{\footnotesize template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a0e251e42731da1b6effa4e0670de4aa3}{begin} (T t) noexcept
+\item 
+{\footnotesize template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{end} (T \&\&t) noexcept
+\item 
+{\footnotesize template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_ad128b1f9a801d33454c092c5d64b48a6}{end} (T t) noexcept
+\item 
+{\footnotesize template$<$typename... Args\+Tup$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a8dad918e01e53be17799fb6e354405c5}{pack\+Args} ({\bf std\+::tuple}$<$ Args\+Tup... $>$ tup)
+\item 
+{\footnotesize template$<$typename T $>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_ac3e8099edb27b15fb5e922d8e84ce726}{pack\+Args} (T \&\&t)
+\item 
+{\footnotesize template$<$typename... Args\+Tup, typename... Args$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_ae80ffec31c98e283cd2c0f6d439e5848}{pack\+Args} ({\bf std\+::tuple}$<$ Args\+Tup... $>$ tup, Args \&\&...args)
+\item 
+{\footnotesize template$<$typename T , typename... Args$>$ }\\decltype(auto) \hyperlink{namespaceit_1_1help_a7acb1e6ed32d92b01ff1b52fbd1efe26}{pack\+Args} (T \&\&t, Args \&\&...args)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+auto \hyperlink{namespaceit_1_1help_a47a31a8a4344c62bfbc0f7686d6160e1}{increment} = \mbox{[}$\,$\mbox{]}(auto\&\& x) \{ return ++x; \}
+\begin{DoxyCompactList}\small\item\em Simple functions to be used in the \textquotesingle{}exec\+Tuple\textquotesingle{} function. Defined as lambdas for simplicity. \end{DoxyCompactList}\item 
+auto \hyperlink{namespaceit_1_1help_aede42ee87c964f50151e495144d1085b}{decrement} = \mbox{[}$\,$\mbox{]}(auto\&\& x) \{ return -\/-\/x; \}
+\item 
+auto \hyperlink{namespaceit_1_1help_af07b5865ce1568f58510ad90edb12466}{add} = \mbox{[}$\,$\mbox{]}(auto\&\& x, int inc) \{ return x = x + inc; \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{it\+::help@{it\+::help}!Enable\+If\+Minimum\+Tag@{Enable\+If\+Minimum\+Tag}}
+\index{Enable\+If\+Minimum\+Tag@{Enable\+If\+Minimum\+Tag}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{Enable\+If\+Minimum\+Tag}{EnableIfMinimumTag}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tag , typename Minimum\+Tag $>$ using {\bf it\+::help\+::\+Enable\+If\+Minimum\+Tag} = typedef std\+::enable\+\_\+if\+\_\+t$<$ {\bf iter\+Tag\+Order}( Tag\{\} ) $>$= {\bf iter\+Tag\+Order}( Minimum\+Tag \{\} ), int $>$}\hypertarget{namespaceit_1_1help_a4f5a2a2ccba17fd27922b388ffaed363}{}\label{namespaceit_1_1help_a4f5a2a2ccba17fd27922b388ffaed363}
+
+
+Only let functions to be called if the iterator tag satisfies a minimum tag. 
+
+\index{it\+::help@{it\+::help}!Iterator\+Base@{Iterator\+Base}}
+\index{Iterator\+Base@{Iterator\+Base}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{Iterator\+Base}{IteratorBase}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Iters$>$ using {\bf it\+::help\+::\+Iterator\+Base} = typedef {\bf std\+::iterator} $<$ {\bf help\+::\+Select\+Iter\+Tag\+\_\+t}$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ Iters $>$\+::iterator\+\_\+category... $>$, {\bf std\+::tuple}$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ Iters $>$\+::value\+\_\+type... $>$ $>$}\hypertarget{namespaceit_1_1help_a3d72c14eeb8c9d60c70f79b551c578fe}{}\label{namespaceit_1_1help_a3d72c14eeb8c9d60c70f79b551c578fe}
+\index{it\+::help@{it\+::help}!Select\+Iter\+Tag\+\_\+t@{Select\+Iter\+Tag\+\_\+t}}
+\index{Select\+Iter\+Tag\+\_\+t@{Select\+Iter\+Tag\+\_\+t}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{Select\+Iter\+Tag\+\_\+t}{SelectIterTag_t}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class... Iter$>$ using {\bf it\+::help\+::\+Select\+Iter\+Tag\+\_\+t} = typedef typename {\bf Select\+Iter\+Tag}$<$ Iter... $>$\+::type}\hypertarget{namespaceit_1_1help_a9dcda939d491265c5a917329449ff2af}{}\label{namespaceit_1_1help_a9dcda939d491265c5a917329449ff2af}
+
+
+\subsection{Function Documentation}
+\index{it\+::help@{it\+::help}!begin@{begin}}
+\index{begin@{begin}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{begin(\+T \&\&t) noexcept}{begin(T &&t) noexcept}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ decltype(auto) it\+::help\+::begin (
+\begin{DoxyParamCaption}
+\item[{T \&\&}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}\hypertarget{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}{}\label{namespaceit_1_1help_a802b665d476523c866525ae94b4b9f29}
+The sole reason these functions were defined is to allow pointers to be called in \textquotesingle{}zip\textquotesingle{} as if they were iterable types, having a starting and ending points. As the first argument defines the range, there is no problem in passing a pointer to be iterated, as long as its range is smaller than the range of the first argument of the \textquotesingle{}zip\textquotesingle{} function. Simply delegating the call for any other type \index{it\+::help@{it\+::help}!begin@{begin}}
+\index{begin@{begin}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{begin(\+T t) noexcept}{begin(T t) noexcept}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ decltype(auto) it\+::help\+::begin (
+\begin{DoxyParamCaption}
+\item[{T}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}\hypertarget{namespaceit_1_1help_a0e251e42731da1b6effa4e0670de4aa3}{}\label{namespaceit_1_1help_a0e251e42731da1b6effa4e0670de4aa3}
+The pointer itself is the starting point \index{it\+::help@{it\+::help}!end@{end}}
+\index{end@{end}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{end(\+T \&\&t) noexcept}{end(T &&t) noexcept}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ decltype(auto) it\+::help\+::end (
+\begin{DoxyParamCaption}
+\item[{T \&\&}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}\hypertarget{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}{}\label{namespaceit_1_1help_a5e58a8ad21890518f5b2a070f01653ef}
+Simply delegating the call for any other type \index{it\+::help@{it\+::help}!end@{end}}
+\index{end@{end}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{end(\+T t) noexcept}{end(T t) noexcept}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , std\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+pointer$<$ std\+::decay\+\_\+t$<$ T $>$ $>$\+::value, int $>$  = 0$>$ decltype(auto) it\+::help\+::end (
+\begin{DoxyParamCaption}
+\item[{T}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}\hypertarget{namespaceit_1_1help_ad128b1f9a801d33454c092c5d64b48a6}{}\label{namespaceit_1_1help_ad128b1f9a801d33454c092c5d64b48a6}
+It is simply a unreachable point \index{it\+::help@{it\+::help}!exec\+Tuple@{exec\+Tuple}}
+\index{exec\+Tuple@{exec\+Tuple}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{exec\+Tuple(\+Apply apply, std\+::tuple$<$ Args... $>$ \&tup, std\+::index\+\_\+sequence$<$ Is... $>$, Func\+Args \&\&...\+func\+Args)}{execTuple(Apply apply, std::tuple< Args... > &tup, std::index_sequence< Is... >, FuncArgs &&...funcArgs)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Apply , typename... Args, std\+::size\+\_\+t... Is, typename... Func\+Args$>$ void it\+::help\+::exec\+Tuple (
+\begin{DoxyParamCaption}
+\item[{Apply}]{apply, }
+\item[{{\bf std\+::tuple}$<$ Args... $>$ \&}]{tup, }
+\item[{std\+::index\+\_\+sequence$<$ Is... $>$}]{, }
+\item[{Func\+Args \&\&...}]{func\+Args}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_a5820d5d8b10a14b119b1a4402b0d0576}{}\label{namespaceit_1_1help_a5820d5d8b10a14b119b1a4402b0d0576}
+
+
+This function applies a function to every argument of the tuple. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em apply} & The function to be applied \\
+\hline
+{\em tup} & A {\bf std\+::tuple} \\
+\hline
+{\em std\+::index\+\_\+sequence} & Necessary for expanding the tuple \\
+\hline
+{\em func\+Args} & Extra arguments of the function \\
+\hline
+\end{DoxyParams}
+\index{it\+::help@{it\+::help}!exec\+Tuple@{exec\+Tuple}}
+\index{exec\+Tuple@{exec\+Tuple}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{exec\+Tuple(\+Apply apply, std\+::tuple$<$ Args... $>$ \&tup, Func\+Args \&\&...\+func\+Args)}{execTuple(Apply apply, std::tuple< Args... > &tup, FuncArgs &&...funcArgs)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Apply , typename... Args, typename... Func\+Args$>$ void it\+::help\+::exec\+Tuple (
+\begin{DoxyParamCaption}
+\item[{Apply}]{apply, }
+\item[{{\bf std\+::tuple}$<$ Args... $>$ \&}]{tup, }
+\item[{Func\+Args \&\&...}]{func\+Args}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_a934f50a02efe9f4128920fec125e7e9f}{}\label{namespaceit_1_1help_a934f50a02efe9f4128920fec125e7e9f}
+\index{it\+::help@{it\+::help}!iter\+Tag\+Order@{iter\+Tag\+Order}}
+\index{iter\+Tag\+Order@{iter\+Tag\+Order}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{iter\+Tag\+Order(std\+::forward\+\_\+iterator\+\_\+tag)}{iterTagOrder(std::forward_iterator_tag)}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr int it\+::help\+::iter\+Tag\+Order (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::forward\+\_\+iterator\+\_\+tag}}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_ad5efd6f9a3703da509d0853b95b515db}{}\label{namespaceit_1_1help_ad5efd6f9a3703da509d0853b95b515db}
+
+
+This is the order of the iterator types. The smaller is the more generic. 
+
+\index{it\+::help@{it\+::help}!iter\+Tag\+Order@{iter\+Tag\+Order}}
+\index{iter\+Tag\+Order@{iter\+Tag\+Order}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{iter\+Tag\+Order(std\+::bidirectional\+\_\+iterator\+\_\+tag)}{iterTagOrder(std::bidirectional_iterator_tag)}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr int it\+::help\+::iter\+Tag\+Order (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::bidirectional\+\_\+iterator\+\_\+tag}}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_afa9d72e80bd7c53bb9026f0b5c1fd246}{}\label{namespaceit_1_1help_afa9d72e80bd7c53bb9026f0b5c1fd246}
+\index{it\+::help@{it\+::help}!iter\+Tag\+Order@{iter\+Tag\+Order}}
+\index{iter\+Tag\+Order@{iter\+Tag\+Order}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{iter\+Tag\+Order(std\+::random\+\_\+access\+\_\+iterator\+\_\+tag)}{iterTagOrder(std::random_access_iterator_tag)}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr int it\+::help\+::iter\+Tag\+Order (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::random\+\_\+access\+\_\+iterator\+\_\+tag}}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_ace8fe9c3bfab2e8d912b0b4ee5cd73cf}{}\label{namespaceit_1_1help_ace8fe9c3bfab2e8d912b0b4ee5cd73cf}
+\index{it\+::help@{it\+::help}!pack\+Args@{pack\+Args}}
+\index{pack\+Args@{pack\+Args}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{pack\+Args(std\+::tuple$<$ Args\+Tup... $>$ tup)}{packArgs(std::tuple< ArgsTup... > tup)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args\+Tup$>$ decltype(auto) it\+::help\+::pack\+Args (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::tuple}$<$ Args\+Tup... $>$}]{tup}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_a8dad918e01e53be17799fb6e354405c5}{}\label{namespaceit_1_1help_a8dad918e01e53be17799fb6e354405c5}
+This utility takes variadic arguments and packs them in a single tuple. If any of the arguments itself is a tuple, it is concatenated (via {\bf std\+::tuple\+\_\+cat}) with the rest of the arguments, always resulting in a single tuple. \index{it\+::help@{it\+::help}!pack\+Args@{pack\+Args}}
+\index{pack\+Args@{pack\+Args}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{pack\+Args(\+T \&\&t)}{packArgs(T &&t)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ decltype(auto) it\+::help\+::pack\+Args (
+\begin{DoxyParamCaption}
+\item[{T \&\&}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_ac3e8099edb27b15fb5e922d8e84ce726}{}\label{namespaceit_1_1help_ac3e8099edb27b15fb5e922d8e84ce726}
+\index{it\+::help@{it\+::help}!pack\+Args@{pack\+Args}}
+\index{pack\+Args@{pack\+Args}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{pack\+Args(std\+::tuple$<$ Args\+Tup... $>$ tup, Args \&\&...\+args)}{packArgs(std::tuple< ArgsTup... > tup, Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args\+Tup, typename... Args$>$ decltype(auto) it\+::help\+::pack\+Args (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::tuple}$<$ Args\+Tup... $>$}]{tup, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_ae80ffec31c98e283cd2c0f6d439e5848}{}\label{namespaceit_1_1help_ae80ffec31c98e283cd2c0f6d439e5848}
+\index{it\+::help@{it\+::help}!pack\+Args@{pack\+Args}}
+\index{pack\+Args@{pack\+Args}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{pack\+Args(\+T \&\&t, Args \&\&...\+args)}{packArgs(T &&t, Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename... Args$>$ decltype(auto) it\+::help\+::pack\+Args (
+\begin{DoxyParamCaption}
+\item[{T \&\&}]{t, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_a7acb1e6ed32d92b01ff1b52fbd1efe26}{}\label{namespaceit_1_1help_a7acb1e6ed32d92b01ff1b52fbd1efe26}
+\index{it\+::help@{it\+::help}!reverse@{reverse}}
+\index{reverse@{reverse}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{reverse(\+Apply apply, std\+::tuple$<$ Args... $>$ \&\&tup, std\+::index\+\_\+sequence$<$ Is... $>$, std\+::index\+\_\+sequence$<$ Js... $>$)}{reverse(Apply apply, std::tuple< Args... > &&tup, std::index_sequence< Is... >, std::index_sequence< Js... >)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t P, class Apply , class... Args, std\+::size\+\_\+t... Is, std\+::size\+\_\+t... Js$>$ decltype(auto) it\+::help\+::reverse (
+\begin{DoxyParamCaption}
+\item[{Apply}]{apply, }
+\item[{{\bf std\+::tuple}$<$ Args... $>$ \&\&}]{tup, }
+\item[{std\+::index\+\_\+sequence$<$ Is... $>$}]{, }
+\item[{std\+::index\+\_\+sequence$<$ Js... $>$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_a99e8e2c8ea28d4c67e335d64a67434fd}{}\label{namespaceit_1_1help_a99e8e2c8ea28d4c67e335d64a67434fd}
+Given an index P, this function reverses the order of the arguments and apply a function to every element in the new order. Serves only as syntatic sugar. \index{it\+::help@{it\+::help}!reverse@{reverse}}
+\index{reverse@{reverse}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{reverse(\+Apply apply, Args \&\&...\+args)}{reverse(Apply apply, Args &&...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t P, class Apply , class... Args$>$ decltype(auto) it\+::help\+::reverse (
+\begin{DoxyParamCaption}
+\item[{Apply}]{apply, }
+\item[{Args \&\&...}]{args}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceit_1_1help_aa4830ca624b45e8ebdfff900e3470946}{}\label{namespaceit_1_1help_aa4830ca624b45e8ebdfff900e3470946}
+
+
+\subsection{Variable Documentation}
+\index{it\+::help@{it\+::help}!add@{add}}
+\index{add@{add}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{add}{add}}]{\setlength{\rightskip}{0pt plus 5cm}auto it\+::help\+::add = \mbox{[}$\,$\mbox{]}(auto\&\& x, int inc) \{ return x = x + inc; \}}\hypertarget{namespaceit_1_1help_af07b5865ce1568f58510ad90edb12466}{}\label{namespaceit_1_1help_af07b5865ce1568f58510ad90edb12466}
+\index{it\+::help@{it\+::help}!decrement@{decrement}}
+\index{decrement@{decrement}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{decrement}{decrement}}]{\setlength{\rightskip}{0pt plus 5cm}auto it\+::help\+::decrement = \mbox{[}$\,$\mbox{]}(auto\&\& x) \{ return -\/-\/x; \}}\hypertarget{namespaceit_1_1help_aede42ee87c964f50151e495144d1085b}{}\label{namespaceit_1_1help_aede42ee87c964f50151e495144d1085b}
+\index{it\+::help@{it\+::help}!increment@{increment}}
+\index{increment@{increment}!it\+::help@{it\+::help}}
+\subsubsection[{\texorpdfstring{increment}{increment}}]{\setlength{\rightskip}{0pt plus 5cm}auto it\+::help\+::increment = \mbox{[}$\,$\mbox{]}(auto\&\& x) \{ return ++x; \}}\hypertarget{namespaceit_1_1help_a47a31a8a4344c62bfbc0f7686d6160e1}{}\label{namespaceit_1_1help_a47a31a8a4344c62bfbc0f7686d6160e1}
+
+
+Simple functions to be used in the \textquotesingle{}exec\+Tuple\textquotesingle{} function. Defined as lambdas for simplicity. 
+

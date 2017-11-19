@@ -1,0 +1,244 @@
+\hypertarget{classcnt_1_1help_1_1Slice}{}\section{cnt\+:\+:help\+:\+:Slice$<$ Cnt $>$ Class Template Reference}
+\label{classcnt_1_1help_1_1Slice}\index{cnt\+::help\+::\+Slice$<$ Cnt $>$@{cnt\+::help\+::\+Slice$<$ Cnt $>$}}
+
+
+{\ttfamily \#include $<$Slice.\+h$>$}
+
+\subsection*{Public Types}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{classcnt_1_1help_1_1Slice_a485438785457de81fe42a4b07ec4ad32}{Base} = std\+::decay\+\_\+t$<$ Cnt $>$
+\item 
+using \hyperlink{classcnt_1_1help_1_1Slice_a7d0f8ecb603e485ce53f12cce307821d}{value\+\_\+type} = typename Base\+::value\+\_\+type
+\item 
+using \hyperlink{classcnt_1_1help_1_1Slice_a5e5e9b497c124710fcfe1e185e4801f3}{reference} = typename Base\+::reference
+\item 
+using \hyperlink{classcnt_1_1help_1_1Slice_aed38e8e92115049f9c3b78ee67bdc5c4}{const\+\_\+reference} = typename Base\+::const\+\_\+reference
+\end{DoxyCompactItemize}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \hyperlink{classcnt_1_1help_1_1Slice_a0357feeda100757b1202ee9e24021ed0}{size} (int p) const 
+\begin{DoxyCompactList}\small\item\em Size of each dimension. \end{DoxyCompactList}\item 
+auto \hyperlink{classcnt_1_1help_1_1Slice_ae3af5fdf7436c2de291611e68495b471}{size} () const 
+\begin{DoxyCompactList}\small\item\em Total size of the slice. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Args, help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ Args $>$... $>$  = 0$>$ }\\\hyperlink{classcnt_1_1help_1_1Slice_a4ee48993f74932456f8bc49790bd0c6f}{Slice} (Cnt \&c, const Args \&...args)
+\begin{DoxyCompactList}\small\item\em For integrals. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args, std\+::enable\+\_\+if\+\_\+t$<$ sizeof...(\+Args), int $>$  = 0, help\+::\+Enable\+If\+Iterable$<$ std\+::remove\+\_\+reference\+\_\+t$<$ Args $>$... $>$  = 0$>$ }\\\hyperlink{classcnt_1_1help_1_1Slice_ad48e78da8f37d92bb4f9a8a913270cfe}{Slice} (Cnt \&c, const Args \&...args)
+\begin{DoxyCompactList}\small\item\em For iterables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U , typename V , help\+::\+Enable\+If\+Iterator$<$ std\+::decay\+\_\+t$<$ U $>$, std\+::decay\+\_\+t$<$ V $>$ $>$  = 0$>$ }\\\hyperlink{classcnt_1_1help_1_1Slice_a4691d18fed41988537d2bab287cb540b}{Slice} (Cnt \&c, const U \&\hyperlink{classcnt_1_1help_1_1Slice_aa5686f75940716e2568165e3b88d89d3}{begin}, const V \&\hyperlink{classcnt_1_1help_1_1Slice_a0bebfdc0b631e2462b54b2bd44059b76}{end})
+\begin{DoxyCompactList}\small\item\em For a range defined by iterators. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U , help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ }\\\hyperlink{classcnt_1_1help_1_1Slice_a9ff9b2280e91eddd2b4e7f342f84aead}{Slice} (Cnt \&c, {\bf std\+::initializer\+\_\+list}$<$ U $>$ il)
+\begin{DoxyCompactList}\small\item\em For list initialization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\\hyperlink{classcnt_1_1help_1_1Slice_aed38e8e92115049f9c3b78ee67bdc5c4}{const\+\_\+reference} \hyperlink{classcnt_1_1help_1_1Slice_a5f6ebc78fcb07cb04aed2707e83efd92}{operator()} (\hyperlink{structcnt_1_1help_1_1IntegralType}{Integral\+Type}, const Args \&...args) const 
+\begin{DoxyCompactList}\small\item\em For integral or iterable types. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U , help\+::\+Enable\+If\+Iterator$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ }\\\hyperlink{classcnt_1_1help_1_1Slice_aed38e8e92115049f9c3b78ee67bdc5c4}{const\+\_\+reference} \hyperlink{classcnt_1_1help_1_1Slice_a28aad2a3fb6704596e1a317add0e3477}{operator()} (\hyperlink{structcnt_1_1help_1_1IteratorType}{Iterator\+Type}, const U \&\hyperlink{classcnt_1_1help_1_1Slice_aa5686f75940716e2568165e3b88d89d3}{begin}) const 
+\begin{DoxyCompactList}\small\item\em For iterators. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\\hyperlink{classcnt_1_1help_1_1Slice_aed38e8e92115049f9c3b78ee67bdc5c4}{const\+\_\+reference} \hyperlink{classcnt_1_1help_1_1Slice_a0263b9218c9f281b737dd9231f9c43e7}{operator()} ({\bf std\+::initializer\+\_\+list}$<$ U $>$ il) const 
+\begin{DoxyCompactList}\small\item\em For \textquotesingle{}std\+::intializer\+\_\+lists\textquotesingle{}. \end{DoxyCompactList}\item 
+\hyperlink{classcnt_1_1help_1_1Slice_aed38e8e92115049f9c3b78ee67bdc5c4}{const\+\_\+reference} \hyperlink{classcnt_1_1help_1_1Slice_a01908e8f74cf4a2a4d69ee8ad5f1a431}{operator\mbox{[}$\,$\mbox{]}} (int p) const 
+\item 
+\hyperlink{classcnt_1_1help_1_1Slice_a5e5e9b497c124710fcfe1e185e4801f3}{reference} \hyperlink{classcnt_1_1help_1_1Slice_a8eaabe725363ef76a42c15aadf7baa50}{operator\mbox{[}$\,$\mbox{]}} (int p)
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+decltype(auto) \hyperlink{classcnt_1_1help_1_1Slice_aa5686f75940716e2568165e3b88d89d3}{begin} ()
+\item 
+decltype(auto) \hyperlink{classcnt_1_1help_1_1Slice_a8c37189a46abc4b6e5d3bbe19d070def}{cbegin} () const 
+\item 
+decltype(auto) \hyperlink{classcnt_1_1help_1_1Slice_a0bebfdc0b631e2462b54b2bd44059b76}{end} ()
+\item 
+decltype(auto) \hyperlink{classcnt_1_1help_1_1Slice_a73ee554773b81ac81ade64dcd87cf000}{cend} () const 
+\end{DoxyCompactItemize}
+
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Cnt$>$\\*
+class cnt\+::help\+::\+Slice$<$ Cnt $>$}
+
+This class is just a proxy to access chosen dimensions of a container. The only storage is are the positions to access and a reference to the container that created this slice. There are a bunch of examples of how to use it in \textquotesingle{}examples/\+Slice\+Examples.\+cpp\textquotesingle{}. 
+
+\subsection{Member Typedef Documentation}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!Base@{Base}}
+\index{Base@{Base}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{Base}{Base}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ using {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::{\bf Base} =  std\+::decay\+\_\+t$<$Cnt$>$}\hypertarget{classcnt_1_1help_1_1Slice_a485438785457de81fe42a4b07ec4ad32}{}\label{classcnt_1_1help_1_1Slice_a485438785457de81fe42a4b07ec4ad32}
+Some type definition \index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!const\+\_\+reference@{const\+\_\+reference}}
+\index{const\+\_\+reference@{const\+\_\+reference}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{const\+\_\+reference}{const_reference}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ using {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::{\bf const\+\_\+reference} =  typename Base\+::const\+\_\+reference}\hypertarget{classcnt_1_1help_1_1Slice_aed38e8e92115049f9c3b78ee67bdc5c4}{}\label{classcnt_1_1help_1_1Slice_aed38e8e92115049f9c3b78ee67bdc5c4}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!reference@{reference}}
+\index{reference@{reference}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{reference}{reference}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ using {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::{\bf reference} =  typename Base\+::reference}\hypertarget{classcnt_1_1help_1_1Slice_a5e5e9b497c124710fcfe1e185e4801f3}{}\label{classcnt_1_1help_1_1Slice_a5e5e9b497c124710fcfe1e185e4801f3}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!value\+\_\+type@{value\+\_\+type}}
+\index{value\+\_\+type@{value\+\_\+type}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{value\+\_\+type}{value_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ using {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::{\bf value\+\_\+type} =  typename Base\+::value\+\_\+type}\hypertarget{classcnt_1_1help_1_1Slice_a7d0f8ecb603e485ce53f12cce307821d}{}\label{classcnt_1_1help_1_1Slice_a7d0f8ecb603e485ce53f12cce307821d}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!Slice@{Slice}}
+\index{Slice@{Slice}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{Slice(\+Cnt \&c, const Args \&...\+args)}{Slice(Cnt &c, const Args &...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ template$<$typename... Args, help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ Args $>$... $>$  = 0$>$ {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::{\bf Slice} (
+\begin{DoxyParamCaption}
+\item[{Cnt \&}]{c, }
+\item[{const Args \&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a4ee48993f74932456f8bc49790bd0c6f}{}\label{classcnt_1_1help_1_1Slice_a4ee48993f74932456f8bc49790bd0c6f}
+
+
+For integrals. 
+
+These are the same constructor types defined for the \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Container}{Container}\textquotesingle{} class, but now with a reference to the \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Container}{Container}\textquotesingle{} class that created this slice. Also, the slice defines the range that it can access. \index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!Slice@{Slice}}
+\index{Slice@{Slice}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{Slice(\+Cnt \&c, const Args \&...\+args)}{Slice(Cnt &c, const Args &...args)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ template$<$typename... Args, std\+::enable\+\_\+if\+\_\+t$<$ sizeof...(\+Args), int $>$  = 0, help\+::\+Enable\+If\+Iterable$<$ std\+::remove\+\_\+reference\+\_\+t$<$ Args $>$... $>$  = 0$>$ {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::{\bf Slice} (
+\begin{DoxyParamCaption}
+\item[{Cnt \&}]{c, }
+\item[{const Args \&...}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_ad48e78da8f37d92bb4f9a8a913270cfe}{}\label{classcnt_1_1help_1_1Slice_ad48e78da8f37d92bb4f9a8a913270cfe}
+
+
+For iterables. 
+
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!Slice@{Slice}}
+\index{Slice@{Slice}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{Slice(\+Cnt \&c, const U \&begin, const V \&end)}{Slice(Cnt &c, const U &begin, const V &end)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ template$<$typename U , typename V , help\+::\+Enable\+If\+Iterator$<$ std\+::decay\+\_\+t$<$ U $>$, std\+::decay\+\_\+t$<$ V $>$ $>$  = 0$>$ {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::{\bf Slice} (
+\begin{DoxyParamCaption}
+\item[{Cnt \&}]{c, }
+\item[{const U \&}]{begin, }
+\item[{const V \&}]{end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a4691d18fed41988537d2bab287cb540b}{}\label{classcnt_1_1help_1_1Slice_a4691d18fed41988537d2bab287cb540b}
+
+
+For a range defined by iterators. 
+
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!Slice@{Slice}}
+\index{Slice@{Slice}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{Slice(\+Cnt \&c, std\+::initializer\+\_\+list$<$ U $>$ il)}{Slice(Cnt &c, std::initializer_list< U > il)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ template$<$typename U , help\+::\+Enable\+If\+Integral$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::{\bf Slice} (
+\begin{DoxyParamCaption}
+\item[{Cnt \&}]{c, }
+\item[{{\bf std\+::initializer\+\_\+list}$<$ U $>$}]{il}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a9ff9b2280e91eddd2b4e7f342f84aead}{}\label{classcnt_1_1help_1_1Slice_a9ff9b2280e91eddd2b4e7f342f84aead}
+
+
+For list initialization. 
+
+
+
+\subsection{Member Function Documentation}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!begin@{begin}}
+\index{begin@{begin}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{begin()}{begin()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ decltype(auto) {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_aa5686f75940716e2568165e3b88d89d3}{}\label{classcnt_1_1help_1_1Slice_aa5686f75940716e2568165e3b88d89d3}
+Begin and end \index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{cbegin() const }{cbegin() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ decltype(auto) {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::cbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a8c37189a46abc4b6e5d3bbe19d070def}{}\label{classcnt_1_1help_1_1Slice_a8c37189a46abc4b6e5d3bbe19d070def}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!cend@{cend}}
+\index{cend@{cend}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{cend() const }{cend() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ decltype(auto) {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::cend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a73ee554773b81ac81ade64dcd87cf000}{}\label{classcnt_1_1help_1_1Slice_a73ee554773b81ac81ade64dcd87cf000}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!end@{end}}
+\index{end@{end}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{end()}{end()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ decltype(auto) {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a0bebfdc0b631e2462b54b2bd44059b76}{}\label{classcnt_1_1help_1_1Slice_a0bebfdc0b631e2462b54b2bd44059b76}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{operator()(\+Integral\+Type, const Args \&...\+args) const }{operator()(IntegralType, const Args &...args) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ template$<$typename... Args$>$ {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{{\bf Integral\+Type}}]{, }
+\item[{const Args \&...}]{args}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a5f6ebc78fcb07cb04aed2707e83efd92}{}\label{classcnt_1_1help_1_1Slice_a5f6ebc78fcb07cb04aed2707e83efd92}
+
+
+For integral or iterable types. 
+
+Again, these are almost identical to \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Container}{Container}\textquotesingle{} accessors. Of course, they can only access the defined range, so the operations are a bit different, but the interface is the same. \index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{operator()(\+Iterator\+Type, const U \&begin) const }{operator()(IteratorType, const U &begin) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ template$<$typename U , help\+::\+Enable\+If\+Iterator$<$ std\+::decay\+\_\+t$<$ U $>$$>$  = 0$>$ {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{{\bf Iterator\+Type}}]{, }
+\item[{const U \&}]{begin}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a28aad2a3fb6704596e1a317add0e3477}{}\label{classcnt_1_1help_1_1Slice_a28aad2a3fb6704596e1a317add0e3477}
+
+
+For iterators. 
+
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!operator()@{operator()}}
+\index{operator()@{operator()}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{operator()(std\+::initializer\+\_\+list$<$ U $>$ il) const }{operator()(std::initializer_list< U > il) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ template$<$typename U $>$ {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{{\bf std\+::initializer\+\_\+list}$<$ U $>$}]{il}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a0263b9218c9f281b737dd9231f9c43e7}{}\label{classcnt_1_1help_1_1Slice_a0263b9218c9f281b737dd9231f9c43e7}
+
+
+For \textquotesingle{}std\+::intializer\+\_\+lists\textquotesingle{}. 
+
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{operator[](int p) const }{operator[](int p) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ {\bf const\+\_\+reference} {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{p}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a01908e8f74cf4a2a4d69ee8ad5f1a431}{}\label{classcnt_1_1help_1_1Slice_a01908e8f74cf4a2a4d69ee8ad5f1a431}
+Overloading the access via \textquotesingle{}operator\mbox{[}\mbox{]}\textquotesingle{} \index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{operator[](int p)}{operator[](int p)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ {\bf reference} {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a8eaabe725363ef76a42c15aadf7baa50}{}\label{classcnt_1_1help_1_1Slice_a8eaabe725363ef76a42c15aadf7baa50}
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!size@{size}}
+\index{size@{size}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{size(int p) const }{size(int p) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ auto {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::size (
+\begin{DoxyParamCaption}
+\item[{int}]{p}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_a0357feeda100757b1202ee9e24021ed0}{}\label{classcnt_1_1help_1_1Slice_a0357feeda100757b1202ee9e24021ed0}
+
+
+Size of each dimension. 
+
+\index{cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}!size@{size}}
+\index{size@{size}!cnt\+::help\+::\+Slice@{cnt\+::help\+::\+Slice}}
+\subsubsection[{\texorpdfstring{size() const }{size() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Cnt $>$ auto {\bf cnt\+::help\+::\+Slice}$<$ Cnt $>$\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classcnt_1_1help_1_1Slice_ae3af5fdf7436c2de291611e68495b471}{}\label{classcnt_1_1help_1_1Slice_ae3af5fdf7436c2de291611e68495b471}
+
+
+Total size of the slice. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Container/\hyperlink{Slice_8h}{Slice.\+h}\end{DoxyCompactItemize}

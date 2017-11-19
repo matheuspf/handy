@@ -1,0 +1,298 @@
+\hypertarget{group__HasMemberGroup}{}\section{Member checking}
+\label{group__HasMemberGroup}\index{Member checking@{Member checking}}
+
+
+Check the existence of a variable or function for a given class.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}(H\+E\+L\+P\+ER,  S\+T\+A\+T\+IC,  member,  Name, ...)
+\begin{DoxyCompactList}\small\item\em Uses S\+F\+I\+N\+AE to determine the existence of a certain member given a class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\label{_amgrp01747264fe7bf50731df0522c351974e}%
+Macro helpers for checking the existence of variables inside a class \begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__HasMemberGroup_ga7987e8af19ede1038fc3063be814fbc3}{V\+A\+R\+\_\+\+H\+E\+L\+P\+ER}(H\+M\+\_\+T,  var, ...)~{\bf std\+::declval}$<$H\+M\+\_\+T$>$().var
+\begin{DoxyCompactList}\small\item\em Macro helper for checking variables. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL}(S\+T\+A\+T\+IC, ...)~\hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{E\+X\+P\+A\+ND}(\hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}(\hyperlink{group__HasMemberGroup_ga7987e8af19ede1038fc3063be814fbc3}{V\+A\+R\+\_\+\+H\+E\+L\+P\+ER}, S\+T\+A\+T\+IC, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, \hyperlink{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{C\+O\+N\+C\+AT}(Has, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)))
+\begin{DoxyCompactList}\small\item\em Calls \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+E\+R()} with the \hyperlink{group__HasMemberGroup_ga7987e8af19ede1038fc3063be814fbc3}{V\+A\+R\+\_\+\+H\+E\+L\+P\+E\+R()} helper. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga9506a65ecb7c2a37bcabb2e2d371d42e}{H\+A\+S\+\_\+\+V\+AR}(...)~\hyperlink{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL}(, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Delegates the call to \hyperlink{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to nothing (call outside a class) \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga0746b1606f5166046971f5bab05cb8fc}{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+S\+T\+A\+T\+IC}(...)~\hyperlink{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL}(static, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Delegates the call to \hyperlink{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to {\ttfamily static} (call inside a class) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\label{_amgrp01747264fe7bf50731df0522c351974e}%
+Macro helpers for checking the existence of functions inside a class
+
+\begin{DoxyNote}{Note}
+For overloaded functions, use \hyperlink{group__HasMemberGroup_ga39d708fd02cbbba1ef5db4a5f46fe317}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C()} 
+\end{DoxyNote}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__HasMemberGroup_ga4ddaa42c162d5e18713602d14de20f7e}{F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}(H\+M\+\_\+T,  func, ...)~\&H\+M\+\_\+\+T\+::func
+\begin{DoxyCompactList}\small\item\em Macro helper for checking regular functions. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(S\+T\+A\+T\+IC, ...)~\hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{E\+X\+P\+A\+ND}(\hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}(\hyperlink{group__HasMemberGroup_ga4ddaa42c162d5e18713602d14de20f7e}{F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}, S\+T\+A\+T\+IC, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, \hyperlink{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{C\+O\+N\+C\+AT}(Has, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)))
+\begin{DoxyCompactList}\small\item\em Calls \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+E\+R()} with the \hyperlink{group__HasMemberGroup_ga4ddaa42c162d5e18713602d14de20f7e}{F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+E\+R()} helper. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga8387ada8a5ce075169e86b9c2817fdef}{H\+A\+S\+\_\+\+F\+U\+NC}(...)~\hyperlink{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Delegates the call to \hyperlink{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to nothing (call outside a class) \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga6376819e5b3bcbf0f42d4b6348125c52}{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}(...)~\hyperlink{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(static, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Delegates the call to \hyperlink{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to {\ttfamily static} (call inside a class) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\label{_amgrp01747264fe7bf50731df0522c351974e}%
+Macro helpers for checking the existence of overloaded functions inside a class
+
+\begin{DoxyNote}{Note}
+Does not check for strict overloads 
+\end{DoxyNote}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__HasMemberGroup_ga2c2cbdd600b265973cedcbd7d50df8e7}{O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}(H\+M\+\_\+T,  func,  Args, ...)~{\bf std\+::declval}$<$H\+M\+\_\+T$>$().func({\bf std\+::declval}$<$H\+M\+\_\+\+Args$>$()...)
+\begin{DoxyCompactList}\small\item\em Macro helper for checking overloaded functions. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(S\+T\+A\+T\+IC, ...)~\hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{E\+X\+P\+A\+ND}(\hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}(\hyperlink{group__HasMemberGroup_ga2c2cbdd600b265973cedcbd7d50df8e7}{O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}, S\+T\+A\+T\+IC, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, \hyperlink{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{C\+O\+N\+C\+AT}(has\+\_\+, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)))
+\begin{DoxyCompactList}\small\item\em Calls \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+E\+R()} with the \hyperlink{group__HasMemberGroup_ga2c2cbdd600b265973cedcbd7d50df8e7}{O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+E\+R()} helper. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga39d708fd02cbbba1ef5db4a5f46fe317}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+NC}(...)~\hyperlink{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Delegates the call to \hyperlink{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to nothing (call outside a class) \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_gab2fa7474c70aacca62923dcf77719337}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}(...)~\hyperlink{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(static, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Delegates the call to \hyperlink{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to {\ttfamily static} (call inside a class) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\label{_amgrp01747264fe7bf50731df0522c351974e}%
+Macro helpers for checking the existence of functions that takes a given class as parameter \begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__HasMemberGroup_gae37b488b307fefaafdfb8d7d584f42c7}{E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}(H\+M\+\_\+T,  ext,  Args, ...)~ext({\bf std\+::declval}$<$H\+M\+\_\+T$>$(), {\bf std\+::declval}$<$H\+M\+\_\+\+Args$>$()...)
+\begin{DoxyCompactList}\small\item\em Macro helper for checking for functions. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(S\+T\+A\+T\+IC, ...)~\hyperlink{ZipIter_2Helpers_8h_aa35fecfa6a93ec3fdb4a3776f873be27}{E\+X\+P\+A\+ND}(\hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}(\hyperlink{group__HasMemberGroup_gae37b488b307fefaafdfb8d7d584f42c7}{E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}, S\+T\+A\+T\+IC, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, \hyperlink{ZipIter_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{C\+O\+N\+C\+AT}(Has, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)))
+\begin{DoxyCompactList}\small\item\em Calls \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+E\+R()} with the \hyperlink{group__HasMemberGroup_gae37b488b307fefaafdfb8d7d584f42c7}{E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+E\+R()} helper. \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_ga1fa642115f9d0f8b1a86b7ff313ae15f}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+NC}(...)~\hyperlink{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Delegates the call to \hyperlink{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to nothing (call outside a class) \end{DoxyCompactList}\item 
+\#define \hyperlink{group__HasMemberGroup_gacb34894d1650b16dedc5777ff1b736a9}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}(...)~\hyperlink{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(static, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\begin{DoxyCompactList}\small\item\em Delegates the call to \hyperlink{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to {\ttfamily static} (call inside a class) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Check the existence of a variable or function for a given class. 
+
+
+
+\subsection{Macro Definition Documentation}
+\index{Member checking@{Member checking}!E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER@{E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}}
+\index{E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER@{E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}{EXTERN_FUNC_HELPER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER(
+\begin{DoxyParamCaption}
+\item[{}]{H\+M\+\_\+T, }
+\item[{}]{ext, }
+\item[{}]{Args, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~ext({\bf std\+::declval}$<$H\+M\+\_\+T$>$(), {\bf std\+::declval}$<$H\+M\+\_\+\+Args$>$()...)}\hypertarget{group__HasMemberGroup_gae37b488b307fefaafdfb8d7d584f42c7}{}\label{group__HasMemberGroup_gae37b488b307fefaafdfb8d7d584f42c7}
+
+
+Macro helper for checking for functions. 
+
+\index{Member checking@{Member checking}!F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER@{F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}}
+\index{F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER@{F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}{FUNC_HELPER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER(
+\begin{DoxyParamCaption}
+\item[{}]{H\+M\+\_\+T, }
+\item[{}]{func, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~\&H\+M\+\_\+\+T\+::func}\hypertarget{group__HasMemberGroup_ga4ddaa42c162d5e18713602d14de20f7e}{}\label{group__HasMemberGroup_ga4ddaa42c162d5e18713602d14de20f7e}
+
+
+Macro helper for checking regular functions. 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+NC@{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+NC}}
+\index{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+NC@{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+NC}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+NC}{HAS_EXTERN_FUNC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+NC(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HasMemberGroup_ga1fa642115f9d0f8b1a86b7ff313ae15f}{}\label{group__HasMemberGroup_ga1fa642115f9d0f8b1a86b7ff313ae15f}
+
+
+Delegates the call to \hyperlink{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to nothing (call outside a class) 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL@{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}}
+\index{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL@{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}{HAS_EXTERN_FUNC_IMPL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL(
+\begin{DoxyParamCaption}
+\item[{}]{S\+T\+A\+T\+IC, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf E\+X\+P\+A\+ND}({\bf H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}({\bf E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}, S\+T\+A\+T\+IC, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, {\bf C\+O\+N\+C\+AT}(Has, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)))}\hypertarget{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}{}\label{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}
+
+
+Calls \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+E\+R()} with the \hyperlink{group__HasMemberGroup_gae37b488b307fefaafdfb8d7d584f42c7}{E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+E\+R()} helper. 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC@{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}}
+\index{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC@{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}{HAS_EXTERN_FUNC_STATIC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(static, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HasMemberGroup_gacb34894d1650b16dedc5777ff1b736a9}{}\label{group__HasMemberGroup_gacb34894d1650b16dedc5777ff1b736a9}
+
+
+Delegates the call to \hyperlink{group__HasMemberGroup_ga92628c348fbdb72d41cc306d3b20f95a}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to {\ttfamily static} (call inside a class) 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+F\+U\+NC@{H\+A\+S\+\_\+\+F\+U\+NC}}
+\index{H\+A\+S\+\_\+\+F\+U\+NC@{H\+A\+S\+\_\+\+F\+U\+NC}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+F\+U\+NC}{HAS_FUNC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+F\+U\+NC(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HasMemberGroup_ga8387ada8a5ce075169e86b9c2817fdef}{}\label{group__HasMemberGroup_ga8387ada8a5ce075169e86b9c2817fdef}
+
+
+Delegates the call to \hyperlink{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to nothing (call outside a class) 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL@{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}}
+\index{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL@{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}{HAS_FUNC_IMPL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL(
+\begin{DoxyParamCaption}
+\item[{}]{S\+T\+A\+T\+IC, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf E\+X\+P\+A\+ND}({\bf H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}({\bf F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}, S\+T\+A\+T\+IC, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, {\bf C\+O\+N\+C\+AT}(Has, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)))}\hypertarget{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}{}\label{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}
+
+
+Calls \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+E\+R()} with the \hyperlink{group__HasMemberGroup_ga4ddaa42c162d5e18713602d14de20f7e}{F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+E\+R()} helper. 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC@{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}}
+\index{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC@{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}{HAS_FUNC_STATIC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(static, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HasMemberGroup_ga6376819e5b3bcbf0f42d4b6348125c52}{}\label{group__HasMemberGroup_ga6376819e5b3bcbf0f42d4b6348125c52}
+
+
+Delegates the call to \hyperlink{group__HasMemberGroup_ga7e88998dff3b091058161d39a8699d9f}{H\+A\+S\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to {\ttfamily static} (call inside a class) 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+M\+E\+M\+B\+ER@{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}}
+\index{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER@{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}{HAS_MEMBER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+M\+E\+M\+B\+ER(
+\begin{DoxyParamCaption}
+\item[{}]{H\+E\+L\+P\+ER, }
+\item[{}]{S\+T\+A\+T\+IC, }
+\item[{}]{member, }
+\item[{}]{Name, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{}\label{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\(\backslash\)
+template <\textcolor{keyword}{typename}...> \(\backslash\)
+STATIC constexpr \textcolor{keywordtype}{bool} \hyperlink{Helpers_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{CONCAT}(Name, Impl) (...) \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \} \(\backslash\)
+\(\backslash\)
+template <\textcolor{keyword}{typename} HM\_T, \textcolor{keyword}{typename}... HM\_Args> \(\backslash\)
+STATIC constexpr \textcolor{keywordtype}{bool} \hyperlink{Helpers_2Helpers_8h_a2f18db18bca26cafa95e9719de4a41ef}{CONCAT}(Name, Impl) (std::decay\_t<decltype(EXPAND(HELPER(HM\_T, member,
+       HM\_Args)), void())>*) \{ \textcolor{keywordflow}{return} \textcolor{keyword}{true}; \} \(\backslash\)
+\(\backslash\)
+template <\textcolor{keyword}{typename} HM\_T, \textcolor{keyword}{typename}... HM\_Args>  \(\backslash\)
+struct Name : \textcolor{keyword}{public} 
+      std::integral_constant<bool, CONCAT(Name, Impl) <std::decay_t<HM_T>, HM\_Args...>(\textcolor{keyword}{nullptr})> \{\};
+\end{DoxyCode}
+
+
+Uses S\+F\+I\+N\+AE to determine the existence of a certain member given a class. 
+
+Given a call to \hyperlink{group__HasMemberGroup_ga9506a65ecb7c2a37bcabb2e2d371d42e}{H\+A\+S\+\_\+\+V\+A\+R()}, \hyperlink{group__HasMemberGroup_ga8387ada8a5ce075169e86b9c2817fdef}{H\+A\+S\+\_\+\+F\+U\+N\+C()}, \hyperlink{group__HasMemberGroup_ga1fa642115f9d0f8b1a86b7ff313ae15f}{H\+A\+S\+\_\+\+E\+X\+T\+E\+R\+N\+\_\+\+F\+U\+N\+C()} or \hyperlink{group__HasMemberGroup_ga39d708fd02cbbba1ef5db4a5f46fe317}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C()}, this macro will generate two functions and one class. By using S\+F\+I\+N\+AE, we can determine if a given class has or has not a member variable or function at compile time.
+
+\begin{DoxyNote}{Note}
+I am using {\ttfamily H\+M\+\_\+T} and {\ttfamily H\+M\+\_\+\+Args} to avoid any naming conflict if you call this guy inside a class template, for example. 
+\end{DoxyNote}
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+NC@{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+NC}}
+\index{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+NC@{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+NC}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+NC}{HAS_OVERLOADED_FUNC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+NC(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HasMemberGroup_ga39d708fd02cbbba1ef5db4a5f46fe317}{}\label{group__HasMemberGroup_ga39d708fd02cbbba1ef5db4a5f46fe317}
+
+
+Delegates the call to \hyperlink{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to nothing (call outside a class) 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL@{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}}
+\index{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL@{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}{HAS_OVERLOADED_FUNC_IMPL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL(
+\begin{DoxyParamCaption}
+\item[{}]{S\+T\+A\+T\+IC, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf E\+X\+P\+A\+ND}({\bf H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}({\bf O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}, S\+T\+A\+T\+IC, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, {\bf C\+O\+N\+C\+AT}(has\+\_\+, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)))}\hypertarget{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}{}\label{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}
+
+
+Calls \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+E\+R()} with the \hyperlink{group__HasMemberGroup_ga2c2cbdd600b265973cedcbd7d50df8e7}{O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+E\+R()} helper. 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC@{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}}
+\index{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC@{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC}{HAS_OVERLOADED_FUNC_STATIC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+S\+T\+A\+T\+IC(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+PL}(static, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HasMemberGroup_gab2fa7474c70aacca62923dcf77719337}{}\label{group__HasMemberGroup_gab2fa7474c70aacca62923dcf77719337}
+
+
+Delegates the call to \hyperlink{group__HasMemberGroup_gaae550ab3ce508ae2feb5fccabcaea0f8}{H\+A\+S\+\_\+\+O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to {\ttfamily static} (call inside a class) 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+V\+AR@{H\+A\+S\+\_\+\+V\+AR}}
+\index{H\+A\+S\+\_\+\+V\+AR@{H\+A\+S\+\_\+\+V\+AR}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+V\+AR}{HAS_VAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+V\+AR(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL}(, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HasMemberGroup_ga9506a65ecb7c2a37bcabb2e2d371d42e}{}\label{group__HasMemberGroup_ga9506a65ecb7c2a37bcabb2e2d371d42e}
+
+
+Delegates the call to \hyperlink{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to nothing (call outside a class) 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL@{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL}}
+\index{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL@{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL}{HAS_VAR_IMPL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL(
+\begin{DoxyParamCaption}
+\item[{}]{S\+T\+A\+T\+IC, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf E\+X\+P\+A\+ND}({\bf H\+A\+S\+\_\+\+M\+E\+M\+B\+ER}({\bf V\+A\+R\+\_\+\+H\+E\+L\+P\+ER}, S\+T\+A\+T\+IC, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+, {\bf C\+O\+N\+C\+AT}(Has, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)))}\hypertarget{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}{}\label{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}
+
+
+Calls \hyperlink{group__HasMemberGroup_ga37993e5e75a0249077679e4776e89085}{H\+A\+S\+\_\+\+M\+E\+M\+B\+E\+R()} with the \hyperlink{group__HasMemberGroup_ga7987e8af19ede1038fc3063be814fbc3}{V\+A\+R\+\_\+\+H\+E\+L\+P\+E\+R()} helper. 
+
+\index{Member checking@{Member checking}!H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+S\+T\+A\+T\+IC@{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+S\+T\+A\+T\+IC}}
+\index{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+S\+T\+A\+T\+IC@{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+S\+T\+A\+T\+IC}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+S\+T\+A\+T\+IC}{HAS_VAR_STATIC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+S\+T\+A\+T\+IC(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+PL}(static, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HasMemberGroup_ga0746b1606f5166046971f5bab05cb8fc}{}\label{group__HasMemberGroup_ga0746b1606f5166046971f5bab05cb8fc}
+
+
+Delegates the call to \hyperlink{group__HasMemberGroup_ga2c4d77913b98bd922254de0742b294e0}{H\+A\+S\+\_\+\+V\+A\+R\+\_\+\+I\+M\+P\+L()} with {\ttfamily S\+T\+A\+T\+IC} set to {\ttfamily static} (call inside a class) 
+
+\index{Member checking@{Member checking}!O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER@{O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}}
+\index{O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER@{O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER}{OVERLOADED_FUNC_HELPER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+V\+E\+R\+L\+O\+A\+D\+E\+D\+\_\+\+F\+U\+N\+C\+\_\+\+H\+E\+L\+P\+ER(
+\begin{DoxyParamCaption}
+\item[{}]{H\+M\+\_\+T, }
+\item[{}]{func, }
+\item[{}]{Args, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf std\+::declval}$<$H\+M\+\_\+T$>$().func({\bf std\+::declval}$<$H\+M\+\_\+\+Args$>$()...)}\hypertarget{group__HasMemberGroup_ga2c2cbdd600b265973cedcbd7d50df8e7}{}\label{group__HasMemberGroup_ga2c2cbdd600b265973cedcbd7d50df8e7}
+
+
+Macro helper for checking overloaded functions. 
+
+\index{Member checking@{Member checking}!V\+A\+R\+\_\+\+H\+E\+L\+P\+ER@{V\+A\+R\+\_\+\+H\+E\+L\+P\+ER}}
+\index{V\+A\+R\+\_\+\+H\+E\+L\+P\+ER@{V\+A\+R\+\_\+\+H\+E\+L\+P\+ER}!Member checking@{Member checking}}
+\subsubsection[{\texorpdfstring{V\+A\+R\+\_\+\+H\+E\+L\+P\+ER}{VAR_HELPER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+R\+\_\+\+H\+E\+L\+P\+ER(
+\begin{DoxyParamCaption}
+\item[{}]{H\+M\+\_\+T, }
+\item[{}]{var, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~{\bf std\+::declval}$<$H\+M\+\_\+T$>$().var}\hypertarget{group__HasMemberGroup_ga7987e8af19ede1038fc3063be814fbc3}{}\label{group__HasMemberGroup_ga7987e8af19ede1038fc3063be814fbc3}
+
+
+Macro helper for checking variables. 
+

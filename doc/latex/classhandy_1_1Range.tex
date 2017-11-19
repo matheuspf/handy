@@ -1,0 +1,155 @@
+\hypertarget{classhandy_1_1Range}{}\section{handy\+:\+:Range$<$ T, Valid\+Range $>$ Class Template Reference}
+\label{classhandy_1_1Range}\index{handy\+::\+Range$<$ T, Valid\+Range $>$@{handy\+::\+Range$<$ T, Valid\+Range $>$}}
+
+
+{\ttfamily \#include $<$Range.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classhandy_1_1Range_1_1Iterator}{Iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type} = std\+::decay\+\_\+t$<$ T $>$
+\item 
+using \hyperlink{classhandy_1_1Range_ab2b8b141ea04ed06e53938c899b5fa8a}{value\+\_\+type} = \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type}
+\item 
+using \hyperlink{classhandy_1_1Range_ad879bbe314ce7bcffdda15a0f065e0f8}{iterator} = \hyperlink{classhandy_1_1Range_1_1Iterator}{Iterator}
+\item 
+using \hyperlink{classhandy_1_1Range_a9d4a18bcffddb19f6dcc2d9088fd5219}{iterator\+\_\+category} = typename \hyperlink{classhandy_1_1Range_1_1Iterator_a5e9da733ea7dadc2cc69327288e3e7a2}{iterator\+::iterator\+\_\+category}
+\item 
+using \hyperlink{classhandy_1_1Range_a776521ae1ca6a10d1be256ecdf26f6e2}{const\+\_\+iterator} = \hyperlink{classhandy_1_1Range_ad879bbe314ce7bcffdda15a0f065e0f8}{iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classhandy_1_1Range_ac75e53eb61792ac1a682d51913633709}{Range} (const \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type} \&last)
+\item 
+\hyperlink{classhandy_1_1Range_a9496d5be63390d116e8ac513941ad805}{Range} (const \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type} \&first, const \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type} \&last)
+\item 
+\hyperlink{classhandy_1_1Range_a6e6f90cfac8ae3c265c82d25e01bd0ba}{Range} (const \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type} \&first, const \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type} \&last, const \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type} \&step)
+\item 
+\hyperlink{classhandy_1_1Range_ad879bbe314ce7bcffdda15a0f065e0f8}{iterator} \hyperlink{classhandy_1_1Range_ae6142e67b348d891966b97671acb890a}{begin} ()
+\item 
+\hyperlink{classhandy_1_1Range_ad879bbe314ce7bcffdda15a0f065e0f8}{iterator} \hyperlink{classhandy_1_1Range_a423264a5e77f59b8a47739e5d47f5e81}{end} ()
+\item 
+\hyperlink{classhandy_1_1Range_a776521ae1ca6a10d1be256ecdf26f6e2}{const\+\_\+iterator} \hyperlink{classhandy_1_1Range_a3e3e4186610dd72a275881e597285b8b}{begin} () const 
+\item 
+\hyperlink{classhandy_1_1Range_a776521ae1ca6a10d1be256ecdf26f6e2}{const\+\_\+iterator} \hyperlink{classhandy_1_1Range_a69e9c4ca833c91459594e71d3f83c3e8}{end} () const 
+\item 
+{\bf std\+::vector}$<$ \hyperlink{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{Type} $>$ \hyperlink{classhandy_1_1Range_a7a0457913f0bc3698b6172910ca5070b}{eval} ()
+\item 
+{\footnotesize template$<$typename Iter $>$ }\\void \hyperlink{classhandy_1_1Range_aedef8b41234dd9832701619696fcd239}{eval} (Iter iter)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+friend \hyperlink{classhandy_1_1Range_a65634287fdb689e410c0c4af5bb2ec05}{Iterator}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\index{handy\+::\+Range@{handy\+::\+Range}!const\+\_\+iterator@{const\+\_\+iterator}}
+\index{const\+\_\+iterator@{const\+\_\+iterator}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{const\+\_\+iterator}{const_iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ using {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf const\+\_\+iterator} =  {\bf iterator}}\hypertarget{classhandy_1_1Range_a776521ae1ca6a10d1be256ecdf26f6e2}{}\label{classhandy_1_1Range_a776521ae1ca6a10d1be256ecdf26f6e2}
+You will never use \textquotesingle{}const Iterator$<$t$>$\textquotesingle{} in pratice. But, if you do, the iterator cannot really be const, so we can increment the \textquotesingle{}value\textquotesingle{} variable. \index{handy\+::\+Range@{handy\+::\+Range}!iterator@{iterator}}
+\index{iterator@{iterator}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{iterator}{iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ using {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf iterator} =  {\bf Iterator}}\hypertarget{classhandy_1_1Range_ad879bbe314ce7bcffdda15a0f065e0f8}{}\label{classhandy_1_1Range_ad879bbe314ce7bcffdda15a0f065e0f8}
+\index{handy\+::\+Range@{handy\+::\+Range}!iterator\+\_\+category@{iterator\+\_\+category}}
+\index{iterator\+\_\+category@{iterator\+\_\+category}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{iterator\+\_\+category}{iterator_category}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ using {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf iterator\+\_\+category} =  typename {\bf iterator\+::iterator\+\_\+category}}\hypertarget{classhandy_1_1Range_a9d4a18bcffddb19f6dcc2d9088fd5219}{}\label{classhandy_1_1Range_a9d4a18bcffddb19f6dcc2d9088fd5219}
+\index{handy\+::\+Range@{handy\+::\+Range}!Type@{Type}}
+\index{Type@{Type}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{Type}{Type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ using {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf Type} =  std\+::decay\+\_\+t$<$T$>$}\hypertarget{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}{}\label{classhandy_1_1Range_a2a8c2d169657c93464989e7608ed3f9b}
+\index{handy\+::\+Range@{handy\+::\+Range}!value\+\_\+type@{value\+\_\+type}}
+\index{value\+\_\+type@{value\+\_\+type}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{value\+\_\+type}{value_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ using {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf value\+\_\+type} =  {\bf Type}}\hypertarget{classhandy_1_1Range_ab2b8b141ea04ed06e53938c899b5fa8a}{}\label{classhandy_1_1Range_ab2b8b141ea04ed06e53938c899b5fa8a}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{handy\+::\+Range@{handy\+::\+Range}!Range@{Range}}
+\index{Range@{Range}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{Range(const Type \&last)}{Range(const Type &last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf Range} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Type} \&}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_ac75e53eb61792ac1a682d51913633709}{}\label{classhandy_1_1Range_ac75e53eb61792ac1a682d51913633709}
+\index{handy\+::\+Range@{handy\+::\+Range}!Range@{Range}}
+\index{Range@{Range}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{Range(const Type \&first, const Type \&last)}{Range(const Type &first, const Type &last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf Range} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Type} \&}]{first, }
+\item[{const {\bf Type} \&}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_a9496d5be63390d116e8ac513941ad805}{}\label{classhandy_1_1Range_a9496d5be63390d116e8ac513941ad805}
+\index{handy\+::\+Range@{handy\+::\+Range}!Range@{Range}}
+\index{Range@{Range}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{Range(const Type \&first, const Type \&last, const Type \&step)}{Range(const Type &first, const Type &last, const Type &step)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf Range} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Type} \&}]{first, }
+\item[{const {\bf Type} \&}]{last, }
+\item[{const {\bf Type} \&}]{step}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_a6e6f90cfac8ae3c265c82d25e01bd0ba}{}\label{classhandy_1_1Range_a6e6f90cfac8ae3c265c82d25e01bd0ba}
+To be a valid range, there must be a positive number \textquotesingle{}c\textquotesingle{} such that\+:
+
+first + c $\ast$ step = last ---$>$ c = (last -\/ first) / step
+
+As we only care for the sign of \textquotesingle{}c\textquotesingle{}, we can change the division by a multiplication. The equal test is for the case where \textquotesingle{}last == first\textquotesingle{}.
+
+\subsection{Member Function Documentation}
+\index{handy\+::\+Range@{handy\+::\+Range}!begin@{begin}}
+\index{begin@{begin}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{begin()}{begin()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ {\bf iterator} {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_ae6142e67b348d891966b97671acb890a}{}\label{classhandy_1_1Range_ae6142e67b348d891966b97671acb890a}
+\index{handy\+::\+Range@{handy\+::\+Range}!begin@{begin}}
+\index{begin@{begin}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{begin() const }{begin() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ {\bf const\+\_\+iterator} {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_a3e3e4186610dd72a275881e597285b8b}{}\label{classhandy_1_1Range_a3e3e4186610dd72a275881e597285b8b}
+\index{handy\+::\+Range@{handy\+::\+Range}!end@{end}}
+\index{end@{end}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{end()}{end()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ {\bf iterator} {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_a423264a5e77f59b8a47739e5d47f5e81}{}\label{classhandy_1_1Range_a423264a5e77f59b8a47739e5d47f5e81}
+\index{handy\+::\+Range@{handy\+::\+Range}!end@{end}}
+\index{end@{end}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{end() const }{end() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ {\bf const\+\_\+iterator} {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_a69e9c4ca833c91459594e71d3f83c3e8}{}\label{classhandy_1_1Range_a69e9c4ca833c91459594e71d3f83c3e8}
+\index{handy\+::\+Range@{handy\+::\+Range}!eval@{eval}}
+\index{eval@{eval}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{eval()}{eval()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ {\bf std\+::vector}$<${\bf Type}$>$ {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::eval (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_a7a0457913f0bc3698b6172910ca5070b}{}\label{classhandy_1_1Range_a7a0457913f0bc3698b6172910ca5070b}
+\index{handy\+::\+Range@{handy\+::\+Range}!eval@{eval}}
+\index{eval@{eval}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{eval(\+Iter iter)}{eval(Iter iter)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ template$<$typename Iter $>$ void {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::eval (
+\begin{DoxyParamCaption}
+\item[{Iter}]{iter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1Range_aedef8b41234dd9832701619696fcd239}{}\label{classhandy_1_1Range_aedef8b41234dd9832701619696fcd239}
+
+
+\subsection{Member Data Documentation}
+\index{handy\+::\+Range@{handy\+::\+Range}!Iterator@{Iterator}}
+\index{Iterator@{Iterator}!handy\+::\+Range@{handy\+::\+Range}}
+\subsubsection[{\texorpdfstring{Iterator}{Iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename Valid\+Range = impl\+::\+Half\+Closed\+Interval$>$ friend {\bf handy\+::\+Range}$<$ T, Valid\+Range $>$\+::{\bf Iterator}}\hypertarget{classhandy_1_1Range_a65634287fdb689e410c0c4af5bb2ec05}{}\label{classhandy_1_1Range_a65634287fdb689e410c0c4af5bb2ec05}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Range/\hyperlink{Range_8h}{Range.\+h}\end{DoxyCompactItemize}

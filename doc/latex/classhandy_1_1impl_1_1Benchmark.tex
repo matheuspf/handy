@@ -1,0 +1,56 @@
+\hypertarget{classhandy_1_1impl_1_1Benchmark}{}\section{handy\+:\+:impl\+:\+:Benchmark$<$ Start\+On\+Creation $>$ Class Template Reference}
+\label{classhandy_1_1impl_1_1Benchmark}\index{handy\+::impl\+::\+Benchmark$<$ Start\+On\+Creation $>$@{handy\+::impl\+::\+Benchmark$<$ Start\+On\+Creation $>$}}
+
+
+A class to do precise benchmarking on both Windows and Linux.  
+
+
+
+
+{\ttfamily \#include $<$Benchmark.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool B = Start\+On\+Creation, typename std\+::enable\+\_\+if$<$ B $>$\+::type $\ast$  = nullptr$>$ }\\\hyperlink{group__BenchmarkGroup_ga1ba032700225aabb43579c633d7838b1}{Benchmark} ()
+\begin{DoxyCompactList}\small\item\em Call the start function on creation if {\ttfamily Start\+On\+Creation} is {\ttfamily true}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool B = Start\+On\+Creation, typename std\+::enable\+\_\+if$<$!\+B $>$\+::type $\ast$  = nullptr$>$ }\\\hyperlink{classhandy_1_1impl_1_1Benchmark_ga1ba032700225aabb43579c633d7838b1}{Benchmark} ()
+\begin{DoxyCompactList}\small\item\em Do nothing if {\ttfamily Start\+On\+Creation} is {\ttfamily false}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class F , typename... Args$>$ }\\double \hyperlink{group__BenchmarkGroup_ga5eee042d87e75a24021ad6851a2c10ec}{operator()} (F \&\&f, Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em You can also use this operator and pass a function along with its arguments. \end{DoxyCompactList}\item 
+void \hyperlink{group__BenchmarkGroup_gac7a583bb5a04f8028b8cc71a7db8fe80}{start} ()
+\begin{DoxyCompactList}\small\item\em Start clock. \end{DoxyCompactList}\item 
+double \hyperlink{group__BenchmarkGroup_ga1d7b23a0eeb6280431e0265cbdac1962}{finish} ()
+\begin{DoxyCompactList}\small\item\em Stop clock and return time elapsed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$bool Start\+On\+Creation = true$>$\\*
+class handy\+::impl\+::\+Benchmark$<$ Start\+On\+Creation $>$}
+
+A class to do precise benchmarking on both Windows and Linux. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Start\+On\+Creation} & {\ttfamily bool} template constant telling if the clock initialization must be done at creation\\
+\hline
+\end{DoxyTemplParams}
+If {\ttfamily Start\+On\+Creation} is {\ttfamily true}, this class initializes the clock on creation. You can also reset it by calling the \hyperlink{group__BenchmarkGroup_gac7a583bb5a04f8028b8cc71a7db8fe80}{start()} function. The \hyperlink{group__BenchmarkGroup_ga1d7b23a0eeb6280431e0265cbdac1962}{finish()} function returns the time (in seconds, up to nanoseconds of precision) elapsed since the call to the \hyperlink{group__BenchmarkGroup_gac7a583bb5a04f8028b8cc71a7db8fe80}{start()} function. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{handy\+::impl\+::\+Benchmark@{handy\+::impl\+::\+Benchmark}!Benchmark@{Benchmark}}
+\index{Benchmark@{Benchmark}!handy\+::impl\+::\+Benchmark@{handy\+::impl\+::\+Benchmark}}
+\subsubsection[{\texorpdfstring{Benchmark()}{Benchmark()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool Start\+On\+Creation = true$>$ template$<$bool B = Start\+On\+Creation, typename std\+::enable\+\_\+if$<$!\+B $>$\+::type $\ast$  = nullptr$>$ {\bf handy\+::impl\+::\+Benchmark}$<$ Start\+On\+Creation $>$\+::{\bf Benchmark} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classhandy_1_1impl_1_1Benchmark_ga1ba032700225aabb43579c633d7838b1}{}\label{classhandy_1_1impl_1_1Benchmark_ga1ba032700225aabb43579c633d7838b1}
+
+
+Do nothing if {\ttfamily Start\+On\+Creation} is {\ttfamily false}. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Helpers/\hyperlink{Benchmark_8h}{Benchmark.\+h}\end{DoxyCompactItemize}

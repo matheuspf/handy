@@ -1,0 +1,75 @@
+\hypertarget{ZipIter_8h}{}\section{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Zip\+Iter/\+Zip\+Iter.h File Reference}
+\label{ZipIter_8h}\index{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Zip\+Iter/\+Zip\+Iter.\+h@{/home/matheus/\+Algoritmos/\+C\+P\+P/\+Handy/include/\+Zip\+Iter/\+Zip\+Iter.\+h}}
+
+
+Simple facilities to iterate through multiple containers and iterators at the same time, similar to Python\textquotesingle{}s zip. Works easily with stl algorithms as well.  
+
+
+{\ttfamily \#include \char`\"{}Helpers.\+h\char`\"{}}\\*
+Include dependency graph for Zip\+Iter.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{ZipIter_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classit_1_1ZipIter}{it\+::\+Zip\+Iter$<$ T, Iters $>$}
+\item 
+class \hyperlink{classit_1_1Zip}{it\+::\+Zip$<$ Containers $>$}
+\item 
+class \hyperlink{structit_1_1UnZip}{it\+::\+Un\+Zip$<$ Apply $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceit}{it}
+\begin{DoxyCompactList}\small\item\em Main namespace. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\auto \hyperlink{namespaceit_ae3e2b700f5c415f9716eeca77de40f4e}{it\+::operator+} (Zip\+Iter$<$ T, Iters... $>$ iter, int inc)
+\begin{DoxyCompactList}\small\item\em \textquotesingle{}operator+\textquotesingle{} and \textquotesingle{}operator-\/\textquotesingle{} will call \textquotesingle{}operator+=\textquotesingle{} and \textquotesingle{}operator-\/=\textquotesingle{} for increment \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\auto \hyperlink{namespaceit_a5ff256dae1a1aa8e2831d30d60e0f78c}{it\+::operator-\/} (Zip\+Iter$<$ T, Iters... $>$ iter, int inc)
+\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\auto \hyperlink{namespaceit_afcc29ebadd551765c7fffbb18b84adbf}{it\+::operator+} (const Zip\+Iter$<$ T, Iters... $>$ \&iter1, const Zip\+Iter$<$ T, Iters... $>$ \&iter2)
+\begin{DoxyCompactList}\small\item\em Distance from two iterators. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\auto \hyperlink{namespaceit_aeb4599bb226f6b4819451b1f1bcd4493}{it\+::operator-\/} (const Zip\+Iter$<$ T, Iters... $>$ \&iter1, const Zip\+Iter$<$ T, Iters... $>$ \&iter2)
+\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\bool \hyperlink{namespaceit_a35d7fe94abbbb906c0b65aabd31dbfd3}{it\+::operator==} (const Zip\+Iter$<$ T, Iters... $>$ \&iter1, const Zip\+Iter$<$ T, Iters... $>$ \&iter2)
+\begin{DoxyCompactList}\small\item\em Comparisons. Only \textquotesingle{}operator==\textquotesingle{} and \textquotesingle{}operator$<$\textquotesingle{} are defined. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\bool \hyperlink{namespaceit_aa1ec126ca216c4ff8b511f7b2f1d1e68}{it\+::operator!=} (const Zip\+Iter$<$ T, Iters... $>$ \&iter1, const Zip\+Iter$<$ T, Iters... $>$ \&iter2)
+\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\bool \hyperlink{namespaceit_a9667a596ccc9f03510373b78b8048512}{it\+::operator$<$} (const Zip\+Iter$<$ T, Iters... $>$ \&iter1, const Zip\+Iter$<$ T, Iters... $>$ \&iter2)
+\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\bool \hyperlink{namespaceit_ae28db9a014731d151257e863f3d5a1d1}{it\+::operator$>$} (const Zip\+Iter$<$ T, Iters... $>$ \&iter1, const Zip\+Iter$<$ T, Iters... $>$ \&iter2)
+\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\bool \hyperlink{namespaceit_a9e84d394dd1fe80b87302e9a0e292028}{it\+::operator$<$=} (const Zip\+Iter$<$ T, Iters... $>$ \&iter1, const Zip\+Iter$<$ T, Iters... $>$ \&iter2)
+\item 
+{\footnotesize template$<$typename T , typename... Iters$>$ }\\bool \hyperlink{namespaceit_a31f1d6d5066e50a2d93fac8597c53b1f}{it\+::operator$>$=} (const Zip\+Iter$<$ T, Iters... $>$ \&iter1, const Zip\+Iter$<$ T, Iters... $>$ \&iter2)
+\item 
+{\footnotesize template$<$typename T , typename... Iterators$>$ }\\auto \hyperlink{namespaceit_ac53929012901097d70c031455ed71c3b}{it\+::zip\+Iter} (T \&\&t, Iterators \&\&...iterators)
+\item 
+{\footnotesize template$<$typename T , typename... Containers, std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ T $>$\+::value, int $>$  = 0$>$ }\\auto \hyperlink{namespaceit_af56a1ed82f73fa9bf680152e3618eb7e}{it\+::zip} (T \&\&t, Containers \&\&...containers)
+\item 
+{\footnotesize template$<$typename T , typename... Containers, std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ T $>$\+::value, int $>$  = 0$>$ }\\auto \hyperlink{namespaceit_ada609562dc2444e6d70e548cb1ea76c4}{it\+::zip\+Begin} (T \&\&t, Containers \&\&...containers)
+\item 
+{\footnotesize template$<$typename T , typename... Containers, std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ T $>$\+::value, int $>$  = 0$>$ }\\auto \hyperlink{namespaceit_a7fb0f903c3b17faa075ebdb35d43dfeb}{it\+::zip\+End} (T \&\&t, Containers \&\&...containers)
+\item 
+{\footnotesize template$<$typename T , typename... Containers, std\+::enable\+\_\+if\+\_\+t$<$ !std\+::is\+\_\+pointer$<$ T $>$\+::value, int $>$  = 0$>$ }\\auto \hyperlink{namespaceit_a1f0d50c802f7ebc349493c21667c366c}{it\+::zip\+All} (T \&\&t, Containers \&\&...containers)
+\item 
+{\footnotesize template$<$class F $>$ }\\auto \hyperlink{namespaceit_a92b0020c9422efb3954750c81d125db8}{it\+::un\+Zip} (F f)
+\item 
+{\footnotesize template$<$class Tuple , class Function , std\+::size\+\_\+t... Is$>$ }\\decltype(auto) \hyperlink{namespaceit_a618ba642582130926aaccb6fee373261}{it\+::un\+Zip} (Tuple \&\&tup, Function function, std\+::index\+\_\+sequence$<$ Is... $>$)
+\item 
+{\footnotesize template$<$class Tuple , class Function $>$ }\\decltype(auto) \hyperlink{namespaceit_a8e31b0601b19400150691b97a2f2b729}{it\+::un\+Zip} (Tuple \&\&tup, Function function)
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\void \hyperlink{namespaceit_a5d544a80e0acee396db704952cec839a}{it\+::for\+Each} (Args \&\&...args)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simple facilities to iterate through multiple containers and iterators at the same time, similar to Python\textquotesingle{}s zip. Works easily with stl algorithms as well. 
+

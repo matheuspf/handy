@@ -142,7 +142,6 @@ using IsInheritedTemplate = impl::IsInherited<T, std::nullptr_t, Template>;
 
 
 
-
 /** @name
 	@brief Easy printing
 */
@@ -213,7 +212,7 @@ struct GetArg<I>
 /// Helper alias
 template <std::size_t I, typename... Args>
 using GetArg_t = typename GetArg<I, Args...>::type;
-/** @} */
+//@}
 
 
 
@@ -240,19 +239,25 @@ constexpr bool And_v = And< Bs... >::value;
 
 
 
-/** @defgroup IsSpecializationGroup Specialization check
-    @brief Check for template specialization
+/** @class IsSpecializationDoc
+ 	@brief Check for template specialization
+	@tparam T Type to check
+	@tparam Template Template type to check
 	@note Taken from https://bitbucket.org/martinhofernandes/wheels/src/default/include/wheels/meta/type_traits.h%2B%2B?fileviewer=file-view-default#cl-161
-	@{
 */
-/// If class @c T is not a specialization of template @c Template, inherit from std::false_type
+
+/** @copydoc IsSpecializationDoc
+	@details If class @c T is not a specialization of template @c Template, inherit from std::false_type
+**/
 template <typename T, template <typename...> class Template>
 struct IsSpecialization : std::false_type {};
 
-/// If class @c T is a specialization of template @c Template, inherit from std::true_type
+/** @copydoc IsSpecializationDoc
+	@details If class @c T is a specialization of template @c Template, inherit from std::true_type
+**/
 template <template <typename...> class Template, typename... Args>
 struct IsSpecialization<Template<Args...>, Template> : std::true_type {};
-//@}
+
 
 
 /// Verify if type @c T is a tuple using handy::IsSpecialization

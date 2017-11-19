@@ -1,0 +1,133 @@
+\hypertarget{group__HandyParamsGroup}{}\section{Class initialization}
+\label{group__HandyParamsGroup}\index{Class initialization@{Class initialization}}
+
+
+Beautiful and easy class initialization.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__HandyParamsGroup_gaf448bb54c258e1cf65e85ae71e191c09}{H\+A\+N\+D\+Y\+\_\+\+P\+A\+R\+A\+MS}(C\+L\+A\+SS, ...)~C\+L\+A\+SS({\bf std\+::map}$<${\bf std\+::string}, std\+::any$>$ mp) \{ \hyperlink{Helpers_2Helpers_8h_a48d6b8d510060710e2a730688a4838c6}{A\+P\+P\+L\+Y\+\_\+N}(H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+MS, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+) \}
+\begin{DoxyCompactList}\small\item\em Simply call this guy at the public section of your class, passing the class name as first argument and a sequence of the arguments you want to be capable of initialization. For examples of usage, see the \textquotesingle{}examples\textquotesingle{} folder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\label{_amgrp01747264fe7bf50731df0522c351974e}%
+The code generators for each parameter
+
+\begin{DoxyNote}{Note}
+It supports up to 9 parameters, but you can easily copy-\/paste and create more 
+\end{DoxyNote}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group__HandyParamsGroup_gad6bc4ced0a70e08b768e5bb045e0f762}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1}(p1, ...)~auto it1 = mp.\+find(\#p1);  if(it1 != mp.\+end()) p1 = std\+::any\+\_\+cast$<$decltype(p1)$>$(it1-\/$>$second);
+\item 
+\#define \hyperlink{group__HandyParamsGroup_ga704974fd416ad34e1c20e5871d922194}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2}(p2, ...)~auto it2 = mp.\+find(\#p2);  if(it2 != mp.\+end()) p2 = std\+::any\+\_\+cast$<$decltype(p2)$>$(it2-\/$>$second); \hyperlink{group__HandyParamsGroup_gad6bc4ced0a70e08b768e5bb045e0f762}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{group__HandyParamsGroup_ga5242771850490ae87776d358c99044fa}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3}(p3, ...)~auto it3 = mp.\+find(\#p3);  if(it3 != mp.\+end()) p3 = std\+::any\+\_\+cast$<$decltype(p3)$>$(it3-\/$>$second); \hyperlink{group__HandyParamsGroup_ga704974fd416ad34e1c20e5871d922194}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{group__HandyParamsGroup_ga6edfe7ad7b0f42713bf741b092697115}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4}(p4, ...)~auto it4 = mp.\+find(\#p4);  if(it4 != mp.\+end()) p4 = std\+::any\+\_\+cast$<$decltype(p4)$>$(it4-\/$>$second); \hyperlink{group__HandyParamsGroup_ga5242771850490ae87776d358c99044fa}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{group__HandyParamsGroup_gaad355ab5b4bd32d8526c521d4c5f5a07}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5}(p5, ...)~auto it5 = mp.\+find(\#p5);  if(it5 != mp.\+end()) p5 = std\+::any\+\_\+cast$<$decltype(p5)$>$(it5-\/$>$second); \hyperlink{group__HandyParamsGroup_ga6edfe7ad7b0f42713bf741b092697115}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{group__HandyParamsGroup_ga4f3e03cc235ac93a9a9077d1f421a129}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6}(p6, ...)~auto it6 = mp.\+find(\#p6);  if(it6 != mp.\+end()) p6 = std\+::any\+\_\+cast$<$decltype(p6)$>$(it6-\/$>$second); \hyperlink{group__HandyParamsGroup_gaad355ab5b4bd32d8526c521d4c5f5a07}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{group__HandyParamsGroup_ga0966041a7eb352938e89f59dc4eab43b}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7}(p7, ...)~auto it7 = mp.\+find(\#p7);  if(it7 != mp.\+end()) p7 = std\+::any\+\_\+cast$<$decltype(p7)$>$(it7-\/$>$second); \hyperlink{group__HandyParamsGroup_ga4f3e03cc235ac93a9a9077d1f421a129}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{group__HandyParamsGroup_gad99d11507ac7888d614784fa4cc40b48}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8}(p8, ...)~auto it8 = mp.\+find(\#p8);  if(it8 != mp.\+end()) p8 = std\+::any\+\_\+cast$<$decltype(p8)$>$(it8-\/$>$second); \hyperlink{group__HandyParamsGroup_ga0966041a7eb352938e89f59dc4eab43b}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{group__HandyParamsGroup_gafa3e34a00c6a4d9ed2e7abee812dcbdf}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S9}(p9, ...)~auto it9 = mp.\+find(\#p9);  if(it9 != mp.\+end()) p9 = std\+::any\+\_\+cast$<$decltype(p9)$>$(it9-\/$>$second); \hyperlink{group__HandyParamsGroup_gad99d11507ac7888d614784fa4cc40b48}{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Beautiful and easy class initialization. 
+
+
+
+\subsection{Macro Definition Documentation}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1}{HANDY_ATT_PARAMS1}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1(
+\begin{DoxyParamCaption}
+\item[{}]{p1, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it1 = mp.\+find(\#p1);  if(it1 != mp.\+end()) p1 = std\+::any\+\_\+cast$<$decltype(p1)$>$(it1-\/$>$second);}\hypertarget{group__HandyParamsGroup_gad6bc4ced0a70e08b768e5bb045e0f762}{}\label{group__HandyParamsGroup_gad6bc4ced0a70e08b768e5bb045e0f762}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2}{HANDY_ATT_PARAMS2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2(
+\begin{DoxyParamCaption}
+\item[{}]{p2, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it2 = mp.\+find(\#p2);  if(it2 != mp.\+end()) p2 = std\+::any\+\_\+cast$<$decltype(p2)$>$(it2-\/$>$second); {\bf H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S1}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HandyParamsGroup_ga704974fd416ad34e1c20e5871d922194}{}\label{group__HandyParamsGroup_ga704974fd416ad34e1c20e5871d922194}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3}{HANDY_ATT_PARAMS3}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3(
+\begin{DoxyParamCaption}
+\item[{}]{p3, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it3 = mp.\+find(\#p3);  if(it3 != mp.\+end()) p3 = std\+::any\+\_\+cast$<$decltype(p3)$>$(it3-\/$>$second); {\bf H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S2}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HandyParamsGroup_ga5242771850490ae87776d358c99044fa}{}\label{group__HandyParamsGroup_ga5242771850490ae87776d358c99044fa}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4}{HANDY_ATT_PARAMS4}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4(
+\begin{DoxyParamCaption}
+\item[{}]{p4, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it4 = mp.\+find(\#p4);  if(it4 != mp.\+end()) p4 = std\+::any\+\_\+cast$<$decltype(p4)$>$(it4-\/$>$second); {\bf H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S3}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HandyParamsGroup_ga6edfe7ad7b0f42713bf741b092697115}{}\label{group__HandyParamsGroup_ga6edfe7ad7b0f42713bf741b092697115}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5}{HANDY_ATT_PARAMS5}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5(
+\begin{DoxyParamCaption}
+\item[{}]{p5, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it5 = mp.\+find(\#p5);  if(it5 != mp.\+end()) p5 = std\+::any\+\_\+cast$<$decltype(p5)$>$(it5-\/$>$second); {\bf H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S4}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HandyParamsGroup_gaad355ab5b4bd32d8526c521d4c5f5a07}{}\label{group__HandyParamsGroup_gaad355ab5b4bd32d8526c521d4c5f5a07}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6}{HANDY_ATT_PARAMS6}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6(
+\begin{DoxyParamCaption}
+\item[{}]{p6, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it6 = mp.\+find(\#p6);  if(it6 != mp.\+end()) p6 = std\+::any\+\_\+cast$<$decltype(p6)$>$(it6-\/$>$second); {\bf H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S5}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HandyParamsGroup_ga4f3e03cc235ac93a9a9077d1f421a129}{}\label{group__HandyParamsGroup_ga4f3e03cc235ac93a9a9077d1f421a129}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7}{HANDY_ATT_PARAMS7}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7(
+\begin{DoxyParamCaption}
+\item[{}]{p7, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it7 = mp.\+find(\#p7);  if(it7 != mp.\+end()) p7 = std\+::any\+\_\+cast$<$decltype(p7)$>$(it7-\/$>$second); {\bf H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S6}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HandyParamsGroup_ga0966041a7eb352938e89f59dc4eab43b}{}\label{group__HandyParamsGroup_ga0966041a7eb352938e89f59dc4eab43b}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8}{HANDY_ATT_PARAMS8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8(
+\begin{DoxyParamCaption}
+\item[{}]{p8, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it8 = mp.\+find(\#p8);  if(it8 != mp.\+end()) p8 = std\+::any\+\_\+cast$<$decltype(p8)$>$(it8-\/$>$second); {\bf H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S7}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HandyParamsGroup_gad99d11507ac7888d614784fa4cc40b48}{}\label{group__HandyParamsGroup_gad99d11507ac7888d614784fa4cc40b48}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S9@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S9}}
+\index{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S9@{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S9}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S9}{HANDY_ATT_PARAMS9}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S9(
+\begin{DoxyParamCaption}
+\item[{}]{p9, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~auto it9 = mp.\+find(\#p9);  if(it9 != mp.\+end()) p9 = std\+::any\+\_\+cast$<$decltype(p9)$>$(it9-\/$>$second); {\bf H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+M\+S8}(\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}\hypertarget{group__HandyParamsGroup_gafa3e34a00c6a4d9ed2e7abee812dcbdf}{}\label{group__HandyParamsGroup_gafa3e34a00c6a4d9ed2e7abee812dcbdf}
+\index{Class initialization@{Class initialization}!H\+A\+N\+D\+Y\+\_\+\+P\+A\+R\+A\+MS@{H\+A\+N\+D\+Y\+\_\+\+P\+A\+R\+A\+MS}}
+\index{H\+A\+N\+D\+Y\+\_\+\+P\+A\+R\+A\+MS@{H\+A\+N\+D\+Y\+\_\+\+P\+A\+R\+A\+MS}!Class initialization@{Class initialization}}
+\subsubsection[{\texorpdfstring{H\+A\+N\+D\+Y\+\_\+\+P\+A\+R\+A\+MS}{HANDY_PARAMS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+N\+D\+Y\+\_\+\+P\+A\+R\+A\+MS(
+\begin{DoxyParamCaption}
+\item[{}]{C\+L\+A\+SS, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~C\+L\+A\+SS({\bf std\+::map}$<${\bf std\+::string}, std\+::any$>$ mp) \{ {\bf A\+P\+P\+L\+Y\+\_\+N}(H\+A\+N\+D\+Y\+\_\+\+A\+T\+T\+\_\+\+P\+A\+R\+A\+MS, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+) \}}\hypertarget{group__HandyParamsGroup_gaf448bb54c258e1cf65e85ae71e191c09}{}\label{group__HandyParamsGroup_gaf448bb54c258e1cf65e85ae71e191c09}
+
+
+Simply call this guy at the public section of your class, passing the class name as first argument and a sequence of the arguments you want to be capable of initialization. For examples of usage, see the \textquotesingle{}examples\textquotesingle{} folder. 
+
+\begin{DoxyWarning}{Warning}
+The types passed by parameter must be exactly equal to the ones in the class. That is, if theres a {\ttfamily float} in your class, and you pass a {\ttfamily double}, std\+::any will throw an exception. 
+\end{DoxyWarning}

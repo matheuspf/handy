@@ -1,0 +1,38 @@
+\hypertarget{group__AndGroup}{}\section{Variadic And}
+\label{group__AndGroup}\index{Variadic And@{Variadic And}}
+
+
+Perform the {\ttfamily and} operator on a variadic number of bool constants.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhandy_1_1And}{handy\+::\+And$<$... $>$}
+\begin{DoxyCompactList}\small\item\em Base definition. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1And_3_01B1_00_01Bs_8_8_8_01_4}{handy\+::\+And$<$ B1, Bs... $>$}
+\begin{DoxyCompactList}\small\item\em If {\ttfamily B1} is true, check for the rest. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1And_3_01false_00_01Bs_8_8_8_01_4}{handy\+::\+And$<$ false, Bs... $>$}
+\begin{DoxyCompactList}\small\item\em If the current argument ({\ttfamily B1}) is {\ttfamily false}, so the return can only be {\ttfamily false}. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1And_3_4}{handy\+::\+And$<$$>$}
+\begin{DoxyCompactList}\small\item\em If none of the arguments are {\ttfamily false}, so the result is {\ttfamily true}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool... Bs$>$ }\\constexpr bool \hyperlink{group__AndGroup_ga0b8333d82725fa020f74b5eee7016dbc}{handy\+::\+And\+\_\+v} = And$<$ Bs... $>$\+::value
+\begin{DoxyCompactList}\small\item\em Helper alias. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Perform the {\ttfamily and} operator on a variadic number of bool constants. 
+
+
+
+\subsection{Variable Documentation}
+\index{Variadic And@{Variadic And}!And\+\_\+v@{And\+\_\+v}}
+\index{And\+\_\+v@{And\+\_\+v}!Variadic And@{Variadic And}}
+\subsubsection[{\texorpdfstring{And\+\_\+v}{And_v}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool... Bs$>$ constexpr bool handy\+::\+And\+\_\+v = And$<$ Bs... $>$\+::value}\hypertarget{group__AndGroup_ga0b8333d82725fa020f74b5eee7016dbc}{}\label{group__AndGroup_ga0b8333d82725fa020f74b5eee7016dbc}
+
+
+Helper alias. 
+

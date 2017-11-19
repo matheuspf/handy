@@ -1,0 +1,228 @@
+\hypertarget{namespacecnt_1_1help}{}\section{cnt\+:\+:help Namespace Reference}
+\label{namespacecnt_1_1help}\index{cnt\+::help@{cnt\+::help}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1Accessor}{Accessor}
+\begin{DoxyCompactList}\small\item\em We inherit from either \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Container}{Container}\textquotesingle{} or \textquotesingle{}\hyperlink{classcnt_1_1help_1_1Slice}{Slice}\textquotesingle{}. \end{DoxyCompactList}\item 
+struct \hyperlink{structcnt_1_1help_1_1And}{And}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And_3_01B1_00_01Bs_8_8_8_01_4}{And$<$ B1, Bs... $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And_3_01false_00_01Bs_8_8_8_01_4}{And$<$ false, Bs... $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And_3_01true_01_4}{And$<$ true $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1And_3_4}{And$<$$>$}
+\item 
+class \hyperlink{classcnt_1_1help_1_1Container}{Container}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1IntegralType}{Integral\+Type}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1IterableType}{Iterable\+Type}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1IteratorType}{Iterator\+Type}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1multiply}{multiply}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1multiply_3_01I_00_01Is_8_8_8_01_4}{multiply$<$ I, Is... $>$}
+\item 
+struct \hyperlink{structcnt_1_1help_1_1multiply_3_4}{multiply$<$$>$}
+\item 
+class \hyperlink{classcnt_1_1help_1_1Slice}{Slice}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , std\+::size\+\_\+t N$>$ }\\using \hyperlink{namespacecnt_1_1help_aff828fb7490c72d9e29ff571ef973a5e}{Select\+Type} = std\+::conditional\+\_\+t$<$ \hyperlink{namespacecnt_1_1help_aa31a937cfd47ea6364195d39394f8fde}{help\+::is\+Array}$<$ N $>$, {\bf std\+::array}$<$ T, N $>$, {\bf std\+::vector}$<$ T $>$$>$
+\begin{DoxyCompactList}\small\item\em Selects either a \textquotesingle{}std\+::array$<$\+T, N$>$\textquotesingle{} or a \textquotesingle{}std\+::vector$<$\+T$>$\textquotesingle{} depending on the size \textquotesingle{}N\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\using \hyperlink{namespacecnt_1_1help_adf9d100b298c3b1342f7571dfbe1e3ac}{Enable\+If\+Array} = std\+::enable\+\_\+if\+\_\+t$<$ \hyperlink{namespacecnt_1_1help_aa31a937cfd47ea6364195d39394f8fde}{is\+Array}$<$ N $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if \textquotesingle{}N\textquotesingle{} satisfy \textquotesingle{}is\+Array\textquotesingle{} trait. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\using \hyperlink{namespacecnt_1_1help_ac3c31a0ef3a73ff16367e0c7ae9df545}{Enable\+If\+Vector} = std\+::enable\+\_\+if\+\_\+t$<$ \hyperlink{namespacecnt_1_1help_a5d40a2583c5a58f9f4540ef0518296d5}{is\+Vector}$<$ N $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if \textquotesingle{}N\textquotesingle{} satisfy \textquotesingle{}is\+Vector\textquotesingle{} trait. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\using \hyperlink{namespacecnt_1_1help_a59b3cc028ea7b2a640eb6603befae7bf}{Enable\+If\+Zero} = std\+::enable\+\_\+if\+\_\+t$<$ (N==0), int $>$
+\begin{DoxyCompactList}\small\item\em Enable if \textquotesingle{}N\textquotesingle{} is not \textquotesingle{}0\textquotesingle{} trait. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\using \hyperlink{namespacecnt_1_1help_aa87745c6be80922ee43c76953bfc5a74}{Enable\+If\+Integral} = std\+::enable\+\_\+if\+\_\+t$<$ \hyperlink{namespacecnt_1_1help_a502eecdcb745c74d4f7457265b764ef2}{And\+\_\+v}$<$ \hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v}$<$ Args $>$... $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if all \textquotesingle{}Args\textquotesingle{} are integrals. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\using \hyperlink{namespacecnt_1_1help_af28e6c14e973fb60e8a41270dbcb249c}{Enable\+If\+Iterable} = std\+::enable\+\_\+if\+\_\+t$<$ \hyperlink{namespacecnt_1_1help_a502eecdcb745c74d4f7457265b764ef2}{And\+\_\+v}$<$ \hyperlink{namespacecnt_1_1help_aeb5c3fce1a6876c4cefecde18ba7daf0}{is\+Iterable}$<$ Args $>$()... $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if all \textquotesingle{}Args\textquotesingle{} are iterables of integrals. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\using \hyperlink{namespacecnt_1_1help_a104cf8940601cb2ad309c0993667d91f}{Enable\+If\+Iterator} = std\+::enable\+\_\+if\+\_\+t$<$ \hyperlink{namespacecnt_1_1help_a502eecdcb745c74d4f7457265b764ef2}{And\+\_\+v}$<$ \hyperlink{namespacecnt_1_1help_a8461005914a45b87910a6f36746eb4f4}{is\+Iterator}$<$ Args $>$()... $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if all \textquotesingle{}Args\textquotesingle{} are iterators to integrals. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename... Args$>$ }\\using \hyperlink{namespacecnt_1_1help_a6b660ad7dc1ea8aa67f0410733a0a3c9}{Enable\+If\+Integral\+Or\+Iterable} = std\+::enable\+\_\+if\+\_\+t$<$ \hyperlink{namespacecnt_1_1help_a502eecdcb745c74d4f7457265b764ef2}{And\+\_\+v}$<$(\hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v}$<$ Args $>$$\vert$$\vert$\hyperlink{namespacecnt_1_1help_aeb5c3fce1a6876c4cefecde18ba7daf0}{is\+Iterable}$<$ Args $>$())... $>$, int $>$
+\begin{DoxyCompactList}\small\item\em Enable if all \textquotesingle{}Args\textquotesingle{} are either integrals or iterable types of integrals. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+\subsection*{Functions}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_aff9b7e2919a865791024719cf1b1443f}{is\+Iterable\+Impl} (...)
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a318111e0d993a2828a6891bc2ec7ff63}{is\+Iterable\+Impl} (decltype(\hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v}$<$ decltype($\ast${\bf std\+::begin}({\bf std\+::declval}$<$ T $>$()))$>$, int\{\})$\ast$)
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_aeb5c3fce1a6876c4cefecde18ba7daf0}{is\+Iterable} ()
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a02c1f10402bc533c3130b68848768589}{is\+Iterator\+Impl} (...)
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a3832534d328c3ddd3b1510ef3fec7dc8}{is\+Iterator\+Impl} (decltype(\hyperlink{namespacestd_a824c5eb1a7e8aafa382dc9af3329a9e8}{std\+::is\+\_\+integral\+\_\+v}$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ T $>$\+::value\+\_\+type $>$, int\{\})$\ast$)
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a8461005914a45b87910a6f36746eb4f4}{is\+Iterator} ()
+\end{DoxyCompactItemize}
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr {\bf std\+::size\+\_\+t} \hyperlink{namespacecnt_1_1help_a0f05823dbd2465382e7961e1b69e5f51}{max\+Size} = 100000 $\ast$ sizeof(char)
+\begin{DoxyCompactList}\small\item\em A single stack allocation must not exceed this limit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t... Is$>$ }\\constexpr {\bf std\+::size\+\_\+t} \hyperlink{namespacecnt_1_1help_ab018f6aa5c1016ecf5d0d825cf8d362f}{multiply\+\_\+v} = \hyperlink{structcnt_1_1help_1_1multiply}{multiply}$<$Is...$>$\+::value
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$bool... Bs$>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a502eecdcb745c74d4f7457265b764ef2}{And\+\_\+v} = \hyperlink{structcnt_1_1help_1_1And}{And}$<$ Bs... $>$\+::value
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_aa31a937cfd47ea6364195d39394f8fde}{is\+Array} = ((N $>$ 0) \&\& (N $<$ \hyperlink{namespacecnt_1_1help_a0f05823dbd2465382e7961e1b69e5f51}{max\+Size})) ? true \+: false
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N$>$ }\\constexpr bool \hyperlink{namespacecnt_1_1help_a5d40a2583c5a58f9f4540ef0518296d5}{is\+Vector} = !\hyperlink{namespacecnt_1_1help_aa31a937cfd47ea6364195d39394f8fde}{is\+Array}$<$ N $>$
+\end{DoxyCompactItemize}
+
+
+
+\subsection{Typedef Documentation}
+\index{cnt\+::help@{cnt\+::help}!Enable\+If\+Array@{Enable\+If\+Array}}
+\index{Enable\+If\+Array@{Enable\+If\+Array}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{Enable\+If\+Array}{EnableIfArray}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t N$>$ using {\bf cnt\+::help\+::\+Enable\+If\+Array} = typedef std\+::enable\+\_\+if\+\_\+t$<$ {\bf is\+Array}$<$ N $>$, int $>$}\hypertarget{namespacecnt_1_1help_adf9d100b298c3b1342f7571dfbe1e3ac}{}\label{namespacecnt_1_1help_adf9d100b298c3b1342f7571dfbe1e3ac}
+
+
+Enable if \textquotesingle{}N\textquotesingle{} satisfy \textquotesingle{}is\+Array\textquotesingle{} trait. 
+
+Some useful helpers for S\+F\+I\+N\+AE \index{cnt\+::help@{cnt\+::help}!Enable\+If\+Integral@{Enable\+If\+Integral}}
+\index{Enable\+If\+Integral@{Enable\+If\+Integral}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{Enable\+If\+Integral}{EnableIfIntegral}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ using {\bf cnt\+::help\+::\+Enable\+If\+Integral} = typedef std\+::enable\+\_\+if\+\_\+t$<${\bf And\+\_\+v}$<${\bf std\+::is\+\_\+integral\+\_\+v}$<$Args$>$...$>$, int$>$}\hypertarget{namespacecnt_1_1help_aa87745c6be80922ee43c76953bfc5a74}{}\label{namespacecnt_1_1help_aa87745c6be80922ee43c76953bfc5a74}
+
+
+Enable if all \textquotesingle{}Args\textquotesingle{} are integrals. 
+
+\index{cnt\+::help@{cnt\+::help}!Enable\+If\+Integral\+Or\+Iterable@{Enable\+If\+Integral\+Or\+Iterable}}
+\index{Enable\+If\+Integral\+Or\+Iterable@{Enable\+If\+Integral\+Or\+Iterable}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{Enable\+If\+Integral\+Or\+Iterable}{EnableIfIntegralOrIterable}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ using {\bf cnt\+::help\+::\+Enable\+If\+Integral\+Or\+Iterable} = typedef std\+::enable\+\_\+if\+\_\+t$<${\bf And\+\_\+v}$<$({\bf std\+::is\+\_\+integral\+\_\+v}$<$Args$>$ $\vert$$\vert$ {\bf is\+Iterable}$<$Args$>$())...$>$, int$>$}\hypertarget{namespacecnt_1_1help_a6b660ad7dc1ea8aa67f0410733a0a3c9}{}\label{namespacecnt_1_1help_a6b660ad7dc1ea8aa67f0410733a0a3c9}
+
+
+Enable if all \textquotesingle{}Args\textquotesingle{} are either integrals or iterable types of integrals. 
+
+\index{cnt\+::help@{cnt\+::help}!Enable\+If\+Iterable@{Enable\+If\+Iterable}}
+\index{Enable\+If\+Iterable@{Enable\+If\+Iterable}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{Enable\+If\+Iterable}{EnableIfIterable}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ using {\bf cnt\+::help\+::\+Enable\+If\+Iterable} = typedef std\+::enable\+\_\+if\+\_\+t$<${\bf And\+\_\+v}$<${\bf is\+Iterable}$<$Args$>$()...$>$, int$>$}\hypertarget{namespacecnt_1_1help_af28e6c14e973fb60e8a41270dbcb249c}{}\label{namespacecnt_1_1help_af28e6c14e973fb60e8a41270dbcb249c}
+
+
+Enable if all \textquotesingle{}Args\textquotesingle{} are iterables of integrals. 
+
+\index{cnt\+::help@{cnt\+::help}!Enable\+If\+Iterator@{Enable\+If\+Iterator}}
+\index{Enable\+If\+Iterator@{Enable\+If\+Iterator}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{Enable\+If\+Iterator}{EnableIfIterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename... Args$>$ using {\bf cnt\+::help\+::\+Enable\+If\+Iterator} = typedef std\+::enable\+\_\+if\+\_\+t$<${\bf And\+\_\+v}$<${\bf is\+Iterator}$<$Args$>$()...$>$, int$>$}\hypertarget{namespacecnt_1_1help_a104cf8940601cb2ad309c0993667d91f}{}\label{namespacecnt_1_1help_a104cf8940601cb2ad309c0993667d91f}
+
+
+Enable if all \textquotesingle{}Args\textquotesingle{} are iterators to integrals. 
+
+\index{cnt\+::help@{cnt\+::help}!Enable\+If\+Vector@{Enable\+If\+Vector}}
+\index{Enable\+If\+Vector@{Enable\+If\+Vector}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{Enable\+If\+Vector}{EnableIfVector}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t N$>$ using {\bf cnt\+::help\+::\+Enable\+If\+Vector} = typedef std\+::enable\+\_\+if\+\_\+t$<$ {\bf is\+Vector}$<$ N $>$, int $>$}\hypertarget{namespacecnt_1_1help_ac3c31a0ef3a73ff16367e0c7ae9df545}{}\label{namespacecnt_1_1help_ac3c31a0ef3a73ff16367e0c7ae9df545}
+
+
+Enable if \textquotesingle{}N\textquotesingle{} satisfy \textquotesingle{}is\+Vector\textquotesingle{} trait. 
+
+\index{cnt\+::help@{cnt\+::help}!Enable\+If\+Zero@{Enable\+If\+Zero}}
+\index{Enable\+If\+Zero@{Enable\+If\+Zero}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{Enable\+If\+Zero}{EnableIfZero}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t N$>$ using {\bf cnt\+::help\+::\+Enable\+If\+Zero} = typedef std\+::enable\+\_\+if\+\_\+t$<$ (N == 0), int $>$}\hypertarget{namespacecnt_1_1help_a59b3cc028ea7b2a640eb6603befae7bf}{}\label{namespacecnt_1_1help_a59b3cc028ea7b2a640eb6603befae7bf}
+
+
+Enable if \textquotesingle{}N\textquotesingle{} is not \textquotesingle{}0\textquotesingle{} trait. 
+
+\index{cnt\+::help@{cnt\+::help}!Select\+Type@{Select\+Type}}
+\index{Select\+Type@{Select\+Type}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{Select\+Type}{SelectType}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , std\+::size\+\_\+t N$>$ using {\bf cnt\+::help\+::\+Select\+Type} = typedef std\+::conditional\+\_\+t$<${\bf help\+::is\+Array}$<$N$>$, {\bf std\+::array}$<$T, N$>$, {\bf std\+::vector}$<$T$>$$>$}\hypertarget{namespacecnt_1_1help_aff828fb7490c72d9e29ff571ef973a5e}{}\label{namespacecnt_1_1help_aff828fb7490c72d9e29ff571ef973a5e}
+
+
+Selects either a \textquotesingle{}std\+::array$<$\+T, N$>$\textquotesingle{} or a \textquotesingle{}std\+::vector$<$\+T$>$\textquotesingle{} depending on the size \textquotesingle{}N\textquotesingle{}. 
+
+
+
+\subsection{Function Documentation}
+\index{cnt\+::help@{cnt\+::help}!is\+Iterable@{is\+Iterable}}
+\index{is\+Iterable@{is\+Iterable}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{is\+Iterable()}{isIterable()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ constexpr bool cnt\+::help\+::is\+Iterable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacecnt_1_1help_aeb5c3fce1a6876c4cefecde18ba7daf0}{}\label{namespacecnt_1_1help_aeb5c3fce1a6876c4cefecde18ba7daf0}
+\index{cnt\+::help@{cnt\+::help}!is\+Iterable\+Impl@{is\+Iterable\+Impl}}
+\index{is\+Iterable\+Impl@{is\+Iterable\+Impl}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{is\+Iterable\+Impl(...)}{isIterableImpl(...)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class $>$ constexpr bool cnt\+::help\+::is\+Iterable\+Impl (
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacecnt_1_1help_aff9b7e2919a865791024719cf1b1443f}{}\label{namespacecnt_1_1help_aff9b7e2919a865791024719cf1b1443f}
+Tells us if \textquotesingle{}T\textquotesingle{} is an iterable type (has definition for \textquotesingle{}{\bf std\+::begin}\textquotesingle{}) of integrals \index{cnt\+::help@{cnt\+::help}!is\+Iterable\+Impl@{is\+Iterable\+Impl}}
+\index{is\+Iterable\+Impl@{is\+Iterable\+Impl}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{is\+Iterable\+Impl(decltype(std\+::is\+\_\+integral\+\_\+v$<$ decltype($\ast$std\+::begin(std\+::declval$<$ T $>$()))$>$, int\lcurly{}\rcurly{})$\ast$)}{isIterableImpl(decltype(std::is_integral_v< decltype(*std::begin(std::declval< T >()))>, int\{\})*)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ constexpr bool cnt\+::help\+::is\+Iterable\+Impl (
+\begin{DoxyParamCaption}
+\item[{decltype({\bf std\+::is\+\_\+integral\+\_\+v}$<$ decltype($\ast${\bf std\+::begin}({\bf std\+::declval}$<$ T $>$()))$>$, int\{\})$\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacecnt_1_1help_a318111e0d993a2828a6891bc2ec7ff63}{}\label{namespacecnt_1_1help_a318111e0d993a2828a6891bc2ec7ff63}
+\index{cnt\+::help@{cnt\+::help}!is\+Iterator@{is\+Iterator}}
+\index{is\+Iterator@{is\+Iterator}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{is\+Iterator()}{isIterator()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ constexpr bool cnt\+::help\+::is\+Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacecnt_1_1help_a8461005914a45b87910a6f36746eb4f4}{}\label{namespacecnt_1_1help_a8461005914a45b87910a6f36746eb4f4}
+\index{cnt\+::help@{cnt\+::help}!is\+Iterator\+Impl@{is\+Iterator\+Impl}}
+\index{is\+Iterator\+Impl@{is\+Iterator\+Impl}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{is\+Iterator\+Impl(...)}{isIteratorImpl(...)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class $>$ constexpr bool cnt\+::help\+::is\+Iterator\+Impl (
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacecnt_1_1help_a02c1f10402bc533c3130b68848768589}{}\label{namespacecnt_1_1help_a02c1f10402bc533c3130b68848768589}
+Tells us if \textquotesingle{}T\textquotesingle{} is an iterator of integrals \index{cnt\+::help@{cnt\+::help}!is\+Iterator\+Impl@{is\+Iterator\+Impl}}
+\index{is\+Iterator\+Impl@{is\+Iterator\+Impl}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{is\+Iterator\+Impl(decltype(std\+::is\+\_\+integral\+\_\+v$<$ typename std\+::iterator\+\_\+traits$<$ T $>$\+::value\+\_\+type $>$, int\lcurly{}\rcurly{})$\ast$)}{isIteratorImpl(decltype(std::is_integral_v< typename std::iterator_traits< T >::value_type >, int\{\})*)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ constexpr bool cnt\+::help\+::is\+Iterator\+Impl (
+\begin{DoxyParamCaption}
+\item[{decltype({\bf std\+::is\+\_\+integral\+\_\+v}$<$ typename {\bf std\+::iterator\+\_\+traits}$<$ T $>$\+::value\+\_\+type $>$, int\{\})$\ast$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacecnt_1_1help_a3832534d328c3ddd3b1510ef3fec7dc8}{}\label{namespacecnt_1_1help_a3832534d328c3ddd3b1510ef3fec7dc8}
+
+
+\subsection{Variable Documentation}
+\index{cnt\+::help@{cnt\+::help}!And\+\_\+v@{And\+\_\+v}}
+\index{And\+\_\+v@{And\+\_\+v}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{And\+\_\+v}{And_v}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$bool... Bs$>$ constexpr bool cnt\+::help\+::\+And\+\_\+v = {\bf And}$<$ Bs... $>$\+::value}\hypertarget{namespacecnt_1_1help_a502eecdcb745c74d4f7457265b764ef2}{}\label{namespacecnt_1_1help_a502eecdcb745c74d4f7457265b764ef2}
+\index{cnt\+::help@{cnt\+::help}!is\+Array@{is\+Array}}
+\index{is\+Array@{is\+Array}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{is\+Array}{isArray}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t N$>$ constexpr bool cnt\+::help\+::is\+Array = ((N $>$ 0) \&\& (N $<$ {\bf max\+Size})) ? true \+: false}\hypertarget{namespacecnt_1_1help_aa31a937cfd47ea6364195d39394f8fde}{}\label{namespacecnt_1_1help_aa31a937cfd47ea6364195d39394f8fde}
+If the compile time size is greater than 0 and less than the defined max\+Size, the \hyperlink{structcnt_1_1Vector}{Vector} is a {\bf std\+::array}. Otherwise it is a {\bf std\+::vector} \index{cnt\+::help@{cnt\+::help}!is\+Vector@{is\+Vector}}
+\index{is\+Vector@{is\+Vector}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{is\+Vector}{isVector}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t N$>$ constexpr bool cnt\+::help\+::is\+Vector = !{\bf is\+Array}$<$ N $>$}\hypertarget{namespacecnt_1_1help_a5d40a2583c5a58f9f4540ef0518296d5}{}\label{namespacecnt_1_1help_a5d40a2583c5a58f9f4540ef0518296d5}
+\index{cnt\+::help@{cnt\+::help}!max\+Size@{max\+Size}}
+\index{max\+Size@{max\+Size}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{max\+Size}{maxSize}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr {\bf std\+::size\+\_\+t} cnt\+::help\+::max\+Size = 100000 $\ast$ sizeof(char)}\hypertarget{namespacecnt_1_1help_a0f05823dbd2465382e7961e1b69e5f51}{}\label{namespacecnt_1_1help_a0f05823dbd2465382e7961e1b69e5f51}
+
+
+A single stack allocation must not exceed this limit. 
+
+\index{cnt\+::help@{cnt\+::help}!multiply\+\_\+v@{multiply\+\_\+v}}
+\index{multiply\+\_\+v@{multiply\+\_\+v}!cnt\+::help@{cnt\+::help}}
+\subsubsection[{\texorpdfstring{multiply\+\_\+v}{multiply_v}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t... Is$>$ constexpr {\bf std\+::size\+\_\+t} cnt\+::help\+::multiply\+\_\+v = {\bf multiply}$<$Is...$>$\+::value}\hypertarget{namespacecnt_1_1help_ab018f6aa5c1016ecf5d0d825cf8d362f}{}\label{namespacecnt_1_1help_ab018f6aa5c1016ecf5d0d825cf8d362f}

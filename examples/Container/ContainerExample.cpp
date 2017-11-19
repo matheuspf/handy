@@ -7,13 +7,12 @@
 #include <iostream>
 #include <list>
 #include <set>
-#include "Container/Container.h"   /// Main file
+#include "Container/Container.h"
 
 
 using namespace std;
 
-//using namespace cnt;   /// Namespace of 'Container' class
-
+//using namespace cnt
 
 
 int main ()

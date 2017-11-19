@@ -1,0 +1,38 @@
+\hypertarget{group__GetArgGroup}{}\section{Type Picker}
+\label{group__GetArgGroup}\index{Type Picker@{Type Picker}}
+
+
+Utilities for picking a type given a variadic types.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhandy_1_1GetArg}{handy\+::\+Get\+Arg$<$ size\+\_\+t,... $>$}
+\begin{DoxyCompactList}\small\item\em Base definition. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1GetArg_3_01I_00_01T_00_01Args_8_8_8_01_4}{handy\+::\+Get\+Arg$<$ I, T, Args... $>$}
+\begin{DoxyCompactList}\small\item\em If {\ttfamily I} is not 0, take the type of \hyperlink{structhandy_1_1GetArg}{handy\+::\+Get\+Arg}$<$I-\/1, Args...$>$ \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1GetArg_3_010_00_01T_00_01Args_8_8_8_01_4}{handy\+::\+Get\+Arg$<$ 0, T, Args... $>$}
+\begin{DoxyCompactList}\small\item\em If {\ttfamily I} is 0, take type {\ttfamily T}. \end{DoxyCompactList}\item 
+struct \hyperlink{structhandy_1_1GetArg_3_01I_01_4}{handy\+::\+Get\+Arg$<$ I $>$}
+\begin{DoxyCompactList}\small\item\em If the initial {\ttfamily I} is greater than the number of arguments or is negative, throw an error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t I, typename... Args$>$ }\\using \hyperlink{group__GetArgGroup_gaed885c745628529b328db1c511d841fc}{handy\+::\+Get\+Arg\+\_\+t} = typename Get\+Arg$<$ I, Args... $>$\+::type
+\begin{DoxyCompactList}\small\item\em Helper alias. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utilities for picking a type given a variadic types. 
+
+
+
+\subsection{Typedef Documentation}
+\index{Type Picker@{Type Picker}!Get\+Arg\+\_\+t@{Get\+Arg\+\_\+t}}
+\index{Get\+Arg\+\_\+t@{Get\+Arg\+\_\+t}!Type Picker@{Type Picker}}
+\subsubsection[{\texorpdfstring{Get\+Arg\+\_\+t}{GetArg_t}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$std\+::size\+\_\+t I, typename... Args$>$ using {\bf handy\+::\+Get\+Arg\+\_\+t} = typedef typename Get\+Arg$<$I, Args...$>$\+::type}\hypertarget{group__GetArgGroup_gaed885c745628529b328db1c511d841fc}{}\label{group__GetArgGroup_gaed885c745628529b328db1c511d841fc}
+
+
+Helper alias. 
+
