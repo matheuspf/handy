@@ -92,13 +92,8 @@ using TypePrec_t = typename TypePrec<T, U>::Type;
 
 
 
-/** @defgroup InheritanceGroup Inheritance check
-	@brief Utilities to check for inheritance
-*/
 
-/** @ingroup InheritanceGroup
-
-	@brief Tells if @c T inherits from @c U, or from a template @c Template<W>.
+/** @brief Tells if @c T inherits from @c U, or from a template @c Template<W>.
 		   In the case where @c T is the same as @c U, @link IsInherited::value value @endlink is @c true
 
 	@tparam T Derived class to check
@@ -128,15 +123,11 @@ struct IsInherited
 } // namespace impl
 
   
-/** @ingroup InheritanceGroup
-    @brief Delegate the call to handy::impl::IsInherited with the class argument
-*/
+/// Delegate the call to handy::impl::IsInherited with the class argument
 template<class T, class U = std::nullptr_t>
 using IsInherited = impl::IsInherited<T, U>;
 
-/** @ingroup InheritanceGroup
-	@brief Delegate the call to handy::impl::IsInherited with the template argument
-*/
+/// Delegate the call to handy::impl::IsInherited with the template argument
 template<class T, template <typename> class Template>
 using IsInheritedTemplate = impl::IsInherited<T, std::nullptr_t, Template>;
 
@@ -180,62 +171,78 @@ inline std::ostream& print (const T& t, const Args& ...args)
 
 
 
-/** @defgroup GetArgGroup Type Picker
-	@brief Utilities for picking a type given a variadic types
-	@{
+
+
+
+/** @brief Utilities for picking a type given variadic types
+	
+	@tparam I Position to pick the argument you want
+	@tparam Args Variadic arguments to pick
 */
-/// Base definition
-template <std::size_t, typename...>
+template <std::size_t I, typename... Args>
 struct GetArg;
 
-/// If @c I is not 0, take the type of handy::GetArg<I-1, Args...>
+/** @copydoc GetArg
+	@details If @c I is not 0, take the type of @link handy::GetArg<I-1, T, Args...> handy::GetArg<I-1, Args...> @endlink
+*/
 template <std::size_t I, typename T, typename... Args>
 struct GetArg<I, T, Args...>
 {
 	using type = typename GetArg<I-1, Args...>::type;
 };
 
-/// If @c I is 0, take type @c T
+/** @copydoc GetArg
+	@details If @p I is 0, take type @p T
+*/
 template <typename T, typename... Args>
 struct GetArg<0, T, Args...>
 {
 	using type = T;
 };
 
-/// If the initial @c I is greater than the number of arguments or is negative, throw an error
+/** @copydoc GetArg
+	@details If the initial @p I is greater than the number of arguments or is negative, throw an error
+*/
 template <std::size_t I>
 struct GetArg<I>
 {
 	static_assert((I & !I), "Position specified exceeds the maximum number of variadic arguments.");
 };
 
-/// Helper alias
+/** @copybrief GetArg
+	@details Alias for handy::GetArg
+*/
 template <std::size_t I, typename... Args>
 using GetArg_t = typename GetArg<I, Args...>::type;
-//@}
 
 
 
-/** @defgroup AndGroup Variadic And
+/**
 	@brief Perform the @c and operator on a variadic number of bool constants
-	@{
+	@details Base definition
 */
-/// Base definition
 template <bool...>				struct And;
 
-/// If @c B1 is true, check for the rest
+/** @copybrief handy::And
+	@details If @c B1 is true, check for the rest
+*/
 template <bool B1, bool... Bs> struct And<B1, Bs...> : And<Bs...> {};
 
-/// If the current argument (@c B1) is @c false, so the return can only be @c false
+/** @copybrief handy::And
+	@details If the current argument (@c B1) is @c false, so the return can only be @c false
+*/
 template <bool... Bs> 		   struct And<false, Bs...> : std::false_type {};
 
-/// If none of the arguments are @c false, so the result is @c true
+/** @copybrief handy::And
+	@details If none of the arguments are @c false, so the result is @c true
+*/
 template <> 				   struct And<> : std::true_type {};
 
-/// Helper alias
+/** @copybrief handy::And
+	@details Alias for handy::And
+*/
 template <bool... Bs>
 constexpr bool And_v = And< Bs... >::value;
-/// @}
 
 
 

@@ -12,8 +12,8 @@
           friendly classes or functions
 */
 
-#ifndef HAS_MEMBER_H
-#define HAS_MEMBER_H
+#ifndef HANDY_HELPERS_HAS_MEMBER_H
+#define HANDY_HELPERS_HAS_MEMBER_H
 
 #include "Helpers.h"
 
@@ -124,4 +124,4 @@ struct Name : public std::integral_constant<bool, CONCAT(Name, Impl) <std::decay
 
 
 
-#endif //HAS_MEMBER_H
+#endif //HANDY_HELPERS_HAS_MEMBER_H

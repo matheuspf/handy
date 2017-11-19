@@ -1,11 +1,20 @@
 /** @file
 
-    @brief Ridiculously simple macros for generating functions that basically call
-           std::get with a defined constant position.
+    @brief Very simple macros for providing named access to std::tuple
+    
+    @details You can create a class that inherits from std::tuple, having access functions defined
+             by you. There is no space (for each object) or runtime overhead. Ex:
+
+    @snippet Helpers/NamedTupleExample.cpp Named Tuple Snippet
+
+    @details Alternativelly, a less intrusive option is to defined named getters, to call std::get with
+             a constant argument. Ex:
+
+    @snippet Helpers/NamedTupleExample.cpp Named Getters Snippet        
 **/
 
-#ifndef CPPL_NAMED_TUPLE_H
-#define CPPL_NAMED_TUPLE_H
+#ifndef HANDY_HELPERS_NAMED_TUPLE_H
+#define HANDY_HELPERS_NAMED_TUPLE_H
 
 #include "Helpers.h"
 #include "HasMember.h"
@@ -13,9 +22,9 @@
 
 
 /** @defgroup NamedTupleGroup Named Tuple
-    @brief Tuple with named arguments
-    @{
+    @copydoc NamedTuple.h
 */
+//@{
 
 /// Auxiliary macro that calls std::get<I> when you call the @p NAME member function
 #define MAKE_TUPLE_FUNC_AT(NAME, I) \
@@ -58,14 +67,6 @@ struct TUPLE_NAME : public std::tuple<Args...>  \
     APPLY_N(MAKE_TUPLE_FUNC, EXPAND(REVERSE(__VA_ARGS__)))   \
 };
 
-//@}
-
-
-
-/** @defgroup NamedTupleGroupFuncs Named tuple getters
-    @brief Named getters for std::tuple
-    @{
-*/
 
 /// Auxiliary macro to create the free functions with the given @p NAME to call std::get<I>
 #define GET_TUPLE_AT(NAME, I) \
@@ -113,4 +114,4 @@ namespace impl
 
 
 
-#endif // CPPL_NAMED_TUPLE_H
+#endif // HANDY_HELPERS_NAMED_TUPLE_H
