@@ -37,46 +37,6 @@ TEST(HelpersTest, IsInheritedTest)
 
 
 
-TEST(HelpersTest, printTest)
-{
-    handy::print('I', "AM", "PRINTING");
-
-
-    std::stringstream ss;
-
-    handy::print(ss, "0", "1", 2, 3, "4", 5, "6", "7", 8, 9);
-
-    for(int i = 0, x; i < 10; ++i)
-    {
-        ss >> x;
-
-        EXPECT_EQ(i, x);
-    }
-
-
-    std::ofstream out("print_test.txt");
-
-    handy::print(out, 0.0, 0.1, 0.2, 0.3, 0.4);
-
-    out.close();
-
-
-    std::ifstream in("print_test.txt");
-
-    for(double i = 0, x; i <= 0.4; i += 0.1)
-    {
-        in >> x;
-
-        EXPECT_DOUBLE_EQ(i, x);
-    }
-
-
-    EXPECT_EQ(std::cout.good(), true);
-    EXPECT_EQ(ss.good(), true);
-    EXPECT_EQ(out.good(), true);
-}
-
-
 
 TEST(HelpersTest, GetArgTest)
 {

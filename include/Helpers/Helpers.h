@@ -13,9 +13,6 @@
 
 #include <assert.h>
 
-#include <ostream>
-#include <iostream>
-
 
 /// Expands variadic arguments
 #define EXPAND(...) __VA_ARGS__
@@ -130,46 +127,6 @@ using IsInherited = impl::IsInherited<T, U>;
 /// Delegate the call to handy::impl::IsInherited with the template argument
 template<class T, template <typename> class Template>
 using IsInheritedTemplate = impl::IsInherited<T, std::nullptr_t, Template>;
-
-
-
-/** @name
-	@brief Easy printing
-*/
-//@{
-/** @brief Prints a sequence of arguments separated by comma to the std::ostream reference @c out
-
-	@param out A reference to a std::ostream object
-	@param t The first template argument
-	@param args Variadic number of arguments
-
-	@return The reference @c out
-*/
-template <typename T, typename... Args>
-inline std::ostream& print (std::ostream& out, const T& t, const Args& ...args)
-{
-	out << t;
-
-	auto dummie = { ((out << ' ' << args), 0)..., 0 };
-
-	return out << '\n' << std::flush;
-}
-
-/** @brief Delegate the call to handy#print() with std::cout as the std::ostream argument.
-    
-	@note Only allowed if the first type @c T does not inherits (or is) from a 
-		  std::stringstream or from a std::ostream classes
-*/
-template <typename T, typename... Args,
-		  typename std::enable_if<(!IsInherited<T, std::stringstream>::value &&
-								   !IsInherited<T, std::ostream>::value)>::type* = nullptr>
-inline std::ostream& print (const T& t, const Args& ...args)
-{
-	return print(std::cout, t, args...);
-}
-//@}
-
-
 
 
 

@@ -16,8 +16,11 @@ void RandomClassExample ()
     double d2 = randDouble(0.0, 10.0);
     double d3 = randDouble(10.0);       // Same as above
 
-
-    handy::RandDouble_<float> randFloat;     // You can also use the '_' version, which is a template
+    
+    // You can also use the handy::Rand, which is a template
+    // For floating point types it is the same as handy::RandDouble and
+    // for integers handy::RandInt. Anything else will give you an error
+    handy::Rand<float> randFloat;
 
     flaot f1 = randFloat(0.0, 10.0);
 //! [Random Class Snippet]

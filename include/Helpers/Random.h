@@ -135,9 +135,9 @@ using RandDouble = RandDouble_<double>;
  *  integers or floats, it will give you an error.
 **/
 template <typename T>
-using Rand = std::conditional_t<std::is_integral<T>::value, impl::RandInt_<T>,
-                std::conditional_t<std::is_floating_point<T>::value, impl::RandDouble_<T>,
-                void>>;
+using Rand = std::conditional_t<std::is_integral<T>::value, RandInt_<T>,
+             std::conditional_t<std::is_floating_point<T>::value, RandDouble_<T>,
+             void>>;
 
 
 
