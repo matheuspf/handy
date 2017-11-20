@@ -1,11 +1,19 @@
 /** @file
- * 
- *  @brief Utilities for sampling random numbers.
- * 
- **/
+    @brief Utilities for sampling random numbers.
 
-#ifndef CPPL_RANDOM_H
-#define CPPL_RANDOM_H
+    @details By creating a handy::RandDouble or handy::RandInt you can easily generate random
+             numbers inside a given range. Ex:
+
+    @snippet Helpers/RandomExample.cpp Random Class Snippet
+
+    @details Also, you can use the handy::rand(int, int, unsigned int) or 
+             handy::rand(double, double, unsigned int) directly. Ex:
+
+    @snippet Helpers/RandomExample.cpp Random Function Snippet
+*/
+
+#ifndef HANDY_HELPERS_RANDOM_H
+#define HANDY_HELPERS_RANDOM_H
 
 #include <type_traits>
 #include <random>
@@ -15,10 +23,10 @@
 namespace handy
 {
 
-/** @defgroup RandomGroup Random number generator
-    @brief Definitions for easily generating random numbers
-    @{
+/** @defgroup RandomGroup Random number generation
+    @copydoc Random.h
 */
+//@{
 
 namespace impl
 {
@@ -30,7 +38,7 @@ namespace impl
  **/
 struct RandBase
 {
-    /// Default is '-1'
+    /// Default seed value is @c -1 -> will underflow
     RandBase (unsigned int seedVal = -1) : generator(pickSeed(seedVal)) {}
 
 
@@ -47,17 +55,18 @@ struct RandBase
     }
 
 
-    /// @link  Mersene Twister generator
+    /// <a href="http://en.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine">Mersene Twister generator</a> 
     std::mt19937 generator;
 };
 
+} // namespace impl
 
 
-/// For integer types only
+/// For integer type random regeneration
 template <typename T>
-struct RandInt_ : public RandBase
+struct RandInt_ : public impl::RandBase
 {
-    using RandBase::RandBase;
+    using impl::RandBase::RandBase;
 
     
     /// With no arguments, it will generate numbers between [0, std::numeric_limits<T>::max())
@@ -85,11 +94,12 @@ struct RandInt_ : public RandBase
 };
 
 
-/// For floating points
+
+/// For floating point type random generation
 template <typename T>
-struct RandFloat_ : public RandBase
+struct RandDouble_ : public impl::RandBase
 {
-    using RandBase::RandBase;
+    using impl::RandBase::RandBase;
 
 
     /// With no arguments, it will generate numbers between [0.0, 1.0)
@@ -111,13 +121,14 @@ struct RandFloat_ : public RandBase
     } 
 };
 
-} // namespace impl
 
 
-/// Aliases
-using RandInt = impl::RandInt_<int>;
 
-using RandDouble = impl::RandFloat_<double>;
+/// Alias for handy::RandInt_ with @c int type
+using RandInt = RandInt_<int>;
+
+/// Alias for handy::RandDouble_ with @c double type
+using RandDouble = RandDouble_<double>;
 
 
 /** You can also call this guy like this: 'Rand<float> rngFloat'. If you use anything else than
@@ -125,29 +136,37 @@ using RandDouble = impl::RandFloat_<double>;
 **/
 template <typename T>
 using Rand = std::conditional_t<std::is_integral<T>::value, impl::RandInt_<T>,
-                std::conditional_t<std::is_floating_point<T>::value, impl::RandFloat_<T>,
+                std::conditional_t<std::is_floating_point<T>::value, impl::RandDouble_<T>,
                 void>>;
 
 
 
-/**  If you just want to generate some random numbers, just call this one. Note that if you call
- *   'rand(0, 1)', it will use the 'RandInt' generator, and not the floating point, so you must
- *   call 'rand(0.0, 1.0)'. Also, you can pass a seed as third argument. Of course, you if call
- *   it twice with the same seed, the values generated will be the same.
-**/ 
+/**  @details If you just want to generate some random numbers, just call this one. Note that if you call
+              @link handy::rand(int, int, unsigned int) handy::rand(0, 1) @endlink, it will use the 
+              handy::RandInt generator, and not the floating point, so you must call 
+              @link handy::rand(double, double, unsigned int) handy::rand(0.0, 1.0) @endlink
+              
+              Also, you can pass a seed as third argument. Of course, you if call it twice with the same seed, 
+              the values generated will be the same. Ex:
+
+    @snippet Helpers/RandomExample.cpp Random Function Snippet
+*/
 int rand (int min = 0, int max = std::numeric_limits<int>::max(), unsigned int seed = -1)
 {
     return RandInt(seed)(min, max);
 }
 
+/// @copydoc handy::rand(int, int, unsigned int)
 double rand (double min = 0.0, double max = 1.0, unsigned int seed = -1)
 {
     return RandDouble(seed)(min, max);
 }
 
-    
+
+//@}
+
 }   // namespace handy
 
 
 
-#endif // CPPL_RANDOM_H
+#endif // HANDY_HELPERS_RANDOM_H

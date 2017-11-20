@@ -35,8 +35,8 @@
           is no need to use the @ref handy namespace to disambiguate the call.
 */
 
-#ifndef CPPL_ALGORITHMS_H
-#define CPPL_ALGORITHMS_H
+#ifndef HANDY_ALGORITHMS_H
+#define HANDY_ALGORITHMS_H
 
 #include "../Helpers/Helpers.h"
 #include "../Helpers/HasMember.h"
@@ -398,4 +398,4 @@ WITH_RETURN(partial_sum, DOUBLE_CONTAINER_DECLARATION, DOUBLE_CONTAINER_APPLY_SI
 
 
 
-#endif // CPPL_ALGORITHMS_H
+#endif // HANDY_ALGORITHMS_H
