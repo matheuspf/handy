@@ -8,14 +8,14 @@
 
 
 
-#ifndef ZIP_ITER_H
-#define ZIP_ITER_H
+#ifndef HANDY_ZIP_ITER_H
+#define HANDY_ZIP_ITER_H
 
 #include "Helpers.h"
 
 
 
-namespace it
+namespace handy
 {
 
 
@@ -30,11 +30,11 @@ namespace it
   * access operators.
 */
 template <typename T, typename... Iters>
-class ZipIter : public help::IteratorBase<T, std::remove_reference_t< Iters >...>
+class ZipIter : public impl::zip::IteratorBase<T, std::remove_reference_t< Iters >...>
 {
 public:
 
-        using Base = help::IteratorBase<T, std::remove_reference_t< Iters >...>;
+        using Base = impl::zip::IteratorBase<T, std::remove_reference_t< Iters >...>;
 
 
         /// Some type definitions defined over the std::iterator base
@@ -63,7 +63,7 @@ public:
         */
         ZipIter& operator ++ ()
         {
-            help::execTuple(help::increment, iters); return *this;
+            impl::zip::execTuple(impl::zip::increment, iters); return *this;
         }
 
         ZipIter operator ++ (int)
@@ -76,13 +76,13 @@ public:
         }
 
 
-        template <class Tag = iterator_category, help::EnableIfMinimumTag< Tag, std::bidirectional_iterator_tag > = 0 >
+        template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::bidirectional_iterator_tag > = 0 >
         ZipIter& operator -- ()
         {
-            help::execTuple(help::decrement, iters); return *this;
+            impl::zip::execTuple(impl::zip::decrement, iters); return *this;
         }
 
-        template <class Tag = iterator_category, help::EnableIfMinimumTag< Tag, std::bidirectional_iterator_tag > = 0 >
+        template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::bidirectional_iterator_tag > = 0 >
         ZipIter operator -- (int)
         {
             ZipIter temp{ *this };
@@ -93,18 +93,18 @@ public:
         }
 
 
-        template <class Tag = iterator_category, help::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
+        template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
         ZipIter& operator += (int inc)
         {
-          help::execTuple(help::add, iters, inc);
+          impl::zip::execTuple(impl::zip::add, iters, inc);
 
           return *this;
         }
 
-        template <class Tag = iterator_category, help::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
+        template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
         ZipIter& operator -= (int inc)
         {
-            help::execTuple(help::add, iters, -inc);
+            impl::zip::execTuple(impl::zip::add, iters, -inc);
 
             return *this;
         }
@@ -269,13 +269,13 @@ public:
     /// Some type definitions
     using value_type = std::tuple < Containers... >;
 
-    using iterator = ZipIter < typename help::Iterable<std::remove_reference_t<Containers>>::iterator... >;
+    using iterator = ZipIter < typename impl::zip::Iterable<std::remove_reference_t<Containers>>::iterator... >;
 
     using iterator_category = typename iterator::iterator_category;
 
     /** It does not make sense to create a const Zip, so I define this guy like this.
      *  The containers, on the other hand, can be const, so the const_iterator are
-     *  call instead by 'help::Iterable'.
+     *  call instead by 'impl::zip::Iterable'.
     **/
     using const_iterator = iterator;
 
@@ -300,13 +300,13 @@ public:
 
 
     /// This is simply a facility for acessing random access containers, returning a tuple of values
-    template <class Tag = iterator_category, help::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
+    template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
     auto operator [] (std::size_t pos)
     {
         return at( pos, std::make_index_sequence<containersSize>() );
     }
 
-    template <class Tag = iterator_category, help::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
+    template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
     auto operator [] (std::size_t pos) const
     {
         return at( pos, std::make_index_sequence<containersSize>() );
@@ -326,36 +326,36 @@ private:
     template <std::size_t... Is>
     iterator begin (std::index_sequence<Is...>)
     {
-        return iterator( help::begin( std::get<Is>( containers ) )... );
+        return iterator( impl::zip::begin( std::get<Is>( containers ) )... );
     }
 
     template <std::size_t... Is>
     const_iterator begin (std::index_sequence<Is...>) const
     {
-        return const_iterator( help::begin( std::get<Is>( containers ) )... );
+        return const_iterator( impl::zip::begin( std::get<Is>( containers ) )... );
     }
 
     template <std::size_t... Is>
     iterator end (std::index_sequence<Is...>)
     {
-        return iterator( help::end( std::get<Is>( containers ) )... );
+        return iterator( impl::zip::end( std::get<Is>( containers ) )... );
     }
 
     template <std::size_t... Is>
     const_iterator end (std::index_sequence<Is...>) const
     {
-        return const_iterator( help::end( std::get<Is>( containers ) )... );
+        return const_iterator( impl::zip::end( std::get<Is>( containers ) )... );
     }
 
     template <std::size_t... Is,
-              class Tag = iterator_category,help::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
+              class Tag = iterator_category,impl::zip::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
     auto at (std::size_t pos, std::index_sequence<Is...>)
     {
         return std::forward_as_tuple( containers[ Is ]... );
     }
 
     template <std::size_t... Is,
-              class Tag = iterator_category, help::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
+              class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
     auto at (std::size_t pos, std::index_sequence<Is...>) const
     {
         return std::forward_as_tuple( containers[ Is ]... );
@@ -402,13 +402,13 @@ auto zip (T&& t, Containers&&... containers)
 template <typename T, typename... Containers, std::enable_if_t< !std::is_pointer< T >::value, int > = 0>
 auto zipBegin (T&& t, Containers&&... containers)
 {
-    return zipIter(help::begin(std::forward<T>(t)), help::begin(std::forward<Containers>(containers))...);
+    return zipIter(impl::zip::begin(std::forward<T>(t)), impl::zip::begin(std::forward<Containers>(containers))...);
 }
 
 template <typename T, typename... Containers, std::enable_if_t< !std::is_pointer< T >::value, int > = 0>
 auto zipEnd (T&& t, Containers&&... containers)
 {
-    return zipIter(help::end(std::forward<T>(t)), help::end(std::forward<Containers>(containers))...);
+    return zipIter(impl::zip::end(std::forward<T>(t)), impl::zip::end(std::forward<Containers>(containers))...);
 }
 
 template <typename T, typename... Containers, std::enable_if_t< !std::is_pointer< T >::value, int > = 0>
@@ -443,14 +443,14 @@ struct UnZip
     template <typename... Args>
     decltype(auto) operator () (Args&&... args)
     {
-        return operator()( std::make_index_sequence< help::CountElements< std::decay_t< Args >... >::value >(),
+        return operator()( std::make_index_sequence< impl::zip::CountElements< std::decay_t< Args >... >::value >(),
                            std::forward< Args >( args )...);
     }
 
     template <std::size_t... Is, typename... Args>
     decltype(auto) operator () (std::index_sequence< Is... >, Args&&... args)
     {
-        return apply( std::get< Is >( help::packArgs( std::forward< Args >( args )... ) )... );
+        return apply( std::get< Is >( impl::zip::packArgs( std::forward< Args >( args )... ) )... );
     }
 
 
@@ -491,12 +491,12 @@ decltype(auto) unZip (Tuple&& tup, Function function)
 /** This function makes a call to the for loop unpacking the parameters
   * with the 'unZip' function. A thing to notice is that the function
   * is actually the first parameter of the variadic arguments. The order
-  * is changed with the 'help::reverse' function.
+  * is changed with the 'impl::zip::reverse' function.
   */
 template <typename... Args>
 void forEach (Args&&... args)
 {
-    help::reverse<sizeof...(Args)-1>([](auto apply, auto&&... elems)
+    impl::zip::reverse<sizeof...(Args)-1>([](auto apply, auto&&... elems)
     {
         for(auto&& tup : zip(std::forward<decltype(elems)>(elems)...))
         {
@@ -507,9 +507,9 @@ void forEach (Args&&... args)
 }
 
 
-} // namespace it
+} // namespace handy
 
 
 
 
-#endif	// ZIP_ITER_H
+#endif	// HANDY_ZIP_ITER_H

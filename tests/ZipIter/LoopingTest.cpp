@@ -102,7 +102,7 @@ namespace
 
 	TEST_F(LoopingTest, ForEachStdUnzip)
 	{
-		std::for_each(ZIP_ALL(v, l, s, a), it::unZip([&](auto x, auto y, auto w, auto z)
+		std::for_each(ZIP_ALL(v, l, s, a), handy::unZip([&](auto x, auto y, auto w, auto z)
         {
         	insertBack(res, x, y, w, z);
     	}));
@@ -115,7 +115,7 @@ namespace
 
 	TEST_F(LoopingTest, ForRange)
 	{
-		for(auto tup : it::zip(v, l, s, a))
+		for(auto tup : handy::zip(v, l, s, a))
         	insertBack(res, std::get<0>(tup), std::get<1>(tup), std::get<2>(tup), std::get<3>(tup));
 
     	EXPECT_EQ(res, sequence);
@@ -124,7 +124,7 @@ namespace
 
 	TEST_F(LoopingTest, ForRangeUnzip)
 	{
-		for(auto tup : it::zip(v, l, s, a)) it::unZip(tup, [&](auto x, auto y, auto w, auto z)
+		for(auto tup : handy::zip(v, l, s, a)) handy::unZip(tup, [&](auto x, auto y, auto w, auto z)
 		{
         	insertBack(res, x, y, w, z);
     	});
@@ -135,7 +135,7 @@ namespace
 
 	TEST_F(LoopingTest, ForEachFunc)
 	{
-	    it::forEach(v, l, s, a, [&](auto x, auto y, auto w, auto z)
+	    handy::forEach(v, l, s, a, [&](auto x, auto y, auto w, auto z)
 	    {
 	        insertBack(res, x, y, w, z);
 	    });
@@ -151,7 +151,7 @@ namespace
 		const auto& rs = s;
 		const int* ra = a;
 
-	    it::forEach(rv, rl, rs, ra, [&](auto x, auto y, auto w, auto z)
+	    handy::forEach(rv, rl, rs, ra, [&](auto x, auto y, auto w, auto z)
 	    {
 	        insertBack(res, x, y, w, z);
 	    });

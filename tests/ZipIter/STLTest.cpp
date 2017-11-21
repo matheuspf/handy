@@ -60,7 +60,7 @@ namespace
 		std::random_shuffle(v.begin(), v.end());
 		std::random_shuffle(u.begin(), u.end());
 
-		std::sort(ZIP_ALL(v, u), it::unZip([](int v1, int u1, int v2, int u2){ return v1 + u1 < v2 + u2; }));
+		std::sort(ZIP_ALL(v, u), handy::unZip([](int v1, int u1, int v2, int u2){ return v1 + u1 < v2 + u2; }));
 
 		for(int i = 0; i < n-1; ++i)
 			EXPECT_LE(v[i] + u[i], v[i+1] + u[i+1]);
@@ -69,7 +69,7 @@ namespace
 
 	TEST_F(STLTest, Accumulate)
 	{
-		int res = std::accumulate(ZIP_ALL(v, u), 0, it::unZip([](int sum, int x, int y){ return sum + x + y; }));
+		int res = std::accumulate(ZIP_ALL(v, u), 0, handy::unZip([](int sum, int x, int y){ return sum + x + y; }));
 
 		EXPECT_EQ(res, 90);
 	}
@@ -79,7 +79,7 @@ namespace
 	{
 		std::vector<int> aux(n);
 
-		std::transform(ZIP_ALL(v, u), aux.begin(), it::unZip([](int x, int y){ return x * y; }));
+		std::transform(ZIP_ALL(v, u), aux.begin(), handy::unZip([](int x, int y){ return x * y; }));
 
 		for(int i = 0; i < n; ++i)
 			EXPECT_EQ(aux[i], v[i] * u[i]);
@@ -90,7 +90,7 @@ namespace
 		std::vector<int> auxV(n);
 		std::array<int, n> auxU;
 
-		std::transform(ZIP_ALL(v, u), it::zipBegin(auxV, auxU), it::unZip([](int x, int y)
+		std::transform(ZIP_ALL(v, u), handy::zipBegin(auxV, auxU), handy::unZip([](int x, int y)
 		{
 			return std::make_tuple(x + y, x * y);
 		}));
@@ -120,7 +120,7 @@ namespace
 
 	TEST_F(STLTest, AdvanceTest)
 	{
-		auto iter = it::zipIter(v.begin(), u.begin());
+		auto iter = handy::zipIter(v.begin(), u.begin());
 
 		std::advance(iter, 5);
 		std::advance(iter, -5);
@@ -128,7 +128,7 @@ namespace
 		iter = iter + 3;
 		iter = iter - 3;
 
-		EXPECT_EQ(*it::zipIter(v.begin(), u.begin()), *iter);
+		EXPECT_EQ(*handy::zipIter(v.begin(), u.begin()), *iter);
 	}
 
 
@@ -137,7 +137,7 @@ namespace
 		const std::vector<int>& crefV = v;
 		const std::array<int, n>& crefU = u;
 
-		int res = std::accumulate(ZIP_ALL(crefV, crefU), 0, it::unZip([](int sum, int x, int y){ return sum + x + y; }));
+		int res = std::accumulate(ZIP_ALL(crefV, crefU), 0, handy::unZip([](int sum, int x, int y){ return sum + x + y; }));
 
 		EXPECT_EQ(res, 90);
 	}

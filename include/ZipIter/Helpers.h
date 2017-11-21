@@ -3,55 +3,45 @@
  *  \brief Some metaprogramming helpers
  */
 
-#ifndef HELPERS_ZIP_ITER_H
-#define HELPERS_ZIP_ITER_H
+#ifndef HANDY_ZIP_ITER_HELPERS_H
+#define HANDY_ZIP_ITER_HELPERS_H
 
-#include <type_traits>
+#include "../Helpers/Helpers.h"
+
 #include <tuple>
 #include <iterator>
 
 
-/// Trick to get the number of arguments passed to a macro
-#define NARGS_(_1, _2, _3, _4, _5, _6, _7, _8, N,...) N
-#define NARGS(...) NARGS_(__VA_ARGS__, 8, 7, 6, 5, 4, 3, 2, 1)
-
-
-/// Makes easier to expand the expressions
-#define EXPAND(...) __VA_ARGS__
-
-/// Concatenate two tokens
-#define CONCAT(x, y) CONCAT_(x, y)
-#define CONCAT_(x, y) EXPAND(x ## y)
 
 
 /** When using stl functions which takes iterator parameters of the 
   * form (first, last), these macros make it much easier. Simply use
   * ZIP_ALL(container) for a container class that is iterable (that is,
   * has std::begin and std::end definitions or is a pointer).
-  * These macros simply call it::help::begin and it::help::end for
+  * These macros simply call handy::impl::zip::begin and handy::impl::zip::end for
   * each argument, delegating the call to std::begin and std::end
   * while also supporting pointer types to be called.
 */
-#define ZIP_BEGIN1(x, ...) ::it::help::begin(x)
-#define ZIP_BEGIN2(x, ...) ::it::help::begin(x), ZIP_BEGIN1(__VA_ARGS__)
-#define ZIP_BEGIN3(x, ...) ::it::help::begin(x), ZIP_BEGIN2(__VA_ARGS__)
-#define ZIP_BEGIN4(x, ...) ::it::help::begin(x), ZIP_BEGIN3(__VA_ARGS__)
-#define ZIP_BEGIN5(x, ...) ::it::help::begin(x), ZIP_BEGIN4(__VA_ARGS__)
-#define ZIP_BEGIN6(x, ...) ::it::help::begin(x), ZIP_BEGIN5(__VA_ARGS__)
-#define ZIP_BEGIN7(x, ...) ::it::help::begin(x), ZIP_BEGIN6(__VA_ARGS__)
-#define ZIP_BEGIN8(x, ...) ::it::help::begin(x), ZIP_BEGIN7(__VA_ARGS__)
+#define ZIP_BEGIN1(x, ...) ::handy::impl::zip::begin(x)
+#define ZIP_BEGIN2(x, ...) ::handy::impl::zip::begin(x), ZIP_BEGIN1(__VA_ARGS__)
+#define ZIP_BEGIN3(x, ...) ::handy::impl::zip::begin(x), ZIP_BEGIN2(__VA_ARGS__)
+#define ZIP_BEGIN4(x, ...) ::handy::impl::zip::begin(x), ZIP_BEGIN3(__VA_ARGS__)
+#define ZIP_BEGIN5(x, ...) ::handy::impl::zip::begin(x), ZIP_BEGIN4(__VA_ARGS__)
+#define ZIP_BEGIN6(x, ...) ::handy::impl::zip::begin(x), ZIP_BEGIN5(__VA_ARGS__)
+#define ZIP_BEGIN7(x, ...) ::handy::impl::zip::begin(x), ZIP_BEGIN6(__VA_ARGS__)
+#define ZIP_BEGIN8(x, ...) ::handy::impl::zip::begin(x), ZIP_BEGIN7(__VA_ARGS__)
 
-#define ZIP_END1(x, ...) ::it::help::end(x)
-#define ZIP_END2(x, ...) ::it::help::end(x), ZIP_END1(__VA_ARGS__)
-#define ZIP_END3(x, ...) ::it::help::end(x), ZIP_END2(__VA_ARGS__)
-#define ZIP_END4(x, ...) ::it::help::end(x), ZIP_END3(__VA_ARGS__)
-#define ZIP_END5(x, ...) ::it::help::end(x), ZIP_END4(__VA_ARGS__)
-#define ZIP_END6(x, ...) ::it::help::end(x), ZIP_END5(__VA_ARGS__)
-#define ZIP_END7(x, ...) ::it::help::end(x), ZIP_END6(__VA_ARGS__)
-#define ZIP_END8(x, ...) ::it::help::end(x), ZIP_END7(__VA_ARGS__)
+#define ZIP_END1(x, ...) ::handy::impl::zip::end(x)
+#define ZIP_END2(x, ...) ::handy::impl::zip::end(x), ZIP_END1(__VA_ARGS__)
+#define ZIP_END3(x, ...) ::handy::impl::zip::end(x), ZIP_END2(__VA_ARGS__)
+#define ZIP_END4(x, ...) ::handy::impl::zip::end(x), ZIP_END3(__VA_ARGS__)
+#define ZIP_END5(x, ...) ::handy::impl::zip::end(x), ZIP_END4(__VA_ARGS__)
+#define ZIP_END6(x, ...) ::handy::impl::zip::end(x), ZIP_END5(__VA_ARGS__)
+#define ZIP_END7(x, ...) ::handy::impl::zip::end(x), ZIP_END6(__VA_ARGS__)
+#define ZIP_END8(x, ...) ::handy::impl::zip::end(x), ZIP_END7(__VA_ARGS__)
 
-#define ZIP_ALL(...) EXPAND(::it::zipIter(EXPAND(CONCAT(ZIP_BEGIN, NARGS(__VA_ARGS__)))(__VA_ARGS__)),  \
-                            ::it::zipIter(EXPAND(CONCAT(ZIP_END,   NARGS(__VA_ARGS__)))(__VA_ARGS__)))
+#define ZIP_ALL(...) EXPAND(::handy::zipIter(EXPAND(CONCAT(ZIP_BEGIN, NUM_ARGS(__VA_ARGS__)))(__VA_ARGS__)),  \
+                            ::handy::zipIter(EXPAND(CONCAT(ZIP_END,   NUM_ARGS(__VA_ARGS__)))(__VA_ARGS__)))
 
 
 
@@ -74,11 +64,14 @@ namespace std
 
 
 /// Main namespace
-namespace it
+namespace handy
 {
 
 // Helper namespace
-namespace help
+namespace impl
+{
+
+namespace zip
 {
 
 /**
@@ -160,7 +153,7 @@ template <class... Iter> using SelectIterTag_t = typename SelectIterTag< Iter...
 
 // Avoids some boilerplate in the definition of the 'ZipIter' class
 template <typename... Iters>
-using IteratorBase = std::iterator < help::SelectIterTag_t< typename std::iterator_traits< Iters >::iterator_category... >, 
+using IteratorBase = std::iterator < impl::zip::SelectIterTag_t< typename std::iterator_traits< Iters >::iterator_category... >, 
                                      std::tuple< typename std::iterator_traits< Iters >::value_type... > >;
 
 
@@ -268,10 +261,11 @@ struct CountElements< std::tuple< TupArgs... >, Args... > : st_constant< sizeof.
                                                                          CountElements< Args... >::value > {};
 
 
+} // namespace zip
 
-} // namespace help
+} // namespace impl
 
-} // namespace it
+} // namespace handy
 
 
-#endif // HELPERS_ZIP_ITER_H
+#endif // HANDY_ZIP_ITER_HELPERS_H
