@@ -10,7 +10,7 @@ namespace
 {
 	TEST(SliceTest, Creation)
 	{
-		cnt::Container<int> v(7, 10, 4, 9);
+		handy::Container<int> v(7, 10, 4, 9);
 
 
 		auto a = v.slice(3);
@@ -33,7 +33,7 @@ namespace
 
 	TEST(SliceTest, Access)
 	{
-		cnt::Container<int> v(6, 5, 1, 7, 5);
+		handy::Container<int> v(6, 5, 1, 7, 5);
 
 		int x = v(3, 4, 0, 5, 2) = -10;
 
@@ -60,7 +60,7 @@ namespace
 	{
 		std::mt19937 gen(std::random_device{}());
 
-		cnt::Container<int> v(15, 10, 3, 17, 6);
+		handy::Container<int> v(15, 10, 3, 17, 6);
 
 		std::generate(v.begin(), v.end(), [&]{ return std::uniform_int_distribution<>(0, 100)(gen); });
 

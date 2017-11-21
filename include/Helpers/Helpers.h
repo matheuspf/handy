@@ -259,4 +259,21 @@ void applyTuple (Apply apply, std::tuple<Args...>& tup, FuncArgs&&... funcArgs)
 } // namespace handy
 
 
+namespace std
+{
+	/** @name
+	 	@brief Some alias for C++14
+	*/
+	//@{
+	template <typename T, typename U>
+	constexpr bool is_same_v = std::is_same< T, U >::value;
+
+	template <typename T>
+	constexpr bool is_integral_v = std::is_integral<T>::value;
+	//@}
+}	// namespace std
+
+
+
+
 #endif // HANDY_HELPERS_HELPERS_H

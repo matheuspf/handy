@@ -1,37 +1,31 @@
-/** \file
-  *
-  * Some metaprogramming helpers
+/** @file
+ 	Some metaprogramming helpers
 */
 
-#ifndef CNT_VECTOR_HELPERS_H
-#define CNT_VECTOR_HELPERS_H
+#ifndef HANDY_CONTAINER_HELPERS_H
+#define HANDY_CONTAINER_HELPERS_H
 
-#include <type_traits>
+
+#include "../Helpers/Helpers.h"
+
 #include <vector>
 #include <array>
 #include <initializer_list>
 
 
 
-namespace std
+
+
+
+
+
+namespace handy
 {
-	/** These are not available in C++14 */
-	//@{
-	template <typename T, typename U>
-	constexpr bool is_same_v = std::is_same< T, U >::value;
 
-	template <typename T>
-	constexpr bool is_integral_v = std::is_integral<T>::value;
-	//@}
-}
-
-
-
+namespace impl
+{
 
 namespace cnt
-{
-
-namespace help
 {
 
 /// A single stack allocation must not exceed this limit
@@ -42,30 +36,10 @@ constexpr std::size_t maxSize = 100000 * sizeof(char);
 
 
 
-
 /** Multiply the integers to get the total size at compile time. If no argument
   * is give, the function returns 0
-  *
-  * \param[in] Is The variadic arguments
-  * \return The total size of multiplying Is or 0, if sizeof...(Is) == 0
 */
 //@{
-// template <std::size_t I, std::size_t... Is>
-// constexpr inline std::size_t multiply ()
-// {
-// 	std::size_t res = I;
-
-// 	const auto& dummy = { (res *= Is)... };
-
-// 	return res;
-// }
-
-// constexpr inline std::size_t multiply ()
-// {
-// 	return 0;
-// }
-
-
 template <std::size_t...>
 struct multiply;
 
@@ -79,38 +53,9 @@ struct multiply<> : std::integral_constant<std::size_t, 0> {};
 
 template<std::size_t... Is>
 constexpr std::size_t multiply_v = multiply<Is...>::value;
-
-
-
 //@}
 
 
-
-//-----------------------------------------------------------------------------------
-
-
-/** Test truthness of variadic set of bool arguments. Only gives a true value
-  * if all elements are true.
-*/
-//@{
-template <bool...>
-struct And;
-
-template <bool B1, bool... Bs>
-struct And< B1, Bs... > : And< Bs... > {};
-
-template <bool... Bs>
-struct And< false, Bs... > : std::false_type {};
-
-template <>
-struct And<true> : std::true_type {};
-
-template <>
-struct And<> : std::true_type {};
-
-template <bool... Bs>
-constexpr bool And_v = And< Bs... >::value;
-//@}
 
 
 
@@ -128,7 +73,7 @@ constexpr bool isVector = !isArray< N >;
 
 /// Selects either a 'std::array<T, N>' or a 'std::vector<T>' depending on the size 'N'
 template <typename T, std::size_t N>
-using SelectType = std::conditional_t<help::isArray<N>, std::array<T, N>, std::vector<T>>;
+using SelectType = std::conditional_t<isArray<N>, std::array<T, N>, std::vector<T>>;
 
 
 
@@ -215,10 +160,11 @@ struct IterableType {};
 struct IteratorType {};
 //@}
 
+} // namespace cnt
 
-}   // namespace help
+} // namespace impl
 
-}
+} // namespace handy
 
 
-#endif // CNT_VECTOR_HELPERS_H
+#endif // HANDY_CONTAINER_HELPERS_H

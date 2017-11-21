@@ -3,8 +3,10 @@
   * A class to take a 'slice' of a 'Container' class.
 */
 
-#ifndef CNT_SLICE_H
-#define CNT_SLICE_H
+#ifndef HANDY_CONTAINER_SLICE_H
+#define HANDY_CONTAINER_SLICE_H
+
+#include "Helpers.h"
 
 #include <tuple>
 #include <algorithm>
@@ -12,22 +14,21 @@
 #include <numeric>
 
 
-namespace cnt
+namespace handy
 {
 
-namespace help
+namespace impl
 {
 
-
-    /** This class is just a proxy to access chosen dimensions of a container.
-      * The only storage is are the positions to access and a reference to
-      * the container that created this slice. There are a bunch of examples
-      * of how to use it in 'examples/SliceExamples.cpp'.
-    */
-	template <class Cnt>
-	class Slice
-	{
-	public:
+/** This class is just a proxy to access chosen dimensions of a container.
+     * The only storage is are the positions to access and a reference to
+    * the container that created this slice. There are a bunch of examples
+    * of how to use it in 'examples/SliceExamples.cpp'.
+*/
+template <class Cnt>
+class Slice
+{
+public:
 
 
     /** Some type definition
@@ -55,7 +56,7 @@ namespace help
     //@{
 
     /// For integrals
-    template <typename... Args, help::EnableIfIntegral< std::decay_t< Args >... > = 0 >
+    template <typename... Args, handy::impl::cnt::EnableIfIntegral< std::decay_t< Args >... > = 0 >
     Slice (Cnt& c, const Args&... args) : c(c), dims(sizeof...(Args)), first(0)
     {
         auto iter = c.weights.begin();
@@ -68,7 +69,7 @@ namespace help
 
     /// For iterables
     template <typename... Args, std::enable_if_t<sizeof...(Args), int> = 0,
-              help::EnableIfIterable< std::remove_reference_t< Args >... > = 0 >
+              handy::impl::cnt::EnableIfIterable< std::remove_reference_t< Args >... > = 0 >
     Slice (Cnt& c, const Args&... args) : c(c), dims(0), first(0)
     {
         auto iter = c.weights.begin();
@@ -82,7 +83,7 @@ namespace help
 
 
     /// For a range defined by iterators
-    template <typename U, typename V, help::EnableIfIterator< std::decay_t< U >, std::decay_t< V > > = 0>
+    template <typename U, typename V, handy::impl::cnt::EnableIfIterator< std::decay_t< U >, std::decay_t< V > > = 0>
     Slice (Cnt& c, const U& begin, const V& end) : c(c), dims(std::distance(begin, end)), first(0)
     {
         first = std::inner_product(begin, end, c.weights.begin(), 0);
@@ -92,7 +93,7 @@ namespace help
 
 
     /// For list initialization
-    template <typename U, help::EnableIfIntegral<std::decay_t<U>> = 0> 
+    template <typename U, handy::impl::cnt::EnableIfIntegral<std::decay_t<U>> = 0> 
     Slice (Cnt& c, std::initializer_list<U> il) : Slice(c, il.begin(), il.end()) {}
     //@}
 
@@ -110,7 +111,7 @@ namespace help
 
     /// For integral or iterable types
     template <typename... Args>
-    const_reference operator () (IntegralType, const Args&... args) const
+    const_reference operator () (handy::impl::cnt::IntegralType, const Args&... args) const
     {
         std::size_t pos = first;
 
@@ -123,8 +124,8 @@ namespace help
 
 
     /// For iterators
-    template <typename U, help::EnableIfIterator< std::decay_t< U >> = 0>
-    const_reference operator () (IteratorType, const U& begin) const
+    template <typename U, handy::impl::cnt::EnableIfIterator< std::decay_t< U >> = 0>
+    const_reference operator () (handy::impl::cnt::IteratorType, const U& begin) const
     {
         return this->operator[](std::inner_product(c.weights.begin() + dims, c.weights.end(), begin(), first));
     }
@@ -170,7 +171,7 @@ namespace help
 
     decltype(auto) end ()          { return c.begin() + last; }
 
-    decltype(auto) cend () const   { return c.cbegin() + last; }
+    decltype(auto) cend ()   const { return c.cbegin() + last; }
     //@}
 
 
@@ -185,10 +186,10 @@ private:
 };
 
 
-} // namespace help
+} // namespace impl
 
-} // namespace cnt
+} // namespace handy
 
 
 
-#endif // CNT_SLICE_H
+#endif // HANDY_CONTAINER_SLICE_H

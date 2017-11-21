@@ -1,11 +1,10 @@
-/** \file
-  *
-  * An interface to easily access multidimensional data, having total 
-  * compatibility with STL algorithms and containers.
+/** @file
+    @brief An interface to easily access multidimensional data, having total 
+           compatibility with STL algorithms and containers.
 */
 
-#ifndef CNT_CONTAINER_H
-#define CNT_CONTAINER_H
+#ifndef HANDY_CONTAINER_H
+#define HANDY_CONTAINER_H
 
 #include <tuple>
 #include <algorithm>
@@ -21,10 +20,10 @@
 // #define DB(...) std::cout << __VA_ARGS__ << "\n" << std::flush
 
 
-namespace cnt
+namespace handy
 {
 
-namespace help
+namespace impl
 {
 
 template <class>
@@ -40,14 +39,14 @@ struct Accessor;
   *         multiplication of these sizes. See the 'Vector' class.
 */
 template <typename T, std::size_t... Is>
-class Container : public Vector<T, help::multiply_v<Is...>>
+class Container : public Vector<T, cnt::multiply_v<Is...>>
 {
 public:
 
 
     /** Some type definitions */
     //@{
-    using Base = Vector<T, help::multiply_v<Is...>>;
+    using Base = Vector<T, cnt::multiply_v<Is...>>;
 
 
     using value_type = typename Base::value_type;
@@ -76,7 +75,7 @@ public:
       *
       * \params[in] args Variadic arguments. 'Vector' checks if they are of type 'T'.
     */
-    template <typename... Args, std::size_t M = Size, help::EnableIfArray< M > = 0>
+    template <typename... Args, std::size_t M = Size, cnt::EnableIfArray< M > = 0>
     Container (Args&&... args) : Base{ std::forward<Args>(args)... }, 
                                  numDimensions_(sizeof...(Is)),
                                  dimSize( Is... )
@@ -91,7 +90,7 @@ public:
       *
       * \params[in] args Variadic arguments. 'Vector' checks if they are of type 'T'.
     */
-    template <typename... Args, std::size_t M = Size, std::enable_if_t<( M >= help::maxSize ), int > = 0>
+    template <typename... Args, std::size_t M = Size, std::enable_if_t<( M >= cnt::maxSize ), int > = 0>
     Container (Args&&... args) : Base{std::forward<Args>(args)...}, 
                                  numDimensions_(sizeof...(Is)),
                                  dimSize(Is...)
@@ -103,7 +102,7 @@ public:
 
 
     /// Empty constructor for the case where 'Size' is 0 (no compile time size is given)
-    template <std::size_t M = Size, help::EnableIfZero< M > = 0>
+    template <std::size_t M = Size, cnt::EnableIfZero< M > = 0>
     Container () {}
 
 
@@ -115,8 +114,8 @@ public:
       * \param[in] args Variadic integral types defining the size of each dimension.
                         Only integral types are accepted.
     */
-    template <typename... Args, std::size_t M = Size, help::EnableIfZero< M > = 0,
-              help::EnableIfIntegral< std::decay_t< Args >... > = 0 >
+    template <typename... Args, std::size_t M = Size, cnt::EnableIfZero< M > = 0,
+              cnt::EnableIfIntegral< std::decay_t< Args >... > = 0 >
     Container (Args... args) : numDimensions_(sizeof...(args)), 
                                dimSize{std::size_t(args)...},
                                weights(sizeof...(args))
@@ -138,8 +137,8 @@ public:
       *
       * \param[in] args Variadic iterable types of integrals
     */
-    template <class... Args, std::size_t M = Size, help::EnableIfZero< M > = 0,
-              help::EnableIfIterable< std::remove_reference_t< Args >... > = 0>
+    template <class... Args, std::size_t M = Size, cnt::EnableIfZero< M > = 0,
+              cnt::EnableIfIterable< std::remove_reference_t< Args >... > = 0>
     Container (const Args&... args) : numDimensions_(0)
     {
     	/** For each iterable we increase the number of dimensions (sum of args.size() for each
@@ -165,8 +164,8 @@ public:
       * \param[in] begin Initial position of the iterator/pointer of integral types
       * \param[in] end Final position of the iterator/pointer of integral types
     */
-    template <typename U, typename V, std::size_t M = Size, help::EnableIfZero< M > = 0,
-              help::EnableIfIterator< std::decay_t< U >, std::decay_t< V > > = 0>
+    template <typename U, typename V, std::size_t M = Size, cnt::EnableIfZero< M > = 0,
+              cnt::EnableIfIterator< std::decay_t< U >, std::decay_t< V > > = 0>
     Container (const U& begin, const V& end) : numDimensions_(std::distance(begin, end)), 
                                                dimSize(begin, end),
                                                weights(std::distance(begin, end))
@@ -184,8 +183,8 @@ public:
       *
       * \param[in] il Initializer list of type 'T' (same as 'Container')
     */
-    template<typename U, std::size_t M = Size, help::EnableIfZero< M > = 0,
-      		 help::EnableIfIntegral<std::decay_t<U>> = 0>
+    template<typename U, std::size_t M = Size, cnt::EnableIfZero< M > = 0,
+      		 cnt::EnableIfIntegral<std::decay_t<U>> = 0>
     Container (std::initializer_list<U> il) : Container(il.begin(), il.end()) {}
 
 
@@ -218,14 +217,14 @@ public:
       * \return Result after multiplication(s).
     */
     //@
-    template <typename U, typename Iter, help::EnableIfIntegral<std::decay_t<U>> = 0>
+    template <typename U, typename Iter, cnt::EnableIfIntegral<std::decay_t<U>> = 0>
     static std::size_t increment (U u, Iter& iter)
     {
     	return *iter++ * u;
     }
 
 
-    template <typename U, typename Iter, help::EnableIfIterable<std::decay_t<U>> = 0>
+    template <typename U, typename Iter, cnt::EnableIfIterable<std::decay_t<U>> = 0>
     static std::size_t increment (const U& u, Iter& iter)
     {
     	std::size_t res = 0;
@@ -252,7 +251,7 @@ public:
     */
     //@{
     template <typename... Args>
-    const_reference operator () (IntegralType, const Args&... args) const
+    const_reference operator () (cnt::IntegralType, const Args&... args) const
     {
         std::size_t pos = 0;
 
@@ -273,7 +272,7 @@ public:
     */
     //@{
     template <typename U>
-    const_reference operator () (IteratorType, const U& begin) const
+    const_reference operator () (cnt::IteratorType, const U& begin) const
     {
         return this->operator[](std::inner_product(weights.begin(), weights.end(), begin, 0));
     }
@@ -389,13 +388,13 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
     //@{
 
     /// Integral or Iterable types
-    template <typename... Args, EnableIfIntegralOrIterable<Args...> = 0>
+    template <typename... Args, cnt::EnableIfIntegralOrIterable<Args...> = 0>
     const_reference operator () (const Args&... args) const
     {
-    	return Base::operator()(IntegralType{}, args...);
+    	return Base::operator()(cnt::IntegralType{}, args...);
     }
 
-    template <typename... Args, EnableIfIntegralOrIterable<Args...> = 0>
+    template <typename... Args, cnt::EnableIfIntegralOrIterable<Args...> = 0>
     reference operator () (const Args&... args)
     {
     	return const_cast<reference>(static_cast<const Accessor&>(*this)(args...));
@@ -404,13 +403,13 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
 
 
     /// Iterators
-    template <typename U, help::EnableIfIterator<std::decay_t<U>> = 0>
+    template <typename U, cnt::EnableIfIterator<std::decay_t<U>> = 0>
     const_reference operator () (const U& begin) const
     {
-        return Base::operator()(IteratorType{}, begin);
+        return Base::operator()(cnt::IteratorType{}, begin);
     }
 
-    template <typename U, help::EnableIfIterator<std::decay_t<U>> = 0>
+    template <typename U, cnt::EnableIfIterator<std::decay_t<U>> = 0>
     reference operator () (const U& begin)
     {
         return const_cast<reference>(static_cast<const Accessor&>(*this)(begin));
@@ -419,13 +418,13 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
 
 
     /// Specific for 'std::initializer_list'
-    template <typename U, help::EnableIfIntegral<std::decay_t<U>> = 0>
+    template <typename U, cnt::EnableIfIntegral<std::decay_t<U>> = 0>
     const_reference operator () (std::initializer_list<U> il) const
     {
         return Base::operator()(il);
     }
 
-    template <typename U, help::EnableIfIntegral< std::decay_t< U > > = 0 >
+    template <typename U, cnt::EnableIfIntegral< std::decay_t< U > > = 0 >
     reference operator () (std::initializer_list<U> il)
     {
         return const_cast<reference>(static_cast<const Accessor&>(*this)(il));
@@ -434,13 +433,13 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
 
 
     /// For tuples containing integrals or iterables
-    template <typename... Args, help::EnableIfIntegral<std::decay_t<Args>...> = 0>
+    template <typename... Args, cnt::EnableIfIntegral<std::decay_t<Args>...> = 0>
     constexpr const_reference operator () (const std::tuple<Args...>& tup) const
     {
         return this->operator()(tup, std::make_index_sequence<sizeof...(Args)>());
     }
 
-    template <typename... Args, help::EnableIfIntegral< std::decay_t< Args>...> = 0 >
+    template <typename... Args, cnt::EnableIfIntegral< std::decay_t< Args>...> = 0 >
     constexpr reference operator () (const std::tuple<Args...>& tup)
     {
         return const_cast<reference>(static_cast<const Accessor&>(*this)(tup));
@@ -455,23 +454,22 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
 };
 
 
-
-} // namespace help
+} // namespace impl
 
 
 
 /** These are the classes you will use: the 'Accessor' class over a 'Container' or a 'Slice' */
 //@{
 template <typename T, std::size_t... Is>
-using Container = help::Accessor<help::Container<T, Is...>>;
+using Container = handy::impl::Accessor<handy::impl::Container<T, Is...>>;
 
 template <typename T, std::size_t... Is>
-using Slice = help::Accessor<help::Container<T, Is...>>;
+using Slice = handy::impl::Accessor<handy::impl::Container<T, Is...>>;
 //@}
 
 
 
 
-} // namespace cnt
+} // namespace handy
 
-#endif  // CNT_CONTAINER_H
+#endif  // HANDY_CONTAINER_H

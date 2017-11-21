@@ -15,15 +15,15 @@ namespace
 		int tSize = std::accumulate(sizes.begin(), sizes.end(), 1, std::multiplies<int>());
 
 
-		cnt::Container<int, 2, 3, 4, 5> a;
+		handy::Container<int, 2, 3, 4, 5> a;
 
-		cnt::Container<double> b(2, 3, 4, 5);
+		handy::Container<double> b(2, 3, 4, 5);
 
-		cnt::Container<char> c({2, 3, 4, 5});
+		handy::Container<char> c({2, 3, 4, 5});
 
-		cnt::Container<float> d(std::vector<int>{2, 3}, std::set<long>{4}, std::list<char>{5});
+		handy::Container<float> d(std::vector<int>{2, 3}, std::set<long>{4}, std::list<char>{5});
 
-		cnt::Container<std::vector<int>> e(sizes.begin(), sizes.end());
+		handy::Container<std::vector<int>> e(sizes.begin(), sizes.end());
 
 
 
@@ -47,7 +47,7 @@ namespace
 
 	TEST(ContainerTest, Access)
 	{
-		cnt::Container<int> c(7, 3, 6, 2);
+		handy::Container<int> c(7, 3, 6, 2);
 
 		int x = c[213] = 91;
 
@@ -74,11 +74,11 @@ namespace
 
 
 
-		cnt::Container<int> a(10, 20);
-		cnt::Container<int> b(5, 5, 8);
-		cnt::Container<int, 50, 4> c;
-		cnt::Container<int> d(2, 2, 2, 25);
-		cnt::Container<int, 200> e;
+		handy::Container<int> a(10, 20);
+		handy::Container<int> b(5, 5, 8);
+		handy::Container<int, 50, 4> c;
+		handy::Container<int> d(2, 2, 2, 25);
+		handy::Container<int, 200> e;
 
 
 		
