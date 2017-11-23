@@ -1,6 +1,6 @@
-/** \file
-  *
-  * A class to take a 'slice' of a 'Container' class.
+/** @file
+
+    @brief A class to take a "slice" of a cnt::Container class.
 */
 
 #ifndef HANDY_CONTAINER_SLICE_H
@@ -20,10 +20,10 @@ namespace handy
 namespace impl
 {
 
-/** This class is just a proxy to access chosen dimensions of a container.
-     * The only storage is are the positions to access and a reference to
-    * the container that created this slice. There are a bunch of examples
-    * of how to use it in 'examples/SliceExamples.cpp'.
+/** @brief This class is just a proxy to access chosen dimensions of a container. The only storage is 
+           the positions to access and a reference to the container that created this slice. Some examples:
+
+    @snippet Container/SliceExample.cpp Container Slice Snippet
 */
 template <class Cnt>
 class Slice

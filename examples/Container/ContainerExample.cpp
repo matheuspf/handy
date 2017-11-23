@@ -3,33 +3,29 @@
   * Containts some examples of how to use the 'Container' class
 */
 
+#include "Container/Container.h"
 
 #include <iostream>
 #include <list>
 #include <set>
-#include "Container/Container.h"
 
 
 using namespace std;
 
-//using namespace cnt
 
 
 int main ()
 {
-	/** There are a lot of ways to create a 'Container' class. You just
-	  * need to define in the constructor the type and the size of each 
-	  * dimension. Some examples follow:
-	*/
-	//@{
+	// There are a lot of ways to create a 'Container' class. You just need to 
+	// define the type and the size of each dimension. Some examples follow:
 
 	/** Type int and three dimensions with sizes 10, 20 and 30 respetivelly.
 	  * In this case (compile time size is given), 'a' inherits from 'std::array'.
 	*/
-	cnt::Container<int, 10, 20, 30> a;
+	handy::Container<int, 10, 20, 30> a;
 
 	/// The same as above, but now 'b' inherits from 'std::vector' (runtime size is given).
-	cnt::Container<int> b(10, 20, 30);
+	handy::Container<int> b(10, 20, 30);
 
 
 	/** You can also create a 'Container' giving the sizes via an itearable type
@@ -37,21 +33,21 @@ int main ()
 	  * to contain any integral type. Seriously, dont even try to use a floating
 	  * pointer container here. It is like 150 lines of compile time errors.
 	*/
-	cnt::Container<double> c(vector<int>{10, 20, 30});
+	handy::Container<double> c(vector<int>{10, 20, 30});
 
 
 	/// Or using more than one iterable (different types, but all of them are integral)
-	cnt::Container<char> d(list<char>{10}, set<long>{20}, array<int, 1>{30});
+	handy::Container<char> d(list<char>{10}, set<long>{20}, array<int, 1>{30});
 
 
 	/// You can also use a range defined by iterators (or pointers)
 	int szs[] = {10, 20, 30, 10000000000};
 
-	cnt::Container<long> e(&szs[0], szs + 3);
+	handy::Container<long> e(&szs[0], szs + 3);
 
 
 	/// Or even a initializer list of integrals
-	cnt::Container<float> f({10, 20, 30});
+	handy::Container<float> f({10, 20, 30});
 
 
 
