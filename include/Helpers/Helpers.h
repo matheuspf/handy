@@ -10,6 +10,7 @@
 
 #include <type_traits>
 #include <utility>
+#include <tuple>
 
 #include <assert.h>
 
@@ -229,11 +230,11 @@ template <class T>
 using IsTuple = IsSpecialization<std::decay_t<T>, std::tuple>;
 
 
-/** @name
-    @brief Apply a function to every element of a tuple
-*/
-//@{
-/** @param apply The function to be applied to tuple @c tup
+
+
+/** @brief Apply a function to every element of a tuple
+	
+ 	@param apply The function to be applied to tuple @c tup
 	@param tup A reference to a std::tuple
 	@param funcArgs Arguments to the @c apply function
 	@brief Apply a function to every element of a tuple, passing "funcArgs" as argument. In C++17 it is a lot easier.
@@ -244,16 +245,48 @@ void applyTuple (Apply apply, std::tuple<Args...>& tup, std::index_sequence<Is..
     const auto& dummie = { ( apply( std::get<Is>(tup), std::forward<FuncArgs>(funcArgs)... ), int{} ) ... };
 }
 
-/** @copydetails applyTuple
-	@brief Delegate the call to applyTuple() generating a @link std::integer_sequence std::index_sequence @endlink
+/** @brief Delegate the call to applyTuple() generating a @link std::integer_sequence std::index_sequence @endlink
 		   to expand the std::tuple
+	@copydetails applyTuple
 */
 template <class Apply, typename... Args, typename... FuncArgs>
 void applyTuple (Apply apply, std::tuple<Args...>& tup, FuncArgs&&... funcArgs)
 {
     return applyTuple(apply, tup, std::make_index_sequence<sizeof...(Args)>(), std::forward<FuncArgs>(funcArgs)...);
 }
-//@}
+
+
+
+/** @copydoc reverseArgs()
+	
+	@tparam Is Index arguments -- 0, 1, ..., P
+	@tparam Js Index arguments -- 0, 1, ..., sizeof(Args) - P
+*/
+template <std::size_t P, class Apply, class... Args, std::size_t... Is, std::size_t... Js>
+decltype(auto) reverseArgs (Apply apply, std::tuple<Args...>&& tup, std::index_sequence<Is...>, std::index_sequence<Js...>)
+{
+    return apply(std::get<Js+P>(tup)..., std::get<Is>(tup)...);
+}
+
+/** @brief Reverses the order of variadic arguments given an index
+ 	
+	@tparam P The starting index to reverse
+	@param apply The function to apply after the reversing
+	@param tup The std::tuple that holds the arguments
+
+	Given an index P, this function reverses the order of the arguments from @f$ [0, 1, ..., P, ..., N] @f$ to
+	@f$ [P, ..., N, 0, 1, ..., P-1] @f$
+	
+	After that, a function is applied to every element in the new order.
+*/
+template <std::size_t P, class Apply, class... Args>
+decltype(auto) reverseArgs (Apply apply, Args&&... args)
+{
+    return reverseArgs<P>(apply, std::forward_as_tuple(std::forward<Args>(args)...), 
+                          	 	 std::make_index_sequence<P>{}, 
+                          		 std::make_index_sequence<sizeof...(Args)-P>{});
+}
+
 
 
 } // namespace handy
@@ -262,7 +295,7 @@ void applyTuple (Apply apply, std::tuple<Args...>& tup, FuncArgs&&... funcArgs)
 namespace std
 {
 	/** @name
-	 	@brief Some alias for C++14
+	 	@brief Some aliases for C++14
 	*/
 	//@{
 	template <typename T, typename U>
