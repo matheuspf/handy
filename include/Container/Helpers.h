@@ -94,7 +94,7 @@ HAS_VAR(value_type, HasValue)
 
 /// Tells us if 'T' is an iterator of integrals
 template <typename T>
-struct IsIterator : std::integral_constant<bool, HasValue<T>::value && std::is_integral<std::decay_t<T>>::value> {};
+struct IsIterator : std::integral_constant<bool, (HasValue<T>::value || std::is_pointer<std::decay_t<T>>::value)> {};
 
 
 

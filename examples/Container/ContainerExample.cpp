@@ -10,7 +10,9 @@
 #include <set>
 
 
+
 using namespace std;
+
 
 
 
@@ -41,29 +43,13 @@ int main ()
 
 
 	/// You can also use a range defined by iterators (or pointers)
-	int szs[] = {10, 20, 30, 10000000000};
+	int szs[] = {10, 20, 30, 10000000};
 
 	handy::Container<long> e(&szs[0], szs + 3);
 
 
 	/// Or even a initializer list of integrals
 	handy::Container<float> f({10, 20, 30});
-
-
-
-#define PRINT_SIZE(x) cout << "Size of:   " << #x << "  =  " << 
-
-	/// Print Sizes
-	PRINT_SIZE(a);
-	PRINT_SIZE(b);
-	PRINT_SIZE(c);
-	PRINT_SIZE(d);
-	PRINT_SIZE(e);
-	PRINT_SIZE(f);
-
-
-	//@}
-
 
 
 
@@ -91,7 +77,7 @@ int main ()
 	/// With a tuple of integrals/iterables (also only for access)
 	e.back() = -10;
 
-	cout << e(make_tuple(vector<int>{9, 19}, 29)) << "\n";
+	cout << e(make_tuple(9, 19, 29)) << "\n";
 
 
 	/// And you can access it normally with 'operator[]'

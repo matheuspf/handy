@@ -1,5 +1,6 @@
 #include "Helpers/Print.h"
 #include <vector>
+#include <fstream>
 
 
 void PrintExampleClass ()
@@ -12,7 +13,7 @@ void PrintExampleClass ()
     printer(std::vector<int>{10, 20, 30});  // Same as bove
 
 
-    std::ostream myFile("myFile.txt");
+    std::ofstream myFile("myFile.txt");
 
     handy::Print filePrinter(myFile, ", ", "");   // Output set to 'myFile'
 
@@ -30,7 +31,7 @@ void PrintExampleTest ()
 //! [Print Function Snippet]
     handy::print(10, 20, 30);   // Exactly the same as handy::Print(std::cout, " ", "\n").operator()
 
-    std::ostream myFile("myFile.txt");
+    std::ofstream myFile("myFile.txt");
 
     handy::print(myFile, 10, 20, 30);   // Print to 'myFile' -> "10, 20, 30\n"
 
@@ -42,5 +43,9 @@ void PrintExampleTest ()
 
 int main ()
 {
+    PrintExampleClass();
+    PrintExampleTest();
+
+
     return 0;
 }

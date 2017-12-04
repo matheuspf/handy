@@ -12,7 +12,7 @@ int main ()
 
     handy::copy(v, u);
 
-    std::vector<int> transformed = handy::transform(v, u, [](int x){ return 2 * x });
+    std::vector<int> transformed = handy::transform(v, u, [](int x){ return 2 * x; });
 //! [Algorithms Snipet functions]
 
 
@@ -25,9 +25,9 @@ int main ()
 
     auto finder = handy::find_if([](auto x){ return x == 10; });
 
-    bool foundV = v & finder;
+    auto posV = (v & finder) - v.begin();
 
-    bool foundU = finder(u);
+    bool posU = finder(u) - u.begin();
 //! [Algorithms Snipet pipeline]
 
 

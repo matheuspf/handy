@@ -17,7 +17,7 @@
 
 
 using namespace std;
-using namespace it;
+using namespace handy;
 
 
 /// Setting the random number generator

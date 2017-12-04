@@ -20,7 +20,7 @@ int main ()
     // A std::map<std::string, std::any> is passed in the constructor.
     // Notice that you just need to inialize the variables you want.
 
-    Foo foo({{"a", 3}, {"c", 10.0f}, {"d", "abcdefg"s}});
+    Foo foo({{"a", 3}, {"c", 10.0f}, {"d", std::string("abcdefg")}});
 
     return 0;
 }

@@ -22,7 +22,7 @@ void RandomClassExample ()
     // for integers handy::RandInt. Anything else will give you an error
     handy::Rand<float> randFloat;
 
-    flaot f1 = randFloat(0.0, 10.0);
+    float f1 = randFloat(0.0, 10.0);
 //! [Random Class Snippet]
 }
 
