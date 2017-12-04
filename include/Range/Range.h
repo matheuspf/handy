@@ -274,7 +274,7 @@ public:
 
 
 
-private:
+protected:
 
     Type first;     ///< First element of the range
 

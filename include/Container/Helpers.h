@@ -1,5 +1,6 @@
 /** @file
- 	Some metaprogramming helpers
+ 
+ 	Some metaprogramming helpers for the handy::Container utility
 */
 
 #ifndef HANDY_CONTAINER_HELPERS_H
@@ -7,14 +8,11 @@
 
 
 #include "../Helpers/Helpers.h"
+#include "../Helpers/HasMember.h"
 
 #include <vector>
 #include <array>
 #include <initializer_list>
-
-
-
-
 
 
 
@@ -34,10 +32,14 @@ constexpr std::size_t maxSize = 100000 * sizeof(char);
 
 //---------------------------------------------------------------------------
 
+/*
+ 
 
 
-/** Multiply the integers to get the total size at compile time. If no argument
-  * is give, the function returns 0
+/** @name 
+ *  
+ * Multiply the integers to get the total size at compile time (returns 0 if the number of arguments is 0) If no argument
+ * is given, the function returns 0
 */
 //@{
 template <std::size_t...>
@@ -59,8 +61,9 @@ constexpr std::size_t multiply_v = multiply<Is...>::value;
 
 
 
-/** If the compile time size is greater than 0 and less than the defined maxSize, 
-  * the Vector is a std::array. Otherwise it is a std::vector
+/** @name 
+ *  @brief If the compile time size is greater than 0 and less than the defined maxSize, 
+ *  the Vector is a std::array. Otherwise it is a std::vector
 */
 //@{
 template <std::size_t N>
@@ -71,44 +74,27 @@ constexpr bool isVector = !isArray< N >;
 //@}
 
 
-/// Selects either a 'std::array<T, N>' or a 'std::vector<T>' depending on the size 'N'
+/// Selects either a std::array or a std::vector depending on the size @c N
 template <typename T, std::size_t N>
 using SelectType = std::conditional_t<isArray<N>, std::array<T, N>, std::vector<T>>;
 
 
 
 
-/** Tells us if 'T' is an iterable type (has definition for 'std::begin') of integrals */
-//@{
-template <class>
-constexpr bool isIterableImpl (...) { return false; }
+HAS_EXTERN_FUNC(::std::begin, HasBegin)
+HAS_EXTERN_FUNC(::std::end, HasEnd)
 
-template <class T>
-constexpr bool isIterableImpl (decltype(std::is_integral_v<decltype(*std::begin(std::declval<T>()))>, int{})*)
-{
-	return true;
-}
-
-template <class T>
-constexpr bool isIterable () { return isIterableImpl<T>(nullptr); }
-//@}
+/// Tells if a type @p T is a container - that is, has a specialization for both std::begin and std::end
+template <typename T>
+struct IsIterable : std::integral_constant<bool, HasBegin<T>::value && HasEnd<T>::value> {};
 
 
 
-/** Tells us if 'T' is an iterator of integrals */
-//@{
-template <class>
-constexpr bool isIteratorImpl (...) { return false; }
+HAS_VAR(value_type, HasValue)
 
-template <class T>
-constexpr bool isIteratorImpl (decltype(std::is_integral_v<typename std::iterator_traits<T>::value_type>, int{})*)
-{
-	return true;
-}
-
-template <class T>
-constexpr bool isIterator () { return isIteratorImpl<T>(nullptr); }
-//@}
+/// Tells us if 'T' is an iterator of integrals
+template <typename T>
+struct IsIterator : std::integral_constant<bool, HasValue<T>::value && std::is_integral<std::decay_t<T>>::value> {};
 
 
 
@@ -116,41 +102,42 @@ constexpr bool isIterator () { return isIteratorImpl<T>(nullptr); }
 /** Some useful helpers for SFINAE */
 //@{
 
-/// Enable if 'N' satisfy 'isArray' trait
+/// Enable if @p N satisfies handy::isArray trait
 template <std::size_t N>
 using EnableIfArray = std::enable_if_t< isArray< N >, int >;
 
-/// Enable if 'N' satisfy 'isVector' trait
+/// Enable if @p N satisfies handy::isVector trait
 template <std::size_t N>
 using EnableIfVector = std::enable_if_t< isVector< N >, int >;
 
-/// Enable if 'N' is not '0' trait
+/// Enable if @p N is not @c 0 trait
 template <std::size_t N>
 using EnableIfZero = std::enable_if_t< (N == 0), int >;
 
 
-/// Enable if all 'Args' are integrals
+/// Enable if all @p Args are integrals
 template <typename... Args>
 using EnableIfIntegral = std::enable_if_t<And_v<std::is_integral_v<Args>...>, int>; 
 
 
-/// Enable if all 'Args' are iterables of integrals
+/// Enable if all @p Args are iterables of integrals
 template <typename... Args>
-using EnableIfIterable = std::enable_if_t<And_v<isIterable<Args>()...>, int>;
+using EnableIfIterable = std::enable_if_t<And_v<IsIterable<Args>::value...>, int>;
 
-/// Enable if all 'Args' are iterators to integrals
+/// Enable if all @p Args are iterators to integrals
 template <typename... Args>
-using EnableIfIterator = std::enable_if_t<And_v<isIterator<Args>()...>, int>;
+using EnableIfIterator = std::enable_if_t<And_v<IsIterator<Args>::value...>, int>;
 
-/// Enable if all 'Args' are either integrals or iterable types of integrals
+/// Enable if all @p Args are either integrals or iterable types of integrals
 template <typename... Args>
-using EnableIfIntegralOrIterable = std::enable_if_t<And_v<(std::is_integral_v<Args> || isIterable<Args>())...>, int>;
+using EnableIfIntegralOrIterable = std::enable_if_t<And_v<(std::is_integral_v<Args> || IsIterable<Args>::value)...>, int>;
 
 
 
 
-/** These are dummy classes that help to create functions to treat the type of parameters 
-  * of the accessors: integrals, iterables or iterators.
+/** @name 
+	@brief These are dummy classes that help to create functions to treat the type of parameters 
+ 		   of the accessors: integrals, iterables or iterators.
 */
 //@{
 struct IntegralType {};

@@ -2,9 +2,9 @@
   
     @brief Definition for the base class for handy::Container
 
-    @details The handy::Vector class inherits from std::vector if it is not supplied with compile time size
-          or if the given compile time size is greater than the value defined at handy::impl::cnt::maxSize,
-          for maximum stack size allocation. Otherwise it inherits from std::array.
+    The handy::Vector class inherits from std::vector if it is not supplied with compile time size
+    or if the given compile time size is greater than the value defined at handy::impl::cnt::maxSize,
+    for maximum stack size allocation. Otherwise it inherits from std::array.
 */
 
 #ifndef HANDY_CONTAINER_VECTOR_H
@@ -25,12 +25,12 @@ namespace handy
 template <typename T, std::size_t N = 0>
 struct Vector : public impl::cnt::SelectType<T, N>
 {
-    using Base = impl::cnt::SelectType<T, N>; //?< An alias
+    using Base = impl::cnt::SelectType<T, N>; ///< An alias for the base type
 
-    using Base::Base;   ///< Inherits all constructors of std::vector. std::array has no constructor
+    using Base::Base;   ///< Inherits all constructors of std::vector -- std::array has no constructor
 
 
-    static constexpr std::size_t Size = N;  ///< Compile time size. May be 0.
+    static constexpr std::size_t Size = N;  ///< Compile time size -- May be 0.
 
 
     static constexpr bool isArray  = impl::cnt::isArray<N>;   ///< Verify if the class inherits from a std::array
