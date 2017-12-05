@@ -6,7 +6,7 @@ Handy is a compilation of very useful header only utilities for modern C++.
 
 No need to compile or install anything, simply include and use.
 
-All you need is a compiler supporting C++11/14/17.
+All you need is a compiler supporting C++11/14/17 (tested on g++ 7.2.0 and clang 5.0.1).
 
 
 ## Google Test

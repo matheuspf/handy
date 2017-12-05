@@ -10,6 +10,9 @@
 #include "ZipIter/ZipIter.h"
 
 
+//using namespace handy;
+
+
 namespace
 {
 	struct STLTest : public ::testing::Test

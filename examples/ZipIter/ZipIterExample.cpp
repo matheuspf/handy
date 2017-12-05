@@ -44,10 +44,11 @@ int main ()
 	});
 
 
+#if __cplusplus >= 201703L
     // If you have C++17, you can even use this one
     for(auto [x, y] : handy::zip(v, u))
         std::cout << x << "     " << y << "\n";
-
+#endif
 
 
 	// Sorting both containers using the std::tuple operator <

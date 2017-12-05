@@ -150,31 +150,7 @@ template <typename T>
 struct IsContainer : std::integral_constant<bool, HasBegin<T>::value && HasEnd<T>::value> {};
 
 
-
-/** @class AlgOPDoc
-    @brief Applies a function @p f to the @c container class
- 
-    @param container A universal reference to a container that will be operand of @p f
-    @param f A function that takes a container as its first argument
-    @return The result of @p f(Container)
-*/
-
-/// @copydoc AlgOPDoc
-template <class Container, class F, std::enable_if_t<IsContainer<Container>::value>* = nullptr>
-decltype(auto) operator ALGORITHM_OP_SYMBOL (Container&& container, F f)
-{
-    return f(std::forward<Container>(container));
-}
-
-/// @copydoc AlgOPDoc
-template <class Container, class F, std::enable_if_t<IsContainer<Container>::value>* = nullptr>
-decltype(auto) operator ALGORITHM_OP_SYMBOL (F f, Container&& container)
-{
-    return f(std::forward<Container>(container));
-}
-//@}
     
-
 
 WITH_RETURN(all_of, SINGLE_CONTAINER_DECLARATION, SINGLE_CONTAINER_APPLY)
 WITH_RETURN(any_of, SINGLE_CONTAINER_DECLARATION, SINGLE_CONTAINER_APPLY)
@@ -342,15 +318,37 @@ WITH_RETURN(partial_sum, DOUBLE_CONTAINER_DECLARATION, DOUBLE_CONTAINER_APPLY_SI
 
 
 
-
-
-
-
-
-
-
-
 }
+
+/** @brief Applies a function @p f to the @c container class
+    
+    This is the operator that enables the use of pipeline functions. You can change the ALGORITHM_OP_SYMBOL() to
+    whatever symbol you want, since it is a binary operator. Of course, the precedence may change from operator
+    to operator.
+
+    @note It is declared outside the handy namespace because of ADL. GCC compiles fine if it is declared inside 
+    the namespace, but CLANG complains.
+ 
+    @param container A universal reference to a container that will be operand of @p f
+    @param f A function that takes a container as its first argument
+    @return The result of @p f(Container)
+*/
+template <class Container, class F, std::enable_if_t<handy::IsContainer<Container>::value>* = nullptr>
+decltype(auto) operator ALGORITHM_OP_SYMBOL (Container&& container, F f)
+{
+    return f(std::forward<Container>(container));
+}
+
+/// @copydoc operator&()
+template <class Container, class F, std::enable_if_t<handy::IsContainer<Container>::value>* = nullptr>
+decltype(auto) operator ALGORITHM_OP_SYMBOL (F f, Container&& container)
+{
+    return f(std::forward<Container>(container));
+}
+//@}
+
+
+
 
 
 

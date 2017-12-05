@@ -133,24 +133,70 @@ public:
         }
 
 
-        template <typename U, typename... Args>
-		friend auto operator+ (ZipIter<U, Args...>, int);
+        /** @name
+            @brief Definition of some operators
 
-		template <typename U, typename... Args>
-		friend auto operator- (ZipIter<U, Args...>, int);
-
-		template <typename U, typename... Args>
-		friend auto operator+ (const ZipIter<U, Args...>&, const ZipIter<U, Args...>&);
-
-		template <typename U, typename... Args>
-		friend auto operator- (const ZipIter<U, Args...>&, const ZipIter<U, Args...>&);
+            @note The distance and comparison between operators are based on the first argument only
+        */
+        //@{
 
 
-		template <typename U, typename... Args>
-		friend bool operator == (const ZipIter<U, Args...>&, const ZipIter<U, Args...>&);
+        friend auto operator+ (ZipIter<T, Iters...> iter, int inc)
+        {
+            iter += inc;
 
-		template <typename U, typename... Args>
-		friend bool operator < (const ZipIter<U, Args...>&, const ZipIter<U, Args...>&);
+            return iter;
+        }
+
+        friend auto operator- (ZipIter<T, Iters...> iter, int inc)
+        {
+            iter -= inc;
+
+            return iter;
+        }
+
+
+        friend auto operator+ (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
+        {
+            return std::get<0>(iter1.iters) + std::get<0>(iter2.iters);
+        }
+
+        friend auto operator- (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
+        {
+            return std::get<0>(iter1.iters) - std::get<0>(iter2.iters);
+        }
+
+
+        friend bool operator== (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
+        {
+            return std::get<0>(iter1.iters) == std::get<0>(iter2.iters);
+        }
+
+        friend bool operator!= (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
+        {
+            return !operator==(iter1, iter2);
+        }
+
+
+        friend bool operator< (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
+        {
+            return std::get<0>(iter1.iters) < std::get<0>(iter2.iters);
+        }
+
+        friend bool operator> (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
+        {
+            return operator<(iter2, iter1);
+        }
+
+        friend bool operator<= (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
+        {
+            return !operator>(iter2, iter1);
+        }
+
+        friend bool operator>= (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
+        {
+            return !operator<(iter2, iter1);
+        }
         //@}
 
 
@@ -202,83 +248,6 @@ private:
     iters_type iters; ///< The tuple of iterators
 
 };
-
-
-/** @name
-    @brief Definition of some operators
-
-    @note The distance and comparison between operators are based on the first argument only
-*/
-//@{
-
-template <typename T, typename... Iters>
-inline auto operator+ (ZipIter<T, Iters...> iter, int inc)
-{
-	iter += inc;
-
-	return iter;
-}
-
-template <typename T, typename... Iters>
-inline auto operator- (ZipIter<T, Iters...> iter, int inc)
-{
-	iter -= inc;
-
-	return iter;
-}
-
-
-template <typename T, typename... Iters>
-inline auto operator+ (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
-{
-	return std::get<0>(iter1.iters) + std::get<0>(iter2.iters);
-}
-
-template <typename T, typename... Iters>
-inline auto operator- (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
-{
-	return std::get<0>(iter1.iters) - std::get<0>(iter2.iters);
-}
-
-
-/// Comparisons. Only 'operator==' and 'operator<' are defined
-template <typename T, typename... Iters>
-inline bool operator== (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
-{
-	return std::get<0>(iter1.iters) == std::get<0>(iter2.iters);
-}
-
-template <typename T, typename... Iters>
-inline bool operator!= (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
-{
-	return !operator==(iter1, iter2);
-}
-
-
-template <typename T, typename... Iters>
-inline bool operator< (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
-{
-	return std::get<0>(iter1.iters) < std::get<0>(iter2.iters);
-}
-
-template <typename T, typename... Iters>
-inline bool operator> (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
-{
-	return operator<(iter2, iter1);
-}
-
-template <typename T, typename... Iters>
-inline bool operator<= (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
-{
-	return !operator>(iter2, iter1);
-}
-
-template <typename T, typename... Iters>
-inline bool operator>= (const ZipIter<T, Iters...>& iter1, const ZipIter<T, Iters...>& iter2)
-{
-	return !operator<(iter2, iter1);
-}
-//@}
 
 
 

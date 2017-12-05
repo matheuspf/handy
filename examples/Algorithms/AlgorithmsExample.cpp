@@ -2,6 +2,9 @@
 
 #include <vector>
 
+//using namespace handy;
+//using handy::operator&;
+
 
 int main ()
 {

@@ -38,7 +38,7 @@ endif()
 
 
 
-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -g -fprofile-arcs -ftest-coverage -Wno-deprecated -pthread -fmax-errors=2")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -g -fprofile-arcs -ftest-coverage -Wno-deprecated -Wno-unused-value -pthread")
 set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -lgcov")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE 1)
 

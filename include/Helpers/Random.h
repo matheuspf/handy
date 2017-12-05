@@ -51,7 +51,7 @@ struct RandBase
     /// If @p seedVal is @c -1, pick the value given by std::random_device{}(). Otherwise, pick @p seedVal.
     unsigned int pickSeed (unsigned int seedVal)
     {
-        seedVal == (unsigned int)-1 ? std::random_device{}() : seedVal;
+        return seedVal == (unsigned int)-1 ? std::random_device{}() : seedVal;
     }
 
 

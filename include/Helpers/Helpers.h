@@ -274,8 +274,12 @@ decltype(auto) reverseArgs (Apply apply, Args&&... args)
 } // namespace handy
 
 
+// Not C++17
+#if __cplusplus < 201703L
+
 namespace std
 {
+
 	/** @name
 	 	@brief Some aliases for C++14
 	*/
@@ -288,7 +292,7 @@ namespace std
 	//@}
 }	// namespace std
 
-
+#endif
 
 
 #endif // HANDY_HELPERS_HELPERS_H

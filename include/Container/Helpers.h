@@ -32,14 +32,12 @@ constexpr std::size_t maxSize = 100000 * sizeof(char);
 
 //---------------------------------------------------------------------------
 
-/*
- 
 
 
 /** @name 
- *  
- * Multiply the integers to get the total size at compile time (returns 0 if the number of arguments is 0) If no argument
- * is given, the function returns 0
+ 
+   Multiply the integers to get the total size at compile time (returns 0 if the number of arguments is 0) If no argument
+   is given, the function returns 0
 */
 //@{
 template <std::size_t...>
@@ -62,8 +60,8 @@ constexpr std::size_t multiply_v = multiply<Is...>::value;
 
 
 /** @name 
- *  @brief If the compile time size is greater than 0 and less than the defined maxSize, 
- *  the Vector is a std::array. Otherwise it is a std::vector
+ 	@brief If the compile time size is greater than 0 and less than the defined maxSize, 
+ 	the Vector is a std::array. Otherwise it is a std::vector
 */
 //@{
 template <std::size_t N>
@@ -99,7 +97,9 @@ struct IsIterator : std::integral_constant<bool, (HasValue<T>::value || std::is_
 
 
 
-/** Some useful helpers for SFINAE */
+/** @name
+	@brief Some useful helpers for SFINAE
+*/
 //@{
 
 /// Enable if @p N satisfies handy::isArray trait
