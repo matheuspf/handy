@@ -3,7 +3,13 @@
     @brief An interface to easily access multidimensional data, having total compatibility 
            with STL algorithms and containers
 
-    A very generic and easy to use multidimensional container
+    it is very generic and easy to use multidimensional container, which allows easy creation and access.
+
+    It is aimed to be fast and easy to use.
+    
+    Also, there is a lot of ways to use it:
+
+    @snippet Container/ContainerExample.cpp Container Snippet
 */
 
 #ifndef HANDY_CONTAINER_H
@@ -29,7 +35,7 @@ template <class>
 struct Accessor;
 
 
-/** @defgroup ContainerGroup Multidimensional Data Accessor
+/** @defgroup ContainerGroup Multidimensional Data Container
     @copydoc Container.h
 */
 //@{
@@ -172,7 +178,7 @@ public:
     {
         initWeights();
 
-        /// Total size is equal to this multiplication. See the initWeights() function.
+        // Total size is equal to this multiplication. See the initWeights() function.
         Base::resize(weights.front() * dimSize.front());
     }
 
@@ -258,7 +264,6 @@ public:
       
         @param[in] args Either integral types or a iterables of integrals
     */
-    //@{
     template <typename... Args>
     const_reference operator () (cnt::IntegralType, const Args&... args) const
     {
@@ -273,33 +278,46 @@ public:
 
 
 
-    /** Access operator for an iterator defined by the starting position 'begin'.
-      * The dimensions to access are defined by the order of the integral elements
-      * of the iterator.
-      *
-      * \param[in] begin Initial position of the iterator/pointer of integral types
+    /** @brief Acess operator for iterators
+        
+        Access operator for an iterator defined by the starting position @p begin
+        
+        The dimensions to access are defined by the order of the integral elements of the iterator
+
+        @code{.cpp}
+        Container<int, 2, 3, 4> c;
+
+        std::vector<int> v = {1, 2, 3};
+
+        c(v.begin()) = 10;
+        @endcode
+      
+        @param[in] begin Initial position of the iterator/pointer of integral types
     */
-    //@{
     template <typename U>
     const_reference operator () (cnt::IteratorType, const U& begin) const
     {
         return this->operator[](std::inner_product(weights.begin(), weights.end(), begin, 0));
     }
-    //@}
 
 
-    /** Access for a 'std::initializer_list' of integral type. You can then access a
-      * 'Container' as easily as: 'Container<int, 2, 3, 4> c;  c({1, 2, 3}) = 10'.
-      *
-      * \param[in] il Initializer list defining the position to access
+    /** @brief Acess operator for std::initializer_list of integral type
+
+        You can access a Container as easily as: 
+        
+        @code{.cpp}
+        Container<int, 2, 3, 4> c;  
+        
+        c({1, 2, 3}) = 10'.
+        @endcode
+      
+        @param[in] il Initializer list defining the position to access
     */
-    //@{
     template <typename U>
     const_reference operator () (std::initializer_list<U> il) const
     {
         return this->operator[](std::inner_product(weights.begin(), weights.end(), il.begin(), 0));
     }
-    //@}
 
 
 
@@ -310,8 +328,10 @@ public:
     /// Total size
     constexpr std::size_t size ()      const { return Base::size(); }
 
+    /// Sizes of each dimension
     constexpr auto sizes ()      	   const { return dimSize; }
 
+    /// Number of dimensions
     constexpr std::size_t numDimensions () const { return numDimensions_; }
 
 
@@ -323,27 +343,33 @@ public:
     
 
 
-    /** As the name says, it takes a 'Slice' of the container. If you use for example:
-      * 'Container<int, 2, 3, 4> c;   auto slc = c.slice(1);', the variable 'slc' will
-      * a proxy to access the container 'c', having two dimensions and starting from
-      * position 1 from the first dimension. For more, see the examples.
-      *
-      * \param[in] args Variadic integral arguments defining the dimensions to 'take a slice'.
+    /** @brief As the name says, it takes a 'Slice' of the container
+
+        If you use for example:
+        
+        @code{.cpp}
+        Container<int, 2, 3, 4> c;
+        
+        auto slc = c.slice(1);
+        @endcode
+        
+        the variable @c slc will be a proxy to access the container @c c, having two dimensions and 
+        starting from position 1 from the first dimension. For more, see the examples.
+      
+        @param[in] args Variadic integral arguments defining the dimensions to 'take a slice'.
     */
-    //@{
     template <typename... Args>
     auto slice (const Args&... args) const
     {
         return Accessor<Slice<const Container>>(*this, args...);
     }
 
+    /// @copydoc slice()
     template <typename... Args>
     auto slice (const Args&... args)
     {
         return Accessor<Slice<Container>>(*this, args...);
     }
-    //@}
-
 
 
 protected:
@@ -368,14 +394,19 @@ protected:
 // ----------------------------------- Accessors -------------------------- //
 
 
-/** The only purpose of this class is to delegate calls to the accessors of 'Container' 
-  * or 'Slice', so we dont have duplication of code and the classes can be written more clearly.
-  *
+/** @brief Delegate the call to the accessors of Container or Slice
+    
+    The only purpose of this class is to delegate calls to the accessors of Container or Slice, 
+    so we dont have duplication of code and the classes can be written more clearly
+
+    @tparam BaseType Either a Container or a Slice class
 */
 template <class BaseType>
-struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Slice'
+struct Accessor : public BaseType
 {
-	/** Some type definitions */
+	/** @name
+    @brief Some type definitions
+    */
     //@{
 	using Base = BaseType;
 
@@ -390,13 +421,15 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
     //@}
 
 
-    /** These functions simply delegate the access to either 'Container' or 'Slice', which
-      * have the same interface for access. They are also responsible to handle the SFINAE
-      * to treat all different types of access.
+    /** @name
+        @brief Delegate the call to the right access function
+
+        These functions simply delegate the access to either Container or Slice, which have the same 
+        interface for access 
+        
+        They are also responsible to handle SFINAE to treat all different types of access.
     */
     //@{
-
-    /// Integral or Iterable types
     template <typename... Args, cnt::EnableIfIntegralOrIterable<Args...> = 0>
     const_reference operator () (const Args&... args) const
     {
@@ -410,8 +443,6 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
     }
 
 
-
-    /// Iterators
     template <typename U, cnt::EnableIfIterator<std::decay_t<U>> = 0>
     const_reference operator () (const U& begin) const
     {
@@ -426,7 +457,6 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
 
 
 
-    /// Specific for 'std::initializer_list'
     template <typename U, cnt::EnableIfIntegral<std::decay_t<U>> = 0>
     const_reference operator () (std::initializer_list<U> il) const
     {
@@ -441,7 +471,14 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
 
 
 
-    /// For tuples containing integrals or iterables
+    /** @name
+        @brief Access for tuples
+
+        These are special accessors defined for std::tuple.
+
+        The tuples are unpacked and given as argument to the other delegating operators
+    */
+    //@{
     template <typename... Args, cnt::EnableIfIntegral<std::decay_t<Args>...> = 0>
     constexpr const_reference operator () (const std::tuple<Args...>& tup) const
     {
@@ -460,6 +497,7 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
         return this->operator()(std::get<Js>(tup)...);
     }
     //@}
+    //@}
 };
 
 
@@ -467,11 +505,15 @@ struct Accessor : public BaseType	/// We inherit from either 'Container' or 'Sli
 
 
 
-/** These are the classes you will use: the 'Accessor' class over a 'Container' or a 'Slice' */
+/** @name
+    @brief These are the classes you will use: the Accessor class over a Containe' or a Slice
+*/
 //@{
+/// An alias defining an accessor to Container
 template <typename T, std::size_t... Is>
 using Container = handy::impl::Accessor<handy::impl::Container<T, Is...>>;
 
+/// An alias defining an accessor to Slice
 template <typename T, std::size_t... Is>
 using Slice = handy::impl::Accessor<handy::impl::Container<T, Is...>>;
 //@}

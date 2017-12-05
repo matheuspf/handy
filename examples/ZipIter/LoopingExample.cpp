@@ -5,12 +5,12 @@
   * 'zipIter' facilities to iterate simultaneously through
   * multiple containers.
   *
-  * Something important. You really don't want to take a referrence
+  * Something important. You really don't want to take a reference
   * to the tuple returned by 'zip' or 'zipIter'. It is a temporary,
-  * a rvalue referrence to a tuple of referrences of the values returned
+  * a rvalue reference to a tuple of references of the values returned
   * by derreferencing each iterator. So even if you want to modify the 
   * values inside the loop, you can take the tuple as a copy. Taking it
-  * as a lvalue referrence will generate a compile error.
+  * as a lvalue reference will generate a compile error.
 */ 
 
 

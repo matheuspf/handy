@@ -1,9 +1,12 @@
 /** 
     @file
     
-    @brief Simple facilities to iterate through multiple containers and iterators at the same time, 
-           similar to Python's zip. Works easily with stl algorithms as well.
-    
+    @brief Iterator zipper similar to Python
+
+    Simple facilities to iterate through multiple containers and iterators at the same time, 
+    similar to Python's @p zip. Works easily with stl algorithms as well.
+
+    @snippet ZipIter/ZipIterExample.cpp ZipIter Snippet
  */
 
 

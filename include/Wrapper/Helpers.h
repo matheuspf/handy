@@ -2,13 +2,13 @@
 #define HANDY_WRAPPER_MACROS_H
 
 #include <type_traits>
-
+#include <initializer_list>
 #include <ostream>
 
 #include "../Helpers/HasMember.h"
 
 
-
+/// Useful for defining operations inherited from Wrapper
 #define USING_WRAPPER(...)  using Base = __VA_ARGS__;  \
 \
                             using Base::Base;    \
@@ -24,6 +24,10 @@
 
 
 
+/** @name
+    @brief Macros that help to define Wrapper operators
+*/
+//@{
 #define WRAPPER_DECLARATION_BOTH(OP)    \
 template <typename U>   \
 friend auto operator OP (const Wrapper<T>& w1, const Wrapper<U>& w2)
@@ -101,7 +105,7 @@ WRAPPER_DECLARATION_RIGHT(OP)   \
 {   \
     return u OP *w1; \
 }
-
+//@}
 
 
 
@@ -120,20 +124,23 @@ struct Wrapper;
 namespace impl
 {
 
+/// Check if a given type @p T is a Wrapper
 template <typename T>
 struct IsWrapper : std::false_type {};
 
+/// @copydoc IsWrapper
 template <typename T>
 struct IsWrapper<Wrapper<T>> : std::true_type {};
 
 
-
+/// Check if a type inherits from a Wrapper
 template <typename T>
 struct IsWrapperBase : public IsInheritedTemplate<T, Wrapper> {};
 
 } // namespace impl
 
 
+/// Create a wrapper of class @p T and return it
 template <class T>
 auto makeWrapper (T&& t)
 {

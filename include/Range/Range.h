@@ -247,9 +247,12 @@ public:
 
     
     /** @brief Evaluates a range into a std::vector
+        
+        @note Only available if the range is not infinite
 
         @return A std::vector with the evaluated range   
     */
+    template <typename U = ValidRange, std::enable_if_t<!std::is_same<U, impl::InfiniteInterval>::value>* = nullptr>
     std::vector<Type> eval ()
     {
         std::vector<Type> evaluated;
@@ -263,9 +266,11 @@ public:
 
     /** @brief Evaluates a range into the given iterator
 
+        @note Only available if the range is not infinite
+
         @param iter The iterator to copy the range
     */
-    template <typename Iter>
+    template <typename Iter, typename U = ValidRange, std::enable_if_t<!std::is_same<U, impl::InfiniteInterval>::value>* = nullptr>
     void eval (Iter iter)
     {
         std::copy(this->begin(), this->end(), iter);
@@ -288,47 +293,72 @@ protected:
 
 
 
+/** @name
+    @brief Return a Range given a set of arguments
 
-template <typename First, typename Last, typename Step>
-decltype(auto) range (const First& first, const Last& last, const Step& step)
-{
-    using Type = impl::TypePrec_t<impl::TypePrec_t<First, Last>, Step>;
+    Instead of calling the Range class directly, it is much easier to call these functions instead
 
-	return Range<Type, impl::HalfClosedInterval>(first, last, step);
-}
+    They are similar to std::make_tuple for example, and simply delegate the arguments, creating an object
+*/
+//@{
 
-template <typename First, typename Last>
-decltype(auto) range (const First& first, const Last& last)
-{
-    using Type = impl::TypePrec_t<First, Last>;
 
-	return Range<Type, impl::HalfClosedInterval>(first, last);
-}
-
+/** @brief Returns a half-closed Range
+    
+    The type is deduced to be the <a href="http://en.cppreference.com/w/cpp/types/common_type">common type</a>
+    between the types @p First, @p Last and @p Step
+    
+    @param first First element of the range
+    @param last Last element of the range (exclusive)
+    @param step Steps between elements of the range
+*/
 template <typename Last>
 decltype(auto) range (const Last& last)
 {
 	return Range<Last, impl::HalfClosedInterval>(last);
 }
 
+///@copydoc range()
+template <typename First, typename Last>
+decltype(auto) range (const First& first, const Last& last)
+{
+    using Type = std::common_type_t<First, Last>;
+
+	return Range<Type, impl::HalfClosedInterval>(first, last);
+}
+
+///@copydoc range()
+template <typename First, typename Last, typename Step>
+decltype(auto) range (const First& first, const Last& last, const Step& step)
+{
+    using Type = std::common_type_t<std::common_type_t<First, Last>, Step>;
+
+	return Range<Type, impl::HalfClosedInterval>(first, last, step);
+}
 
 
+
+/** @brief Returns a closed Range
+    @copydetails range()
+*/
 template <typename First, typename Last, typename Step>
 decltype(auto) crange (const First& first, const Last& last, const Step& step)
 {
-    using Type = impl::TypePrec_t<impl::TypePrec_t<First, Last>, Step>;
+    using Type = std::common_type_t<std::common_type_t<First, Last>, Step>;
 
 	return Range<Type, impl::ClosedInterval>(first, last, step);
 }
 
+/// @copydoc crange()
 template <typename First, typename Last>
 decltype(auto) crange (const First& first, const Last& last)
 {
-    using Type = impl::TypePrec_t<First, Last>;
+    using Type = std::common_type_t<First, Last>;
 
 	return Range<Type, impl::ClosedInterval>(first, last);
 }
 
+/// @copydoc crange()
 template <typename Last>
 decltype(auto) crange (const Last& last)
 {
@@ -337,15 +367,16 @@ decltype(auto) crange (const Last& last)
 
 
 
-
+/// Returns a infinite Range
 template <typename First, typename Step>
 decltype(auto) irange (const First& first, const Step& step)
 {
-    using Type = std::decay_t<impl::TypePrec_t<First, Step>>;
+    using Type = std::decay_t<std::common_type_t<First, Step>>;
 
 	return Range<Type, impl::InfiniteInterval>(first, Type{0}, step);
 }
 
+/// @copydoc irange()
 template <typename First>
 decltype(auto) irange (const First& first)
 {
@@ -354,10 +385,12 @@ decltype(auto) irange (const First& first)
 	return Range<First, impl::InfiniteInterval>(first, Type{0}, Type{1});
 }
 
+/// @copydoc irange()
 decltype(auto) irange ()
 {
 	return Range<int, impl::InfiniteInterval>(0, 0, 1);
 }
+//@}
 //@}
 
 }	// namespace handy

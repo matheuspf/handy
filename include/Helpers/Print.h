@@ -2,11 +2,11 @@
 
     @brief Printing utilities
 
-    @details By creating a handy::Print you can define how to print stuff. Also support stl container printing. Ex:
+    @details By creating a handy::Print you can define how to print stuff. Also supports stl container printing. Ex:
 
     @snippet Helpers/PrintExample.cpp Print Class Snippet
 
-    @details You can also use the direction function handy::print(). Ex:
+    @details You can also use the direct function handy::print(). Ex:
 
     @snippet Helpers/PrintExample.cpp Print Function Snippet
 */

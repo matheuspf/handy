@@ -1,6 +1,11 @@
 /** @file
 
-    @brief A class to take a "slice" of a cnt::Container class.
+    @brief A class defined to take a "slice" of a cnt::Container class.
+    
+    This class is just a proxy to access chosen dimensions of a Container. The only storage is the positions 
+    to access and a reference to the container that created this slice. Some examples:
+
+    @snippet Container/SliceExample.cpp Slice Snippet
 */
 
 #ifndef HANDY_CONTAINER_SLICE_H
@@ -20,18 +25,18 @@ namespace handy
 namespace impl
 {
 
-/** @brief This class is just a proxy to access chosen dimensions of a container. The only storage is 
-           the positions to access and a reference to the container that created this slice. Some examples:
-
-    @snippet Container/SliceExample.cpp Container Slice Snippet
+/** @ingroup ContainerGroup
+    @copydoc Slice.h
 */
+//@{
 template <class Cnt>
 class Slice
 {
 public:
 
 
-    /** Some type definition
+    /** @name
+        @brief Some type definition
     */
     //@{
     using Base = std::decay_t<Cnt>;
@@ -49,13 +54,14 @@ public:
 // --------------------------------- Constructors ---------------------------------------------- //
 
 
-    /** These are the same constructor types defined for the 'Container' class, but now
-      * with a reference to the 'Container' class that created this slice. Also, the
-      * slice defines the range that it can access.
+    /** @name
+        @brief Constructors for the Slice class
+        
+        These are the same constructor types defined for the Container' class, but now with a reference 
+        to the Container class that created this slice. Also, the slice defines the range that it can access.
     */
     //@{
-
-    /// For integrals
+    /// For variadic integrals
     template <typename... Args, handy::impl::cnt::EnableIfIntegral< std::decay_t< Args >... > = 0 >
     Slice (Cnt& c, const Args&... args) : c(c), dims(sizeof...(Args)), first(0)
     {
@@ -67,7 +73,7 @@ public:
     }
 
 
-    /// For iterables
+    /// For iterables of integrals
     template <typename... Args, std::enable_if_t<sizeof...(Args), int> = 0,
               handy::impl::cnt::EnableIfIterable< std::remove_reference_t< Args >... > = 0 >
     Slice (Cnt& c, const Args&... args) : c(c), dims(0), first(0)
@@ -103,12 +109,13 @@ public:
 // ------------------------------- Access - operator() --------------------------------------------- //
 
 
-    /** Again, these are almost identical to 'Container' accessors. Of course, they
-      * can only access the defined range, so the operations are a bit different,
-      * but the interface is the same.
+    /** @name
+        @brief Access operators for the Slice class
+        
+        Again, these are almost identical to Container accessors. Of course, they can only access the 
+        defined range, so the operations are a bit different, but the interface is the same
     */
     //@{
-
     /// For integral or iterable types
     template <typename... Args>
     const_reference operator () (handy::impl::cnt::IntegralType, const Args&... args) const
@@ -141,18 +148,17 @@ public:
 
 
 
-    /** Overloading the access via 'operator[]' */
-    //@{
+    /// Overloading the access via operator[]
     const_reference operator [] (int p) const
     {
         return c[first + p];
     }
 
+    /// @copydoc operator[]()
     reference operator [] (int p)
     {
         return const_cast<reference>(static_cast<const Slice&>(*this)[p]);
     }
-    //@}
 
 
 
@@ -163,7 +169,9 @@ public:
     auto size () const      { return last - first; }
 
 
-    /** Begin and end */
+    /** @name
+        @brief begin and end operators
+    */
     //@{
     decltype(auto) begin ()        { return c.begin() + first; }
 
@@ -177,13 +185,14 @@ public:
 
 private:
 
-    Cnt& c;             /// Reference to the creator container
+    Cnt& c;             ///< Reference to the creator container
 
-    int dims;           /// Number of dimensions BEFORE the slice
-    int first;          /// First element on the contiguous array
-    int last;           /// Last element on the contiguous array
+    int dims;           ///< Number of dimensions BEFORE the slice
+    int first;          ///< First element on the contiguous array
+    int last;           ///< Last element on the contiguous array
 
 };
+//@}
 
 
 } // namespace impl
