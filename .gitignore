@@ -33,3 +33,10 @@
 
 # VS Code
 .vscode/
+
+# doc Folders
+html/
+latex/
+
+# build Folders
+build/
