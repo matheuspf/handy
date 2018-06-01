@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 2.8.8)
-project(gtest_builder)
+find_package(Threads REQUIRED)
+
+target_link_libraries(tests PUBLIC Threads::Threads)
+
 
 include(ExternalProject)
 
@@ -10,7 +12,11 @@ ExternalProject_Add(googletest
     )
 
 ExternalProject_Get_Property(googletest source_dir)
-set(GTEST_INCLUDE_DIRS ${source_dir}/googletest/include PARENT_SCOPE)
-
 ExternalProject_Get_Property(googletest binary_dir)
-set(GTEST_LIBS_DIR ${binary_dir}/googlemock/gtest PARENT_SCOPE)
+
+
+add_dependencies(tests googletest)
+
+target_include_directories(tests PUBLIC ${source_dir}/googletest/include ${binary_dir}/googlemock/gtest)
+
+target_link_libraries(tests PUBLIC ${binary_dir}/googlemock/gtest/libgtest.a ${binary_dir}/googlemock/gtest/libgtest_main.a)

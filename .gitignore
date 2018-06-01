@@ -33,3 +33,11 @@
 
 # VS Code
 .vscode/
+
+
+# Documentation folders
+html/
+latex/
+
+# Build folders
+build/

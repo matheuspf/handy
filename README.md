@@ -6,12 +6,20 @@ Handy is a compilation of very useful header only utilities for modern C++.
 
 No need to compile or install anything, simply include and use.
 
-All you need is a compiler supporting C++11/14/17 (tested on g++ 7.2.0 and clang 5.0.1).
+All headers are inside the `include` folder. To include a module, for example `Algorithm`, you just need to put the folder `include` in your path and include in your code: 
+
+`#include "Algorithm/Algorithm.h"`
+
+The `Helpers` modules are inside `include/Helpers` folder. For `Benchmark` for example:
+
+`#include "Helpers/Benchmark.h"`
+
+All you need to compile is a compiler supporting C++11/14/17 (tested on g++ 7.2.0 and clang 5.0.1).
 
 
 ## Google Test
 
-To run the tests, simply do:
+To execute the tests, simply run:
 
 ```
 cd tests
@@ -21,7 +29,7 @@ cd build
 cmake ..
 cmake --build .
 
-./HandyTest
+./tests
 ```
 
 Google test will be downloaded automatically if you don't have it installed.
@@ -31,7 +39,7 @@ Google test will be downloaded automatically if you don't have it installed.
 
 ## Examples
 
-There are a bunch of examples for everything in the folder `examples`. If you want to see them running, simply do:
+There are a bunch of examples for everything in the folder `examples`. If you want to compile them, simply run:
 
 
 ```
@@ -41,9 +49,10 @@ cd build
 
 cmake ..
 cmake --build .
-
-./HandyExample
 ```
+
+And then just run any example you want.
+
 
 <br>
 
@@ -96,6 +105,7 @@ The documentation is generated using
 
 ## Algorithms
 
+
 Define STL container algorithms and pipeline operators.
 
 By including this class, for almost any stl algorithm, a function taking a container instead of iterators is defined.
@@ -107,7 +117,6 @@ The exact form of the function, as well as the number of arguments depends on th
 An example of use:
 
 ``` C++
-
 std::vector<int> v, u;
 
 handy::sort(v, std::greater<int>());
