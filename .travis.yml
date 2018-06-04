@@ -22,12 +22,11 @@ install:
 
 
 script:
-  - cd tests
   - mkdir build
   - cd build
   - CXX=/usr/bin/g++-7 cmake ..
   - make tests -j4
-  - ./tests
+  - ./tests/tests
 
 
 after_success:
