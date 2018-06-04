@@ -14,6 +14,8 @@
 
 #include <assert.h>
 
+#include "Config.h"
+
 
 /// Expands variadic arguments
 #define EXPAND(...) __VA_ARGS__
@@ -26,7 +28,6 @@
 /// @copybrief CONCAT
 #define CONCAT_(x, y) EXPAND(x ## y)
 //@}
-
 
 
 //@{
@@ -61,6 +62,7 @@
 
 #define REVERSE(...) APPLY_N(REVERSE, __VA_ARGS__)
 //@}
+
 
 
 
@@ -279,13 +281,12 @@ decltype(auto) reverseArgs (Apply apply, Args&&... args)
 
 namespace std
 {
-
 	/** @name
 	 	@brief Some aliases for C++14
 	*/
 	//@{
 	template <typename T, typename U>
-	constexpr bool is_same_v = std::is_same< T, U >::value;
+	constexpr bool is_same_v = std::is_same<T, U>::value;
 
 	template <typename T>
 	constexpr bool is_integral_v = std::is_integral<T>::value;

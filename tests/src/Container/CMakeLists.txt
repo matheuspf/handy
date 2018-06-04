@@ -1,2 +1,1 @@
-target_sources(tests PUBLIC src/Container/ContainerTest.cpp)
-target_sources(tests PUBLIC src/Container/SliceTest.cpp)
+target_sources(tests PRIVATE src/Container/Container.cpp src/Container/Slice.cpp)
