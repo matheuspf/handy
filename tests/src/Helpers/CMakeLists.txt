@@ -1,0 +1,2 @@
+target_sources(tests PRIVATE src/Helpers/Benchmark.cpp src/Helpers/HandyParams.cpp src/Helpers/HasMember.cpp
+                             src/Helpers/Helpers.cpp src/Helpers/NamedTuple.cpp src/Helpers/Print.cpp)

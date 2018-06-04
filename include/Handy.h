@@ -5,15 +5,12 @@
     Includes all other files. Also, it checks for compiler compatibility
 */
 
-#ifndef HANDY_HANDY_H
-#define HANDY_HANDY_H
+#pragma once
 
-
-// C++11
-#if __cplusplus >= 201103L
 
 // C++14
 #if __cplusplus >= 201402L
+
 
 #include "Helpers/Benchmark.h"
 #include "Helpers/HasMember.h"
@@ -41,14 +38,8 @@
 #endif // C++17
 
 
-#endif // C++14
-
-
 #else
 
-#error You need at least C++11 to use Handy
+#error You need at least C++14 to use Handy
 
-#endif // C++11
-
-
-#endif // HANDY_HANDY_H
+#endif // C++14

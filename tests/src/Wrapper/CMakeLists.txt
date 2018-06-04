@@ -1,0 +1,1 @@
+target_sources(tests PRIVATE src/Wrapper/Inheritance.cpp src/Wrapper/Operations.cpp)

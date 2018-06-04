@@ -1,6 +1,0 @@
-if(COMPILER_SUPPORTS_CXX14)
-    file(GLOB ALGORITHMS_SRC_FILES ${PROJECT_SOURCE_DIR}/Algorithms/*.cpp)
-    set(EXAMPLE_SRC_FILES ${EXAMPLE_SRC_FILES} ${ALGORITHMS_SRC_FILES})
-    #set(ALGORITHMS_TEST_CPP ${PROJECT_SOURCE_DIR}/Algorithms/AlgorithmsExample.cpp)
-    #set_source_files_properties(${ALGORITHMS_TEST_CPP} PROPERTIES COMPILE_FLAGS "-std=c++17")
-endif()
