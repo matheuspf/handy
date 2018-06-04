@@ -1,8 +1,8 @@
-#include "../../include/Wrapper/Wrapper.h"
+#include "Wrapper/Wrapper.h"
 
 #include <vector>
 
-#include "../../include/Helpers/HasMember.h"
+#include "Helpers/HasMember.h"
 
 
 ///[Wrapper Inheritance Snippet]

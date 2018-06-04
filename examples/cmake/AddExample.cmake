@@ -12,8 +12,6 @@ function(addExample file_path files)
 
         target_compile_options(${file} PRIVATE -O2)
 
-        target_sources(examples PRIVATE ${file_path}/${file_name})
-
         add_dependencies(examples ${file})
     endforeach()
 
