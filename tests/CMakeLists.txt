@@ -1,7 +1,7 @@
 option(handy_coverage "If coverage tests will be executed" ON)
 
 
-add_executable(tests)
+add_executable(tests "")
 
 target_include_directories(tests PUBLIC ${PROJECT_SOURCE_DIR}/include)
 

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.5)
 
 ### So we can install without building everything (docs, examples and tests)
 set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE)

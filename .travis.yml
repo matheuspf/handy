@@ -13,6 +13,10 @@ addons:
       - cmake
 
 
+before_install:  
+- wget -O cmake.sh https://cmake.org/files/v3.10/cmake-3.10.0-rc1-Linux-x86_64.sh 
+- sudo sh cmake.sh --skip-license --exclude-subdir --prefix=/usr/local
+
 install:
 - cd ${TRAVIS_BUILD_DIR}
 - wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.11.orig.tar.gz
@@ -22,11 +26,12 @@ install:
 
 
 script:
-  - mkdir build
-  - cd build
-  - CXX=/usr/bin/g++-7 cmake ..
-  - make tests -j4
-  - ./tests/tests
+- cd ${TRAVIS_BUILD_DIR}
+- mkdir build
+- cd build
+- CXX=/usr/bin/g++-7 cmake ..
+- make tests -j4
+- ./tests/tests
 
 
 after_success:
