@@ -49,19 +49,18 @@ target_include_directories(handy INTERFACE
 )
 
 
-if(HANDY_BuildTests)
+if(HANDY_BuildTests AND NOT TARGET tests)
     add_subdirectory(tests)
 endif()
 
-if(HANDY_BuildExamples)
+if(HANDY_BuildExamples AND NOT TARGET examples)
     add_subdirectory(examples)
 endif()
 
-if(HANDY_BuildDocs)
+if(HANDY_BuildDocs AND NOT TARGET doc)
     add_subdirectory(doc)
 endif()
 
-#add_subdirectory(include)
 
 
 # include(CMakePackageConfigHelpers)
@@ -76,12 +75,16 @@ endif()
 #     INSTALL_DESTINATION ${NLOHMANN_JSON_CONFIG_INSTALL_DIR}
 # )
 
-if(INCLUDE_INSTALL_DIR)
-    set(CMAKE_INSTALL_PREFIX ${INCLUDE_INSTALL_DIR})
+if(NOT HANDY_INCLUDE_INSTALL_DIR)
+    if(INCLUDE_INSTALL_DIR)
+        set(HANDY_INCLUDE_INSTALL_DIR ${INCLUDE_INSTALL_DIR})
+    else()
+        set(HANDY_INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/include)
+    endif()
 endif()
 
 
 install(
     DIRECTORY ${PROJECT_SOURCE_DIR}/include/
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/handy
+    DESTINATION ${HANDY_INCLUDE_INSTALL_DIR}/handy
 )
