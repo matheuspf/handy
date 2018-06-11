@@ -151,13 +151,13 @@ using Rand = std::conditional_t<std::is_integral<T>::value, RandInt_<T>,
 
     @snippet Helpers/RandomExample.cpp Random Function Snippet
 */
-int rand (int min = 0, int max = std::numeric_limits<int>::max(), unsigned int seed = -1)
+static int rand (int min = 0, int max = std::numeric_limits<int>::max(), unsigned int seed = -1)
 {
     return RandInt(seed)(min, max);
 }
 
 /// @copydoc handy::rand(int, int, unsigned int)
-double rand (double min = 0.0, double max = 1.0, unsigned int seed = -1)
+static double rand (double min = 0.0, double max = 1.0, unsigned int seed = -1)
 {
     return RandDouble(seed)(min, max);
 }

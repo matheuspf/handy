@@ -386,7 +386,7 @@ decltype(auto) irange (const First& first)
 }
 
 /// @copydoc irange()
-decltype(auto) irange ()
+static decltype(auto) irange ()
 {
 	return Range<int, impl::InfiniteInterval>(0, 0, 1);
 }
