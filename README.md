@@ -1,8 +1,8 @@
-# Handy
+# handy
 
-[![Build Status](https://travis-ci.org/matheuspf/Handy.svg?branch=master)](https://travis-ci.org/matheuspf/Handy) [![Coverage Status](https://coveralls.io/repos/github/matheuspf/Handy/badge.svg?branch=master)](https://coveralls.io/github/matheuspf/Handy?branch=master)
+[![Build Status](https://travis-ci.org/matheuspf/handy.svg?branch=master)](https://travis-ci.org/matheuspf/handy) [![Coverage Status](https://coveralls.io/repos/github/matheuspf/handy/badge.svg?branch=master)](https://coveralls.io/github/matheuspf/handy?branch=master)
 
-Handy is a compilation of very useful header only utilities for modern C++.
+handy is a compilation of very useful header only utilities for modern C++.
 
 No need to compile or install anything, simply include and use.
 
