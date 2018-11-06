@@ -4,6 +4,8 @@
 //! [HasMember snippet]
 struct Foo
 {
+    Foo (std::string) {}
+
     void foo (int) {}
 
     void bar (int) {}
@@ -29,6 +31,8 @@ HAS_EXTERN_FUNC(foo, HasExternFoo);     // Check the existence of the free funct
 HAS_OVERLOADED_FUNC(bar, HasOverloadedBar);     // Check the existence of the overloaded member function 'bar'
 
 
+#include <iostream>
+
 int main ()
 {
     Hasvar<int>::value;     // false
@@ -46,6 +50,9 @@ int main ()
     HasOverloadedBar<Foo, int>::value;   // true
     HasOverloadedBar<Foo, std::string>::value;   // true
     HasOverloadedBar<Foo, double>::value;   // true -> does not work for explicit overloads
+
+    handy::HasConstructor<Foo, int>::value;            // false 
+    handy::HasConstructor<Foo, std::string>::value;    // true 
 
 
     return 0;

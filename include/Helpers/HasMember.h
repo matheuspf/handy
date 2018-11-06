@@ -101,6 +101,7 @@ namespace handy
 //@}
 
 
+#define HAS_CONSTRUCTOR_HELPER(HM_T, dummie, Args) HM_T(std::declval<Args>()...)
 
 /** @brief Uses SFINAE to determine the existence of a certain member given a class
 
@@ -119,6 +120,9 @@ template <typename HM_T, typename... HM_Args>  \
 struct Name : public std::integral_constant<bool, CONCAT(Name, Impl) <std::decay_t<HM_T>, HM_Args...>(nullptr)> {};
 
 //@}
+
+/// Check if clas has a constructor with the given parameters
+EXPAND(HAS_MEMBER(HAS_CONSTRUCTOR_HELPER, , "dummie", HasConstructor))
 
 }
 
