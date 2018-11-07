@@ -3,7 +3,7 @@ option(handy_coverage "If coverage tests will be executed" ON)
 
 add_executable(tests "")
 
-target_include_directories(tests PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(tests PUBLIC ${PROJECT_SOURCE_DIR}/include/handy)
 
 target_compile_features(tests PRIVATE)
 
@@ -16,12 +16,12 @@ endif()
 
 
 
-add_subdirectory(src/Algorithms)
-add_subdirectory(src/Container)
-add_subdirectory(src/Helpers)
-add_subdirectory(src/Range)
-#add_subdirectory(src/Wrapper)
-add_subdirectory(src/ZipIter)
+add_subdirectory(Algorithms)
+add_subdirectory(Container)
+add_subdirectory(Helpers)
+add_subdirectory(Range)
+#add_subdirectory(Wrapper)
+add_subdirectory(ZipIter)
 
 
 enable_testing()

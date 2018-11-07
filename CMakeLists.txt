@@ -5,7 +5,7 @@ set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE)
 
 
 ### Get major.minor.patch semantic version
-file(READ include/Helpers/Config.h handy_config_file)
+file(READ include/handy/Helpers/Config.h handy_config_file)
 
 string(REGEX MATCH "define[ \t]+HANDY_MAJOR_VERSION[ \t]+([0-9]+)" handy_major_version_match ${handy_config_file})
 set(handy_major_version "${CMAKE_MATCH_1}")
@@ -44,8 +44,8 @@ target_compile_features(handy INTERFACE cxx_std_17)
 
 
 target_include_directories(handy INTERFACE
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/handy>
+    $<INSTALL_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include/handy>
 )
 
 
@@ -85,6 +85,6 @@ endif()
 
 
 install(
-    DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+    DIRECTORY ${PROJECT_SOURCE_DIR}/include/handy
     DESTINATION ${HANDY_INCLUDE_INSTALL_DIR}/handy
 )

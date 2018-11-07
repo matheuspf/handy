@@ -6,7 +6,7 @@ function(addExample file_path files)
 
         add_executable(${file} ${file_path}/${file_name})
 
-        target_include_directories(${file} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+        target_include_directories(${file} PUBLIC ${PROJECT_SOURCE_DIR}/include/handy)
 
         target_compile_features(${file} PRIVATE cxx_std_17)
 

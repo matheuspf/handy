@@ -1,0 +1,1 @@
+target_sources(tests PUBLIC Algorithms/Algorithms.cpp)
