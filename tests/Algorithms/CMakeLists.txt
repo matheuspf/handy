@@ -1,1 +1,1 @@
-target_sources(tests PUBLIC Algorithms/Algorithms.cpp)
+target_sources(handy_tests PUBLIC Algorithms/Algorithms.cpp)

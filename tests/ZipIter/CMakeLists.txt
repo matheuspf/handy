@@ -1,1 +1,1 @@
-target_sources(tests PRIVATE ZipIter/Looping.cpp ZipIter/STL.cpp)
+target_sources(handy_tests PRIVATE ZipIter/Looping.cpp ZipIter/STL.cpp)

@@ -1,1 +1,1 @@
-target_sources(tests PRIVATE Range/Range.cpp)
+target_sources(handy_tests PRIVATE Range/Range.cpp)

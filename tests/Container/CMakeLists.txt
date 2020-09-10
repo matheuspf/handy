@@ -1,1 +1,1 @@
-target_sources(tests PRIVATE Container/Container.cpp Container/Slice.cpp)
+target_sources(handy_tests PRIVATE Container/Container.cpp Container/Slice.cpp)

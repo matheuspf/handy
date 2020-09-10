@@ -1,37 +1,44 @@
 option(handy_coverage "If coverage tests will be executed" ON)
 
 
-add_executable(tests "")
+add_executable(handy_tests "")
 
-target_include_directories(tests PUBLIC ${PROJECT_SOURCE_DIR}/include/handy)
+target_include_directories(handy_tests PUBLIC ${lib_path})
 
-target_compile_features(tests PRIVATE)
-
-target_compile_options(tests PRIVATE -std=c++17)
+target_compile_options(handy_tests PRIVATE -std=c++17)
 
 if(handy_coverage AND  "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    target_compile_options(tests PRIVATE -g -O0 --coverage -fprofile-arcs -ftest-coverage)
-    target_link_libraries(tests PUBLIC -lgcov)
+    target_compile_options(handy_tests PRIVATE -g -O0 --coverage -fprofile-arcs -ftest-coverage)
+    target_link_libraries(handy_tests PUBLIC -lgcov)
 endif()
 
 
+set(handy_test_sources
+    ${CMAKE_CURRENT_SOURCE_DIR}/Algorithms/Algorithms.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Container/Container.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Container/Slice.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Helpers/Benchmark.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Helpers/HandyParams.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Helpers/HasMember.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Helpers/Helpers.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Helpers/NamedTuple.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Helpers/Print.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Range/Range.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Wrapper/Inheritance.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/Wrapper/Operations.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ZipIter/Looping.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/ZipIter/STL.cpp
+)
 
-add_subdirectory(Algorithms)
-add_subdirectory(Container)
-add_subdirectory(Helpers)
-add_subdirectory(Range)
-#add_subdirectory(Wrapper)
-add_subdirectory(ZipIter)
-
+target_sources(handy_tests PRIVATE ${handy_test_sources})
 
 enable_testing()
 
 find_package(GTest QUIET)
 
-
 if(GTest_FOUND)
 
-   target_link_libraries(tests PUBLIC GTest::GTest GTest::Main)
+   target_link_libraries(handy_tests PUBLIC GTest::GTest GTest::Main)
 
 else()
 
@@ -41,4 +48,4 @@ else()
 
 endif()
 
-add_test(allTests tests)
+add_test(allTests handy_tests)

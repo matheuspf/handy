@@ -1,1 +1,1 @@
-target_sources(tests PRIVATE Wrapper/Inheritance.cpp Wrapper/Operations.cpp)
+target_sources(handy_tests PRIVATE Wrapper/Inheritance.cpp Wrapper/Operations.cpp)
