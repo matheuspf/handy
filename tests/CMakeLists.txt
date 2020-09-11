@@ -1,10 +1,8 @@
 option(handy_coverage "If coverage tests will be executed" ON)
 
-
 add_executable(handy_tests "")
 
-target_include_directories(handy_tests PUBLIC ${lib_path})
-
+target_link_libraries(handy_tests PUBLIC handy)
 target_compile_options(handy_tests PRIVATE -std=c++17)
 
 if(handy_coverage AND  "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
@@ -34,7 +32,7 @@ target_sources(handy_tests PRIVATE ${handy_test_sources})
 
 enable_testing()
 
-# find_package(GTest QUIET)
+find_package(GTest QUIET)
 
 if(GTest_FOUND)
 
