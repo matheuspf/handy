@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.15)
 
 project(handy LANGUAGES CXX)
 
-set(lib_path ${CMAKE_SOURCE_DIR}/include/handy)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 include(GNUInstallDirs)
@@ -39,7 +38,7 @@ install(
     DESTINATION ${HANDY_INCLUDE_INSTALL_DIR}/handy
 )
 
-getProjectVersion(handy ${lib_path}/Helpers/Config.h)
+getProjectVersion(handy ${CMAKE_CURRENT_SOURCE_DIR}/include/handy/Helpers/Config.h)
 
 write_basic_package_version_file(
     ${CMAKE_CURRENT_BINARY_DIR}/handy-config-version.cmake

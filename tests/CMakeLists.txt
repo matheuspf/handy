@@ -26,7 +26,7 @@ set(handy_test_sources
     ${CMAKE_CURRENT_SOURCE_DIR}/Range/Range.cpp
     # ${CMAKE_CURRENT_SOURCE_DIR}/Wrapper/Inheritance.cpp
     # ${CMAKE_CURRENT_SOURCE_DIR}/Wrapper/Operations.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/ZipIter/Looping.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/ZipIter/Looping.cpp
     # ${CMAKE_CURRENT_SOURCE_DIR}/ZipIter/STL.cpp
 )
 
@@ -34,7 +34,7 @@ target_sources(handy_tests PRIVATE ${handy_test_sources})
 
 enable_testing()
 
-find_package(GTest QUIET)
+# find_package(GTest QUIET)
 
 if(GTest_FOUND)
 
