@@ -86,7 +86,7 @@ public:
         //@{
         ZipIter& operator ++ ()
         {
-            applyTuple(impl::zip::increment, iters); return *this;
+            applyTuple([](auto&& x) { return ++x; }, iters); return *this;
         }
 
         ZipIter operator ++ (int)
@@ -102,7 +102,7 @@ public:
         template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::bidirectional_iterator_tag > = 0 >
         ZipIter& operator -- ()
         {
-            applyTuple(impl::zip::decrement, iters); return *this;
+            applyTuple([](auto&& x) { return --x; }, iters); return *this;
         }
 
         template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::bidirectional_iterator_tag > = 0 >
@@ -119,7 +119,7 @@ public:
         template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
         ZipIter& operator += (int inc)
         {
-          applyTuple(impl::zip::add, iters, inc);
+          applyTuple([](auto&& x, int inc) { return x += inc; }, iters, inc);
 
           return *this;
         }
@@ -127,7 +127,7 @@ public:
         template <class Tag = iterator_category, impl::zip::EnableIfMinimumTag< Tag, std::random_access_iterator_tag > = 0 >
         ZipIter& operator -= (int inc)
         {
-            applyTuple(impl::zip::add, iters, -inc);
+            applyTuple([](auto&& x, int inc) { return x += inc; }, iters, -inc);
 
             return *this;
         }
