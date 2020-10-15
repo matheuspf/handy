@@ -135,21 +135,6 @@ using EnableIfMinimumTag = std::enable_if_t< iterTagOrder( Tag{} ) >= iterTagOrd
 
 
 
-
-
-
-
-
-/// Simple functions to be used in the handy::applyTuple() function, defined as lambdas for simplicity.
-auto increment = [](auto&& x) { return ++x; };
-
-auto decrement = [](auto&& x) { return --x; };
-
-auto add       = [](auto&& x, int inc) { return x = x + inc; };
-
-
-
-
 /** The sole reason these functions were defined is to allow pointers 
   * to be called in 'zip' as if they were iterable types, having a starting and
   * ending points. As the first argument defines the range, there is no
@@ -191,7 +176,7 @@ decltype(auto) end (T t) noexcept
 template <typename... ArgsTup>
 decltype(auto) packArgs (std::tuple< ArgsTup... > tup)
 {
-    return std::move( tup );
+    return tup;
 }
 
 template <typename T>
