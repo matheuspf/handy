@@ -5,7 +5,7 @@
 #include <random>
 
 #include "gtest/gtest.h"
-#include "Algorithms/Algorithms.h"
+#include "handy/Algorithms/Algorithms.h"
 
 
 namespace

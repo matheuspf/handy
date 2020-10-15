@@ -1,4 +1,4 @@
-#include "Helpers/HasMember.h"
+#include "handy/Helpers/HasMember.h"
 #include "gtest/gtest.h"
 
 #include <string>

@@ -26,7 +26,7 @@ script:
 - cd ${TRAVIS_BUILD_DIR}
 - mkdir build
 - cd build
-- CXX=/usr/bin/g++-9 cmake  -D HANDY_BUILD_TESTS=ON ..
+- CXX=/usr/bin/g++-9 cmake -D HANDY_BUILD_TESTS=ON ..
 - make handy_tests -j4
 - ./tests/handy_tests
 

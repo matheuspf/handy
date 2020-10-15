@@ -29,7 +29,7 @@ add_library(handy::handy ALIAS handy)
 target_compile_features(handy INTERFACE cxx_std_17)
 
 target_include_directories(handy INTERFACE
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/handy>
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:${HANDY_INCLUDE_INSTALL_DIR}>
 )
 
