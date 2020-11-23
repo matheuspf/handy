@@ -35,7 +35,7 @@
 
 #include <windows.h>
 
-#elif defined __unix__
+#else
 
 #include <sys/time.h>
 
@@ -100,7 +100,7 @@ public:
         QueryPerformanceFrequency(&freq_);
         QueryPerformanceCounter(&start_);
     
-    #elif defined __unix__
+    #else
     
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_);
         
@@ -117,7 +117,7 @@ public:
     
         double secondsElapsed = (end_.QuadPart - start_.QuadPart) / freq.QuadPart;
     
-    #elif defined __unix__
+    #else
     
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_);
     
@@ -137,7 +137,7 @@ private:
 
     LARGE_INTEGER freq, start_, end_;   ///< Variables for windows
 
-#elif defined __unix__
+#else
     
     timespec start_, end_;  ///< Variables for Linux
 
