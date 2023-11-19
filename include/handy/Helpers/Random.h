@@ -151,7 +151,7 @@ using Rand = std::conditional_t<std::is_integral<T>::value, RandInt_<T>,
 
     @snippet Helpers/RandomExample.cpp Random Function Snippet
 */
-static int rand (int min = 0, int max = std::numeric_limits<int>::max(), unsigned int seed = -1)
+static int rand (int min = 0, int max = (std::numeric_limits<int>::max)(), unsigned int seed = -1)
 {
     return RandInt(seed)(min, max);
 }
