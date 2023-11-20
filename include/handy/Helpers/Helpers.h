@@ -282,14 +282,16 @@ decltype(auto) reverseArgs (Apply apply, Args&&... args)
 namespace std
 {
 	/** @name
-	 	@brief Some aliases for C++14
+	 	@brief Some aliases for C++14, *_v is defined by xtr1common in msvc compiler even if it's C++14
 	*/
 	//@{
+#if !(defined(_MSC_VER) && defined(_XTR1COMMON_))
 	template <typename T, typename U>
 	constexpr bool is_same_v = std::is_same<T, U>::value;
 
 	template <typename T>
 	constexpr bool is_integral_v = std::is_integral<T>::value;
+#endif
 	//@}
 }	// namespace std
 
