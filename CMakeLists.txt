@@ -55,7 +55,7 @@ install(EXPORT handy-targets
 )
 
 install(FILES
-    ${CMAKE_SOURCE_DIR}/cmake/handy-config.cmake
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/handy-config.cmake
     ${CMAKE_CURRENT_BINARY_DIR}/handy-config-version.cmake
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/handy
 )
